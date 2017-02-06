@@ -1,8 +1,5 @@
 package view;
 
-/**
- * Created by Cairns on 01/02/2017.
- */
 import javax.swing.*;
 import java.awt.*;
 

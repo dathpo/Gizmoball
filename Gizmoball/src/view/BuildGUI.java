@@ -1,12 +1,9 @@
 package view;
 
+
 import javax.swing.*;
+
 import java.awt.*;
-
-
-/**
- * Created by Cairns on 01/02/2017.
- */
 
 public class BuildGUI extends JPanel implements IGUI {
 
@@ -37,7 +34,7 @@ public class BuildGUI extends JPanel implements IGUI {
 
         buildFrame = new JFrame();
         buildFrame.setTitle("Gizmoball Build Mode");
-        buildFrame.setSize(1000, 1000);
+        buildFrame.setSize(1500, 1000);
         buildFrame.setLocationRelativeTo(null);
         buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
