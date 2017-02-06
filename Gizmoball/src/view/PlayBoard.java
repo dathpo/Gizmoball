@@ -1,5 +1,5 @@
 package view;
 
-public class PlayBoard extends Board {
+public class PlayBoard {
    
    }
