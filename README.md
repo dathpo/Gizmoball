@@ -1,8 +1,6 @@
 # Gizmoball - MW1
 
-Group MW1's implementation of the Gizmoball project for CS308.
-
-Full specification of the project:
+Full specification of the Gizmoball project for CS308:
 https://personal.cis.strath.ac.uk/murray.wood/Gizmoball/Gizmoball_spec.htm
 
 Google Drive folder link for documentation:
