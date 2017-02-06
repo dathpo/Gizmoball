@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_mVp14Oe4Eeal_oJOBuQy4w" name="Murray_s_Gizmoball">
+    <eAnnotations xmi:id="_mdp7UOe4Eeal_oJOBuQy4w" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_mdp7Uee4Eeal_oJOBuQy4w" source="codegen">
+        <details xmi:id="_mdp7Uue4Eeal_oJOBuQy4w" key="codegenDirectory" value="/Murray's Gizmoball/src"/>
+        <details xmi:id="_m9ggEOe4Eeal_oJOBuQy4w" key="AssociatedSourceCode" value="/Murray's Gizmoball/src/controller/RunListener.java;1476083652/1;/Murray's Gizmoball/src/main/Main.java;3088862765/1;/Murray's Gizmoball/src/model/Ball.java;3005126483/1;/Murray's Gizmoball/src/model/CollisionDetails.java;1550723678/1;/Murray's Gizmoball/src/model/Model.java;212116254/1;/Murray's Gizmoball/src/model/VerticalLine.java;2956894735/1;/Murray's Gizmoball/src/model/Walls.java;2067110750/1;/Murray's Gizmoball/src/view/Board.java;1435549196/1;/Murray's Gizmoball/src/physics/GeometryReference.java;1368246496/1;/Murray's Gizmoball/src/view/RunGui.java;773908025/1;"/>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_mpG9YOe4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_mpG9Yee4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_mpG9Yue4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_mpHkcOe4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_mpHkcee4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_mpHkcue4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_mpHkc-e4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_mpHkdOe4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_mpHkdee4Eeal_oJOBuQy4w">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mpILgOe4Eeal_oJOBuQy4w" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_mpILgee4Eeal_oJOBuQy4w" name="awt">
+        <packagedElement xmi:type="uml:Package" xmi:id="_mpILgue4Eeal_oJOBuQy4w" name="event">
+          <packagedElement xmi:type="uml:Class" xmi:id="_mrKy4Oe4Eeal_oJOBuQy4w" name="ActionEvent"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_mrLZ8Oe4Eeal_oJOBuQy4w" name="ActionListener"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrNPIue4Eeal_oJOBuQy4w" name="Color"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrT80Oe4Eeal_oJOBuQy4w" name="Dimension"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrT80ue4Eeal_oJOBuQy4w" name="Graphics"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrUj4ee4Eeal_oJOBuQy4w" name="Graphics2D"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrXnMee4Eeal_oJOBuQy4w" name="BorderLayout"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrYOQee4Eeal_oJOBuQy4w" name="Container"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrYOQ-e4Eeal_oJOBuQy4w" name="Font"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrY1Uee4Eeal_oJOBuQy4w" name="GridLayout"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_mpSjkOe4Eeal_oJOBuQy4w" name="util">
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrPrYOe4Eeal_oJOBuQy4w" name="ArrayList"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrQScee4Eeal_oJOBuQy4w" name="Observable"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_mrUj4-e4Eeal_oJOBuQy4w" name="Observer"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_mrh_Q-e4Eeal_oJOBuQy4w" name="lang">
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrh_ROe4Eeal_oJOBuQy4w" name="Object"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mpIykOe4Eeal_oJOBuQy4w" name="javax">
+      <packagedElement xmi:type="uml:Package" xmi:id="_mpIykee4Eeal_oJOBuQy4w" name="swing">
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrLZ8ue4Eeal_oJOBuQy4w" name="Timer"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrNPIOe4Eeal_oJOBuQy4w" name="UIManager"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrVK8ee4Eeal_oJOBuQy4w" name="BorderFactory"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrVK8-e4Eeal_oJOBuQy4w" name="JPanel"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrY1U-e4Eeal_oJOBuQy4w" name="JButton"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrZcYee4Eeal_oJOBuQy4w" name="JFrame"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mpIykue4Eeal_oJOBuQy4w" name="model">
+      <packagedElement xmi:type="uml:Class" xmi:id="_mpk3cOe4Eeal_oJOBuQy4w" name="Ball">
+        <ownedComment xmi:id="_mr1hQue4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_mrqiI-e4Eeal_oJOBuQy4w" name="velocity" visibility="private" type="_mrN2M-e4Eeal_oJOBuQy4w" association="_mr5Loee4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrrJMee4Eeal_oJOBuQy4w" name="radius" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrrJMue4Eeal_oJOBuQy4w" name="xpos" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrrwQOe4Eeal_oJOBuQy4w" name="ypos" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrrwQue4Eeal_oJOBuQy4w" name="colour" type="_mrNPIue4Eeal_oJOBuQy4w" isReadOnly="true" association="_mr5LpOe4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrrwQ-e4Eeal_oJOBuQy4w" name="stopped" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mryd9-e4Eeal_oJOBuQy4w" name="Ball" specification="_mplegOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mryd-Oe4Eeal_oJOBuQy4w" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mryd-ee4Eeal_oJOBuQy4w" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mryd-ue4Eeal_oJOBuQy4w" name="xv">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mryd--e4Eeal_oJOBuQy4w" name="yv">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mryd_Oe4Eeal_oJOBuQy4w" type="_mpk3cOe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>xpos = x; // Centre coordinates&#xD;
+		ypos = y;&#xD;
+		colour = Color.BLUE;&#xD;
+		velocity = new Vect(xv, yv);&#xD;
+		radius = 10;&#xD;
+		stopped = false;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mryd_ee4Eeal_oJOBuQy4w" name="getVelo" specification="_mpmFk-e4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mryd_ue4Eeal_oJOBuQy4w" type="_mrN2M-e4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>return velocity;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzFAOe4Eeal_oJOBuQy4w" name="setVelo" specification="_mreU4ee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzFAee4Eeal_oJOBuQy4w" name="v" type="_mrN2M-e4Eeal_oJOBuQy4w"/>
+          <language>java</language>
+          <body>velocity = v;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzFAue4Eeal_oJOBuQy4w" name="getCircle" specification="_mpmsoOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzFA-e4Eeal_oJOBuQy4w" type="_mrN2Mee4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>return new Circle(xpos, ypos, radius);&#xD;
+&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzFBOe4Eeal_oJOBuQy4w" name="getExactX" specification="_mpmsoee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzFBee4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return xpos;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzFBue4Eeal_oJOBuQy4w" name="getExactY" specification="_mpmso-e4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzFB-e4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return ypos;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzFCOe4Eeal_oJOBuQy4w" name="setExactX" specification="_mpnTsOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzFCee4Eeal_oJOBuQy4w" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>xpos = x;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzFCue4Eeal_oJOBuQy4w" name="setExactY" specification="_mpnTsue4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzFC-e4Eeal_oJOBuQy4w" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>ypos = y;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzFDOe4Eeal_oJOBuQy4w" name="stop" specification="_mpnTtOe4Eeal_oJOBuQy4w">
+          <language>java</language>
+          <body>stopped = true;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzFDee4Eeal_oJOBuQy4w" name="start" specification="_mpnTtee4Eeal_oJOBuQy4w">
+          <language>java</language>
+          <body>stopped = false;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzsEOe4Eeal_oJOBuQy4w" name="stopped" specification="_mpnTtue4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzsEee4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return stopped;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mplegOe4Eeal_oJOBuQy4w" name="Ball" method="_mryd9-e4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mpmFkOe4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mpmFkee4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mplegee4Eeal_oJOBuQy4w" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mplegue4Eeal_oJOBuQy4w" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mpleg-e4Eeal_oJOBuQy4w" name="xv">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mplehOe4Eeal_oJOBuQy4w" name="yv">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mpmFkue4Eeal_oJOBuQy4w" type="_mpk3cOe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpmFk-e4Eeal_oJOBuQy4w" name="getVelo" method="_mryd_ee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mreU4Oe4Eeal_oJOBuQy4w" type="_mrN2M-e4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpmsoOe4Eeal_oJOBuQy4w" name="getCircle" method="_mrzFAue4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mreU4-e4Eeal_oJOBuQy4w" type="_mrN2Mee4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpmsoee4Eeal_oJOBuQy4w" name="getExactX" method="_mrzFBOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mpmsoue4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpmso-e4Eeal_oJOBuQy4w" name="getExactY" method="_mrzFBue4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mpmspOe4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpnTsOe4Eeal_oJOBuQy4w" name="setExactX" method="_mrzFCOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mpnTsee4Eeal_oJOBuQy4w" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpnTsue4Eeal_oJOBuQy4w" name="setExactY" method="_mrzFCue4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mpnTs-e4Eeal_oJOBuQy4w" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpnTtOe4Eeal_oJOBuQy4w" name="stop" method="_mrzFDOe4Eeal_oJOBuQy4w"/>
+        <ownedOperation xmi:id="_mpnTtee4Eeal_oJOBuQy4w" name="start" method="_mrzFDee4Eeal_oJOBuQy4w"/>
+        <ownedOperation xmi:id="_mpnTtue4Eeal_oJOBuQy4w" name="stopped" method="_mrzsEOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mpn6wOe4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mreU4ee4Eeal_oJOBuQy4w" name="setVelo" method="_mrzFAOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mreU4ue4Eeal_oJOBuQy4w" name="v" type="_mrN2M-e4Eeal_oJOBuQy4w"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mppI4Oe4Eeal_oJOBuQy4w" name="CollisionDetails">
+        <ownedComment xmi:id="_mr1hQ-e4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_mrsXUOe4Eeal_oJOBuQy4w" name="tuc" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrsXUee4Eeal_oJOBuQy4w" name="velo" type="_mrN2M-e4Eeal_oJOBuQy4w" isReadOnly="true" association="_mr5ysee4Eeal_oJOBuQy4w"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzsEue4Eeal_oJOBuQy4w" name="CollisionDetails" specification="_mre78Oe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzsE-e4Eeal_oJOBuQy4w" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mrzsFOe4Eeal_oJOBuQy4w" name="v" type="_mrN2M-e4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mrzsFee4Eeal_oJOBuQy4w" type="_mppI4Oe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>tuc = t;&#xD;
+		velo = v;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mre78Oe4Eeal_oJOBuQy4w" name="CollisionDetails" method="_mrzsEue4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mre78-e4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mre79Oe4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mre78ee4Eeal_oJOBuQy4w" name="t">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mre78ue4Eeal_oJOBuQy4w" name="v" type="_mrN2M-e4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mre79ee4Eeal_oJOBuQy4w" type="_mppI4Oe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mppv8Oe4Eeal_oJOBuQy4w" name="Model">
+        <ownedComment xmi:id="_mr1hROe4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <generalization xmi:id="_mrfjAOe4Eeal_oJOBuQy4w" general="_mrQScee4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrsXUue4Eeal_oJOBuQy4w" name="lines" type="_mrPrYOe4Eeal_oJOBuQy4w" isReadOnly="true" association="_mr6ZwOe4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrs-Yee4Eeal_oJOBuQy4w" name="ball" type="_mpk3cOe4Eeal_oJOBuQy4w" isReadOnly="true" association="_mr6Zw-e4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrs-Yue4Eeal_oJOBuQy4w" name="gws" visibility="private" type="_mpuocOe4Eeal_oJOBuQy4w" association="_mr7A0ee4Eeal_oJOBuQy4w"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzsFue4Eeal_oJOBuQy4w" name="Model" specification="_mpqXAOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzsF-e4Eeal_oJOBuQy4w" type="_mppv8Oe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>// Ball position (25, 25) in pixels. Ball velocity (100, 100) pixels per tick&#xD;
+		ball = new Ball(25, 25, 100, 100);&#xD;
+&#xD;
+		// Wall size 500 x 500 pixels&#xD;
+		gws = new Walls(0, 0, 500, 500);&#xD;
+&#xD;
+		// Lines added in Main&#xD;
+		lines = new ArrayList&lt;VerticalLine>();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzsGOe4Eeal_oJOBuQy4w" name="moveBall" specification="_mpq-Eee4Eeal_oJOBuQy4w">
+          <language>java</language>
+          <body>double moveTime = 0.05; // 0.05 = 20 times per second as per Gizmoball&#xD;
+&#xD;
+		if (ball != null &amp;&amp; !ball.stopped()) {&#xD;
+&#xD;
+			CollisionDetails cd = timeUntilCollision();&#xD;
+			double tuc = cd.getTuc();&#xD;
+			if (tuc > moveTime) {&#xD;
+				// No collision ...&#xD;
+				ball = movelBallForTime(ball, moveTime);&#xD;
+			} else {&#xD;
+				// We've got a collision in tuc&#xD;
+				ball = movelBallForTime(ball, tuc);&#xD;
+				// Post collision velocity ...&#xD;
+				ball.setVelo(cd.getVelo());&#xD;
+			}&#xD;
+&#xD;
+			// Notify observers ... redraw updated view&#xD;
+			this.setChanged();&#xD;
+			this.notifyObservers();&#xD;
+		}&#xD;
+&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzsGee4Eeal_oJOBuQy4w" name="movelBallForTime" specification="_mrRgkOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzsGue4Eeal_oJOBuQy4w" name="ball" type="_mpk3cOe4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mrzsG-e4Eeal_oJOBuQy4w" name="time">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mrzsHOe4Eeal_oJOBuQy4w" type="_mpk3cOe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>double newX = 0.0;&#xD;
+		double newY = 0.0;&#xD;
+		double xVel = ball.getVelo().x();&#xD;
+		double yVel = ball.getVelo().y();&#xD;
+		newX = ball.getExactX() + (xVel * time);&#xD;
+		newY = ball.getExactY() + (yVel * time);&#xD;
+		ball.setExactX(newX);&#xD;
+		ball.setExactY(newY);&#xD;
+		return ball;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzsHee4Eeal_oJOBuQy4w" name="timeUntilCollision" specification="_mpq-Eue4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzsHue4Eeal_oJOBuQy4w" type="_mppI4Oe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>// Find Time Until Collision and also, if there is a collision, the new speed vector.&#xD;
+		// Create a physics.Circle from Ball&#xD;
+		Circle ballCircle = ball.getCircle();&#xD;
+		Vect ballVelocity = ball.getVelo();&#xD;
+		Vect newVelo = new Vect(0, 0);&#xD;
+&#xD;
+		// Now find shortest time to hit a vertical line or a wall line&#xD;
+		double shortestTime = Double.MAX_VALUE;&#xD;
+		double time = 0.0;&#xD;
+&#xD;
+		// Time to collide with 4 walls&#xD;
+		ArrayList&lt;LineSegment> lss = gws.getLineSegments();&#xD;
+		for (LineSegment line : lss) {&#xD;
+			time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);&#xD;
+			if (time &lt; shortestTime) {&#xD;
+				shortestTime = time;&#xD;
+				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1.0);&#xD;
+			}&#xD;
+		}&#xD;
+&#xD;
+		// Time to collide with any vertical lines&#xD;
+		for (VerticalLine line : lines) {&#xD;
+			LineSegment ls = line.getLineSeg();&#xD;
+			time = Geometry.timeUntilWallCollision(ls, ballCircle, ballVelocity);&#xD;
+			if (time &lt; shortestTime) {&#xD;
+				shortestTime = time;&#xD;
+				newVelo = Geometry.reflectWall(ls, ball.getVelo(), 1.0);&#xD;
+			}&#xD;
+		}&#xD;
+		return new CollisionDetails(shortestTime, newVelo);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzsH-e4Eeal_oJOBuQy4w" name="addLine" specification="_mrRglee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrzsIOe4Eeal_oJOBuQy4w" name="l" type="_mpszQOe4Eeal_oJOBuQy4w"/>
+          <language>java</language>
+          <body>lines.add(l);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrzsIee4Eeal_oJOBuQy4w" name="setBallSpeed" specification="_mprlIOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr0TIOe4Eeal_oJOBuQy4w" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr0TIee4Eeal_oJOBuQy4w" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>ball.setVelo(new Vect(x, y));&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mpqXAOe4Eeal_oJOBuQy4w" name="Model" method="_mrzsFue4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mpqXAee4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mpqXAue4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mpq-EOe4Eeal_oJOBuQy4w" type="_mppv8Oe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpq-Eee4Eeal_oJOBuQy4w" name="moveBall" method="_mrzsGOe4Eeal_oJOBuQy4w"/>
+        <ownedOperation xmi:id="_mpq-Eue4Eeal_oJOBuQy4w" name="timeUntilCollision" visibility="private" method="_mrzsHee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrRglOe4Eeal_oJOBuQy4w" type="_mppI4Oe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mprlIOe4Eeal_oJOBuQy4w" name="setBallSpeed" method="_mrzsIee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mprlIee4Eeal_oJOBuQy4w" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mprlIue4Eeal_oJOBuQy4w" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mrRgkOe4Eeal_oJOBuQy4w" name="movelBallForTime" visibility="private" method="_mrzsGee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrRgkee4Eeal_oJOBuQy4w" name="ball" type="_mpk3cOe4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mrRgkue4Eeal_oJOBuQy4w" name="time">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mrRgk-e4Eeal_oJOBuQy4w" type="_mpk3cOe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mrRglee4Eeal_oJOBuQy4w" name="addLine" method="_mrzsH-e4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrRglue4Eeal_oJOBuQy4w" name="l" type="_mpszQOe4Eeal_oJOBuQy4w"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mpszQOe4Eeal_oJOBuQy4w" name="VerticalLine">
+        <ownedComment xmi:id="_mr1hRee4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_mrtlcOe4Eeal_oJOBuQy4w" name="xpos" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrtlcue4Eeal_oJOBuQy4w" name="ypos" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrtldOe4Eeal_oJOBuQy4w" name="width" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrtldee4Eeal_oJOBuQy4w" name="ls" visibility="private" type="_mrQ5gee4Eeal_oJOBuQy4w" association="_mr7n4Oe4Eeal_oJOBuQy4w"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr0TIue4Eeal_oJOBuQy4w" name="VerticalLine" specification="_mptaUOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr0TI-e4Eeal_oJOBuQy4w" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr0TJOe4Eeal_oJOBuQy4w" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr0TJee4Eeal_oJOBuQy4w" name="w">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr0TJue4Eeal_oJOBuQy4w" type="_mpszQOe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>xpos = x;&#xD;
+		ypos = y;&#xD;
+		width = w;&#xD;
+		ls = new LineSegment(x, y, x + w, y);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr0TJ-e4Eeal_oJOBuQy4w" name="getLineSeg" specification="_mpuBYOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr0TKOe4Eeal_oJOBuQy4w" type="_mrQ5gee4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>return ls;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr0TKee4Eeal_oJOBuQy4w" name="getX" specification="_mpuBYee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr0TKue4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return xpos;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr0TK-e4Eeal_oJOBuQy4w" name="getY" specification="_mpuBY-e4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr0TLOe4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return ypos;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mptaUOe4Eeal_oJOBuQy4w" name="VerticalLine" method="_mr0TIue4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mptaVOe4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mptaVee4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mptaUee4Eeal_oJOBuQy4w" name="x">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mptaUue4Eeal_oJOBuQy4w" name="y">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mptaU-e4Eeal_oJOBuQy4w" name="w">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mptaVue4Eeal_oJOBuQy4w" type="_mpszQOe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpuBYOe4Eeal_oJOBuQy4w" name="getLineSeg" method="_mr0TJ-e4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrgKEOe4Eeal_oJOBuQy4w" type="_mrQ5gee4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpuBYee4Eeal_oJOBuQy4w" name="getX" method="_mr0TKee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mpuBYue4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpuBY-e4Eeal_oJOBuQy4w" name="getY" method="_mr0TK-e4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mpuBZOe4Eeal_oJOBuQy4w" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mpuocOe4Eeal_oJOBuQy4w" name="Walls">
+        <ownedComment xmi:id="_mr2IUOe4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_mruMgee4Eeal_oJOBuQy4w" name="xpos1" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mruMg-e4Eeal_oJOBuQy4w" name="ypos1" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mruzkOe4Eeal_oJOBuQy4w" name="ypos2" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mruzkue4Eeal_oJOBuQy4w" name="xpos2" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr0TLee4Eeal_oJOBuQy4w" name="Walls" specification="_mpvPgOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr0TLue4Eeal_oJOBuQy4w" name="x1">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr0TL-e4Eeal_oJOBuQy4w" name="y1">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr0TMOe4Eeal_oJOBuQy4w" name="x2">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr0TMee4Eeal_oJOBuQy4w" name="y2">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr0TMue4Eeal_oJOBuQy4w" type="_mpuocOe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>xpos1 = x1;&#xD;
+		ypos1 = y1;&#xD;
+		xpos2 = x2;&#xD;
+		ypos2 = y2;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr0TM-e4Eeal_oJOBuQy4w" name="getLineSegments" specification="_mpv2lOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr0TNOe4Eeal_oJOBuQy4w" type="_mrPrYOe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>ArrayList&lt;LineSegment> ls = new ArrayList&lt;LineSegment>();&#xD;
+		LineSegment l1 = new LineSegment(xpos1, ypos1, xpos2, ypos1);&#xD;
+		LineSegment l2 = new LineSegment(xpos1, ypos1, xpos1, ypos2);&#xD;
+		LineSegment l3 = new LineSegment(xpos2, ypos1, xpos2, ypos2);&#xD;
+		LineSegment l4 = new LineSegment(xpos1, ypos2, xpos2, ypos2);&#xD;
+		ls.add(l1);&#xD;
+		ls.add(l2);&#xD;
+		ls.add(l3);&#xD;
+		ls.add(l4);&#xD;
+		return ls;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mpvPgOe4Eeal_oJOBuQy4w" name="Walls" method="_mr0TLee4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mpv2kee4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mpv2kue4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mpvPgee4Eeal_oJOBuQy4w" name="x1">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mpvPgue4Eeal_oJOBuQy4w" name="y1">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mpvPg-e4Eeal_oJOBuQy4w" name="x2">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mpv2kOe4Eeal_oJOBuQy4w" name="y2">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mpv2k-e4Eeal_oJOBuQy4w" type="_mpuocOe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mpv2lOe4Eeal_oJOBuQy4w" name="getLineSegments" method="_mr0TM-e4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrgxIOe4Eeal_oJOBuQy4w" type="_mrPrYOe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr5Loee4Eeal_oJOBuQy4w" name="" memberEnd="_mr5Loue4Eeal_oJOBuQy4w _mrqiI-e4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr5Loue4Eeal_oJOBuQy4w" name="" type="_mpk3cOe4Eeal_oJOBuQy4w" association="_mr5Loee4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr5LpOe4Eeal_oJOBuQy4w" name="" memberEnd="_mr5Lpee4Eeal_oJOBuQy4w _mrrwQue4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr5Lpee4Eeal_oJOBuQy4w" name="" type="_mpk3cOe4Eeal_oJOBuQy4w" association="_mr5LpOe4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr5ysee4Eeal_oJOBuQy4w" name="" memberEnd="_mr5ysue4Eeal_oJOBuQy4w _mrsXUee4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr5ysue4Eeal_oJOBuQy4w" name="" type="_mppI4Oe4Eeal_oJOBuQy4w" association="_mr5ysee4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr6ZwOe4Eeal_oJOBuQy4w" name="" memberEnd="_mr6Zwee4Eeal_oJOBuQy4w _mrsXUue4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr6Zwee4Eeal_oJOBuQy4w" name="" type="_mppv8Oe4Eeal_oJOBuQy4w" association="_mr6ZwOe4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr6Zw-e4Eeal_oJOBuQy4w" name="" memberEnd="_mr6ZxOe4Eeal_oJOBuQy4w _mrs-Yee4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr6ZxOe4Eeal_oJOBuQy4w" name="" type="_mppv8Oe4Eeal_oJOBuQy4w" association="_mr6Zw-e4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr7A0ee4Eeal_oJOBuQy4w" name="" memberEnd="_mr7A0ue4Eeal_oJOBuQy4w _mrs-Yue4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr7A0ue4Eeal_oJOBuQy4w" name="" type="_mppv8Oe4Eeal_oJOBuQy4w" association="_mr7A0ee4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr7n4Oe4Eeal_oJOBuQy4w" name="" memberEnd="_mr7n4ee4Eeal_oJOBuQy4w _mrtldee4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr7n4ee4Eeal_oJOBuQy4w" name="" type="_mpszQOe4Eeal_oJOBuQy4w" association="_mr7n4Oe4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mpKAsOe4Eeal_oJOBuQy4w" name="controller">
+      <packagedElement xmi:type="uml:Class" xmi:id="_mph0IOe4Eeal_oJOBuQy4w" name="RunListener">
+        <ownedComment xmi:id="_mr1hQOe4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_mrp7EOe4Eeal_oJOBuQy4w" name="timer" visibility="private" type="_mrLZ8ue4Eeal_oJOBuQy4w" association="_mr4kkOe4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrqiIee4Eeal_oJOBuQy4w" name="model" visibility="private" type="_mppv8Oe4Eeal_oJOBuQy4w" association="_mr4kk-e4Eeal_oJOBuQy4w"/>
+        <interfaceRealization xmi:id="_mrcfsOe4Eeal_oJOBuQy4w" client="_mph0IOe4Eeal_oJOBuQy4w" supplier="_mrLZ8Oe4Eeal_oJOBuQy4w" contract="_mrLZ8Oe4Eeal_oJOBuQy4w"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mrx24Oe4Eeal_oJOBuQy4w" name="RunListener" specification="_mrMBAee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrx24ee4Eeal_oJOBuQy4w" name="m" type="_mppv8Oe4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mrx24ue4Eeal_oJOBuQy4w" type="_mph0IOe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>model = m;
+		timer = new Timer(50, this);
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mryd8Oe4Eeal_oJOBuQy4w" name="actionPerformed" specification="_mrcfsee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mryd8ee4Eeal_oJOBuQy4w" name="e" type="_mrKy4Oe4Eeal_oJOBuQy4w">
+            <eAnnotations xmi:id="_mryd8ue4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:id="_mryd8-e4Eeal_oJOBuQy4w" key="final"/>
+            </eAnnotations>
+          </ownedParameter>
+          <language>java</language>
+          <body>if (e.getSource() == timer) {
+			model.moveBall();
+		} else
+			switch (e.getActionCommand()) {
+			case &quot;Start&quot;:
+				timer.start();
+				break;
+			case &quot;Stop&quot;:
+				timer.stop();
+				break;
+			case &quot;Tick&quot;:
+				model.moveBall();
+				break;
+			case &quot;Quit&quot;:
+				System.exit(0);
+				break;
+			}
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mrMBAee4Eeal_oJOBuQy4w" name="RunListener" method="_mrx24Oe4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mrMBA-e4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mrMoEOe4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mrMBAue4Eeal_oJOBuQy4w" name="m" type="_mppv8Oe4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mrMoEee4Eeal_oJOBuQy4w" type="_mph0IOe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mrcfsee4Eeal_oJOBuQy4w" name="actionPerformed" isLeaf="true" method="_mryd8Oe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrcfsue4Eeal_oJOBuQy4w" name="e" type="_mrKy4Oe4Eeal_oJOBuQy4w">
+            <eAnnotations xmi:id="_mrdGwee4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:id="_mrdGwue4Eeal_oJOBuQy4w" key="final"/>
+            </eAnnotations>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr4kkOe4Eeal_oJOBuQy4w" name="" memberEnd="_mr4kkee4Eeal_oJOBuQy4w _mrp7EOe4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr4kkee4Eeal_oJOBuQy4w" name="" type="_mph0IOe4Eeal_oJOBuQy4w" association="_mr4kkOe4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr4kk-e4Eeal_oJOBuQy4w" name="" memberEnd="_mr4klOe4Eeal_oJOBuQy4w _mrqiIee4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr4klOe4Eeal_oJOBuQy4w" name="" type="_mph0IOe4Eeal_oJOBuQy4w" association="_mr4kk-e4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mpLO0Oe4Eeal_oJOBuQy4w" name="view">
+      <packagedElement xmi:type="uml:Class" xmi:id="_mpxEsOe4Eeal_oJOBuQy4w" name="Board">
+        <ownedComment xmi:id="_mr2IUee4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <generalization xmi:id="_mrm3wue4Eeal_oJOBuQy4w" general="_mrVK8-e4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mruzlOe4Eeal_oJOBuQy4w" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_mrvaoOe4Eeal_oJOBuQy4w" value="1L"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrvaoee4Eeal_oJOBuQy4w" name="width" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrvao-e4Eeal_oJOBuQy4w" name="height" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_mrvapee4Eeal_oJOBuQy4w" name="gm" visibility="protected" type="_mppv8Oe4Eeal_oJOBuQy4w" association="_mr8O8ee4Eeal_oJOBuQy4w"/>
+        <interfaceRealization xmi:id="_mrhYMOe4Eeal_oJOBuQy4w" client="_mpxEsOe4Eeal_oJOBuQy4w" supplier="_mrUj4-e4Eeal_oJOBuQy4w" contract="_mrUj4-e4Eeal_oJOBuQy4w"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr06MOe4Eeal_oJOBuQy4w" name="Board" specification="_mrVyAee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr06Mee4Eeal_oJOBuQy4w" name="w">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr06Mue4Eeal_oJOBuQy4w" name="h">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mr06M-e4Eeal_oJOBuQy4w" name="m" type="_mppv8Oe4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mr06NOe4Eeal_oJOBuQy4w" type="_mpxEsOe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>// Observe changes in Model&#xD;
+		m.addObserver(this);&#xD;
+		width = w;&#xD;
+		height = h;&#xD;
+		gm = m;&#xD;
+		this.setBorder(BorderFactory.createLineBorder(Color.black));&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr06Nee4Eeal_oJOBuQy4w" name="getPreferredSize" specification="_mpyS0Oe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr06Nue4Eeal_oJOBuQy4w" type="_mrT80Oe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>return new Dimension(width, height);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr06N-e4Eeal_oJOBuQy4w" name="paintComponent" specification="_mrh_Qee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr06OOe4Eeal_oJOBuQy4w" name="g" type="_mrT80ue4Eeal_oJOBuQy4w"/>
+          <language>java</language>
+          <body>super.paintComponent(g);&#xD;
+&#xD;
+		Graphics2D g2 = (Graphics2D) g;&#xD;
+		&#xD;
+		// Draw all the vertical lines&#xD;
+		for (VerticalLine vl : gm.getLines()) {&#xD;
+			g2.fillRect(vl.getX(), vl.getY(), vl.getWidth(), 1);&#xD;
+		}&#xD;
+		&#xD;
+		Ball b = gm.getBall();&#xD;
+		if (b != null) {&#xD;
+			g2.setColor(b.getColour());&#xD;
+			int x = (int) (b.getExactX() - b.getRadius());&#xD;
+			int y = (int) (b.getExactY() - b.getRadius());&#xD;
+			int width = (int) (2 * b.getRadius());&#xD;
+			g2.fillOval(x, y, width, width);&#xD;
+		}&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr06Oee4Eeal_oJOBuQy4w" name="update" specification="_mrmQsOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr06Oue4Eeal_oJOBuQy4w" name="arg0" type="_mrQScee4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mr06O-e4Eeal_oJOBuQy4w" name="arg1" type="_mrh_ROe4Eeal_oJOBuQy4w"/>
+          <language>java</language>
+          <body>repaint();&#xD;
+		</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mpyS0Oe4Eeal_oJOBuQy4w" name="getPreferredSize" method="_mr06Nee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrh_QOe4Eeal_oJOBuQy4w" type="_mrT80Oe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mrVyAee4Eeal_oJOBuQy4w" name="Board" method="_mr06MOe4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mrVyBee4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mrVyBue4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mrVyAue4Eeal_oJOBuQy4w" name="w">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mrVyA-e4Eeal_oJOBuQy4w" name="h">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_mrVyBOe4Eeal_oJOBuQy4w" name="m" type="_mppv8Oe4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mrVyB-e4Eeal_oJOBuQy4w" type="_mpxEsOe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mrh_Qee4Eeal_oJOBuQy4w" name="paintComponent" method="_mr06N-e4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrh_Que4Eeal_oJOBuQy4w" name="g" type="_mrT80ue4Eeal_oJOBuQy4w"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_mrmQsOe4Eeal_oJOBuQy4w" name="update" method="_mr06Oee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mrmQsee4Eeal_oJOBuQy4w" name="arg0" type="_mrQScee4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mrmQsue4Eeal_oJOBuQy4w" name="arg1" type="_mrh_ROe4Eeal_oJOBuQy4w"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mp0vE-e4Eeal_oJOBuQy4w" name="RunGui">
+        <ownedComment xmi:id="_mr2IU-e4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_mrwBsee4Eeal_oJOBuQy4w" name="model" visibility="private" type="_mppv8Oe4Eeal_oJOBuQy4w" association="_mr8O9Oe4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrwBs-e4Eeal_oJOBuQy4w" name="frame" visibility="private" type="_mrZcYee4Eeal_oJOBuQy4w" association="_mr82Aee4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrwowee4Eeal_oJOBuQy4w" name="listener" visibility="private" type="_mrLZ8Oe4Eeal_oJOBuQy4w" association="_mr9dEOe4Eeal_oJOBuQy4w"/>
+        <ownedAttribute xmi:id="_mrwow-e4Eeal_oJOBuQy4w" name="board" visibility="private" type="_mpxEsOe4Eeal_oJOBuQy4w" association="_mr9dE-e4Eeal_oJOBuQy4w"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr06Pue4Eeal_oJOBuQy4w" name="RunGui" specification="_mraDcOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr06P-e4Eeal_oJOBuQy4w" name="m" type="_mppv8Oe4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mr06QOe4Eeal_oJOBuQy4w" type="_mp0vE-e4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>model = m;&#xD;
+&#xD;
+		// RunListener catches all GUI events. In reality might have many listeners.&#xD;
+		listener = new RunListener(m);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr06Qee4Eeal_oJOBuQy4w" name="createAndShowGUI" specification="_mp1WIOe4Eeal_oJOBuQy4w">
+          <language>java</language>
+          <body>frame = new JFrame(&quot;Murray's MIT Ball and VerticalLine Collision Demo&quot;);&#xD;
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#xD;
+&#xD;
+		// Board is passed the Model so it can act as Observer&#xD;
+		board = new Board(500, 500, model);&#xD;
+&#xD;
+		Container cp = frame.getContentPane();&#xD;
+&#xD;
+		Font gf = new Font(&quot;Arial&quot;, Font.BOLD, 12);&#xD;
+&#xD;
+		JPanel buttons = new JPanel();&#xD;
+		buttons.setLayout(new GridLayout(4, 1));&#xD;
+&#xD;
+		JButton button1 = new JButton(&quot;Start&quot;);&#xD;
+		button1.setFont(gf);&#xD;
+		button1.addActionListener(listener);&#xD;
+		button1.setMaximumSize(new Dimension(100, 100));&#xD;
+		buttons.add(button1);&#xD;
+&#xD;
+		JButton button2 = new JButton(&quot;Stop&quot;);&#xD;
+		button2.setFont(gf);&#xD;
+		button2.addActionListener(listener);&#xD;
+		button2.setMaximumSize(new Dimension(100, 100));&#xD;
+		buttons.add(button2);&#xD;
+&#xD;
+		JButton button4 = new JButton(&quot;Tick&quot;);&#xD;
+		button4.setFont(gf);&#xD;
+		button4.addActionListener(listener);&#xD;
+		button4.setMaximumSize(new Dimension(100, 100));&#xD;
+		buttons.add(button4);&#xD;
+&#xD;
+		JButton button3 = new JButton(&quot;Quit&quot;);&#xD;
+		button3.setFont(gf);&#xD;
+		button3.addActionListener(listener);&#xD;
+		button3.setMaximumSize(new Dimension(100, 100));&#xD;
+		buttons.add(button3);&#xD;
+&#xD;
+		cp.add(buttons, BorderLayout.LINE_START);&#xD;
+		cp.add(board, BorderLayout.CENTER);&#xD;
+&#xD;
+		frame.pack();&#xD;
+		frame.setLocationRelativeTo(null);&#xD;
+		frame.setVisible(true);&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mp1WIOe4Eeal_oJOBuQy4w" name="createAndShowGUI" method="_mr06Qee4Eeal_oJOBuQy4w"/>
+        <ownedOperation xmi:id="_mraDcOe4Eeal_oJOBuQy4w" name="RunGui" method="_mr06Pue4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mraDcue4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mraDc-e4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mraDcee4Eeal_oJOBuQy4w" name="m" type="_mppv8Oe4Eeal_oJOBuQy4w"/>
+          <ownedParameter xmi:id="_mraDdOe4Eeal_oJOBuQy4w" type="_mp0vE-e4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr8O8ee4Eeal_oJOBuQy4w" name="" memberEnd="_mr8O8ue4Eeal_oJOBuQy4w _mrvapee4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr8O8ue4Eeal_oJOBuQy4w" name="" type="_mpxEsOe4Eeal_oJOBuQy4w" association="_mr8O8ee4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr8O9Oe4Eeal_oJOBuQy4w" name="" memberEnd="_mr8O9ee4Eeal_oJOBuQy4w _mrwBsee4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr8O9ee4Eeal_oJOBuQy4w" name="" type="_mp0vE-e4Eeal_oJOBuQy4w" association="_mr8O9Oe4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr82Aee4Eeal_oJOBuQy4w" name="" memberEnd="_mr82Aue4Eeal_oJOBuQy4w _mrwBs-e4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr82Aue4Eeal_oJOBuQy4w" name="" type="_mp0vE-e4Eeal_oJOBuQy4w" association="_mr82Aee4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr9dEOe4Eeal_oJOBuQy4w" name="" memberEnd="_mr9dEee4Eeal_oJOBuQy4w _mrwowee4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr9dEee4Eeal_oJOBuQy4w" name="" type="_mp0vE-e4Eeal_oJOBuQy4w" association="_mr9dEOe4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_mr9dE-e4Eeal_oJOBuQy4w" name="" memberEnd="_mr9dFOe4Eeal_oJOBuQy4w _mrwow-e4Eeal_oJOBuQy4w">
+        <ownedEnd xmi:id="_mr9dFOe4Eeal_oJOBuQy4w" name="" type="_mp0vE-e4Eeal_oJOBuQy4w" association="_mr9dE-e4Eeal_oJOBuQy4w"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mpLO0ee4Eeal_oJOBuQy4w" name="main">
+      <packagedElement xmi:type="uml:Class" xmi:id="_mpjpUOe4Eeal_oJOBuQy4w" name="Main">
+        <ownedComment xmi:id="_mr1hQee4Eeal_oJOBuQy4w">
+          <body>@author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014</body>
+        </ownedComment>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mryd9Oe4Eeal_oJOBuQy4w" name="main" specification="_mpkQYOe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mryd9ee4Eeal_oJOBuQy4w" name="args">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mryd9ue4Eeal_oJOBuQy4w" value="*"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>try {&#xD;
+			// Use the platform look and feel&#xD;
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());&#xD;
+		} catch (Exception e) {&#xD;
+			System.out.println(&quot;Look and Feel error in Main&quot;);&#xD;
+		}&#xD;
+&#xD;
+		Model model = new Model();&#xD;
+&#xD;
+		model.setBallSpeed(200, 200);&#xD;
+&#xD;
+		// Vertical line at (100,100), width 300&#xD;
+		model.addLine(new VerticalLine(100, 100, 300));&#xD;
+		model.addLine(new VerticalLine(100, 200, 300));&#xD;
+		model.addLine(new VerticalLine(100, 300, 300));&#xD;
+		model.addLine(new VerticalLine(100, 400, 300));&#xD;
+&#xD;
+		RunGui gui = new RunGui(model);&#xD;
+		gui.createAndShowGUI();&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mpkQYOe4Eeal_oJOBuQy4w" name="main" isStatic="true" method="_mryd9Oe4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mpkQYee4Eeal_oJOBuQy4w" name="args">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mpkQYue4Eeal_oJOBuQy4w" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mpL14Oe4Eeal_oJOBuQy4w" name="physics">
+      <packagedElement xmi:type="uml:Package" xmi:id="_mpZ4UOe4Eeal_oJOBuQy4w" name="Geometry">
+        <packagedElement xmi:type="uml:Class" xmi:id="_mrXAIOe4Eeal_oJOBuQy4w" name="DoublePair"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mp0IAOe4Eeal_oJOBuQy4w" name="GeometryReference">
+        <ownedComment xmi:id="_mr2IUue4Eeal_oJOBuQy4w">
+          <body>GeometryReference is a reference implementation of&#xD; * GeometryInterface which can be used to check results from other&#xD; * implementations.  This class is intended for debugging.&#xD; *&#xD; * @see physics.Geometry&#xD; *</body>
+        </ownedComment>
+        <generalization xmi:id="_mros8ee4Eeal_oJOBuQy4w" general="_mroF4Oe4Eeal_oJOBuQy4w"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr06POe4Eeal_oJOBuQy4w" name="GeometryReference" specification="_mp0IAee4Eeal_oJOBuQy4w">
+          <ownedParameter xmi:id="_mr06Pee4Eeal_oJOBuQy4w" type="_mp0IAOe4Eeal_oJOBuQy4w" direction="return"/>
+          <language>java</language>
+          <body>super(Double.POSITIVE_INFINITY, 300);&#xD;  </body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_mp0IAee4Eeal_oJOBuQy4w" name="GeometryReference" method="_mr06POe4Eeal_oJOBuQy4w">
+          <eAnnotations xmi:id="_mp0vEOe4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_mp0vEee4Eeal_oJOBuQy4w" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_mp0vEue4Eeal_oJOBuQy4w" type="_mp0IAOe4Eeal_oJOBuQy4w" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mrN2Mee4Eeal_oJOBuQy4w" name="Circle"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mrN2M-e4Eeal_oJOBuQy4w" name="Vect"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mrQSc-e4Eeal_oJOBuQy4w" name="Geometry"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mrQ5gee4Eeal_oJOBuQy4w" name="LineSegment"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_mroF4Oe4Eeal_oJOBuQy4w" name="SimpleGeometry"/>
+    </packagedElement>
+    <profileApplication xmi:id="_mdp7U-e4Eeal_oJOBuQy4w">
+      <eAnnotations xmi:id="_mdqiYOe4Eeal_oJOBuQy4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_mdqiYee4Eeal_oJOBuQy4w" base_Package="_mVp14Oe4Eeal_oJOBuQy4w">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+  <UMLLabProfile:Generics xmi:id="_mpwdoOe4Eeal_oJOBuQy4w" genericsValue="LineSegment" base_Element="_mpv2lOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrKy4ee4Eeal_oJOBuQy4w" base_Element="_mrKy4Oe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrLZ8ee4Eeal_oJOBuQy4w" base_Element="_mrLZ8Oe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrMBAOe4Eeal_oJOBuQy4w" base_Element="_mrLZ8ue4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrNPIee4Eeal_oJOBuQy4w" base_Element="_mrNPIOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrN2MOe4Eeal_oJOBuQy4w" base_Element="_mrNPIue4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrN2Mue4Eeal_oJOBuQy4w" base_Element="_mrN2Mee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrN2NOe4Eeal_oJOBuQy4w" base_Element="_mrN2M-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrQScOe4Eeal_oJOBuQy4w" base_Element="_mrPrYOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrQScue4Eeal_oJOBuQy4w" base_Element="_mrQScee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrQ5gOe4Eeal_oJOBuQy4w" base_Element="_mrQSc-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrQ5gue4Eeal_oJOBuQy4w" base_Element="_mrQ5gee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrT80ee4Eeal_oJOBuQy4w" base_Element="_mrT80Oe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrUj4Oe4Eeal_oJOBuQy4w" base_Element="_mrT80ue4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrUj4ue4Eeal_oJOBuQy4w" base_Element="_mrUj4ee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrVK8Oe4Eeal_oJOBuQy4w" base_Element="_mrUj4-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrVK8ue4Eeal_oJOBuQy4w" base_Element="_mrVK8ee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrVyAOe4Eeal_oJOBuQy4w" base_Element="_mrVK8-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrXnMOe4Eeal_oJOBuQy4w" base_Element="_mrXAIOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrYOQOe4Eeal_oJOBuQy4w" base_Element="_mrXnMee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrYOQue4Eeal_oJOBuQy4w" base_Element="_mrYOQee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrY1UOe4Eeal_oJOBuQy4w" base_Element="_mrYOQ-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrY1Uue4Eeal_oJOBuQy4w" base_Element="_mrY1Uee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrZcYOe4Eeal_oJOBuQy4w" base_Element="_mrY1U-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mrZcYue4Eeal_oJOBuQy4w" base_Element="_mrZcYee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrdGwOe4Eeal_oJOBuQy4w" base_Element="_mrcfsee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Annotations xmi:id="_mrdt0Oe4Eeal_oJOBuQy4w" base_Element="_mrcfsee4Eeal_oJOBuQy4w">
+    <annotations xmi:id="_mrdt0ee4Eeal_oJOBuQy4w" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Reference xmi:id="_mrimUOe4Eeal_oJOBuQy4w" base_Element="_mrh_ROe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrmQs-e4Eeal_oJOBuQy4w" base_Element="_mrmQsOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Annotations xmi:id="_mrm3wOe4Eeal_oJOBuQy4w" base_Element="_mrmQsOe4Eeal_oJOBuQy4w">
+    <annotations xmi:id="_mrm3wee4Eeal_oJOBuQy4w" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Reference xmi:id="_mros8Oe4Eeal_oJOBuQy4w" base_Element="_mroF4Oe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrqiIOe4Eeal_oJOBuQy4w" base_Element="_mrp7EOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrqiIue4Eeal_oJOBuQy4w" base_Element="_mrqiIee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrrJMOe4Eeal_oJOBuQy4w" base_Element="_mrqiI-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrrJM-e4Eeal_oJOBuQy4w" base_Element="_mrrJMue4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrrwQee4Eeal_oJOBuQy4w" base_Element="_mrrwQOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrrwROe4Eeal_oJOBuQy4w" base_Element="_mrrwQ-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Generics xmi:id="_mrs-YOe4Eeal_oJOBuQy4w" genericsValue="VerticalLine" base_Element="_mrsXUue4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrs-Y-e4Eeal_oJOBuQy4w" base_Element="_mrs-Yue4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrtlcee4Eeal_oJOBuQy4w" base_Element="_mrtlcOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrtlc-e4Eeal_oJOBuQy4w" base_Element="_mrtlcue4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mruMgOe4Eeal_oJOBuQy4w" base_Element="_mrtldee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mruMgue4Eeal_oJOBuQy4w" base_Element="_mruMgee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mruMhOe4Eeal_oJOBuQy4w" base_Element="_mruMg-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mruzkee4Eeal_oJOBuQy4w" base_Element="_mruzkOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mruzk-e4Eeal_oJOBuQy4w" base_Element="_mruzkue4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrvaoue4Eeal_oJOBuQy4w" base_Element="_mrvaoee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrvapOe4Eeal_oJOBuQy4w" base_Element="_mrvao-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrwBsOe4Eeal_oJOBuQy4w" base_Element="_mrvapee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrwBsue4Eeal_oJOBuQy4w" base_Element="_mrwBsee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrwowOe4Eeal_oJOBuQy4w" base_Element="_mrwBs-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrwowue4Eeal_oJOBuQy4w" base_Element="_mrwowee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_mrwoxOe4Eeal_oJOBuQy4w" base_Element="_mrwow-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr4kkue4Eeal_oJOBuQy4w" base_Element="_mr4kkOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr5LoOe4Eeal_oJOBuQy4w" base_Element="_mr4kk-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr5Lo-e4Eeal_oJOBuQy4w" base_Element="_mr5Loee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr5ysOe4Eeal_oJOBuQy4w" base_Element="_mr5LpOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr5ys-e4Eeal_oJOBuQy4w" base_Element="_mr5ysee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr6Zwue4Eeal_oJOBuQy4w" base_Element="_mr6ZwOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr7A0Oe4Eeal_oJOBuQy4w" base_Element="_mr6Zw-e4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr7A0-e4Eeal_oJOBuQy4w" base_Element="_mr7A0ee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr8O8Oe4Eeal_oJOBuQy4w" base_Element="_mr7n4Oe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr8O8-e4Eeal_oJOBuQy4w" base_Element="_mr8O8ee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr82AOe4Eeal_oJOBuQy4w" base_Element="_mr8O9Oe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr82A-e4Eeal_oJOBuQy4w" base_Element="_mr82Aee4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr9dEue4Eeal_oJOBuQy4w" base_Element="_mr9dEOe4Eeal_oJOBuQy4w"/>
+  <UMLLabProfile:Reference xmi:id="_mr9dFee4Eeal_oJOBuQy4w" base_Element="_mr9dE-e4Eeal_oJOBuQy4w"/>
+</xmi:XMI>

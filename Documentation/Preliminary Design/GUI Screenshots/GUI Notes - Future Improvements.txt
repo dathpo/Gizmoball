@@ -1,0 +1,11 @@
+﻿Notes/ future improvements.
+
+
+GUI
+
+
+The GUI has currently been made by using GridLayout, this will likely change to GridBagLayout due to the right hand side options not displaying correctly with GridLayout.
+The boxes to the right hand side of each button represent text boxes that will allow the user to change the Friction Gravity and size of the ball.
+
+
+A separate text field may also be implemented, that will provide instructions for each button once clicked upon, to help the user build a game.
