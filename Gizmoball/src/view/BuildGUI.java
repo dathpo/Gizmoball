@@ -152,6 +152,7 @@ public class BuildGUI extends JPanel implements IGUI {
         c.ipady = 20;
         buttons.add(gravityT1, c);
 
+    
         JButton addBall = new JButton("Add Ball");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0;
