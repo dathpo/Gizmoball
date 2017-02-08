@@ -27,15 +27,6 @@ public class StartL implements ActionListener {
 			case "Start":
 				timer.start();
 				break;
-			case "Pause":
-				timer.stop();
-				break;
-			case "Tick":
-				model.moveBall();
-				break;
-			case "Quit":
-				System.exit(0);
-				break;
 			}
 	}
 }

@@ -24,17 +24,8 @@ public class PauseL implements ActionListener {
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
-			case "Start":
-				timer.start();
-				break;
 			case "Pause":
 				timer.stop();
-				break;
-			case "Tick":
-				model.moveBall();
-				break;
-			case "Quit":
-				System.exit(0);
 				break;
 			}
 	}

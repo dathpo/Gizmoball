@@ -27,9 +27,6 @@ public class TickL implements ActionListener {
 			case "Tick":
 				model.moveBall();
 				break;
-			case "Quit":
-				System.exit(0);
-				break;
 			}
 	}   
    
