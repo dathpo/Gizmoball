@@ -1,5 +1,9 @@
-package model;
-
-public class Ball implements IBall {
-   
+package model; 
+public class Ball implements IBall
+{
+    
 }
+    
+ 
+    
+    
