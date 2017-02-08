@@ -22,9 +22,11 @@ public class StartL implements ActionListener {
 
 		if (e.getSource() == timer) {
 			model.moveBall();
+			System.out.println("I'm here.");
 		} else
 			switch (e.getActionCommand()) {
 			case "Start":
+				System.out.println("Start button pressed.");
 				timer.start();
 				break;
 			}

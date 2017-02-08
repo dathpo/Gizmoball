@@ -19,9 +19,9 @@ public class Ball implements IBall {
 	public Ball(double x, double y, double xv, double yv) {
 		xpos = x; // Centre coordinates
 		ypos = y;
-		colour = Color.BLUE;
+		colour = Color.gray;
 		velocity = new Vect(xv, yv);
-		radius = 10;
+		radius = 5;
 		stopped = false;
 	}
 
