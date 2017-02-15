@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,10 +13,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import model.Ball;
+import model.IBumper;
 import model.Model;
 
 public class Board extends JPanel implements Observer {
-	
+
 	protected static int width;
 	protected static int height;
 	private Model model;
@@ -36,19 +38,33 @@ public class Board extends JPanel implements Observer {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+//		Graphics2D g2 = (Graphics2D) g;
+		drawBall(g);
+		drawBumpers(g);
+	}
 
-		Graphics2D g2 = (Graphics2D) g;
-		
+	public void drawBall(Graphics g) {
 		Ball b = model.getBall();
 		if (b != null) {
-			g2.setColor(b.getColour());
+			g.setColor(b.getColour());
 			int x = (int) (b.getExactX() - b.getRadius());
 			int y = (int) (b.getExactY() - b.getRadius());
 			int width = (int) (2 * b.getRadius());
-			g2.fillOval(x, y, width, width);
+			g.fillOval(x, y, width, width);
 		}
 	}
 	
+	public void drawBumpers(Graphics g) {
+		List<IBumper> b = model.getBumpers();
+		if (b != null) {
+//			g.setColor(b.getColour());
+//			int x = (int) (b.getExactX() - b.getRadius());
+//			int y = (int) (b.getExactY() - b.getRadius());
+//			int width = (int) (2 * b.getRadius());
+//			g.fillOval(x, y, width, width);
+		}
+	}
+
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		repaint();

@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 import physics.Circle;
@@ -13,17 +14,18 @@ public class Model extends Observable implements IModel {
 
 	private Ball ball;
 	private Walls gws;
+	private List<IBumper> bumpers;
 	private CircleBumper cb;
 
 	public Model() {
-
+		bumpers = new ArrayList<IBumper>();
 		// Ball position (25, 25) in pixels. Ball velocity (100, 100) pixels per tick
 		ball = new Ball(300, 400, 2000, 2000, 8, Color.BLUE);
 		
 		// Wall size 500 x 500 pixels
 		gws = new Walls(0, 0, 500, 500);
 
-		cb = new CircleBumper(350, 300, 10, Color.GREEN);
+		cb = new CircleBumper(350, 300, Color.GREEN);
 		
 	}
 
@@ -94,5 +96,9 @@ public class Model extends Observable implements IModel {
 
 	public void setBallSpeed(int x, int y) {
 		ball.setVelo(new Vect(x, y));
+	}
+
+	public List<IBumper> getBumpers() {
+		return bumpers;
 	}
 }
