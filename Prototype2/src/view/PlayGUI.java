@@ -4,15 +4,14 @@ import javax.swing.*;
 
 import controller.playmode.ExitL;
 import controller.playmode.LoadL;
-import controller.playmode.PauseL;
 import controller.playmode.ReloadL;
-import controller.playmode.StartL;
-import controller.playmode.TickL;
-import controller.playmode.SwitchToBML;
+import controller.playmode.PauseL;
+import controller.playmode.PlayListeners;
 import main.Main;
 import model.Model;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class PlayGUI extends JPanel implements IGUI {
 
@@ -20,30 +19,29 @@ public class PlayGUI extends JPanel implements IGUI {
      *
      */
     private static final long serialVersionUID = 1L;
+    private IGUI gui;
     private JFrame playFrame;
 	private Main main;
 	private Model model;
 	private Board playBoard;
-	private StartL startL;
+	private PlayListeners playL;
 	private PauseL pauseL;
-	private TickL tickL;
-	private SwitchToBML switchtoBML;
 	private LoadL loadL;
 	private ReloadL reloadL;
 	private ExitL exitL;
 
-    public PlayGUI(Main main, Model model) {
+    public PlayGUI(Main main, Model m) {
 
     	this.main = main;
-		this.model = model;
+		model = m;
+        playL = new PlayListeners(model);
         PlayFrame();
         MenuBar();
         Mode();
         Options();
         Board();
         makeFrameVisible();
-        switchtoBML = new SwitchToBML(model);
-        startL = new StartL(model);
+        
     }
 
     public void PlayFrame() {
@@ -53,7 +51,6 @@ public class PlayGUI extends JPanel implements IGUI {
         playFrame.setSize(500, 500);
         playFrame.setLocationRelativeTo(null);
         playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-   
 
     }
 
@@ -84,11 +81,7 @@ public class PlayGUI extends JPanel implements IGUI {
     public void Mode() {
 
         JPanel buttons = new JPanel();
-
-        JButton switchModeB = new JButton("Build Mode");
-        switchModeB.addActionListener(switchtoBML);
-        buttons.add(switchModeB);
-
+        addButton(buttons,"Build Mode");
         playFrame.getContentPane().add(buttons, BorderLayout.NORTH);
 
     }
@@ -97,19 +90,10 @@ public class PlayGUI extends JPanel implements IGUI {
 
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(10, 1));
-
-        JButton start = new JButton("Start");
-        start.setMaximumSize(new Dimension(100, 100));
-        start.addActionListener(startL);
-        buttons.add(start);
-
-        JButton pause = new JButton("Pause");
-        pause.setMaximumSize(new Dimension(100, 100));
-        buttons.add(pause);
-
-        JButton tick = new JButton("Tick");
-        tick.setMaximumSize(new Dimension(100, 100));
-        buttons.add(tick);
+        
+        addButton(buttons,"Start");
+        addButton(buttons,"Pause");
+        addButton(buttons,"Tick");
 
         playFrame.getContentPane().add(buttons, BorderLayout.WEST);
     }
@@ -119,6 +103,13 @@ public class PlayGUI extends JPanel implements IGUI {
         playBoard = new Board(500, 500, model);
         playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
         
+    }
+    
+    private void addButton(JPanel buttons,String bName){
+        JButton button = new JButton(bName);
+        button.addActionListener(playL);
+        button.setMaximumSize(new Dimension(100, 100));
+        buttons.add(button);
     }
 
 }

@@ -5,30 +5,39 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import main.Main;
 import model.Model;
 
-public class StartL implements ActionListener {
+public class PlayListeners implements ActionListener {
 
 	private Timer timer;
 	private Model model;
+	private Main main;
 
-	public StartL(Model m) {
+	public PlayListeners(Model m) {
 		model = m;
 		timer = new Timer(50, this);
 	}
 
-	@Override
-	public final void actionPerformed(final ActionEvent e) {
-
+	public void actionPerformed(ActionEvent e) {
+		
 		if (e.getSource() == timer) {
 			model.moveBall();
-			System.out.println("I'm here.");
 		} else
 			switch (e.getActionCommand()) {
+			case "Build Mode":
+				main.switchToBM();
+				break;
 			case "Start":
-				System.out.println("Start button pressed.");
 				timer.start();
+				break;
+			case "Pause":
+				timer.stop();
+				break;
+			case "Tick":
+				model.moveBall();
 				break;
 			}
 	}
+	
 }

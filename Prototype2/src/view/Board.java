@@ -24,7 +24,7 @@ public class Board extends JPanel implements Observer {
 		m.addObserver(this);
 		width = w;
 		height = h;
-		this.model = m;
+		model = m;
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 
