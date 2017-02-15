@@ -1,5 +1,5 @@
 package model;
 
-public class TriangleBumper implements IBumper {
+public class TriangleBumper implements IModel {
    
 }

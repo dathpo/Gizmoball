@@ -1,5 +1,5 @@
 package model;
 
-public class RFlipper implements IFlipper {   
+public class RFlipper implements IModel {   
       
    }

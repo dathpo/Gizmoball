@@ -1,5 +1,12 @@
 package model;
 
-public class CircleBumper implements IBumper {      
+import physics.Vect;
+
+public class CircleBumper implements IModel {
+
+
+	public CircleBumper(String gizmoName, Vect location) {
+		// TODO Auto-generated constructor stub
+	}      
    
 }

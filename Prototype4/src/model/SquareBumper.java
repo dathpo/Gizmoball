@@ -1,5 +1,5 @@
 package model;
 
-public class SquareBumper implements IBumper {     
+public class SquareBumper implements IModel {     
    
 }
