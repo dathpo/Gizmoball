@@ -85,28 +85,78 @@ public class Parser {
 	}
 
 	private IModel ballParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new Ball(gizmoName, location);
 	}
 
 	private IModel absorberParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new Absorber(gizmoName, location);
 	}
 
 	private IModel rotateParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new RotateGizmo(gizmoName, location);
 	}
 
 	private IModel connectKeyParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new KeyConnection(gizmoName, location);
 	}
 
 	private IModel connectParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
+
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new GizmoConnection(gizmoName, location);
 	}
 
 	private IModel leftFlipperParse(String command, StringTokenizer st) {
