@@ -35,6 +35,7 @@ public class PlayListeners implements ActionListener {
 				timer.stop();
 				break;
 			case "Tick":
+				timer.stop();
 				model.moveBall();
 				break;
 			}

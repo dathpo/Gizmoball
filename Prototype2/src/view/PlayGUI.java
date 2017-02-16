@@ -15,9 +15,6 @@ import java.awt.event.ActionListener;
 
 public class PlayGUI extends JPanel implements IGUI {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     private IGUI gui;
     private JFrame playFrame;

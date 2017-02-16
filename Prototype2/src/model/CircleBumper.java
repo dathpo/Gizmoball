@@ -12,12 +12,12 @@ public class CircleBumper implements IBumper {
 	private Circle circle;
 	private double x, y;
 	private Color colour;
-	private static final double SIZE=10, RADIUS=10;
+	private static final double L=20, RADIUS=10;
 
 	public CircleBumper(double x, double y, Color c) {
 		this.x = x; // Centre coordinates
 		this.y = y;
-		this.circle = new Circle(x+SIZE, y+SIZE, RADIUS);
+		this.circle = new Circle(x+L/2, y+L/2, RADIUS);
 		this.setColour(c);
 	}
 

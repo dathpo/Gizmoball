@@ -11,6 +11,7 @@ public class Ball implements IBall {
 	private double radius, x, y;
 	private Color colour;
 	private boolean stopped;
+	private static final double L = 20;
 
 	// x, y coordinates and x,y velocity
 	public Ball(double x, double y, double xv, double yv, double r, Color c) {
@@ -42,20 +43,20 @@ public class Ball implements IBall {
 		return new Circle(x, y, radius);
 	}
 	
-	public void setExactX(double xPos) {
+	public void setX(double xPos) {
 		this.x = xPos;
 	}
 
-	public void setExactY(double yPos) {
+	public void setY(double yPos) {
 		this.y = yPos;
 	}
 
 	// Ball specific methods that deal with double precision.
-	public double getExactX() {
+	public double getX() {
 		return x;
 	}
 
-	public double getExactY() {
+	public double getY() {
 		return y;
 	}
 

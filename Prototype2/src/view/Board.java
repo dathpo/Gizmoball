@@ -22,13 +22,13 @@ public class Board extends JPanel implements Observer {
 	protected static int width;
 	protected static int height;
 	private Model model;
+	private static final int L = 20;
 
 	public Board(int w, int h, Model m) {
 		m.addObserver(this);
 		width = w;
 		height = h;
 		model = m;
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 
 	// Fix onscreen size
@@ -40,19 +40,31 @@ public class Board extends JPanel implements Observer {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 //		Graphics2D g2 = (Graphics2D) g;
+		paintGrid(g);
 		paintBall(g);
 		paintSquareBumpers(g);
 		paintBumpers(g);
+	}
+	
+	public void paintGrid(Graphics g) {
+		int rows = 20;
+		int columns = 20;
+		int htOfRow = height / (rows);
+		int wdOfRow = width / (columns);
+		for (int k = 0; k <= rows; k++)
+			g.drawLine(0, k * htOfRow, width, k * htOfRow );
+		for (int k = 0; k <= columns; k++)
+			g.drawLine(k*wdOfRow , 0, k*wdOfRow , height);
 	}
 
 	public void paintBall(Graphics g) {
 		Ball b = model.getBall();
 		if (b != null) {
 			g.setColor(b.getColour());
-			int x = (int) (b.getExactX() - b.getRadius());
-			int y = (int) (b.getExactY() - b.getRadius());
-			int width = (int) (2 * b.getRadius());
-			g.fillOval(x, y, width, width);
+			int x = (int) (b.getX() - b.getRadius());
+			int y = (int) (b.getY() - b.getRadius());
+			int radius = (int) (2 * b.getRadius());
+			g.fillOval(x, y, radius, radius);
 		}
 	}
 	
@@ -61,7 +73,6 @@ public class Board extends JPanel implements Observer {
 	}
 	
 	public void paintBumpers(Graphics g) {
-		if(model.getBumpers()!=null){
 			for(IBumper bumper : model.getBumpers()){
 				List<Circle> circles = bumper.getCircles();
 				g.setColor(bumper.getColour());
@@ -72,7 +83,7 @@ public class Board extends JPanel implements Observer {
 				}
 			}
 		}
-	}
+	
 
 	@Override
 	public void update(Observable arg0, Object arg1) {

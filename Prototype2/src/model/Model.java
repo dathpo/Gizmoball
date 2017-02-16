@@ -20,12 +20,12 @@ public class Model extends Observable implements IModel {
 	public Model() {
 		bumpers = new ArrayList<IBumper>();
 		// Ball position (25, 25) in pixels. Ball velocity (100, 100) pixels per tick
-		ball = new Ball(300, 400, 2000, 2000, 8, Color.BLUE);
+		ball = new Ball(6, 6, 2000, 2000, 8, Color.BLUE);
 		
 		// Wall size 500 x 500 pixels
 		gws = new Walls(0, 0, 500, 500);
 
-		cb = new CircleBumper(350, 300, Color.GREEN);
+		cb = new CircleBumper(77, 77, Color.GREEN);
 		bumpers.add(cb);
 		
 	}
@@ -61,10 +61,10 @@ public class Model extends Observable implements IModel {
 		double newY = 0.0;
 		double xVel = ball.getVelo().x();
 		double yVel = ball.getVelo().y();
-		newX = ball.getExactX() + (xVel * time);
-		newY = ball.getExactY() + (yVel * time);
-		ball.setExactX(newX);
-		ball.setExactY(newY);
+		newX = ball.getX() + (xVel * time);
+		newY = ball.getY() + (yVel * time);
+		ball.setX(newX);
+		ball.setY(newY);
 		return ball;
 	}
 
