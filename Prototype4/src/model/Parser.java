@@ -7,12 +7,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import physics.Vect;
-
 import model.IModel;
 
 public class Parser {
 
 	private List<IModel> gizmo = new ArrayList<>();
+	private List<IModel> operation = new ArrayList<>();
 
 	public void parse() throws FileNotFoundException, IOException {
 
@@ -46,54 +46,142 @@ public class Parser {
 
 						gizmo.add(rightFlipperParse(command, st));
 
-					} else if (command.equals("LeftFlipper")) {
+					}
+
+					else if (command.equals("LeftFlipper")) {
 
 						gizmo.add(leftFlipperParse(command, st));
 
 					}
+
+					else if (command.equals("Connect")) {
+
+						operation.add(connectParse(command, st));
+					}
+
+					else if (command.equals("KeyConnect")) {
+
+						operation.add(connectKeyParse(command, st));
+					}
+
+					else if (command.equals("Rotate")) {
+
+						operation.add(rotateParse(command, st));
+					}
+
+					else if (command.equals("Absorber")) {
+
+						operation.add(absorberParse(command, st));
+					}
+
+					else if (command.equals("Ball")) {
+
+						operation.add(ballParse(command, st));
+					}
+
 				}
 			}
 		}
 	}
 
+	private IModel ballParse(String command, StringTokenizer st) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private IModel absorberParse(String command, StringTokenizer st) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private IModel rotateParse(String command, StringTokenizer st) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private IModel connectKeyParse(String command, StringTokenizer st) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private IModel connectParse(String command, StringTokenizer st) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	private IModel leftFlipperParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	private IModel rightFlipperParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private IModel squareParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private IModel triangleParse(String command, StringTokenizer st) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private IModel circleParse(String command, StringTokenizer st) {
-		
 		String gizmoName;
 		int xCoord;
 		int yCoord;
 		Vect location;
-		
+
 		gizmoName = st.nextToken();
 		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
-		
-		location = new Vect(xCoord,yCoord);
-		
-		switch(command){
-		case ("Circle"):
-			return new CircleBumper(gizmoName, location);	
-		}
-		return null;
-		
+
+		location = new Vect(xCoord, yCoord);
+		return new LFlipper(gizmoName, location);
+	}
+
+	private IModel rightFlipperParse(String command, StringTokenizer st) {
+
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new RFlipper(gizmoName, location);
+	}
+
+	private IModel squareParse(String command, StringTokenizer st) {
+
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new SquareBumper(gizmoName, location);
+	}
+
+	private IModel triangleParse(String command, StringTokenizer st) {
+
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new TriangleBumper(gizmoName, location);
+	}
+
+	private IModel circleParse(String command, StringTokenizer st) {
+
+		String gizmoName;
+		int xCoord;
+		int yCoord;
+		Vect location;
+
+		gizmoName = st.nextToken();
+		xCoord = Integer.valueOf(st.nextToken());
+		yCoord = Integer.valueOf(st.nextToken());
+
+		location = new Vect(xCoord, yCoord);
+		return new CircleBumper(gizmoName, location);
+
 	}
 }
