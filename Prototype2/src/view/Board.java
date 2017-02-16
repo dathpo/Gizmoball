@@ -15,6 +15,7 @@ import java.awt.Graphics2D;
 import model.Ball;
 import model.IBumper;
 import model.Model;
+import physics.Circle;
 
 public class Board extends JPanel implements Observer {
 
@@ -39,11 +40,12 @@ public class Board extends JPanel implements Observer {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 //		Graphics2D g2 = (Graphics2D) g;
-		drawBall(g);
-		drawBumpers(g);
+		paintBall(g);
+		paintSquareBumpers(g);
+		paintBumpers(g);
 	}
 
-	public void drawBall(Graphics g) {
+	public void paintBall(Graphics g) {
 		Ball b = model.getBall();
 		if (b != null) {
 			g.setColor(b.getColour());
@@ -54,14 +56,21 @@ public class Board extends JPanel implements Observer {
 		}
 	}
 	
-	public void drawBumpers(Graphics g) {
-		List<IBumper> b = model.getBumpers();
-		if (b != null) {
-//			g.setColor(b.getColour());
-//			int x = (int) (b.getExactX() - b.getRadius());
-//			int y = (int) (b.getExactY() - b.getRadius());
-//			int width = (int) (2 * b.getRadius());
-//			g.fillOval(x, y, width, width);
+	public void paintSquareBumpers(Graphics g) {
+		List<IBumper> b = model.getBumpers();	
+	}
+	
+	public void paintBumpers(Graphics g) {
+		if(model.getBumpers()!=null){
+			for(IBumper bumper : model.getBumpers()){
+				List<Circle> circles = bumper.getCircles();
+				g.setColor(bumper.getColour());
+				if(circles.size()==1){
+					int radius = (int)circles.get(0).getRadius();
+					g.fillOval((int)circles.get(0).getCenter().x()-radius, (int)circles.get(0).getCenter().y()-radius, radius*2, radius*2);
+				
+				}
+			}
 		}
 	}
 

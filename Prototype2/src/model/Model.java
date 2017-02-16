@@ -26,6 +26,7 @@ public class Model extends Observable implements IModel {
 		gws = new Walls(0, 0, 500, 500);
 
 		cb = new CircleBumper(350, 300, Color.GREEN);
+		bumpers.add(cb);
 		
 	}
 
