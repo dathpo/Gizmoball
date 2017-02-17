@@ -97,7 +97,7 @@ public class PlayGUI extends JPanel implements IGUI {
 
     public void Board() {
 
-        playBoard = new Board(500, 500, model);
+        playBoard = new Board(400, 400, model);
         playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
         
     }

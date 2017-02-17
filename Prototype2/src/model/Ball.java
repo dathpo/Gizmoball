@@ -14,8 +14,8 @@ public class Ball implements IBall {
 
 	// x, y coordinates and x,y velocity
 	public Ball(double x, double y, double xv, double yv, double r, Color c) {
-		this.x = x; // Centre coordinates
-		this.y = y;
+		this.x = x+5; // Centre coordinates
+		this.y = y+5;
 		this.radius = r;
 		this.colour = c;
 		this.velocity = new Vect(xv, yv);

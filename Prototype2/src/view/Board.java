@@ -88,7 +88,7 @@ public class Board extends JPanel implements Observer {
 //					(int[]) (circles.get(0).getCenter().x());
 //					int[] yT = (int[]) (circles.get(0).getCenter().y());
 //					g.fillPolygon(xT, yT, L);
-//				
+				
 				} else if (circles.size()==4) {
 					int xS = (int) (circles.get(0).getCenter().x());
 					int yS = (int) (circles.get(0).getCenter().y());

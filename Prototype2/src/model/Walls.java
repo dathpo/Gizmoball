@@ -21,11 +21,11 @@ public class Walls {
 	}
 
 	public ArrayList<LineSegment> getLineSegments() {
-		ArrayList<LineSegment> ls = new ArrayList<LineSegment>();
-		ls.add(new LineSegment(x, y, x1, y));
-		ls.add(new LineSegment(x, y, x, y1));
-		ls.add(new LineSegment(x1, y, x1, y1));
-		ls.add(new LineSegment(x, y1, x1, y1));
-		return ls;
+		ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
+		lineSegments.add(new LineSegment(x, y, x1, y));
+		lineSegments.add(new LineSegment(x, y, x, y1));
+		lineSegments.add(new LineSegment(x1, y, x1, y1));
+		lineSegments.add(new LineSegment(x, y1, x1, y1));
+		return lineSegments;
 	}
 }
