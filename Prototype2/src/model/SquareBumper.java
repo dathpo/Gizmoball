@@ -11,7 +11,7 @@ public class SquareBumper implements IBumper {
 
 	private double x,y;
 	private Color colour;
-	private static final double SIZE = 20;
+	private static final double L = 20;
 
 	public SquareBumper(double x, double y, Color c){
 		this.x = x;
@@ -20,21 +20,21 @@ public class SquareBumper implements IBumper {
 	}
 
 	public List<LineSegment> getLineSegments() {
-		List<LineSegment> lsl = new ArrayList<LineSegment>();
-		lsl.add(new LineSegment(x, y, x+SIZE, y));
-		lsl.add(new LineSegment(x+SIZE, y, x+SIZE, y+SIZE));
-		lsl.add(new LineSegment(x, y+SIZE, x+SIZE, y+SIZE));
-		lsl.add(new LineSegment(x, y, x, y+SIZE));
-		return lsl;
+		List<LineSegment> lineSegments = new ArrayList<LineSegment>();
+		lineSegments.add(new LineSegment(x,		y,		x+L,	y));
+		lineSegments.add(new LineSegment(x+L,	y,		x+L,	y+L));
+		lineSegments.add(new LineSegment(x,		y+L,	x+L,	y+L));
+		lineSegments.add(new LineSegment(x,		y,		x,		y+L));
+		return lineSegments;
 	}
 
 	public List<Circle> getCircles() {
-		List<Circle> cl = new ArrayList<Circle>();
-		cl.add(new Circle(x, y, 0));
-		cl.add(new Circle(x+SIZE, y, 0));
-		cl.add(new Circle(x+SIZE, y+SIZE, 0));
-		cl.add(new Circle(x, y+SIZE, 0));
-		return cl;
+		List<Circle> circles = new ArrayList<Circle>();
+		circles.add(new Circle(x,	y,		0));
+		circles.add(new Circle(x,	y+L,	0));
+		circles.add(new Circle(x+L,	y,		0));
+		circles.add(new Circle(x+L,	y+L,	0));
+		return circles;
 	}
 	
 	public double getX() {

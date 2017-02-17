@@ -12,8 +12,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import model.Ball;
+import model.IBall;
 import model.IBumper;
+import model.IModel;
 import model.Model;
 import physics.Circle;
 
@@ -21,11 +22,12 @@ public class Board extends JPanel implements Observer {
 
 	protected static int width;
 	protected static int height;
-	private Model model;
+	private IModel model;
 	private static final int L = 20;
 
 	public Board(int w, int h, Model m) {
 		m.addObserver(this);
+		this.model = m;
 		width = w;
 		height = h;
 		model = m;
@@ -39,13 +41,12 @@ public class Board extends JPanel implements Observer {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-//		Graphics2D g2 = (Graphics2D) g;
+		//		Graphics2D g2 = (Graphics2D) g;
 		paintGrid(g);
 		paintBall(g);
-		paintSquareBumpers(g);
 		paintBumpers(g);
 	}
-	
+
 	public void paintGrid(Graphics g) {
 		int rows = 20;
 		int columns = 20;
@@ -58,36 +59,47 @@ public class Board extends JPanel implements Observer {
 	}
 
 	public void paintBall(Graphics g) {
-		Ball b = model.getBall();
-		if (b != null) {
-			g.setColor(b.getColour());
-			int x = (int) (b.getX() - b.getRadius());
-			int y = (int) (b.getY() - b.getRadius());
-			int radius = (int) (2 * b.getRadius());
-			g.fillOval(x, y, radius, radius);
+		if (model.getBall()!= null) {
+			IBall ball = model.getBall();
+			g.setColor(ball.getColour());
+			int radius = (int) (ball.getRadius());
+			int diameter = (int) (2 * radius);
+			int xB = (int) (ball.getX() - radius);
+			int yB = (int) (ball.getY() - radius);
+			g.fillOval(xB, yB, diameter, diameter);
 		}
 	}
-	
-	public void paintSquareBumpers(Graphics g) {
-		List<IBumper> b = model.getBumpers();	
-	}
-	
+
 	public void paintBumpers(Graphics g) {
+		if (model.getBumpers()!= null) {
 			for(IBumper bumper : model.getBumpers()){
 				List<Circle> circles = bumper.getCircles();
 				g.setColor(bumper.getColour());
 				if(circles.size()==1){
-					int radius = (int)circles.get(0).getRadius();
-					g.fillOval((int)circles.get(0).getCenter().x()-radius, (int)circles.get(0).getCenter().y()-radius, radius*2, radius*2);
-				
+					int radius = (int) (circles.get(0).getRadius());
+					int diameter = (int) (2 * radius);
+					int xC = (int) (circles.get(0).getCenter().x() - radius);
+					int yC = (int) (circles.get(0).getCenter().y() - radius);
+					g.fillOval(xC, yC, diameter, diameter);
+				} else if (circles.size()==3) {
+//					int[] xT = new int[3];
+//					int[] yT = new int[3];
+//					
+//					(int[]) (circles.get(0).getCenter().x());
+//					int[] yT = (int[]) (circles.get(0).getCenter().y());
+//					g.fillPolygon(xT, yT, L);
+//				
+				} else if (circles.size()==4) {
+					int xS = (int) (circles.get(0).getCenter().x());
+					int yS = (int) (circles.get(0).getCenter().y());
+					g.fillRect(xS, yS, L, L);
 				}
 			}
 		}
-	
+	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		repaint();
 	}
-
 }

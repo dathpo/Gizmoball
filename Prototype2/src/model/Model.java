@@ -16,6 +16,8 @@ public class Model extends Observable implements IModel {
 	private Walls gws;
 	private List<IBumper> bumpers;
 	private CircleBumper cb;
+	private SquareBumper sb;
+	private TriangleBumper tb;
 
 	public Model() {
 		bumpers = new ArrayList<IBumper>();
@@ -26,7 +28,12 @@ public class Model extends Observable implements IModel {
 		gws = new Walls(0, 0, 500, 500);
 
 		cb = new CircleBumper(77, 77, Color.GREEN);
+		sb = new SquareBumper(150, 150, Color.RED);
+		tb = new TriangleBumper(250, 250, Color.BLUE);
+		
 		bumpers.add(cb);
+		bumpers.add(sb);
+		bumpers.add(tb);
 		
 	}
 

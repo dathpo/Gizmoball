@@ -11,7 +11,6 @@ public class Ball implements IBall {
 	private double radius, x, y;
 	private Color colour;
 	private boolean stopped;
-	private static final double L = 20;
 
 	// x, y coordinates and x,y velocity
 	public Ball(double x, double y, double xv, double yv, double r, Color c) {
