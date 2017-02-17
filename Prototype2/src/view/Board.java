@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.sound.sampled.Line;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -17,6 +18,7 @@ import model.IBumper;
 import model.IModel;
 import model.Model;
 import physics.Circle;
+import physics.LineSegment;
 
 public class Board extends JPanel implements Observer {
 
@@ -31,6 +33,7 @@ public class Board extends JPanel implements Observer {
 		width = w;
 		height = h;
 		model = m;
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 
 	// Fix onscreen size
@@ -41,21 +44,19 @@ public class Board extends JPanel implements Observer {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//		Graphics2D g2 = (Graphics2D) g;
+		//Graphics2D g2 = (Graphics2D) g;
 		paintGrid(g);
 		paintBall(g);
 		paintBumpers(g);
 	}
 
 	public void paintGrid(Graphics g) {
-		int rows = 20;
-		int columns = 20;
-		int htOfRow = height / (rows);
-		int wdOfRow = width / (columns);
-		for (int k = 0; k <= rows; k++)
-			g.drawLine(0, k * htOfRow, width, k * htOfRow );
-		for (int k = 0; k <= columns; k++)
-			g.drawLine(k*wdOfRow , 0, k*wdOfRow , height);
+		for (int k=0; k<=L; k++) {
+			g.drawLine(0, k*height/L, width, k*height/L);
+		}
+		for (int k=0; k<=L; k++) {
+			g.drawLine(k*width/L, 0, k*width/L, height);
+		}
 	}
 
 	public void paintBall(Graphics g) {
@@ -74,6 +75,7 @@ public class Board extends JPanel implements Observer {
 		if (model.getBumpers()!= null) {
 			for(IBumper bumper : model.getBumpers()){
 				List<Circle> circles = bumper.getCircles();
+				List<LineSegment> lineSegments = bumper.getLineSegments();
 				g.setColor(bumper.getColour());
 				if(circles.size()==1){
 					int radius = (int) (circles.get(0).getRadius());
@@ -81,22 +83,33 @@ public class Board extends JPanel implements Observer {
 					int xC = (int) (circles.get(0).getCenter().x() - radius);
 					int yC = (int) (circles.get(0).getCenter().y() - radius);
 					g.fillOval(xC, yC, diameter, diameter);
-				} else if (circles.size()==3) {
-//					int[] xT = new int[3];
-//					int[] yT = new int[3];
-//					
-//					(int[]) (circles.get(0).getCenter().x());
-//					int[] yT = (int[]) (circles.get(0).getCenter().y());
-//					g.fillPolygon(xT, yT, L);
-				
-				} else if (circles.size()==4) {
-					int xS = (int) (circles.get(0).getCenter().x());
-					int yS = (int) (circles.get(0).getCenter().y());
-					g.fillRect(xS, yS, L, L);
+				} else if (lineSegments.size()==3) {
+					//					int[] xT = new int[3];
+					//					int[] yT = new int[3];
+					//					xT[0] = (int) x;
+					//				    xT[1] = (int) x + L;
+					//				    xT[2] = (int) cx;
+					//					(int[]) (circles.get(0).getCenter().x());
+					//					int[] yT = (int[]) (circles.get(0).getCenter().y());
+					//					g.fillPolygon(xT, yT, L);
+
+				} else if (lineSegments.size()==4) {
+					int xS = 0;
+					int yS = 0;
+					for (int i=0; i<4; i++) {
+						xS = (int) (circles.get(i).getCenter().x() - (int) lineSegments.get(0).length());
+						yS = (int) (circles.get(i).getCenter().y() - (int) lineSegments.get(0).length());
+					}
+					g.fillRect(xS, yS, (int) lineSegments.get(0).length(), (int) lineSegments.get(0).length());
+					//				} else if (circles.size()==4) {
+					//					int xS = (int) (circles.get(0).getCenter().x());
+					//					int yS = (int) (circles.get(0).getCenter().y());
+					//					g.fillRect(xS, yS, L, L);
 				}
 			}
 		}
 	}
+
 
 	@Override
 	public void update(Observable arg0, Object arg1) {

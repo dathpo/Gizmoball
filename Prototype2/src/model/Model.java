@@ -22,17 +22,14 @@ public class Model extends Observable implements IModel {
 
 	public Model() {
 		bumpers = new ArrayList<IBumper>();
-		// Ball position (25, 25) in pixels. Ball velocity (100, 100) pixels per tick
 		ball = new Ball(0, 0, 1000, 1200, Color.BLUE);
-		
-		// Wall size 500 x 500 pixels
 		gws = new Walls(0, 0, 20, 20);
 
 		cb = new CircleBumper(15, 10, Color.GREEN);
 		cb1 = new CircleBumper(14, 10, Color.GREEN);
-		cb2 = new CircleBumper(10, 15, Color.GREEN);
-		ab1 = new SquareBumper(0, 19, Color.MAGENTA);	
-		ab2 = new SquareBumper(1, 19, Color.MAGENTA);
+		cb2 = new CircleBumper(0, 0, Color.GREEN);
+		ab1 = new SquareBumper(0, 0, Color.MAGENTA);	
+		ab2 = new SquareBumper(1, 17, Color.MAGENTA);
 		ab3 = new SquareBumper(2, 19, Color.MAGENTA);
 		ab4 = new SquareBumper(3, 19, Color.MAGENTA);
 		ab5 = new SquareBumper(4, 19, Color.MAGENTA);
@@ -51,7 +48,7 @@ public class Model extends Observable implements IModel {
 		ab18 = new SquareBumper(17, 19, Color.MAGENTA);
 		ab19 = new SquareBumper(18, 19, Color.MAGENTA);
 		ab20 = new SquareBumper(19, 19, Color.MAGENTA);
-		sb3 = new SquareBumper(10, 9, Color.MAGENTA);
+		sb3 = new SquareBumper(10, 9, Color.RED);
 		sb2 = new SquareBumper(19, 0, Color.RED);
 		tb = new TriangleBumper(250, 250, Color.BLUE);
 		
@@ -136,12 +133,12 @@ public class Model extends Observable implements IModel {
 		double time = 0.0;
 
 		// Time to collide with 4 walls
-		ArrayList<LineSegment> lss = gws.getLineSegments();
-		for (LineSegment line : lss) {
+		ArrayList<LineSegment> lineSegments = gws.getLineSegments();
+		for (LineSegment line : lineSegments) {
 			time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 			if (time < shortestTime) {
 				shortestTime = time;
-				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1.0);
+				newVelo = Geometry.reflectWall(line, ball.getVelo(), 0.5);
 			}
 		}
 		return new Collisions(shortestTime, newVelo);
