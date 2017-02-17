@@ -13,12 +13,11 @@ public class CircleBumper implements IBumper {
 	private double x, y;
 	private Color colour;
 	private static final double L = 20;
-	private static final int RADIUS = 10;
+	private static final double RADIUS = 10;
 
 	public CircleBumper(double x, double y, Color c) {
-		this.x = x; // Centre coordinates
-		this.y = y;
-		this.circle = new Circle((L*x)+RADIUS, (L*y)+RADIUS, RADIUS);
+		this.x = (L*x)+RADIUS; // Centre coordinates
+		this.y = (L*y)+RADIUS;
 		this.colour = c;
 	}
 
@@ -28,6 +27,7 @@ public class CircleBumper implements IBumper {
 
 	@Override
 	public List<Circle> getCircles() {
+		this.circle = new Circle(x, y, RADIUS);
 		List<Circle> circles = new ArrayList<Circle>();
 		circles.add(circle);
 		return circles;
