@@ -14,8 +14,8 @@ public class SquareBumper implements IBumper {
 	private static final double L = 20;
 
 	public SquareBumper(double x, double y, Color c){
-		this.x = x;
-		this.y = y;
+		this.x = x*L;
+		this.y = y*L;
 		this.colour = c;
 	}
 

@@ -22,16 +22,16 @@ public class Model extends Observable implements IModel {
 	public Model() {
 		bumpers = new ArrayList<IBumper>();
 		// Ball position (25, 25) in pixels. Ball velocity (100, 100) pixels per tick
-		ball = new Ball(0, 20, 1000, 1200, 5, Color.BLUE);
+		ball = new Ball(0, 0, 1000, 1200, Color.BLUE);
 		
 		// Wall size 500 x 500 pixels
-		gws = new Walls(0, 0, 400, 400);
+		gws = new Walls(0, 0, 20, 20);
 
-		cb = new CircleBumper(40, 0, Color.GREEN);
-		cb2 = new CircleBumper(60, 0, Color.GREEN);
-		sb = new SquareBumper(0, 380, Color.MAGENTA);	
-		sb3 = new SquareBumper(0, 0, Color.RED);
-		sb2 = new SquareBumper(20, 0, Color.RED);
+		cb = new CircleBumper(15, 10, Color.GREEN);
+		cb2 = new CircleBumper(10, 15, Color.GREEN);
+		sb = new SquareBumper(0, 19, Color.MAGENTA);	
+		sb3 = new SquareBumper(0, 10, Color.RED);
+		sb2 = new SquareBumper(19, 0, Color.RED);
 		tb = new TriangleBumper(250, 250, Color.BLUE);
 		
 		bumpers.add(cb);

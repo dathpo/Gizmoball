@@ -8,15 +8,16 @@ import physics.Vect;
 public class Ball implements IBall {
 
 	private Vect velocity;
-	private double radius, x, y;
+	private double x, y;
 	private Color colour;
+	private static final double L = 20;
+	private static final double RADIUS = 5;
 	private boolean stopped;
 
 	// x, y coordinates and x,y velocity
-	public Ball(double x, double y, double xv, double yv, double r, Color c) {
-		this.x = x+5; // Centre coordinates
-		this.y = y+5;
-		this.radius = r;
+	public Ball(double x, double y, double xv, double yv, Color c) {
+		this.x = (L*x)+RADIUS; // Centre coordinates
+		this.y = (L*y)+RADIUS;
 		this.colour = c;
 		this.velocity = new Vect(xv, yv);
 		stopped = false;
@@ -30,16 +31,16 @@ public class Ball implements IBall {
 		return velocity;
 	}
 	
-	public void setRadius(double r) {
-		this.radius = r;
-	}
+//	public void setRadius(double r) {
+//		this.radius = r;
+//	}
 
 	public double getRadius() {
-		return radius;
+		return RADIUS;
 	}
 
 	public Circle getCircle() {
-		return new Circle(x, y, radius);
+		return new Circle(x, y, RADIUS);
 	}
 	
 	public void setX(double xPos) {
