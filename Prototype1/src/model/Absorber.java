@@ -1,10 +1,11 @@
 package model;
+import model.Ball;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.awt.Color;
-import java.awt.color.*;
-import model.Ball;
+import physics.Circle;
 import physics.LineSegment;
 
 
@@ -16,98 +17,88 @@ public class Absorber implements IAbsorber {
 	//demonstrate that you can shoot it out a second time. (Note that you do not yet need to support configurable gravity or friction constants.)
 	// (Ball shoots straight up at standard initial ball velocity 50L/s being slowed down by standard gravity and friction. 
 	//Does it collide with the top wall? If so, at what velocity?)
-	private int xpos;
-	private int ypos;
-	private int width;
-	private int height;
-	private Color colour = Color.blue;
-	private String Name;
+	
+	
+	private double x,y;
+	private double height, width;
+	private Color colour;
+	private static final double L = 20;
+	private static final double RADIUS = 10;
+	private int rotation = 0;
+	
 	private LineSegment ls;
 	private LinkedList<Ball> BallQueue;
-	private ArrayList<LineSegment> lines = new ArrayList<LineSegment>();
 
 	
-	public Absorber(String Name, int x, int y,int w,int h ){
-		xpos = x;
-		ypos = y;
-		width = w;
-		height = h;	
-		w = w - x;
-		h = h - y;
+	public Absorber( int x, int y,int width,int height, Color c ){
+		this.x = x*L;
+		this.y = y*L;
+		this.colour = c;
+		
 	}
 	
-	public ArrayList<LineSegment> getLineSegments() {
-		ArrayList<LineSegment> ls = new ArrayList<LineSegment>();
-		LineSegment l1 = new LineSegment(xpos, ypos, xpos, height); 
-		LineSegment l2 = new LineSegment(xpos, ypos, xpos, height);
-		LineSegment l3 = new LineSegment(width, ypos, width, height);
-		LineSegment l4 = new LineSegment(xpos, height, width, height);
-		ls.add(l1);
-		ls.add(l2);
-		ls.add(l3);
-		ls.add(l4);
-		return ls;
+	
+	public List<LineSegment> getLineSegments() {
+		List<LineSegment> lineSegments = new ArrayList<LineSegment>();
+		lineSegments.add(new LineSegment(x,		y,		x+L,	y));
+		lineSegments.add(new LineSegment(x+L,	y,		x+L,	y+L));
+		lineSegments.add(new LineSegment(x,		y+L,	x+L,	y+L));
+		lineSegments.add(new LineSegment(x,		y,		x,		y+L));
+		return lineSegments;
 	}
 	
-	public void setX(int xpos){
-		this.xpos = xpos;
+	public List<Circle> getCircles() {
+		List<Circle> circles = new ArrayList<Circle>();
+		circles.add(new Circle(x,	y,		0));
+		circles.add(new Circle(x,	y+L,	0));
+		circles.add(new Circle(x+L,	y,		0));
+		circles.add(new Circle(x+L,	y+L,	0));
+		return circles;
+	}
+
+	public void setX(double x){
+		this.x =x;
 	}
 	
-	public void setY(int ypos){
-		this.ypos = ypos;
+	public void setY(double y){
+		this.y=y;
 	}
 	
-	public void setWidth(int width){
+	public void setWidth(double width){
 		this.width = width;
 
 	}
 	
-	public void setHeight(int height){
+	public void setHeight(double height){
 		this.height = height;
 
 	}
 	
 	
-	public int getX() {
-		return xpos;
+	public double getX() {
+		return x;
 	}
 
 
-	public int getY() {
-		return ypos;
+	public double getY() {
+		return y;
 	}
 
 
-	public int getWidth() {
+	public double getWidth() {
 		return width;
 	}
 
 	
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 	
-	
-   
-	public void absorb(){
-		
-	}
-	
-	public void eject(){
-		// if the ball to be ejected is not null and ball is not null 
-		//eject ball with velocity (0, -50)
-		// eject/move ball 
+	public Color getColour() {
+		return colour;
 	}
 
-	@Override
-	public void setColor(Color color) {
-		// TODO Auto-generated method stub
-		
+	public void setColour(Color colour) {
+		this.colour = colour;
 	}
-
-	
-	/*public void addball(){
-		return Ball;
-	}*/
-	
 }

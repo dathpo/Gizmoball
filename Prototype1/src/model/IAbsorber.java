@@ -1,23 +1,29 @@
 package model;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.awt.Color;
-import java.awt.color.*;
 import model.Ball;
+
+import java.util.List;
+import java.awt.Color;
+
+import physics.Circle;
 import physics.LineSegment;
 
 public interface IAbsorber {
 
-	public int xpos;
-	public int ypos;
-	public int width;
-	public int height;
-	public void  setColor (Color color);
-	public String Name;
-	public void LineSegment ls;
-	public LinkedList<Ball> ballQueue;
-	public  ArrayList<LineSegment> lines = new ArrayList<LineSegment>();
+	public List<LineSegment> getLineSegments();
+	
+	public List<Circle> getCircles();
+	
+	public void setColour(Color colour);
+	
+	public Color getColour();
+
+	public double getWidth();
+	
+	public double getHeight();
+	
+	public double getX();
+	
+	public double getY();
 
 	
    }
