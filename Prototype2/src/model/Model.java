@@ -15,8 +15,9 @@ public class Model extends Observable implements IModel {
 	private Ball ball;
 	private Walls gws;
 	private List<IBumper> bumpers;
-	private CircleBumper cb, cb2;
-	private SquareBumper sb, sb2, sb3;
+	private CircleBumper cb, cb1, cb2;
+	private SquareBumper ab1, sb2, sb3, ab2, ab3, ab6, ab7, ab4, ab5, ab8, ab9, ab10, ab11,
+							ab12, ab13, ab16, ab17, ab14, ab15, ab18, ab19, ab20;
 	private TriangleBumper tb;
 
 	public Model() {
@@ -28,18 +29,60 @@ public class Model extends Observable implements IModel {
 		gws = new Walls(0, 0, 20, 20);
 
 		cb = new CircleBumper(15, 10, Color.GREEN);
+		cb1 = new CircleBumper(14, 10, Color.GREEN);
 		cb2 = new CircleBumper(10, 15, Color.GREEN);
-		sb = new SquareBumper(0, 19, Color.MAGENTA);	
-		sb3 = new SquareBumper(0, 10, Color.RED);
+		ab1 = new SquareBumper(0, 19, Color.MAGENTA);	
+		ab2 = new SquareBumper(1, 19, Color.MAGENTA);
+		ab3 = new SquareBumper(2, 19, Color.MAGENTA);
+		ab4 = new SquareBumper(3, 19, Color.MAGENTA);
+		ab5 = new SquareBumper(4, 19, Color.MAGENTA);
+		ab6 = new SquareBumper(5, 19, Color.MAGENTA);
+		ab7 = new SquareBumper(6, 19, Color.MAGENTA);
+		ab8 = new SquareBumper(7, 19, Color.MAGENTA);
+		ab9 = new SquareBumper(8, 19, Color.MAGENTA);
+		ab10 = new SquareBumper(9, 19, Color.MAGENTA);
+		ab12 = new SquareBumper(10, 19, Color.MAGENTA);
+		ab11 = new SquareBumper(11, 19, Color.MAGENTA);
+		ab13 = new SquareBumper(12, 19, Color.MAGENTA);
+		ab14 = new SquareBumper(13, 19, Color.MAGENTA);
+		ab15 = new SquareBumper(14, 19, Color.MAGENTA);
+		ab16 = new SquareBumper(15, 19, Color.MAGENTA);
+		ab17 = new SquareBumper(16, 19, Color.MAGENTA);
+		ab18 = new SquareBumper(17, 19, Color.MAGENTA);
+		ab19 = new SquareBumper(18, 19, Color.MAGENTA);
+		ab20 = new SquareBumper(19, 19, Color.MAGENTA);
+		sb3 = new SquareBumper(10, 9, Color.MAGENTA);
 		sb2 = new SquareBumper(19, 0, Color.RED);
 		tb = new TriangleBumper(250, 250, Color.BLUE);
 		
 		bumpers.add(cb);
+		bumpers.add(cb1);
 		bumpers.add(cb2);
-		bumpers.add(sb);
-		bumpers.add(sb2);
+		bumpers.add(ab1);
+		bumpers.add(ab2);
+		bumpers.add(ab3);
+		bumpers.add(ab4);
+		bumpers.add(ab5);
+		bumpers.add(ab6);
+		bumpers.add(ab7);
+		bumpers.add(ab8);
+		bumpers.add(ab9);
+		bumpers.add(ab10);
+		bumpers.add(ab11);
+		bumpers.add(ab12);
+		bumpers.add(ab13);
+		bumpers.add(ab14);
+		bumpers.add(ab15);
+		bumpers.add(ab16);
+		bumpers.add(ab17);
+		bumpers.add(ab18);
+		bumpers.add(ab19);
+		bumpers.add(ab20);
 		bumpers.add(sb3);
+		bumpers.add(sb2);
 		bumpers.add(tb);
+		
+		
 		
 	}
 
