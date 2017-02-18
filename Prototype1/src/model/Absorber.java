@@ -27,10 +27,12 @@ public class Absorber implements IAbsorber {
 	private int rotation = 0;
 	
 	private LineSegment ls;
-	private LinkedList<Ball> BallQueue;
+	private List<Ball> ballQueue;
 
 	
 	public Absorber( int x, int y,int width,int height, Color c ){
+		this.height = height;
+		this.width = width;
 		this.x = x*L;
 		this.y = y*L;
 		this.colour = c;
@@ -56,6 +58,10 @@ public class Absorber implements IAbsorber {
 		return circles;
 	}
 
+	public List<Ball> getBallQueue(){
+		return ballQueue;
+	}
+	
 	public void setX(double x){
 		this.x =x;
 	}
