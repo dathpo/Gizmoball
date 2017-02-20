@@ -89,14 +89,18 @@ public class Parser {
 		String gizmoName;
 		int xCoord;
 		int yCoord;
+		int radius;
+		int velocity;
 		Vect location;
 
 		gizmoName = st.nextToken();
 		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
+		radius = Integer.valueOf(st.nextToken());
+		velocity = Integer.valueOf(st.nextToken());
 
 		location = new Vect(xCoord, yCoord);
-		return new Ball(gizmoName, location);
+		return new Ball(gizmoName, location, velocity, radius);
 	}
 
 	private IModel absorberParse(String command, StringTokenizer st) {
