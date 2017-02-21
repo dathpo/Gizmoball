@@ -7,13 +7,13 @@ import java.util.List;
 import physics.Circle;
 import physics.LineSegment;
 
-public class SquareBumper implements IBumper {     
+public class SquareBumper implements IBumper, IModel {     
 
 	private double x,y;
 	private Color colour;
 	private static final double SIZE = 20;
 
-	public SquareBumper(double x, double y, Color c){
+	public SquareBumper(String gizmoName, double x, double y, Color c){
 		this.x = x;
 		this.y = y;
 		this.colour = c;

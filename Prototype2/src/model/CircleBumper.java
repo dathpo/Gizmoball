@@ -7,14 +7,14 @@ import java.util.List;
 import physics.Circle;
 import physics.LineSegment;
 
-public class CircleBumper implements IBumper { 
+public class CircleBumper implements IBumper, IModel { 
 
 	private Circle circle;
 	private double x, y;
 	private Color colour;
 	private static final double SIZE=10, RADIUS=10;
 
-	public CircleBumper(double x, double y, Color c) {
+	public CircleBumper(String gizmoName, double x, double y, Color c) {
 		this.x = x; // Centre coordinates
 		this.y = y;
 		this.circle = new Circle(x+SIZE, y+SIZE, RADIUS);

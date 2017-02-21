@@ -6,7 +6,11 @@ import java.util.List;
 import physics.Circle;
 import physics.LineSegment;
 
-public class TriangleBumper implements IBumper {
+public class TriangleBumper implements IBumper, IModel {
+
+	public TriangleBumper(String gizmoName, double x, double y, Color c) {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public List<LineSegment> getLineSegments() {

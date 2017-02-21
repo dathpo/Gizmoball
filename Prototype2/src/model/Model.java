@@ -25,7 +25,7 @@ public class Model extends Observable implements IModel {
 		// Wall size 500 x 500 pixels
 		gws = new Walls(0, 0, 500, 500);
 
-		cb = new CircleBumper(350, 300, Color.GREEN);
+		cb = new CircleBumper(null, 350, 300, Color.GREEN);
 		bumpers.add(cb);
 		
 	}
