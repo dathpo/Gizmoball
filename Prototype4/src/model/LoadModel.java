@@ -1,12 +1,16 @@
 package model;
 
 import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import model.IModel;
+import model.IBumper;
+import model.IFlipper;
+import model.IAbsorber;
+import model.IBall;
 
 public class LoadModel {
 
