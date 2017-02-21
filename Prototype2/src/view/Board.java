@@ -4,15 +4,14 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.sound.sampled.Line;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
+import model.IAbsorber;
 import model.IBall;
 import model.IBumper;
 import model.IModel;
@@ -48,6 +47,7 @@ public class Board extends JPanel implements Observer {
 		paintGrid(g);
 		paintBall(g);
 		paintBumpers(g);
+		paintAbsorbers(g);
 	}
 
 	public void paintGrid(Graphics g) {
@@ -77,39 +77,54 @@ public class Board extends JPanel implements Observer {
 				List<Circle> circles = bumper.getCircles();
 				List<LineSegment> lineSegments = bumper.getLineSegments();
 				g.setColor(bumper.getColour());
-				if(circles.size()==1){
+				if(circles.size()>lineSegments.size()){
 					int radius = (int) (circles.get(0).getRadius());
 					int diameter = (int) (2 * radius);
 					int xC = (int) (circles.get(0).getCenter().x() - radius);
 					int yC = (int) (circles.get(0).getCenter().y() - radius);
 					g.fillOval(xC, yC, diameter, diameter);
-				} else if (lineSegments.size()==3) {
-					//					int[] xT = new int[3];
-					//					int[] yT = new int[3];
-					//					xT[0] = (int) x;
-					//				    xT[1] = (int) x + L;
-					//				    xT[2] = (int) cx;
-					//					(int[]) (circles.get(0).getCenter().x());
-					//					int[] yT = (int[]) (circles.get(0).getCenter().y());
-					//					g.fillPolygon(xT, yT, L);
-
-				} else if (lineSegments.size()==4) {
+				} else if ((lineSegments.size() & circles.size()) == 3) {
+					int[] xT = new int[3];
+					int[] yT = new int[3];
+					int lengthS = circles.size();
+					for(int i=0; i<3; i++){
+						xT[i] = (int) circles.get(i).getCenter().x();
+						yT[i] = (int) circles.get(i).getCenter().y();
+					}
+					g.fillPolygon(xT, yT, lengthS);
+				} else if ((lineSegments.size() & circles.size()) == 4) {
 					int xS = 0;
 					int yS = 0;
+					int lengthS = (int) lineSegments.get(0).length();
 					for (int i=0; i<4; i++) {
-						xS = (int) (circles.get(i).getCenter().x() - (int) lineSegments.get(0).length());
-						yS = (int) (circles.get(i).getCenter().y() - (int) lineSegments.get(0).length());
+						xS = (int) (circles.get(i).getCenter().x() - (int) lineSegments.get(i).length());
+						yS = (int) (circles.get(i).getCenter().y() - (int) lineSegments.get(i).length());
 					}
-					g.fillRect(xS, yS, (int) lineSegments.get(0).length(), (int) lineSegments.get(0).length());
-					//				} else if (circles.size()==4) {
-					//					int xS = (int) (circles.get(0).getCenter().x());
-					//					int yS = (int) (circles.get(0).getCenter().y());
-					//					g.fillRect(xS, yS, L, L);
+					g.fillRect(xS, yS, lengthS, lengthS);
 				}
 			}
 		}
 	}
 
+	public void paintAbsorbers(Graphics g) {
+		if (model.getAbsorbers()!= null) {
+			for(IAbsorber absorber : model.getAbsorbers()){
+				List<Circle> circles = absorber.getCircles();
+				List<LineSegment> lineSegments = absorber.getLineSegments();
+				g.setColor(absorber.getColour());
+				if ((lineSegments.size() > circles.size())) {
+					int xS = 0;
+					int yS = 0;
+					int lengthS = (int) lineSegments.get(0).length();
+					for (int i=0; i<4; i++) {
+						xS = (int) (circles.get(i).getCenter().x() - (int) lineSegments.get(i).length());
+						yS = (int) (circles.get(i).getCenter().y() - (int) lineSegments.get(i).length());
+					}
+					g.fillRect(xS, yS, lengthS, lengthS);
+				}
+			}
+		}
+	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {

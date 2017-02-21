@@ -10,14 +10,11 @@ import physics.LineSegment;
 public class TriangleBumper implements IBumper {
 	private double x, y;
 	private Color colour;
-	private int[] xT, yT;
 	private static final double L = 20;
 	
 	public TriangleBumper (double x, double y, Color c) {
-	this.x = x;
-    this.y = y;
-    xT = new int[3];
-    yT = new int[3];
+	this.x = x*L;
+    this.y = y*L;
     this.colour = c;
 	}
 	
