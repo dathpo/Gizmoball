@@ -15,7 +15,7 @@ public class CircleBumper implements IBumper {
 	private static final double L = 20;
 	private static final double RADIUS = 10;
 
-	public CircleBumper(double x, double y, Color c) {
+	public CircleBumper(String gizmoName, double x, double y, Color c) {
 		this.x = (L*x)+RADIUS; // Centre coordinates
 		this.y = (L*y)+RADIUS;
 		this.colour = c;
