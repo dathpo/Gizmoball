@@ -10,10 +10,8 @@ import model.IModel;
 
 public class LoadModel {
 
-	private List<IModel> gizmo = new ArrayList<>();
+	private List<IBumper> bumper = new ArrayList<>();
 	// private List<IModel> operation = new ArrayList<>();
-	
-	// test for git
 
 	public void parse() throws FileNotFoundException, IOException {
 
@@ -30,17 +28,17 @@ public class LoadModel {
 
 					if (command.equals("Circle")) {
 
-						gizmo.add(circleParse(command, st));
+						bumper.add(circleParse(command, st));
 					}
 
 					else if (command.equals("Triangle")) {
 
-						gizmo.add(triangleParse(command, st));
+						bumper.add(triangleParse(command, st));
 					}
 
 					else if (command.equals("Square")) {
 
-						gizmo.add(squareParse(command, st));
+						bumper.add(squareParse(command, st));
 					}
 					/*
 					 * else if (command.equals("RightFlipper")) {
@@ -81,7 +79,7 @@ public class LoadModel {
 		}
 	}
 
-	private IModel squareParse(String command, StringTokenizer st) {
+	private IBumper squareParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
@@ -94,7 +92,7 @@ public class LoadModel {
 		return new SquareBumper(gizmoName, xCoord, yCoord, null);
 	}
 
-	private IModel triangleParse(String command, StringTokenizer st) {
+	private IBumper triangleParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
@@ -107,7 +105,7 @@ public class LoadModel {
 		return new TriangleBumper(gizmoName, xCoord, yCoord, null);
 	}
 
-	private IModel circleParse(String command, StringTokenizer st) {
+	private IBumper circleParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
