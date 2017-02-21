@@ -24,15 +24,15 @@ public class Absorber implements IAbsorber {
 	private static final double L = 20;
 	private int rotation = 0;
 	private boolean absorbed;
-	
-	private LineSegment ls;
 	private List<Ball> ballQueue;
 
 	
 	public Absorber(double x, double y, Color c){
-		this.x = x;
-		this.y = y;
+	
+		this.x = x*L;
+		this.y = y*L;
 		this.colour = c;
+		
 		width = width - x;
 		height = height -y;
 		
@@ -40,6 +40,7 @@ public class Absorber implements IAbsorber {
 	
 	public List<LineSegment> getLineSegments() {
 		List<LineSegment> lineSegments = new ArrayList<LineSegment>();
+		lineSegments.add(new LineSegment(x,		y,		x+L,	y));
 		lineSegments.add(new LineSegment(x+L,	y,		x+L,	y+L));
 		lineSegments.add(new LineSegment(x,		y+L,	x+L,	y+L));
 		lineSegments.add(new LineSegment(x,		y,		x,		y+L));
@@ -48,7 +49,9 @@ public class Absorber implements IAbsorber {
 	
 	public List<Circle> getCircles() {
 		List<Circle> circles = new ArrayList<Circle>();
+		circles.add(new Circle(x,	y,		0));
 		circles.add(new Circle(x,	y+L,	0));
+		circles.add(new Circle(x+L,	y,		0));
 		circles.add(new Circle(x+L,	y+L,	0));
 		return circles;
 	}

@@ -21,18 +21,18 @@ public class TriangleBumper implements IBumper {
 	@Override
 	public List<LineSegment> getLineSegments() {
 		List<LineSegment> lineSegments = new ArrayList<LineSegment>();
+		lineSegments.add(new LineSegment(x,		y,	x+L,	y+L));
 		lineSegments.add(new LineSegment(x,		y,	x+L,	y));
-		lineSegments.add(new LineSegment(x+L,	y,	x,		y+L));
-		lineSegments.add(new LineSegment(x,		y,	x,		y+L));
+		lineSegments.add(new LineSegment(x+L,	y+L,	x+L,	y));
 		return lineSegments;
 	}
 
 	@Override
 	public List<Circle> getCircles() {
 		List<Circle> circles = new ArrayList<Circle>();
-		circles.add(new Circle(x, 	y, 		0));
+		circles.add(new Circle(x, 	y, 	0));
 		circles.add(new Circle(x+L,	y, 		0));
-		circles.add(new Circle(x,	y+L,	0));
+		circles.add(new Circle(x+L,	y+L,	0));
 		return circles;
 	}
 

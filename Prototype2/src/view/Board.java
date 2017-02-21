@@ -112,7 +112,7 @@ public class Board extends JPanel implements Observer {
 				List<Circle> circles = absorber.getCircles();
 				List<LineSegment> lineSegments = absorber.getLineSegments();
 				g.setColor(absorber.getColour());
-				if ((lineSegments.size() > circles.size())) {
+				if ((lineSegments.size() == circles.size())) {
 					int xS = 0;
 					int yS = 0;
 					int lengthS = (int) lineSegments.get(0).length();

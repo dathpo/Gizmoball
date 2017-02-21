@@ -33,8 +33,8 @@ public class PlayGUI extends JPanel implements IGUI {
 		model = m;
         playL = new PlayListeners(model);
         PlayFrame();
-        MenuBar();
-        Mode();
+//        MenuBar();
+//        Mode();
         Options();
         Board();
         makeFrameVisible();
@@ -48,7 +48,6 @@ public class PlayGUI extends JPanel implements IGUI {
         playFrame.setSize(500, 500);
         playFrame.setLocationRelativeTo(null);
         playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
     }
 
     public void makeFrameVisible() {
