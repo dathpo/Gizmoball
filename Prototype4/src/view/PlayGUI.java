@@ -1,36 +1,51 @@
 package view;
 
 import javax.swing.*;
+
+import controller.playmode.ExitL;
+import controller.playmode.LoadL;
+import controller.playmode.ReloadL;
+import controller.playmode.PauseL;
+import controller.playmode.PlayListeners;
+import main.Main;
+import model.Model;
+
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class PlayGUI extends JPanel implements IGUI {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
+    private IGUI gui;
     private JFrame playFrame;
+	private Main main;
+	private Model model;
+	private Board playBoard;
+	private PlayListeners playL;
+	private PauseL pauseL;
+	private LoadL loadL;
+	private ReloadL reloadL;
+	private ExitL exitL;
 
-    public static void main(String[] args) {
+    public PlayGUI(Main main, Model m) {
 
-        new PlayGUI();
-    }
-
-    public PlayGUI() {
-
+    	this.main = main;
+		model = m;
+        playL = new PlayListeners(model);
         PlayFrame();
-        MenuBar();
-        Mode();
+//        MenuBar();
+//        Mode();
         Options();
         Board();
         makeFrameVisible();
+        
     }
 
     public void PlayFrame() {
 
         playFrame = new JFrame();
-        playFrame.setTitle("Gizmoball Play Mode");
-        playFrame.setSize(1000, 1000);
+        playFrame.setTitle("Gizmoball - Prototype 2: Collisions");
+        playFrame.setSize(500, 500);
         playFrame.setLocationRelativeTo(null);
         playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
@@ -38,6 +53,7 @@ public class PlayGUI extends JPanel implements IGUI {
     public void makeFrameVisible() {
 
         playFrame.setVisible(true);
+        playFrame.pack();
     }
 
     public void MenuBar() {
@@ -61,10 +77,7 @@ public class PlayGUI extends JPanel implements IGUI {
     public void Mode() {
 
         JPanel buttons = new JPanel();
-
-        JButton run = new JButton("Build Mode");
-        buttons.add(run);
-
+        addButton(buttons,"Build Mode");
         playFrame.getContentPane().add(buttons, BorderLayout.NORTH);
 
     }
@@ -73,32 +86,26 @@ public class PlayGUI extends JPanel implements IGUI {
 
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout(10, 1));
-
-        JButton start = new JButton("Start");
-        start.setMaximumSize(new Dimension(100, 100));
-        buttons.add(start);
-
-        JButton pause = new JButton("Pause");
-        pause.setMaximumSize(new Dimension(100, 100));
-        buttons.add(pause);
-
-        JButton tick = new JButton("Tick");
-        tick.setMaximumSize(new Dimension(100, 100));
-        buttons.add(tick);
+        
+        addButton(buttons,"Start");
+        addButton(buttons,"Pause");
+        addButton(buttons,"Tick");
 
         playFrame.getContentPane().add(buttons, BorderLayout.WEST);
     }
 
     public void Board() {
 
-        JPanel board = new JPanel();
-
-        JTextArea gameBoard = new JTextArea();
-        board.add(gameBoard);
-
-        board.setBorder(BorderFactory.createLineBorder(Color.black));
-        playFrame.getContentPane().add(board, BorderLayout.CENTER);
-
+        playBoard = new Board(400, 400, model);
+        playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
+        
+    }
+    
+    private void addButton(JPanel buttons,String bName){
+        JButton button = new JButton(bName);
+        button.addActionListener(playL);
+        button.setMaximumSize(new Dimension(100, 100));
+        buttons.add(button);
     }
 
 }

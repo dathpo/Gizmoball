@@ -3,6 +3,9 @@ package view;
 
 import javax.swing.*;
 
+import main.Main;
+import model.Model;
+
 import java.awt.*;
 
 public class BuildGUI extends JPanel implements IGUI {
@@ -12,14 +15,13 @@ public class BuildGUI extends JPanel implements IGUI {
      */
     private static final long serialVersionUID = 1L;
     private JFrame buildFrame;
+	private Main main;
+	private Model model;
 
-    public static void main(String[] args) {
+    public BuildGUI(Main main, Model model) {
 
-        new BuildGUI();
-    }
-
-    public BuildGUI() {
-
+    	this.main = main;
+		this.model = model;
         BuildFrame();
         MenuBar();
         Mode();
