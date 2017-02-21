@@ -4,8 +4,8 @@ import physics.Vect;
 
 public class TriangleBumper implements IModel {
 
-	public TriangleBumper(String gizmoName, Vect location) {
+	public TriangleBumper(String gizmoName, double xCoord, double yCoord, Vect location) {
 		// TODO Auto-generated constructor stub
 	}
-   
+
 }
