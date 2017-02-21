@@ -2,11 +2,12 @@ package view;
 
 import javax.swing.*;
 
-import controller.playmode.ExitL;
-import controller.playmode.LoadL;
-import controller.playmode.ReloadL;
-import controller.playmode.PauseL;
-import controller.playmode.PlayListeners;
+
+import controller.ExitL;
+import controller.LoadL;
+import controller.ReloadL;
+import controller.PauseL;
+import controller.PlayListeners;
 import main.Main;
 import model.Model;
 

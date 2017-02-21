@@ -211,7 +211,11 @@ public class BuildGUI extends JPanel {
 
 	public void Board() {
 
+<<<<<<< HEAD
 		board = new BuildBoard(800, 800, model);
+=======
+		board = new BuildBoard(500, 500, model);
+>>>>>>> 8083294076cfb3979c90e1838caa1bad3956288e
 		buildFrame.add(board, BorderLayout.CENTER);
 
 	}

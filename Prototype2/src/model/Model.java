@@ -13,6 +13,7 @@ import physics.Vect;
 public class Model extends Observable implements IModel {      
 
 	private Ball ball;
+<<<<<<< HEAD
 	private Walls gws;
 	private List<IBumper> bumpers;
 	private CircleBumper cb;
@@ -28,6 +29,44 @@ public class Model extends Observable implements IModel {
 		cb = new CircleBumper(null, 350, 300, Color.GREEN);
 		bumpers.add(cb);
 		
+=======
+	private Walls walls;
+	private List<IBumper> bumpers;
+	private List<IAbsorber> absorbers;
+
+	public Model() {
+		bumpers = new ArrayList<IBumper>();
+		absorbers = new ArrayList<IAbsorber>();
+		ball = new Ball(19.25, 19, 0000, 2000, Color.BLUE);
+		walls = new Walls(0, 0, 20, 20);
+		bumpers.add(new CircleBumper(18, 14, Color.GREEN));
+		bumpers.add(new CircleBumper(15, 11, Color.GREEN));
+		bumpers.add(new CircleBumper(14, 10, Color.GREEN));
+		bumpers.add(new CircleBumper(10, 0, Color.GREEN));
+		bumpers.add(new CircleBumper(15, 3, Color.GREEN));
+		bumpers.add(new CircleBumper(1, 19, Color.GREEN));
+		bumpers.add(new CircleBumper(6, 13, Color.GREEN));
+		bumpers.add(new SquareBumper(1, 1, Color.RED));
+		bumpers.add(new SquareBumper(0, 0, Color.RED));
+		bumpers.add(new SquareBumper(0, 1, Color.RED));
+		bumpers.add(new SquareBumper(1, 0, Color.RED));
+		bumpers.add(new SquareBumper(17, 19, Color.RED));
+		bumpers.add(new SquareBumper(4, 7, Color.RED));
+		bumpers.add(new SquareBumper(5, 11, Color.RED));
+		bumpers.add(new SquareBumper(15, 19, Color.RED));
+		bumpers.add(new SquareBumper(16, 18, Color.RED));
+		bumpers.add(new SquareBumper(17, 17, Color.RED));
+		bumpers.add(new SquareBumper(18, 16, Color.RED));
+		bumpers.add(new SquareBumper(18, 18, Color.RED));
+		bumpers.add(new SquareBumper(10, 9, Color.RED));
+		bumpers.add(new TriangleBumper(19, 0, Color.BLUE));
+		bumpers.add(new TriangleBumper(3, 17, Color.BLUE));
+		bumpers.add(new TriangleBumper(5, 13, Color.BLUE));
+		bumpers.add(new TriangleBumper(9, 16, Color.BLUE));
+		bumpers.add(new TriangleBumper(4, 2, Color.BLUE));
+		bumpers.add(new TriangleBumper(18, 12, Color.BLUE));
+		absorbers.add(new Absorber(19, 19, Color.MAGENTA));
+>>>>>>> 8083294076cfb3979c90e1838caa1bad3956288e
 	}
 
 	public void moveBall() {
@@ -61,10 +100,10 @@ public class Model extends Observable implements IModel {
 		double newY = 0.0;
 		double xVel = ball.getVelo().x();
 		double yVel = ball.getVelo().y();
-		newX = ball.getExactX() + (xVel * time);
-		newY = ball.getExactY() + (yVel * time);
-		ball.setExactX(newX);
-		ball.setExactY(newY);
+		newX = ball.getX() + (xVel * time);
+		newY = ball.getY() + (yVel * time);
+		ball.setX(newX);
+		ball.setY(newY);
 		return ball;
 	}
 
@@ -80,12 +119,27 @@ public class Model extends Observable implements IModel {
 		double time = 0.0;
 
 		// Time to collide with 4 walls
-		ArrayList<LineSegment> lss = gws.getLineSegments();
-		for (LineSegment line : lss) {
+		for (LineSegment line : walls.getLineSegments()) {
 			time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 			if (time < shortestTime) {
 				shortestTime = time;
-				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1.0);
+				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
+			}
+		}
+		for(IBumper bumper : bumpers) {
+			for (LineSegment line : bumper.getLineSegments()) {
+				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+				if (time < shortestTime) {
+					shortestTime = time;
+					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
+				}
+			}
+			for (Circle circle : bumper.getCircles()) {
+				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
+				if (time < shortestTime) {
+					shortestTime = time;
+					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
+				}
 			}
 		}
 		return new Collisions(shortestTime, newVelo);
@@ -102,4 +156,11 @@ public class Model extends Observable implements IModel {
 	public List<IBumper> getBumpers() {
 		return bumpers;
 	}
+<<<<<<< HEAD
+=======
+	
+	public List<IAbsorber> getAbsorbers() { 
+		return absorbers;
+	}
+>>>>>>> 8083294076cfb3979c90e1838caa1bad3956288e
 }

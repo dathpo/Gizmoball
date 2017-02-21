@@ -21,7 +21,11 @@ import model.HorizontalLine;
 
 public class BuildBoard extends JPanel implements Observer {
 
+<<<<<<< HEAD
 	/** Created by Greig Cairns
+=======
+	/**
+>>>>>>> 8083294076cfb3979c90e1838caa1bad3956288e
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

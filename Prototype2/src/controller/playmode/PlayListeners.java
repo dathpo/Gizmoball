@@ -35,6 +35,10 @@ public class PlayListeners implements ActionListener {
 				timer.stop();
 				break;
 			case "Tick":
+<<<<<<< HEAD:Prototype2/src/controller/playmode/PlayListeners.java
+=======
+				timer.stop();
+>>>>>>> 8083294076cfb3979c90e1838caa1bad3956288e:Prototype2/src/controller/playmode/PlayListeners.java
 				model.moveBall();
 				break;
 			}

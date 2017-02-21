@@ -15,9 +15,6 @@ import java.awt.event.ActionListener;
 
 public class PlayGUI extends JPanel implements IGUI {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     private IGUI gui;
     private JFrame playFrame;
@@ -36,8 +33,8 @@ public class PlayGUI extends JPanel implements IGUI {
 		model = m;
         playL = new PlayListeners(model);
         PlayFrame();
-        MenuBar();
-        Mode();
+//        MenuBar();
+//        Mode();
         Options();
         Board();
         makeFrameVisible();
@@ -51,7 +48,10 @@ public class PlayGUI extends JPanel implements IGUI {
         playFrame.setSize(500, 500);
         playFrame.setLocationRelativeTo(null);
         playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8083294076cfb3979c90e1838caa1bad3956288e
     }
 
     public void makeFrameVisible() {
@@ -100,7 +100,7 @@ public class PlayGUI extends JPanel implements IGUI {
 
     public void Board() {
 
-        playBoard = new Board(500, 500, model);
+        playBoard = new Board(400, 400, model);
         playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
         
     }
