@@ -11,7 +11,7 @@ import view.BuildBoard;
 
 public class LoadModel {
 
-	private List<IModel> gizmo = new ArrayList<>();
+	private List<IBumper> gizmo = new ArrayList<>();
 	// private List<IModel> operation = new ArrayList<>();
 
 	public void parse() throws FileNotFoundException, IOException {
@@ -80,7 +80,7 @@ public class LoadModel {
 		}
 	}
 
-	private IModel squareParse(String command, StringTokenizer st) {
+	private IBumper squareParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double x;
@@ -93,7 +93,7 @@ public class LoadModel {
 		return new SquareBumper(gizmoName, x, y, null);
 	}
 
-	private IModel triangleParse(String command, StringTokenizer st) {
+	private IBumper triangleParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
@@ -106,7 +106,7 @@ public class LoadModel {
 		return new TriangleBumper(gizmoName, xCoord, yCoord, null);
 	}
 
-	private IModel circleParse(String command, StringTokenizer st) {
+	private IBumper circleParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
@@ -120,12 +120,6 @@ public class LoadModel {
 
 	}
 	
-	public void loadItems(BuildBoard buildBoard) {
-		
-		for (IBoardItem item : boardItemMap.values()) {
-			BuildBoard.addItem(item);
-		}
-
 	/*
 	 * private IModel ballParse(String command, StringTokenizer st) {
 	 * 
