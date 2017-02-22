@@ -26,7 +26,7 @@ public class SwitchToBML implements ActionListener {
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
-			case "switchtoBML":
+			case "Build Mode":
 				main.switchToBM();
 				break;
 			}
