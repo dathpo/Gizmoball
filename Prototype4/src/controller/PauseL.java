@@ -20,14 +20,14 @@ public class PauseL implements ActionListener {
 	@Override
 	public final void actionPerformed(final ActionEvent e) {
 
-		if (e.getSource() == timer) {
-			model.moveBall();
-		} else
-			switch (e.getActionCommand()) {
-			case "Pause":
-				timer.stop();
-				break;
-			}
+//		if (e.getSource() == timer) {
+//			model.moveBall();
+//		} else
+//			switch (e.getActionCommand()) {
+//			case "Pause":
+//				timer.stop();
+//				break;
+//			}
 	}
 
 }

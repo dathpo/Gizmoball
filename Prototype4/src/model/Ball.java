@@ -13,14 +13,16 @@ public class Ball implements IBall {
 	private static final double L = 20;
 	private static final double RADIUS = 5;
 	private boolean stopped;
+	private String gizmoName;
 
 	// x, y coordinates and x,y velocity
-	public Ball(double x, double y, double xv, double yv, Color c) {
+	public Ball(String gizmoName, double x, double y, double xv, double yv, Color c) {
 		this.x = (L*x)+RADIUS; // Centre coordinates
 		this.y = (L*y)+RADIUS;
-		this.colour = c;
+		this.colour = Color.BLUE;
 		this.velocity = new Vect(xv, yv);
 		stopped = false;
+	    this.gizmoName = gizmoName;
 	}
 
 	public void setVelo(Vect v) {
@@ -78,6 +80,20 @@ public class Ball implements IBall {
 	
 	public Color getColour() {
 		return colour;
+	}
+	
+	public String getGizmoName() {
+		return gizmoName;
+	}
+
+	public void move(double d, double e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void isAbsorbed() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

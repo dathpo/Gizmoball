@@ -1,11 +1,46 @@
 package model;
 
+import java.util.List;
+
 import physics.Vect;
 
-public class RotateGizmo {
+public class RotateGizmo implements IModel {
 
-	public RotateGizmo(String gizmoName, Vect location) {
-		// TODO Auto-generated constructor stub
+	private String gizmoName;
+	
+	public RotateGizmo(String gizmoName) {
+		this.gizmoName = gizmoName;
+	}
+
+	
+	
+	@Override
+	public List<IBall> getBalls() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<IBumper> getBumpers() {
+		return null;
+	}
+
+	@Override
+	public List<IAbsorber> getAbsorbers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<LFlipper> getLFlippers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RFlipper> getRFlippers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

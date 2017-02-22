@@ -20,4 +20,6 @@ public interface IBumper {
 	
 	public double getY();
 	
+	public String getGizmoName();
+	
    }

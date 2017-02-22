@@ -11,5 +11,7 @@ public interface IBall {
 	public double getY();
 
 	public double getRadius();
+	
+	public String getGizmoName();
 
    }

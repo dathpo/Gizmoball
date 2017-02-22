@@ -9,17 +9,21 @@ import physics.LineSegment;
 public interface IAbsorber {
 
 	public List<LineSegment> getLineSegments();
-	
+
 	public List<Circle> getCircles();
-	
+
 	public void addBall(Ball ball);
-	
+
 	public void setColour(Color colour);
-	
+
 	public Color getColour();
-	
-	public double getX();
-	
-	public double getY();
-	
-   }
+
+	public double getX1();
+
+	public double getY1();
+
+	public double getX2();
+
+	public double getY2();
+
+}

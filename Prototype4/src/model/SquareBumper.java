@@ -11,12 +11,14 @@ public class SquareBumper implements IBumper {
 
 	private double x,y;
 	private Color colour;
+	private String gizmoName;
 	private static final double L = 20;
 
 	public SquareBumper(String gizmoName, double x, double y, Color c){
 		this.x = x*L;
 		this.y = y*L;
-		this.colour = c;
+		this.colour = Color.RED;
+		this.gizmoName = gizmoName;
 	}
 
 	public List<LineSegment> getLineSegments() {
@@ -51,6 +53,11 @@ public class SquareBumper implements IBumper {
 
 	public void setColour(Color colour) {
 		this.colour = colour;
+	}
+
+	@Override
+	public String getGizmoName() {
+		return gizmoName;
 	}
 	
 	

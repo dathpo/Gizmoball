@@ -12,13 +12,15 @@ public class CircleBumper implements IBumper {
 	private Circle circle;
 	private double x, y;
 	private Color colour;
+	private String gizmoName;
 	private static final double L = 20;
 	private static final double RADIUS = 10;
 
 	public CircleBumper(String gizmoName, double x, double y, Color c) {
 		this.x = (L*x)+RADIUS; // Centre coordinates
 		this.y = (L*y)+RADIUS;
-		this.colour = c;
+		this.colour = Color.GREEN;
+		this.gizmoName = gizmoName;
 	}
 
 	public List<LineSegment> getLineSegments() {
@@ -47,5 +49,10 @@ public class CircleBumper implements IBumper {
 
 	public void setColour(Color colour) {
 		this.colour = colour;
+	}
+
+	@Override
+	public String getGizmoName() {
+		return gizmoName;
 	}
 }
