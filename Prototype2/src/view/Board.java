@@ -115,7 +115,7 @@ public class Board extends JPanel implements Observer {
 				if (lineSegments.size() == 1 && circles.size() == 2) {
 					int xS = (int) (circles.get(0).getCenter().x());
 					int yS = (int) (circles.get(0).getCenter().y());
-					g.fillRect(xS, yS - L, (int) lineSegments.get(0).length() , (int) L);
+					g.fillRect(xS, yS - L, (int) lineSegments.get(0).length() + L , (int) L);
 				}
 			}
 		}

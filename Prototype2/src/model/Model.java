@@ -20,9 +20,8 @@ public class Model extends Observable implements IModel {
 	public Model() {
 		bumpers = new ArrayList<IBumper>();
 		absorbers = new ArrayList<IAbsorber>();
-		ball = new Ball(10, 10, 500, 1250, Color.BLUE);
+		ball = new Ball(5, 5, -100, 2500, Color.BLUE);
 		walls = new Walls(0, 0, 20, 20);
-		// ab1 = new SquareBumper(0, 19, Color.MAGENTA);
 		// + ab2 = new SquareBumper(1, 19, Color.MAGENTA);
 		// + ab3 = new SquareBumper(2, 19, Color.MAGENTA);
 		// + ab4 = new SquareBumper(3, 19, Color.MAGENTA);
@@ -101,7 +100,7 @@ public class Model extends Observable implements IModel {
 
 	private Ball movelBallForTime(Ball ball, double time) {
 
-		Vect temp = new Vect(ball.getVelo().x(), ball.getVelo().y() + (1000*time));
+		Vect temp = new Vect(ball.getVelo().x(), ball.getVelo().y() + (3500*time));
         Vect Vnew = applyFriction(temp, time);
         ball.setVelo(Vnew);
 		
