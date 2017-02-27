@@ -1,4 +1,4 @@
-package controller;
+package controller.playmode;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,24 +21,24 @@ public class PlayListeners implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		
-//		if (e.getSource() == timer) {
-//			model.moveBall();
-//		} else
-//			switch (e.getActionCommand()) {
-//			case "Build Mode":
-//				main.switchToBM();
-//				break;
-//			case "Start":
-//				timer.start();
-//				break;
-//			case "Pause":
-//				timer.stop();
-//				break;
-//			case "Tick":
-//				timer.stop();
-//				model.moveBall();
-//				break;
-//			}
+		if (e.getSource() == timer) {
+			model.moveBall();
+		} else
+			switch (e.getActionCommand()) {
+			case "Build Mode":
+				main.switchToBM();
+				break;
+			case "Start":
+				timer.start();
+				break;
+			case "Pause":
+				timer.stop();
+				break;
+			case "Tick":
+				timer.stop();
+				model.moveBall();
+				break;
+			}
 	}
 	
 }

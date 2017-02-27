@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.*;
 
-
+import controller.SwitchToBML;
 import controller.ExitL;
 import controller.LoadL;
 import controller.ReloadL;
@@ -28,6 +28,7 @@ public class PlayGUI extends JPanel implements IGUI {
 	private PauseL pauseL;
 	private LoadL loadL;
 	private ReloadL reloadL;
+	private SwitchToBML SwitchToBML;
 	private ExitL exitL;
 
 	public PlayGUI(Main main, Model m) {
@@ -36,9 +37,9 @@ public class PlayGUI extends JPanel implements IGUI {
 		model = m;
 		loadL = new LoadL(model);
 		PlayFrame();
-//		        MenuBar();
-		//        Mode();
-		//        Options();
+		MenuBar();
+		Mode();
+		Options();
 		Board();
 		makeFrameVisible();
 	}
@@ -66,16 +67,20 @@ public class PlayGUI extends JPanel implements IGUI {
 		JMenu MenuOptions = new JMenu("Options");
 		MenuBar.add(MenuOptions);
 
-		JMenuItem load = new JMenuItem("Load");
+		JMenuItem load = new JMenuItem("Load Build");
 		MenuOptions.add(load);
 		load.addActionListener(loadL);
-		
+
+		JMenuItem exit = new JMenuItem("Exit");
+		MenuOptions.add(exit);
+		load.addActionListener(exitL);
+
 	}
 
 	public void Mode() {
 
 		JPanel buttons = new JPanel();
-		addButton(buttons,"Build Mode");
+		addButton(buttons, "Build Mode");
 		playFrame.getContentPane().add(buttons, BorderLayout.NORTH);
 
 	}
@@ -85,20 +90,21 @@ public class PlayGUI extends JPanel implements IGUI {
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new GridLayout(10, 1));
 
-		addButton(buttons,"Start");
-		addButton(buttons,"Pause");
-		addButton(buttons,"Tick");
+		addButton(buttons, "Start");
+		addButton(buttons, "Pause");
+		addButton(buttons, "Tick");
+		addButton(buttons, "Reload");
 
 		playFrame.getContentPane().add(buttons, BorderLayout.WEST);
 	}
 
 	public void Board() {
 
-			playBoard = new Board(400, 400, model);
-			playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
+		playBoard = new Board(400, 400, model);
+		playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
 	}
 
-	private void addButton(JPanel buttons,String bName){
+	private void addButton(JPanel buttons, String bName) {
 		JButton button = new JButton(bName);
 		button.addActionListener(playL);
 		button.setMaximumSize(new Dimension(100, 100));

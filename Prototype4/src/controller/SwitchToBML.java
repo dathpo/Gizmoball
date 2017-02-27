@@ -22,15 +22,11 @@ public class SwitchToBML implements ActionListener {
 	@Override
 	public final void actionPerformed(final ActionEvent e) {
 
-//		if (e.getSource() == timer) {
-//			model.moveBall();
-//		} else
-//			switch (e.getActionCommand()) {
-//			case "Build Mode":
-//				main.switchToBM();
-//				break;
-//			}
-	}   
-   
-   
-   }
+		switch (e.getActionCommand()) {
+		case "Build Mode":
+			main.switchToBM();
+			break;
+		}
+	}
+
+}
