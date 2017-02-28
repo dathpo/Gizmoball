@@ -1,7 +1,9 @@
 package controller.playmode;
 
 
-import model.Flipper;
+
+import java.awt.event.KeyEvent;
+
 import model.Model;
 
 public class PlayModeKeyL {
@@ -10,22 +12,43 @@ public class PlayModeKeyL {
 	
 	public PlayModeKeyL(Model m) {
 		model = m;
-		
-		//Flipper a = (Flipper) model.getFlippers();
-		
-		
-		
-		
+	}
+	
+	public void KeyPressed(int keyCode){
+		if(keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_E){
+			this.activateFlipper(keyCode);
+		}	
+	}
+	
+	public void KeyReleased(int keyCode){
+		if(keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_E){
+			this.deactivateFlipper(keyCode);
+		}
 	}
 	
 	
-	public void activate(){
-		System.out.println("Flipper Activated");
-		model.flipperActivate();
+	public void activateFlipper(int keyCode){
+		
+		if(keyCode == KeyEvent.VK_E){
+			System.out.println("Right Flippers Activated");
+			model.rFlipperActivate();
+			
+		} else{
+			System.out.println("Left Flippers Activated");
+			model.lFlipperActivate();
+		}
 	}
 	
-	public void deactivate(){
-		System.out.println("Flipper Deactivated");
-		model.flipperDeactivate();
+	
+	public void deactivateFlipper(int keyCode){
+		if(keyCode == KeyEvent.VK_E){
+			System.out.println("Right Flippers Deactivated");
+			model.rFlipperDeactivate();
+			
+		} else{
+			System.out.println("Left Flippers Deactivated");
+			model.lFlipperDeactivate();
+		}
 	}
+	
 }

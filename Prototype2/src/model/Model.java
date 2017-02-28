@@ -22,7 +22,7 @@ public class Model extends Observable implements IModel {
 		bumpers = new ArrayList<IBumper>();
 		absorbers = new ArrayList<IAbsorber>();
 		flippers = new ArrayList<IFlipper>();
-//		ball = new Ball(2.5, 14.5, 0000, 2000, 0, Color.BLUE);
+		ball = new Ball(200, 130, 2000, 0, 5, Color.BLUE);
 		walls = new Walls(0, 0, 20, 20);
 //		bumpers.add(new CircleBumper(18, 14, Color.GREEN));
 //		bumpers.add(new CircleBumper(15, 11, Color.GREEN));
@@ -50,8 +50,12 @@ public class Model extends Observable implements IModel {
 //		bumpers.add(new TriangleBumper(9, 16, Color.BLUE));
 //		bumpers.add(new TriangleBumper(4, 2, Color.BLUE));
 //		bumpers.add(new TriangleBumper(18, 12, Color.BLUE));
-//		absorbers.add(new Absorber(19, 19, Color.MAGENTA));
-		flippers.add(new Flipper(60, 60, Color.BLACK));
+		//absorbers.add(new Absorber(19, 19, Color.MAGENTA));
+		flippers.add(new RFlipper(190, 100, Color.MAGENTA));
+		flippers.add(new LFlipper(100, 100, Color.MAGENTA));
+		
+		flippers.add(new RFlipper(190, 180, Color.ORANGE));
+		flippers.add(new LFlipper(100, 180, Color.ORANGE));
 
 	}
 
@@ -128,6 +132,16 @@ public class Model extends Observable implements IModel {
 				}
 			}
 		}
+		
+		for(IFlipper flipper : flippers){
+			for (LineSegment line : flipper.getLineSegments()) {
+				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+				if (time < shortestTime) {
+					shortestTime = time;
+					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
+				}
+			}
+		}
 		return new Collisions(shortestTime, newVelo);
 	}
 
@@ -153,19 +167,38 @@ public class Model extends Observable implements IModel {
 		return flippers;
 	}
 
-	public void flipperActivate() {
-		List<IFlipper> list = getFlippers();
-		IFlipper testFlipper = list.get(0);
-		testFlipper.setRotated();
-
+	public void rFlipperActivate() {
+		for (IFlipper iFlipper : flippers) {
+			if(iFlipper.getRight() == true){
+				iFlipper.setRotated();
+			}
+		}
 	}
 	
-	public void flipperDeactivate() {
-		List<IFlipper> list = getFlippers();
-		IFlipper testFlipper = list.get(0);
-		testFlipper.undoRotate();
-
+	public void lFlipperActivate() {
+		for (IFlipper iFlipper : flippers) {
+			if(iFlipper.getRight() == false){
+				iFlipper.setRotated();
+			}	
+		}
 	}
+	
+	public void rFlipperDeactivate() {
+		for (IFlipper iFlipper : flippers) {
+			if(iFlipper.getRight() == true){
+				iFlipper.undoRotate();
+			}
+		}
+	}
+	
+	public void lFlipperDeactivate() {
+		for (IFlipper iFlipper : flippers) {
+			if(iFlipper.getRight() == false){
+				iFlipper.undoRotate();
+			}
+		}
+	}
+
 	
 	
 }

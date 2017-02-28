@@ -7,26 +7,28 @@ import java.util.concurrent.TimeUnit;
 
 import physics.LineSegment;
 
-public class Flipper implements IFlipper {
+public class RFlipper implements IFlipper {
 	
 	private double x,y;
 	private Color colour;
 	private boolean rotated;
 	private static final int L = 40;
+	private boolean right;
 	
 	
-	public Flipper(double x, double y, Color c){
+	public RFlipper(double x, double y, Color c){
 		this.x = x;
 		this.y = y;
 		this.colour = c;
 		this.rotated = false;
+		this.right = true;
 	}
 	
 	//This currently isn't working
 	public List<LineSegment> getLineSegments() {
 		List<LineSegment> lineSegments = new ArrayList<LineSegment>();
-		lineSegments.add(new LineSegment(x,		y,		x + 40,	y));
-		lineSegments.add(new LineSegment(x,	y + 10,	x+ 40,	y+10));
+		lineSegments.add(new LineSegment(x + L/4, y, x + L/4, y + L));
+		lineSegments.add(new LineSegment(x, y, x, y + L));
 		return lineSegments;
 	}
 	
@@ -52,20 +54,13 @@ public class Flipper implements IFlipper {
 	}
 
 	@Override
-	public int getOrientation() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void trigger() {
-		// TODO Auto-generated method stub
-		
+	public boolean getRight() {
+		return this.right;
 	}
 
 	@Override
 	public int getLength() {
-		return Flipper.L;
+		return RFlipper.L;
 	}
 	
 	public boolean getRotated(){
@@ -75,14 +70,12 @@ public class Flipper implements IFlipper {
 	public void setRotated(){
 		if(this.getRotated() == false){
 			this.rotated = true;
-		
-				
 			}
 	}
 	
-	
 	public void undoRotate(){
+		if(this.getRotated() == true){
 		this.rotated = false;
+		}
 	}
-
 }

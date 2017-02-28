@@ -16,8 +16,8 @@ public class Walls {
 	public Walls(int x, int y, int x1, int y1) {
 		this.x = x;
 		this.y = y;
-		this.x1 = x1;
-		this.y1 = y1;
+		this.x1 = x1 * 20;
+		this.y1 = y1 * 20;
 	}
 
 	public ArrayList<LineSegment> getLineSegments() {

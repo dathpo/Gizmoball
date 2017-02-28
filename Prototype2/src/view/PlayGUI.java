@@ -114,23 +114,13 @@ public class PlayGUI extends JPanel implements KeyListener {
     }
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == 70){
-			
-			flipperL.activate();
-			
-		}
-		
-	}
+	public void keyPressed(KeyEvent e) {flipperL.KeyPressed(e.getKeyCode());	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		if(e.getKeyCode() == 70){
-			flipperL.deactivate();
-			
-		}
+	public void keyReleased(KeyEvent e) {flipperL.KeyReleased(e.getKeyCode());	}
 		
-	}
+		
+
 
 	@Override
 	public void keyTyped(KeyEvent e) {

@@ -28,9 +28,6 @@ public class Board extends JPanel implements Observer {
 	protected static int height;
 	private IModel model;
 	private static final int L = 20;
-	
-	//Remove this
-	Graphics2D g2;
 
 	public Board(int w, int h, Model m) {
 		m.addObserver(this);
@@ -46,10 +43,9 @@ public class Board extends JPanel implements Observer {
 		return new Dimension(width, height);
 	}
 
-
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g2 = (Graphics2D) g;
+
 		paintGrid(g);
 		paintBall(g);
 		paintBumpers(g);
@@ -58,16 +54,16 @@ public class Board extends JPanel implements Observer {
 	}
 
 	public void paintGrid(Graphics g) {
-		for (int k=0; k<=L; k++) {
-			g.drawLine(0, k*height/L, width, k*height/L);
+		for (int k = 0; k <= L; k++) {
+			g.drawLine(0, k * height / L, width, k * height / L);
 		}
-		for (int k=0; k<=L; k++) {
-			g.drawLine(k*width/L, 0, k*width/L, height);
+		for (int k = 0; k <= L; k++) {
+			g.drawLine(k * width / L, 0, k * width / L, height);
 		}
 	}
 
 	public void paintBall(Graphics g) {
-		if (model.getBall()!= null) {
+		if (model.getBall() != null) {
 			IBall ball = model.getBall();
 			g.setColor(ball.getColour());
 			int radius = (int) (ball.getRadius());
@@ -79,91 +75,117 @@ public class Board extends JPanel implements Observer {
 	}
 
 	public void paintBumpers(Graphics g) {
-//		if (model.getBumpers()!= null) {
-//			for(IBumper bumper : model.getBumpers()){
-//				List<Circle> circles = bumper.getCircles();
-//				List<LineSegment> lineSegments = bumper.getLineSegments();
-//				g.setColor(bumper.getColour());
-//				if(circles.size()>lineSegments.size()){
-//					int radius = (int) (circles.get(0).getRadius());
-//					int diameter = (int) (2 * radius);
-//					int xC = (int) (circles.get(0).getCenter().x() - radius);
-//					int yC = (int) (circles.get(0).getCenter().y() - radius);
-//					g.fillOval(xC, yC, diameter, diameter);
-//				} else if ((lineSegments.size() & circles.size()) == 3) {
-//					int[] xT = new int[3];
-//					int[] yT = new int[3];
-//					int lengthS = circles.size();
-//					for(int i=0; i<3; i++){
-//						xT[i] = (int) circles.get(i).getCenter().x();
-//						yT[i] = (int) circles.get(i).getCenter().y();
-//					}
-//					g.fillPolygon(xT, yT, lengthS);
-//				} else if ((lineSegments.size() & circles.size()) == 4) {
-//					int xS = 0;
-//					int yS = 0;
-//					int lengthS = (int) lineSegments.get(0).length();
-//					for (int i=0; i<4; i++) {
-//						xS = (int) (circles.get(i).getCenter().x() - (int) lineSegments.get(i).length());
-//						yS = (int) (circles.get(i).getCenter().y() - (int) lineSegments.get(i).length());
-//					}
-//					g.fillRect(xS, yS, lengthS, lengthS);
-//				}
-//			}
-//		}
+//		 if (model.getBumpers()!= null) {
+//		 for(IBumper bumper : model.getBumpers()){
+//		 List<Circle> circles = bumper.getCircles();
+//		 List<LineSegment> lineSegments = bumper.getLineSegments();
+//		 g.setColor(bumper.getColour());
+//		 if(circles.size()>lineSegments.size()){
+//		 int radius = (int) (circles.get(0).getRadius());
+//		 int diameter = (int) (2 * radius);
+//		 int xC = (int) (circles.get(0).getCenter().x() - radius);
+//		 int yC = (int) (circles.get(0).getCenter().y() - radius);
+//		 g.fillOval(xC, yC, diameter, diameter);
+//		 } else if ((lineSegments.size() & circles.size()) == 3) {
+//		 int[] xT = new int[3];
+//		 int[] yT = new int[3];
+//		 int lengthS = circles.size();
+//		 for(int i=0; i<3; i++){
+//		 xT[i] = (int) circles.get(i).getCenter().x();
+//		 yT[i] = (int) circles.get(i).getCenter().y();
+//		 }
+//		 g.fillPolygon(xT, yT, lengthS);
+//		 } else if ((lineSegments.size() & circles.size()) == 4) {
+//		 int xS = 0;
+//		 int yS = 0;
+//		 int lengthS = (int) lineSegments.get(0).length();
+//		 for (int i=0; i<4; i++) {
+//		 xS = (int) (circles.get(i).getCenter().x() - (int)
+//		 lineSegments.get(i).length());
+//		 yS = (int) (circles.get(i).getCenter().y() - (int)
+//		 lineSegments.get(i).length());
+//		 }
+//		 g.fillRect(xS, yS, lengthS, lengthS);
+//		 }
+//		 }
+//		 }
 	}
 
 	public void paintAbsorbers(Graphics g) {
-//		if (model.getAbsorbers()!= null) {
-//			for(IAbsorber absorber : model.getAbsorbers()){
-//				List<Circle> circles = absorber.getCircles();
-//				List<LineSegment> lineSegments = absorber.getLineSegments();
-//				g.setColor(absorber.getColour());
-//				if ((lineSegments.size() == circles.size())) {
-//					int xS = 0;
-//					int yS = 0;
-//					int lengthS = (int) lineSegments.get(0).length();
-//					for (int i=0; i<4; i++) {
-//						xS = (int) (circles.get(i).getCenter().x() - (int) lineSegments.get(i).length());
-//						yS = (int) (circles.get(i).getCenter().y() - (int) lineSegments.get(i).length());
-//					}
-//					g.fillRect(xS, yS, lengthS, lengthS);
-//				}
-//			}
-//		}
+		// if (model.getAbsorbers()!= null) {
+		// for(IAbsorber absorber : model.getAbsorbers()){
+		// List<Circle> circles = absorber.getCircles();
+		// List<LineSegment> lineSegments = absorber.getLineSegments();
+		// g.setColor(absorber.getColour());
+		// if ((lineSegments.size() == circles.size())) {
+		// int xS = 0;
+		// int yS = 0;
+		// int lengthS = (int) lineSegments.get(0).length();
+		// for (int i=0; i<4; i++) {
+		// xS = (int) (circles.get(i).getCenter().x() - (int)
+		// lineSegments.get(i).length());
+		// yS = (int) (circles.get(i).getCenter().y() - (int)
+		// lineSegments.get(i).length());
+		// }
+		// g.fillRect(xS, yS, lengthS, lengthS);
+		// }
+		// }
+		// }
 	}
-	
-	public void paintFlippers(Graphics g) {
-		
 
-		if (model.getFlippers()!= null) {
-			for(IFlipper flipper : model.getFlippers()){
-				int xF = (int)flipper.getX();
-				int yF = (int)flipper.getY();
-				int length = flipper.getLength();
-				
-				if(flipper.getRotated() == false){
-					
-					g.setColor(flipper.getColour());
-					
-					
-					g.fillRoundRect(xF, yF,(length/4) , length, (length/8), (length/4));
-				} else{
-				
-					Graphics2D g2d = (Graphics2D)g;
-					
-					g2d.rotate(Math.toRadians(90));
-					g2d.rotate(Math.toRadians(90), xF, yF);
+	public void paintFlippers(Graphics g) {
+		paintFlipperL(g);
+		paintFlipperR(g);
+
+	}
+
+	public void paintFlipperL(Graphics g) {
+		if (model.getFlippers() != null) {
+			for (IFlipper flipper : model.getFlippers()) {
+				if (flipper.getRight() == false) {
+					int xF = (int) flipper.getX();
+					int yF = (int) flipper.getY();
+					int length = flipper.getLength();
+
+					if (flipper.getRotated() == false) {
+						g.setColor(flipper.getColour());
+						g.fillRoundRect(xF, yF, (length / 4), length, (length / 8), (length / 4));
+					} else if (flipper.getRotated() == true) {
+						g.setColor(flipper.getColour());
+
+						// For right flipper
+						//g.fillRoundRect(xF - (length * 3 / 4), yF, length, length / 4, (length / 8), (length / 4));
+
+						// For Left Flipper
+						g.fillRoundRect(xF, yF, length, length / 4, (length /8), (length / 4));
+						
+					}
 				}
-					
-				
 			}
 		}
 	}
-	
-	
-	
-	
+
+	public void paintFlipperR(Graphics g) {
+		if (model.getFlippers() != null) {
+			for (IFlipper flipper : model.getFlippers()) {
+				if (flipper.getRight() == true) {
+					int xF = (int) flipper.getX();
+					int yF = (int) flipper.getY();
+					int length = flipper.getLength();
+
+					if (flipper.getRotated() == false) {
+						g.setColor(flipper.getColour());
+						g.fillRoundRect(xF, yF, (length / 4), length, (length / 8), (length / 4));
+					} else if (flipper.getRotated() == true) {
+						g.setColor(flipper.getColour());
+
+						// For right flipper
+						g.fillRoundRect(xF - (length * 3 / 4), yF, length, length / 4, (length / 8), (length / 4));
+					}
+				}
+			}
+		}
+	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {

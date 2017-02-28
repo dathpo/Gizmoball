@@ -19,9 +19,7 @@ public List<LineSegment> getLineSegments();
 	
 	public double getY();
 	
-	public int getOrientation();
-	
-	public void trigger();
+	public boolean getRight();
 
 	public int getLength();
 	

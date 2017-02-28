@@ -1,3 +1,4 @@
+
 package model;
 
 import java.util.List;
@@ -6,8 +7,18 @@ public interface IModel {
 
 	public Ball getBall();
 
-	
+	public List<IBumper> getBumpers();
+
+	public List<IAbsorber> getAbsorbers();
 
 	public List<IFlipper> getFlippers();
+	
+	public void rFlipperActivate();
+	
+	public void lFlipperActivate();
+	
+	public void rFlipperDeactivate();
+	
+	public void lFlipperDeactivate();
    
 }
