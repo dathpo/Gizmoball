@@ -22,7 +22,7 @@ public class Model extends Observable implements IModel {
 		bumpers = new ArrayList<IBumper>();
 		absorbers = new ArrayList<IAbsorber>();
 		flippers = new ArrayList<IFlipper>();
-		ball = new Ball(200, 130, 2000, 0, 5, Color.BLUE);
+		ball = new Ball(240, 130, 250, 2000, 5, Color.BLUE);
 		walls = new Walls(0, 0, 20, 20);
 //		bumpers.add(new CircleBumper(18, 14, Color.GREEN));
 //		bumpers.add(new CircleBumper(15, 11, Color.GREEN));

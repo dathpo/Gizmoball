@@ -18,7 +18,7 @@ public class PlayListeners implements ActionListener{
 
 	public PlayListeners(Model m) {
 		model = m;
-		timer = new Timer(50, this);
+		timer = new Timer(40, this);
 		
 	}
 
