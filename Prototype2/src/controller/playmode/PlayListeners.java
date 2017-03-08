@@ -1,12 +1,15 @@
 package controller.playmode;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
 import main.Main;
 import model.Model;
+import view.BuildGUI;
+import view.PlayGUI;
 
 public class PlayListeners implements ActionListener {
 
@@ -20,13 +23,14 @@ public class PlayListeners implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource() == timer) {
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
 			case "Build Mode":
-				main.switchToBM();
+				BuildGUI.makeFrameVisible();
+				PlayGUI.makeFrameInvisible();
 				break;
 			case "Start":
 				timer.start();
@@ -40,5 +44,5 @@ public class PlayListeners implements ActionListener {
 				break;
 			}
 	}
-	
+
 }

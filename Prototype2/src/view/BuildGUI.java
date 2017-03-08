@@ -1,231 +1,239 @@
 package view;
 
-
 import javax.swing.*;
 
+import controller.buildmode.*;
 import main.Main;
 import model.Model;
-
 import java.awt.*;
 
 public class BuildGUI extends JPanel implements IGUI {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-    private JFrame buildFrame;
+	private static final long serialVersionUID = 1L;
+	private static JFrame buildFrame;
 	private Main main;
 	private Model model;
+	private Board buildBoard;
 
-    public BuildGUI(Main main, Model model) {
+	private AddAbsorberL addAbsorberL;
+	private AddBallL addBallL;
+	private AddCircleBL addCircleBL;
+	private AddLFlipperL addLFlipperL;
+	private AddRFlipperL addRFlipperL;
+	private AddSquareBL addSquareBL;
+	private AddTriangleBL addTriangleBL;
+	private ClearBoardL clearBoardL;
+	private ConnectGizmoL connectGizmoL;
+	private DeleteGizmoL deleteGizmoL;
+	private DisconnectGizmoL disconnectGizmoL;
+	private KeyConnectL keyConnectL;
+	private KeyDisconnectL keyDisconnectL;
+	private LoadL loadL;
+	private MoveGizmoL moveGizmoL;
+	private RotateGizmoL rotateGizmoL;
+	private SaveL saveL;
+	private SetFrictionL setFrictionL;
+	private SetGravityL setGravityL;
+	private SwitchToPML switchToPML;
+	private ExitL exitL;
 
-    	this.main = main;
+	public BuildGUI(Main main, Model model) {
+
+		this.main = main;
 		this.model = model;
-        BuildFrame();
-        MenuBar();
-        Mode();
-        Operations();
-        Gizmos();
-        BallEdit();
-        Board();
-        makeFrameVisible();
-    }
 
-    public void BuildFrame() {
+		addAbsorberL = new AddAbsorberL(model);
+		addBallL = new AddBallL(model);
+		addCircleBL = new AddCircleBL(model);
+		addLFlipperL = new AddLFlipperL(model);
+		addRFlipperL = new AddRFlipperL(model);
+		addSquareBL = new AddSquareBL(model);
+		addTriangleBL = new AddTriangleBL(model);
+		clearBoardL = new ClearBoardL(model);
+		connectGizmoL = new ConnectGizmoL(model);
+		deleteGizmoL = new DeleteGizmoL(model);
+		disconnectGizmoL = new DisconnectGizmoL(model);
+		keyConnectL = new KeyConnectL(model);
+		keyDisconnectL = new KeyDisconnectL(model);
+		loadL = new LoadL(model);
+		moveGizmoL = new MoveGizmoL(model);
+		rotateGizmoL = new RotateGizmoL(model);
+		saveL = new SaveL(model);
+		setFrictionL = new SetFrictionL(model);
+		setGravityL = new SetGravityL(model);
+		switchToPML = new SwitchToPML(model);
+		exitL = new ExitL(model);
 
-        buildFrame = new JFrame();
-        buildFrame.setTitle("Gizmoball Build Mode");
-        buildFrame.setSize(1500, 1000);
-        buildFrame.setLocationRelativeTo(null);
-        buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
+		BuildFrame();
+		MenuBar();
+		Mode();
+		Operations();
+		Gizmos();
+		BallEdit();
+		Board();
+		makeFrameVisible();
+	}
 
-    public void makeFrameVisible() {
+	public void BuildFrame() {
 
-        buildFrame.setVisible(true);
-    }
+		buildFrame = new JFrame();
+		buildFrame.setTitle("Gizmoball Build Mode");
+		buildFrame.setSize(1000, 1000);
+		buildFrame.setLocationRelativeTo(null);
+		buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
 
-    public void MenuBar() {
+	public static void makeFrameVisible() {
 
-        JMenuBar MenuBar = new JMenuBar();
-        buildFrame.setJMenuBar(MenuBar);
+		buildFrame.setVisible(true);
+		buildFrame.pack();
+	}
 
-        JMenu MenuOptions = new JMenu("Options");
-        MenuBar.add(MenuOptions);
+	public static void makeFrameInvisible() {
 
-        JMenuItem load = new JMenuItem("Load");
-        MenuOptions.add(load);
+		buildFrame.setVisible(false);
+		buildFrame.pack();
+	}
 
-        JMenuItem Save = new JMenuItem("Save");
-        MenuOptions.add(Save);
+	public void MenuBar() {
 
-        JMenuItem Exit = new JMenuItem("Exit");
-        MenuOptions.add(Exit);
+		JMenuBar MenuBar = new JMenuBar();
+		buildFrame.setJMenuBar(MenuBar);
 
-    }
+		JMenu MenuOptions = new JMenu("Options");
+		MenuBar.add(MenuOptions);
 
-    public void Mode() {
+		JMenuItem load = new JMenuItem("Load");
+		MenuOptions.add(load);
+		load.addActionListener(loadL);
 
-        JPanel buttons = new JPanel();
+		JMenuItem save = new JMenuItem("Save");
+		MenuOptions.add(save);
+		save.addActionListener(saveL);
 
-        JButton run = new JButton("Play Mode");
-        buttons.add(run);
+		JMenuItem exit = new JMenuItem("Exit");
+		MenuOptions.add(exit);
+		exit.addActionListener(exitL);
+	}
 
-        buildFrame.getContentPane().add(buttons, BorderLayout.NORTH);
+	public void Mode() {
 
-    }
+		JPanel mode = new JPanel();
 
-    public void Gizmos() {
+		JButton playMode = new JButton("Play Mode");
+		mode.add(playMode);
+		playMode.addActionListener(switchToPML);
 
-        JPanel buttons = new JPanel();
-        buttons.setLayout(new GridLayout(10, 2));
+		buildFrame.getContentPane().add(mode, BorderLayout.NORTH);
 
-        JButton circle = new JButton("Circle");
-        buttons.add(circle);
+	}
 
-        JButton triangle = new JButton("Triangle");
-        buttons.add(triangle);
+	public void Gizmos() {
 
-        JButton square = new JButton("Square");
-        buttons.add(square);
+		JPanel gizmos = new JPanel();
+		gizmos.setLayout(new GridLayout(10, 2));
 
-        JButton lFlipper = new JButton("Left Flipper");
-        buttons.add(lFlipper);
+		JButton circle = new JButton("Add Circle");
+		gizmos.add(circle);
+		circle.addActionListener(addCircleBL);
 
-        JButton rFlipper = new JButton("Right Flipper");
-        buttons.add(rFlipper);
+		JButton triangle = new JButton("Add Triangle");
+		gizmos.add(triangle);
+		triangle.addActionListener(addTriangleBL);
 
-        JButton absorb = new JButton("Absorber");
-        buttons.add(absorb);
+		JButton square = new JButton("Add Square");
+		gizmos.add(square);
+		square.addActionListener(addSquareBL);
 
-        buildFrame.getContentPane().add(buttons, BorderLayout.WEST);
-    }
+		JButton lFlipper = new JButton("Add Left Flipper");
+		gizmos.add(lFlipper);
+		lFlipper.addActionListener(addLFlipperL);
 
-    public void BallEdit() {
+		JButton rFlipper = new JButton("Add Right Flipper");
+		gizmos.add(rFlipper);
+		rFlipper.addActionListener(addRFlipperL);
 
-        JPanel buttons = new JPanel(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.VERTICAL;
-        c.anchor = GridBagConstraints.NORTH;
+		JButton absorber = new JButton("Add Absorber");
+		gizmos.add(absorber);
+		absorber.addActionListener(addAbsorberL);
 
-        JButton friction = new JButton("Friction");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.ipadx = 40;
-        c.ipady = 20;
-        buttons.add(friction, c);
+		buildFrame.getContentPane().add(gizmos, BorderLayout.WEST);
+	}
 
-        JTextField frictionT1 = new JTextField();
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridx = 1;
-        c.gridy = 0;
-        c.ipadx = 40;
-        c.ipady = 20;
-        buttons.add(frictionT1, c);
+	public void BallEdit() {
 
-        JTextField frictionT2 = new JTextField();
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridx = 2;
-        c.gridy = 0;
-        c.ipadx = 40;
-        c.ipady = 20;
-        buttons.add(frictionT2, c);
+		JPanel edit = new JPanel();
+		edit.setLayout(new GridLayout(10, 2));
 
-        JButton gravity = new JButton("Gravity");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridx = 0;
-        c.gridy = 1;
-        c.ipadx = 40;
-        c.ipady = 20;
-        buttons.add(gravity, c);
+		JButton gravity = new JButton("Gravity");
+		edit.add(gravity);
+		gravity.addActionListener(setGravityL);
+		JTextField gravityT = new JTextField();
+		edit.add(gravityT);
+		gravityT.addActionListener(setGravityL);
 
-        JTextField gravityT1 = new JTextField();
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridx = 1;
-        c.gridy = 1;
-        c.ipadx = 40;
-        c.ipady = 20;
-        buttons.add(gravityT1, c);
+		JButton friction = new JButton("Friction");
+		edit.add(friction);
+		friction.addActionListener(setFrictionL);
+		JTextField frictionT = new JTextField();
+		edit.add(frictionT);
+		frictionT.addActionListener(setFrictionL);
 
-        JTextField gravityT2 = new JTextField();
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridx = 2;
-        c.gridy = 1;
-        c.ipadx = 40;
-        c.ipady = 20;
-        buttons.add(gravityT2, c);
+		JButton addBall = new JButton("Add Ball");
+		edit.add(addBall);
+		addBall.addActionListener(addBallL);
+		JTextField addBallT = new JTextField();
+		edit.add(addBallT);
+		frictionT.addActionListener(addBallL);
 
-        JButton addBall = new JButton("Add Ball");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridx = 0;
-        c.gridy = 2;
-        c.ipadx = 40;
-        c.ipady = 20;
-        buttons.add(addBall, c);
+		buildFrame.getContentPane().add(edit, BorderLayout.EAST);
+	}
 
-        JTextField addBallT1 = new JTextField();
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
-        c.gridx = 1;
-        c.gridy = 2;
-        c.ipadx = 40;
-        c.ipady = 20;
-        buttons.add(addBallT1, c);
+	public void Operations() {
 
-        buildFrame.getContentPane().add(buttons, BorderLayout.EAST);
-    }
+		JPanel operations = new JPanel();
+		operations.setLayout(new GridLayout(2, 10));
 
-    public void Operations() {
+		JButton move = new JButton("Move Gizmo");
+		operations.add(move);
+		move.addActionListener(moveGizmoL);
 
-        JPanel operations = new JPanel();
-        operations.setLayout(new GridLayout(2, 10));
+		JButton rotate = new JButton("Rotate Gizmo");
+		operations.add(rotate);
+		rotate.addActionListener(rotateGizmoL);
 
-        JButton move = new JButton("Move Gizmo");
-        operations.add(move);
+		JButton delete = new JButton("Delete Gizmo");
+		operations.add(delete);
+		delete.addActionListener(deleteGizmoL);
 
-        JButton rotate = new JButton("Rotate Gizmo");
-        operations.add(rotate);
+		JButton clear = new JButton("Clear Gizmo");
+		operations.add(clear);
+		clear.addActionListener(clearBoardL);
 
-        JButton delete = new JButton("Delete Gizmo");
-        operations.add(delete);
+		JButton connect = new JButton("Connect Gizmo");
+		operations.add(connect);
+		connect.addActionListener(connectGizmoL);
 
-        JButton clear = new JButton("Clear Board");
-        operations.add(clear);
+		JButton disconnect = new JButton("Disconnect Gizmo");
+		operations.add(disconnect);
+		disconnect.addActionListener(disconnectGizmoL);
 
-        JButton connect = new JButton("Connect Gizmo");
-        operations.add(connect);
+		JButton kConnect = new JButton("Key Connect Gizmo");
+		operations.add(kConnect);
+		kConnect.addActionListener(keyConnectL);
 
-        JButton disconnect = new JButton("Disconnect Gizmo");
-        operations.add(disconnect);
+		JButton kDisconnect = new JButton("Key Disconnect Gizmo");
+		operations.add(kDisconnect);
+		kDisconnect.addActionListener(keyDisconnectL);
 
-        JButton keyConnect = new JButton("Key Connect Gizmo");
-        operations.add(keyConnect);
+		buildFrame.getContentPane().add(operations, BorderLayout.SOUTH);
+	}
 
-        JButton keyDisconnect = new JButton("Key Disconnect Gizmo");
-        operations.add(keyDisconnect);
+	public void Board() {
 
-        buildFrame.getContentPane().add(operations, BorderLayout.SOUTH);
-    }
+		buildBoard = new Board(400, 400, model);
+		buildFrame.getContentPane().add(buildBoard, BorderLayout.CENTER);
 
-    public void Board() {
-
-        JPanel board = new JPanel();
-
-        JTextArea gameBoard = new JTextArea();
-        board.add(gameBoard);
-
-        board.setBorder(BorderFactory.createLineBorder(Color.black));
-        buildFrame.getContentPane().add(board, BorderLayout.CENTER);
-
-    }
+	}
 
 }

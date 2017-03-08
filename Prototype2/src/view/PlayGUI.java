@@ -1,111 +1,123 @@
 package view;
 
 import javax.swing.*;
-
-import controller.playmode.ExitL;
-import controller.playmode.LoadL;
-import controller.playmode.ReloadL;
-import controller.playmode.PauseL;
-import controller.playmode.PlayListeners;
+import controller.playmode.*;
+import controller.buildmode.ExitL;
+import controller.buildmode.LoadL;
 import main.Main;
 import model.Model;
-
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class PlayGUI extends JPanel implements IGUI {
 
-    private static final long serialVersionUID = 1L;
-    private IGUI gui;
-    private JFrame playFrame;
+	private static final long serialVersionUID = 1L;
+	private IGUI gui;
+	static JFrame playFrame;
 	private Main main;
 	private Model model;
 	private Board playBoard;
+
 	private PlayListeners playL;
-	private PauseL pauseL;
 	private LoadL loadL;
 	private ReloadL reloadL;
 	private ExitL exitL;
 
-    public PlayGUI(Main main, Model m) {
+	public PlayGUI(Main main, Model m) {
 
-    	this.main = main;
+		this.main = main;
 		model = m;
-        playL = new PlayListeners(model);
-        PlayFrame();
-//        MenuBar();
-//        Mode();
-        Options();
-        Board();
-        makeFrameVisible();
-        
-    }
 
-    public void PlayFrame() {
+		playL = new PlayListeners(model);
+		loadL = new LoadL(model);
+		reloadL = new ReloadL(model);
+		exitL = new ExitL(model);
 
-        playFrame = new JFrame();
-        playFrame.setTitle("Gizmoball - Prototype 2: Collisions");
-        playFrame.setSize(500, 500);
-        playFrame.setLocationRelativeTo(null);
-        playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
+		PlayFrame();
+		MenuBar();
+		Mode();
+		Options();
+		Board();
+		makeFrameVisible();
+	}
 
-    public void makeFrameVisible() {
+	public void PlayFrame() {
 
-        playFrame.setVisible(true);
-        playFrame.pack();
-    }
+		playFrame = new JFrame();
+		playFrame.setTitle("Gizmoball Play Mode");
+		playFrame.setSize(1000, 1000);
+		playFrame.setLocationRelativeTo(null);
+		playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
 
-    public void MenuBar() {
+	public static void makeFrameVisible() {
 
-        JMenuBar MenuBar = new JMenuBar();
-        playFrame.setJMenuBar(MenuBar);
+		playFrame.setVisible(true);
+		playFrame.pack();
+	}
 
-        JMenu MenuOptions = new JMenu("Options");
-        MenuBar.add(MenuOptions);
+	public static void makeFrameInvisible() {
 
-        JMenuItem load = new JMenuItem("Load Build");
-        MenuOptions.add(load);
+		playFrame.setVisible(false);
+		playFrame.pack();
 
-        JMenuItem reload = new JMenuItem("Reload Build");
-        MenuOptions.add(reload);
+	}
 
-        JMenuItem exit = new JMenuItem("Exit");
-        MenuOptions.add(exit);
-    }
+	public void MenuBar() {
 
-    public void Mode() {
+		JMenuBar MenuBar = new JMenuBar();
+		playFrame.setJMenuBar(MenuBar);
 
-        JPanel buttons = new JPanel();
-        addButton(buttons,"Build Mode");
-        playFrame.getContentPane().add(buttons, BorderLayout.NORTH);
+		JMenu MenuOptions = new JMenu("Options");
+		MenuBar.add(MenuOptions);
 
-    }
+		JMenuItem load = new JMenuItem("Load");
+		MenuOptions.add(load);
+		load.addActionListener(loadL);
 
-    public void Options() {
+		JMenuItem exit = new JMenuItem("Exit");
+		MenuOptions.add(exit);
+		exit.addActionListener(exitL);
+	}
 
-        JPanel buttons = new JPanel();
-        buttons.setLayout(new GridLayout(10, 1));
-        
-        addButton(buttons,"Start");
-        addButton(buttons,"Pause");
-        addButton(buttons,"Tick");
+	public void Mode() {
 
-        playFrame.getContentPane().add(buttons, BorderLayout.WEST);
-    }
+		JPanel mode = new JPanel();
 
-    public void Board() {
+		JButton buildMode = new JButton("Build Mode");
+		mode.add(buildMode);
+		buildMode.addActionListener(playL);
 
-        playBoard = new Board(400, 400, model);
-        playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
-        
-    }
-    
-    private void addButton(JPanel buttons,String bName){
-        JButton button = new JButton(bName);
-        button.addActionListener(playL);
-        button.setMaximumSize(new Dimension(100, 100));
-        buttons.add(button);
-    }
+		playFrame.getContentPane().add(mode, BorderLayout.NORTH);
+	}
+
+	public void Options() {
+
+		JPanel options = new JPanel();
+		options.setLayout(new GridLayout(10, 1));
+
+		JButton start = new JButton("Start");
+		options.add(start);
+		start.addActionListener(playL);
+
+		JButton pause = new JButton("Pause");
+		options.add(pause);
+		pause.addActionListener(playL);
+
+		JButton tick = new JButton("Tick");
+		options.add(tick);
+		tick.addActionListener(playL);
+
+		JButton reload = new JButton("Reload");
+		options.add(reload);
+		reload.addActionListener(reloadL);
+
+		playFrame.getContentPane().add(options, BorderLayout.WEST);
+	}
+
+	public void Board() {
+
+		playBoard = new Board(400, 400, model);
+		playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
+	}
 
 }

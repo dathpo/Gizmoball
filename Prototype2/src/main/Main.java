@@ -12,19 +12,11 @@ public class Main {
 
 	public Main() {
 		model = new Model();
-		gui = new PlayGUI(this, model);
+		gui = new BuildGUI(this, model);
 	}
 
 	public static void main(String[] args) {
 		new Main();
 	}
-	
-	public void switchToBM() {
-		gui = new BuildGUI(this, model);
-	}
-	
-	public void switchToPM() {
-		gui = new PlayGUI(this, model);
-	}
-}
 
+}
