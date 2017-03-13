@@ -19,7 +19,6 @@ public class SwitchToPML implements ActionListener {
 
 	public SwitchToPML(Model m) {
 		model = m;
-		timer = new Timer(50, this);
 	}
 
 	public void actionPerformed(ActionEvent e) {

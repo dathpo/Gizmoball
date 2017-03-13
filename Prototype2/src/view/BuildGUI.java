@@ -91,7 +91,7 @@ public class BuildGUI extends JPanel implements IGUI {
 
 	public static void makeFrameInvisible() {
 
-		buildFrame.setVisible(false);
+		buildFrame.dispose();
 		buildFrame.pack();
 	}
 
@@ -233,7 +233,5 @@ public class BuildGUI extends JPanel implements IGUI {
 
 		buildBoard = new Board(400, 400, model);
 		buildFrame.getContentPane().add(buildBoard, BorderLayout.CENTER);
-
 	}
-
 }

@@ -10,7 +10,7 @@ import physics.Geometry;
 import physics.LineSegment;
 import physics.Vect;
 
-public class Model extends Observable implements IModel {      
+public class Model extends Observable implements IModel {
 
 	private Ball ball;
 	private Walls walls;
@@ -90,7 +90,8 @@ public class Model extends Observable implements IModel {
 	}
 
 	private Collisions timeUntilCollision() {
-		// Find Time Until Collision and also, if there is a collision, the new speed vector.
+		// Find Time Until Collision and also, if there is a collision, the new
+		// speed vector.
 		// Create a physics.Circle from Ball
 		Circle ballCircle = ball.getCircle();
 		Vect ballVelocity = ball.getVelo();
@@ -108,7 +109,7 @@ public class Model extends Observable implements IModel {
 				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 			}
 		}
-		for(IBumper bumper : bumpers) {
+		for (IBumper bumper : bumpers) {
 			for (LineSegment line : bumper.getLineSegments()) {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 				if (time < shortestTime) {
@@ -138,8 +139,12 @@ public class Model extends Observable implements IModel {
 	public List<IBumper> getBumpers() {
 		return bumpers;
 	}
-	
-	public List<IAbsorber> getAbsorbers() { 
+
+	public List<IAbsorber> getAbsorbers() {
 		return absorbers;
+	}
+
+	public void resetBall() {
+		ball = new Ball(19.25, 19, 0000, 2000, Color.BLUE);
 	}
 }

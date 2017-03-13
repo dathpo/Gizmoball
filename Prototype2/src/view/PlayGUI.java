@@ -57,7 +57,7 @@ public class PlayGUI extends JPanel implements IGUI {
 
 	public static void makeFrameInvisible() {
 
-		playFrame.setVisible(false);
+		playFrame.dispose();
 		playFrame.pack();
 
 	}
@@ -120,4 +120,8 @@ public class PlayGUI extends JPanel implements IGUI {
 		playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
 	}
 
+	public static void close() {
+
+		playFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+	}
 }

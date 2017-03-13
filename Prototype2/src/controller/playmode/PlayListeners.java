@@ -8,6 +8,7 @@ import javax.swing.Timer;
 
 import main.Main;
 import model.Model;
+import sun.security.timestamp.Timestamper;
 import view.BuildGUI;
 import view.PlayGUI;
 
@@ -31,6 +32,8 @@ public class PlayListeners implements ActionListener {
 			case "Build Mode":
 				BuildGUI.makeFrameVisible();
 				PlayGUI.makeFrameInvisible();
+				timer.stop();
+				model.resetBall();
 				break;
 			case "Start":
 				timer.start();
