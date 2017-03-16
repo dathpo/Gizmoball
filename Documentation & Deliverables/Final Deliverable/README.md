@@ -1,0 +1,1 @@
+One deiverable per group, please put group name in title of zip file that includes: executable jar and all source code for system, plus bullet list of design changes since week 6 design and documented results of (extended if necessary) Validation Testing.
