@@ -230,7 +230,7 @@ public class LoadModel {
 		int yCoord;
 
 		gizmoName = st.nextToken();
-		xCoord = Integer.valueOf(st.nextToken()) + 1;
+		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
 
 		System.out.println("Right Flipper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);

@@ -17,7 +17,6 @@ public class Model extends Observable implements IModel {
 	private List<IBumper> bumpers;
 	private List<IAbsorber> absorbers;
 	private List<IFlipper> flippers;
-	private List<RotateGizmo> rotations;
 	private boolean selectedSquare, selectedCircle, selectedTriangle, selectedAbsorber, selectedRFlipper, selectedLFlipper = false;
 	//	private LoadModel lm;
 
@@ -25,7 +24,6 @@ public class Model extends Observable implements IModel {
 		bumpers = new ArrayList<IBumper>();
 		absorbers = new ArrayList<IAbsorber>();
 		flippers = new ArrayList<IFlipper>();
-		rotations = new ArrayList<RotateGizmo>();
 //		absorbers.add(new Absorber(null, 0, 19, 2, 20, Color.MAGENTA));
 //		absorbers.add(new Absorber(null, 0, 19, 20, 20, Color.MAGENTA));
 //		absorbers.add(new Absorber(null, 8, 19, 10, 20, Color.MAGENTA));
@@ -201,10 +199,6 @@ public class Model extends Observable implements IModel {
 		return flippers;
 	}
 
-	public List<RotateGizmo> getRotations() {
-		return rotations;
-
-	}
 	public void absorberRelease() {
 		List<IAbsorber> tester = getAbsorbers();
 
@@ -267,6 +261,10 @@ public class Model extends Observable implements IModel {
 				flippers.add(new RFlipper(null, x, y, Color.YELLOW));	
 			}		
 		}	
+	}
+	
+	public void moveGizmo(double x, double y) {
+		
 	}
 	
 	public void setGizmoFocus(int x){
@@ -368,6 +366,8 @@ public class Model extends Observable implements IModel {
 	public void clearArrays() {
 		bumpers.clear();
 		absorbers.clear();	
+		flippers.clear();
+		balls = null;
 	}
 
 	public void delete() {

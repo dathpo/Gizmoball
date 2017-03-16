@@ -3,28 +3,28 @@ package view;
 
 import javax.swing.*;
 
-import controller.AddAbsorberL;
-import controller.AddBallL;
-import controller.AddCircleBL;
-import controller.AddLFlipperL;
-import controller.AddRFlipperL;
-import controller.AddSquareBL;
-import controller.AddTriangleBL;
-import controller.ClearBoardL;
-import controller.ConnectGizmoL;
-import controller.DeleteGizmoL;
-import controller.DisconnectGizmoL;
-import controller.ExitL;
-import controller.GizmoSelectedL;
-import controller.KeyConnectL;
-import controller.KeyDisconnectL;
-import controller.LoadL;
-import controller.MoveGizmoL;
-import controller.RotateGizmoL;
-import controller.SaveL;
-import controller.SetFrictionL;
-import controller.SetGravityL;
-import controller.SwitchToPML;
+import controller.buildmode.AddAbsorberL;
+import controller.buildmode.AddBallL;
+import controller.buildmode.AddCircleBL;
+import controller.buildmode.AddLFlipperL;
+import controller.buildmode.AddRFlipperL;
+import controller.buildmode.AddSquareBL;
+import controller.buildmode.AddTriangleBL;
+import controller.buildmode.ClearBoardL;
+import controller.buildmode.ConnectGizmoL;
+import controller.buildmode.DeleteGizmoL;
+import controller.buildmode.DisconnectGizmoL;
+import controller.buildmode.ExitL;
+import controller.buildmode.GizmoSelectedL;
+import controller.buildmode.KeyConnectL;
+import controller.buildmode.KeyDisconnectL;
+import controller.buildmode.LoadL;
+import controller.buildmode.MoveGizmoL;
+import controller.buildmode.RotateGizmoL;
+import controller.buildmode.SaveL;
+import controller.buildmode.SetFrictionL;
+import controller.buildmode.SetGravityL;
+import controller.buildmode.SwitchToPML;
 import main.Main;
 import model.Model;
 import java.awt.*;
@@ -135,13 +135,13 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
         JMenu MenuOptions = new JMenu("Options");
         MenuBar.add(MenuOptions);
 
-        JMenuItem load = new JMenuItem("Load");
-        MenuOptions.add(load);
-    	load.addActionListener(loadL);
-
         JMenuItem save = new JMenuItem("Save");
         MenuOptions.add(save);
         save.addActionListener(saveL);
+        
+        JMenuItem load = new JMenuItem("Load");
+        MenuOptions.add(load);
+    	load.addActionListener(loadL);
 
         JMenuItem exit = new JMenuItem("Exit");
         MenuOptions.add(exit);
@@ -235,10 +235,6 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
 		operations.add(delete);
 		delete.addActionListener(deleteGizmoL);
 
-		JButton clear = new JButton("Clear Board");
-		operations.add(clear);
-		clear.addActionListener(clearBoardL);
-
 		JButton connect = new JButton("Connect Gizmo");
 		operations.add(connect);
 		connect.addActionListener(connectGizmoL);
@@ -246,6 +242,10 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
 		JButton disconnect = new JButton("Disconnect Gizmo");
 		operations.add(disconnect);
 		disconnect.addActionListener(disconnectGizmoL);
+		
+		JButton clear = new JButton("Clear Board");
+		operations.add(clear);
+		clear.addActionListener(clearBoardL);
 
 		JButton kConnect = new JButton("Key Connect Gizmo");
 		operations.add(kConnect);

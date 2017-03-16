@@ -2,14 +2,12 @@ package view;
 
 import javax.swing.*;
 
-
-import controller.ExitL;
-import controller.LoadL;
-import controller.ReloadL;
-import controller.PlayModeKeyL;
-import controller.AbsorberListener;
-import controller.PauseL;
-import controller.PlayListeners;
+import controller.playmode.AbsorberListener;
+import controller.playmode.PlayListeners;
+import controller.playmode.PlayModeKeyL;
+import controller.playmode.ReloadL;
+import controller.buildmode.ExitL;
+import controller.buildmode.LoadL;
 import main.Main;
 import model.LoadModel;
 import model.Model;
@@ -30,7 +28,6 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 	private Board playBoard;
 	
 	private PlayListeners playL;
-	private PauseL pauseL;
 	private LoadL loadL;
 	private ReloadL reloadL;
 	private ExitL exitL;

@@ -20,7 +20,7 @@ public class RFlipper implements IFlipper {
 
 	public RFlipper(String gizmoName, double x, double y, Color c) {
 		if ((int) x == x) {
-			x = x + 0.5;
+			x = x + 1.5;
 		}
 		this.x = x * L;
 		this.y = y * L;
