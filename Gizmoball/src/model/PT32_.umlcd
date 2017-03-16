@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_bAqgUPjfEeaoHcFUFb24Bg">
+  <modelElement href="PT32.uml#_aXyicPjfEeaoHcFUFb24Bg"/>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_bGLScPjfEeaoHcFUFb24Bg" name="model">
+    <modelElement href="PT32.uml#_a0BLdPjfEeaoHcFUFb24Bg"/>
+    <visualProperties xmi:id="_bGLScfjfEeaoHcFUFb24Bg" position="50.0,50.0" size="-1.0,-1.0"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_bGL5gPjfEeaoHcFUFb24Bg" name="java">
+    <modelElement href="PT32.uml#_a0BygPjfEeaoHcFUFb24Bg"/>
+    <visualProperties xmi:id="_bGL5gfjfEeaoHcFUFb24Bg" position="-115.0,50.0" size="-1.0,-1.0"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_bGMgkPjfEeaoHcFUFb24Bg" name="physics">
+    <modelElement href="PT32.uml#_a0CZkfjfEeaoHcFUFb24Bg"/>
+    <visualProperties xmi:id="_bGMgkfjfEeaoHcFUFb24Bg" position="200.0,50.0" size="-1.0,-1.0"/>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>

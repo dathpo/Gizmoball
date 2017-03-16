@@ -2,23 +2,53 @@ package view;
 
 import javax.swing.*;
 
+
+import controller.ExitL;
+import controller.LoadL;
+import controller.ReloadL;
+import controller.PlayModeKeyL;
+import controller.AbsorberListener;
+import controller.PauseL;
+import controller.PlayListeners;
+import main.Main;
+import model.LoadModel;
+import model.Model;
+
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class PlayGUI extends JPanel {
+public class PlayGUI extends JPanel implements IGUI, KeyListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private JFrame playFrame;
+	private IGUI gui;
+	static JFrame playFrame;
+	private Main main;
+	private Model model;
+	private LoadModel lm;
+	private Board playBoard;
+	
+	private PlayListeners playL;
+	private PauseL pauseL;
+	private LoadL loadL;
+	private ReloadL reloadL;
+	private ExitL exitL;
+	private AbsorberListener absorberL; 
+	private PlayModeKeyL flipperL;
 
-	public static void main(String[] args) {
+	public PlayGUI(Main main, Model m) {
 
-		new PlayGUI();
-	}
-
-	public PlayGUI() {
-
+		this.main = main;
+		model = m;
+		
+		playL = new PlayListeners(model);
+		loadL = new LoadL(model);
+		reloadL = new ReloadL(model);
+		absorberL = new AbsorberListener(model);
+		flipperL = new PlayModeKeyL(model);
+		exitL = new ExitL(model);
+		
 		PlayFrame();
 		MenuBar();
 		Mode();
@@ -30,15 +60,27 @@ public class PlayGUI extends JPanel {
 	public void PlayFrame() {
 
 		playFrame = new JFrame();
-		playFrame.setTitle("Gizmoball Play Mode");
-		playFrame.setSize(1000, 1000);
+        playFrame.addKeyListener(this);
+        playFrame.setFocusable(true);
+        playFrame.setFocusTraversalKeysEnabled(false);
+		playFrame.setTitle("Gizmoball");
+		playFrame.setSize(500, 500);
 		playFrame.setLocationRelativeTo(null);
 		playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		playFrame.setResizable(false);
 	}
 
 	public void makeFrameVisible() {
 
 		playFrame.setVisible(true);
+		playFrame.pack();
+	}
+	
+	public static void makeFrameInvisible() {
+
+		playFrame.dispose();
+		playFrame.pack();
+
 	}
 
 	public void MenuBar() {
@@ -49,24 +91,24 @@ public class PlayGUI extends JPanel {
 		JMenu MenuOptions = new JMenu("Options");
 		MenuBar.add(MenuOptions);
 
-		JMenuItem load = new JMenuItem("Load Build");
+		JMenuItem load = new JMenuItem("Load");
 		MenuOptions.add(load);
-
-		JMenuItem reload = new JMenuItem("Reload Build");
-		MenuOptions.add(reload);
-
+		load.addActionListener(loadL);
+		
 		JMenuItem exit = new JMenuItem("Exit");
 		MenuOptions.add(exit);
+		exit.addActionListener(exitL);
+
 	}
-	
+
 	public void Mode() {
 
-		JPanel buttons = new JPanel();
-
-		JButton run = new JButton("Build Mode");
-		buttons.add(run);
-
-		playFrame.getContentPane().add(buttons, BorderLayout.NORTH);
+		JPanel mode = new JPanel();
+		
+		JButton buildMode = new JButton("Build Mode");
+		mode.add(buildMode);
+		buildMode.addActionListener(playL);
+		playFrame.getContentPane().add(mode, BorderLayout.NORTH);
 
 	}
 
@@ -75,31 +117,62 @@ public class PlayGUI extends JPanel {
 		JPanel buttons = new JPanel();
 		buttons.setLayout(new GridLayout(10, 1));
 
-		JButton start = new JButton("Start");
-		start.setMaximumSize(new Dimension(100, 100));
-		buttons.add(start);
-
-		JButton pause = new JButton("Pause");
-		pause.setMaximumSize(new Dimension(100, 100));
-		buttons.add(pause);
-
-		JButton tick = new JButton("Tick");
-		tick.setMaximumSize(new Dimension(100, 100));
-		buttons.add(tick);
+		addButton(buttons,"Start");
+		addButton(buttons,"Pause");
+		addButton(buttons,"Tick");
+		addButton(buttons,"Reset");
 
 		playFrame.getContentPane().add(buttons, BorderLayout.WEST);
 	}
 
 	public void Board() {
 
-		JPanel board = new JPanel();
+		playBoard = new Board(400, 400, model);
+		playBoard.setBackground(Color.black);
+		playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
+	}
 
-		JTextArea gameBoard = new JTextArea();
-		board.add(gameBoard);
+	private void addButton(JPanel buttons,String bName){
+		JButton button = new JButton(bName);
+		button.addActionListener(playL);
+		
+		button.addKeyListener(this);
+        button.setFocusable(true);
+        button.setFocusTraversalKeysEnabled(false);
+		
+		button.setMaximumSize(new Dimension(100, 100));
+		buttons.add(button);
+	}
 
-		board.setBorder(BorderFactory.createLineBorder(Color.black));
-		playFrame.getContentPane().add(board, BorderLayout.CENTER);
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		if(arg0.getKeyCode() == 32){
+			System.out.println("Space pressed");
+		} else flipperL.KeyPressed(arg0.getKeyCode());
+			System.out.println("q pressed");
+		}
 
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		if(arg0.getKeyCode() == 32){
+			System.out.println("key released");
+			absorberL.release();
+		} else 
+			flipperL.KeyReleased(arg0.getKeyCode());
+			System.out.println("q released");
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static void close() {
+
+		playFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 
 }
