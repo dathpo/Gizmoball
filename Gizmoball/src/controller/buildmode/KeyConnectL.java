@@ -3,18 +3,14 @@ package controller.buildmode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Model;
+import model.IModel;
 
 public class KeyConnectL implements ActionListener {
 
-	public KeyConnectL(Model model) {
-		// TODO Auto-generated constructor stub
+	public KeyConnectL(IModel model) {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void actionPerformed(ActionEvent e) {		
 	}   
-   
 }

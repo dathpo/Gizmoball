@@ -26,12 +26,11 @@ import controller.buildmode.SetFrictionL;
 import controller.buildmode.SetGravityL;
 import controller.buildmode.SwitchToPML;
 import main.Main;
-import model.Model;
+import model.IModel;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-import java.awt.*;
 
 public class BuildGUI extends JPanel implements IGUI, MouseListener {
 
@@ -40,8 +39,7 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
      */
     private static final long serialVersionUID = 1L;
     private static JFrame buildFrame;
-	private Main main;
-	private Model model;
+	private IModel model;
 	private Board buildBoard;
 	
 	private AddAbsorberL addAbsorberL;
@@ -67,10 +65,9 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
 	private ExitL exitL;
 	private GizmoSelectedL gizmoSelectedL;
 
-    public BuildGUI(Main main, Model model) {
+    public BuildGUI(Main main, IModel model) {
 
-    	this.main = main;
-		this.model = model;
+    	this.model = model;
 		
 		addAbsorberL = new AddAbsorberL(model);
 		addBallL = new AddBallL(model);

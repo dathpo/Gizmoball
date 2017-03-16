@@ -1,30 +1,19 @@
 package controller.buildmode;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
-
-import main.Main;
-import model.Model;
-import view.BuildGUI;
-import view.PlayGUI;
+import model.IModel;
 
 public class AddAbsorberL implements ActionListener {
 
-	
-	private Model model;
-	
+	private IModel model;
 
-	public AddAbsorberL(Model m) {
+	public AddAbsorberL(IModel m) {
 		model = m;
-		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.setGizmoFocus(5);
- 
 	}
 }

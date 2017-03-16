@@ -9,15 +9,11 @@ import java.io.IOException;
 import java.util.*;
 
 import model.IBumper;
-import model.IFlipper;
-import physics.Vect;
-import model.IAbsorber;
-import model.IBall;
 
 public class LoadModel {
-	private Model model;
-	private List<IModel> operation = new ArrayList<>();
-
+	
+	private IModel model;
+	
 	public LoadModel(Model model) {
 		this.model = model;
 	}
@@ -58,10 +54,10 @@ public class LoadModel {
 
 					else if (command.equals("Connect")) {
 
-						operation.add(connectParse(command, st));
+						connectParse(command, st);
 					} else if (command.equals("KeyConnect")) {
 
-						operation.add(connectKeyParse(command, st));
+						connectKeyParse(command, st);
 					}
 
 					else if (command.equals("Rotate")) {
@@ -158,7 +154,7 @@ public class LoadModel {
 		y2 = Integer.valueOf(st.nextToken());
 
 		System.out
-		.println("Absorber name: " + gizmoName + ", x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
+				.println("Absorber name: " + gizmoName + ", x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
 		return new Absorber(gizmoName, x1, y1, x2, y2, null);
 	}
 
@@ -178,7 +174,7 @@ public class LoadModel {
 		return true;
 	}
 
-	private IModel connectKeyParse(String command, StringTokenizer st) {
+	private KeyConnection connectKeyParse(String command, StringTokenizer st) {
 
 		String key;
 		int keyNum;
@@ -190,12 +186,12 @@ public class LoadModel {
 		action = st.nextToken();
 		consumer = st.nextToken();
 
-		System.out.println(
-				"Connect Key name: " + key + ", key #: " + keyNum + ", action: " + action + ", consumer name: " + consumer);
+		System.out.println("Connect Key name: " + key + ", key #: " + keyNum + ", action: " + action
+				+ ", consumer name: " + consumer);
 		return new KeyConnection(key, keyNum, action, consumer);
 	}
 
-	private IModel connectParse(String command, StringTokenizer st) {
+	private GizmoConnection connectParse(String command, StringTokenizer st) {
 
 		String producer;
 		String consumer;
@@ -203,9 +199,7 @@ public class LoadModel {
 		producer = st.nextToken();
 		consumer = st.nextToken();
 
-
-		System.out.println(
-				"Connect producer name: " + producer + ", consumer name: " + consumer);
+		System.out.println("Connect producer name: " + producer + ", consumer name: " + consumer);
 
 		return new GizmoConnection(producer, consumer);
 	}

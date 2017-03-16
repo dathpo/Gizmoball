@@ -3,18 +3,15 @@ package controller.buildmode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Model;
+import model.IModel;
 
 public class RotateGizmoL implements ActionListener {
 
-	public RotateGizmoL(Model model) {
-		// TODO Auto-generated constructor stub
+	public RotateGizmoL(IModel model) {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void actionPerformed(ActionEvent e) {		
 	}
    
 }

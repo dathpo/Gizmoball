@@ -4,13 +4,13 @@ package controller.playmode;
 
 import java.awt.event.KeyEvent;
 
-import model.Model;
+import model.IModel;
 
 public class PlayModeKeyL {
    
-	private Model model;
+	private IModel model;
 	
-	public PlayModeKeyL(Model m) {
+	public PlayModeKeyL(IModel m) {
 		model = m;
 	}
 	

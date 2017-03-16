@@ -9,19 +9,10 @@ import physics.LineSegment;
 
 
 public class Absorber implements IAbsorber {   
-	// 1- Absorber class Demonstrate a working absorber, ball motion, gravity, and friction.
-	//2 - In running mode, with no bumpers or flippers on the screen and the ball sitting still in the absorber, 
-	//3 - you should be able to press a key, observe the ball shoot up out of the absorber, slow down as it rises, 
-	//fall back to the absorber, and return to its original position. Also, 
-	//demonstrate that you can shoot it out a second time. (Note that you do not yet need to support configurable gravity or friction constants.)
-	// (Ball shoots straight up at standard initial ball velocity 50L/s being slowed down by standard gravity and friction. 
-	//Does it collide with the top wall? If so, at what velocity?)
-
+	
 	private double x1, y1, x2, y2;
 	private Color colour;
 	private static final double L = 20;
-	private int rotation;
-	private boolean absorbed;
 	private Ball ball;
 	private String gizmoName;
 	boolean hasBall;
@@ -126,6 +117,11 @@ public class Absorber implements IAbsorber {
 
 	public void getBall(){
 		this.hasBall = true;
+	}
+
+	@Override
+	public String getGizmoName() {
+		return gizmoName;
 	}
 
 }

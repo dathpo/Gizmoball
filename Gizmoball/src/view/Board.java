@@ -16,20 +16,18 @@ import model.IBall;
 import model.IBumper;
 import model.IFlipper;
 import model.IModel;
-import model.LFlipper;
-import model.Model;
-import model.RFlipper;
 import physics.Circle;
 import physics.LineSegment;
 
 public class Board extends JPanel implements Observer {
 
+	private static final long serialVersionUID = 1L;
 	protected static int width;
 	protected static int height;
 	private IModel model;
-	protected static final int L = 20;;
+	protected static final int L = 20;
 
-	public Board(int w, int h, Model m) {
+	public Board(int w, int h, IModel m) {
 		m.addObserver(this);
 		this.model = m;
 		width = w;

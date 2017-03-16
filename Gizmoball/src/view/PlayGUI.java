@@ -9,39 +9,32 @@ import controller.playmode.ReloadL;
 import controller.buildmode.ExitL;
 import controller.buildmode.LoadL;
 import main.Main;
-import model.LoadModel;
-import model.Model;
+import model.IModel;
 
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class PlayGUI extends JPanel implements IGUI, KeyListener {
 
 	private static final long serialVersionUID = 1L;
-	private IGUI gui;
 	static JFrame playFrame;
-	private Main main;
-	private Model model;
-	private LoadModel lm;
+	private IModel model;
 	private Board playBoard;
 	
 	private PlayListeners playL;
 	private LoadL loadL;
-	private ReloadL reloadL;
 	private ExitL exitL;
 	private AbsorberListener absorberL; 
 	private PlayModeKeyL flipperL;
 
-	public PlayGUI(Main main, Model m) {
+	public PlayGUI(Main main, IModel m) {
 
-		this.main = main;
 		model = m;
 		
 		playL = new PlayListeners(model);
 		loadL = new LoadL(model);
-		reloadL = new ReloadL(model);
+		new ReloadL(model);
 		absorberL = new AbsorberListener(model);
 		flipperL = new PlayModeKeyL(model);
 		exitL = new ExitL(model);
@@ -67,7 +60,7 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 		playFrame.setResizable(false);
 	}
 
-	public void makeFrameVisible() {
+	public static void makeFrameVisible() {
 
 		playFrame.setVisible(true);
 		playFrame.pack();

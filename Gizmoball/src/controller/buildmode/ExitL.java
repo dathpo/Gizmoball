@@ -2,17 +2,11 @@ package controller.buildmode;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import main.Main;
-import model.Model;
+import model.IModel;
 
 public class ExitL implements ActionListener {
 
-	private Model model;
-	private Main main;
-
-	public ExitL(Model m) {
-
-		model = m;
+	public ExitL(IModel m) {
 	}
 
 	@Override

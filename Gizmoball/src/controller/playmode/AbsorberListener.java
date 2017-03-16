@@ -1,14 +1,12 @@
 package controller.playmode;
 
-import main.Main;
-
-import model.Model;
+import model.IModel;
 
 public class AbsorberListener {
 
-	private Model model;
+	private IModel model;
 
-	public AbsorberListener(Model m) {
+	public AbsorberListener(IModel m) {
 		model = m;
 	}
 	

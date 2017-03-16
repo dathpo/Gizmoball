@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import main.Main;
-import model.Model;
+import model.IModel;
 
 import view.BuildGUI;
 import view.PlayGUI;
@@ -15,10 +15,10 @@ import view.PlayGUI;
 public class SwitchToPML implements ActionListener {
 
 	private Timer timer;
-	private Model model;
+	private IModel model;
 	private Main main;
 
-	public SwitchToPML(Model m) {
+	public SwitchToPML(IModel m) {
 		model = m;
 
 	}
