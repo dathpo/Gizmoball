@@ -14,7 +14,6 @@ public class KeyConnection implements IModel {
 		return null;
 	}
 
-	@Override
 	public List<IBumper> getBumpers() {
 		// TODO Auto-generated method stub
 		return null;
@@ -36,6 +35,6 @@ public class KeyConnection implements IModel {
 	public List<IFlipper> getFlippers() {
 		// TODO Auto-generated method stub
 		return null;
-	}   
-   
+	}
+
 }

@@ -16,7 +16,6 @@ public class GizmoConnection implements IModel {
 		return null;
 	}
 
-	@Override
 	public List<IBumper> getBumpers() {
 		// TODO Auto-generated method stub
 		return null;
@@ -39,5 +38,6 @@ public class GizmoConnection implements IModel {
 		// TODO Auto-generated method stub
 		return null;
 	}
-   
+
+
 }

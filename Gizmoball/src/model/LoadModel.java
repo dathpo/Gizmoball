@@ -65,7 +65,7 @@ public class LoadModel {
 					}
 
 					else if (command.equals("Rotate")) {
-						model.getRotations().add(rotateParse(command, st));
+						rotateParse(command, st);
 					}
 
 					else if (command.equals("Absorber")) {
@@ -157,17 +157,24 @@ public class LoadModel {
 		y2 = Integer.valueOf(st.nextToken());
 
 		System.out
-				.println("Absorber name: " + gizmoName + ", x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
+		.println("Absorber name: " + gizmoName + ", x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
 		return new Absorber(gizmoName, x1, y1, x2, y2, null);
 	}
 
-	private RotateGizmo rotateParse(String command, StringTokenizer st) {
+	private boolean rotateParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 
 		gizmoName = st.nextToken();
+		if (model.getBumpers() != null) {
+			for (IBumper bumper : model.getBumpers()) {
+				if (gizmoName.equals(bumper.getGizmoName())) {
+					bumper.rotate();
+				}
+			}
+		}
 		System.out.println("Rotate Gizmo named: " + gizmoName);
-		return new RotateGizmo(gizmoName);
+		return true;
 	}
 
 	private IModel connectKeyParse(String command, StringTokenizer st) {
@@ -195,10 +202,10 @@ public class LoadModel {
 		producer = st.nextToken();
 		consumer = st.nextToken();
 
-		
+
 		System.out.println(
 				"Connect producer name: " + producer + ", consumer name: " + consumer);
-		
+
 		return new GizmoConnection(producer, consumer);
 	}
 

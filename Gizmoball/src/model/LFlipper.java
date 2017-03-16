@@ -16,6 +16,7 @@ public class LFlipper implements IFlipper {
 	private String gizmoName;
 	private boolean right;
 	List<LineSegment> lineSegments = new ArrayList<LineSegment>();
+	List<Circle> circles = new ArrayList<Circle>();
 
 	public LFlipper(String gizmoName, double x, double y, Color c){
 		this.x = x*L;
@@ -30,14 +31,26 @@ public class LFlipper implements IFlipper {
 	public void setRotated(){
 		if(this.getRotated() == false){
 			this.rotated = true;
+			this.lineSegments.clear();
+			this.circles.clear();
 			
+			this.lineSegments.add(new LineSegment(x + (0.25 * L), y,	 x + (1.75 * L), y));
+			this.lineSegments.add(new LineSegment(x + (0.25 * L), y + (0.5 * L),	 x + (1.75 * L), y + (0.5 * L)));
+			
+			this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L/4));
+			this.circles.add(new Circle(x - (1.25 * L), y + (0.25 * L), L/4));
 		}
 	}
 	
 	public void setLineSegments(){
 		this.lineSegments.clear();
-		this.lineSegments.add(new LineSegment(x, y, x, y + L*2));
-		this.lineSegments.add(new LineSegment(x + L/2, y, x + L/2, y + L*2));
+		this.circles.clear();
+		
+		this.lineSegments.add(new LineSegment(x, y + (0.25 * L),	 x, y + (1.75 * L)));
+		this.lineSegments.add(new LineSegment(x + (0.5 * L), y + (0.25 * L), 	x + (0.5 * L), y + (1.75 * L)));
+		
+		this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L/4));
+		this.circles.add(new Circle(x + (0.25 * L), y + (1.75 * L), L/4));
 	}
 	
 	public void undoRotate() {
@@ -46,13 +59,6 @@ public class LFlipper implements IFlipper {
 			this.setLineSegments();
 		}
 	}
-
-//	public List<LineSegment> getLineSegments() {
-//		List<LineSegment> lineSegments = new ArrayList<LineSegment>();
-//		lineSegments.add(new LineSegment(x,		y,		x + (L/2),	y));
-//		lineSegments.add(new LineSegment(x,	y + (L*2),	x+ (L/2),	y+(L*2)));
-//		return lineSegments;
-//	}
 
 	@Override
 	public void setColour(Color colour) {
@@ -94,8 +100,7 @@ public class LFlipper implements IFlipper {
 
 	@Override
 	public List<Circle> getCircles() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.circles;
 	}
 
 	public String getGizmoName() {

@@ -55,4 +55,10 @@ public class CircleBumper implements IBumper {
 	public String getGizmoName() {
 		return gizmoName;
 	}
+
+	@Override
+	public void rotate() {
+		// TODO Auto-generated method stub
+		
+	}
 }

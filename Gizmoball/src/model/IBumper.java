@@ -22,4 +22,6 @@ public interface IBumper {
 	
 	public String getGizmoName();
 	
+	public void rotate();
+	
    }

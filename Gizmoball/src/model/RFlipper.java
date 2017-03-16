@@ -16,10 +16,11 @@ public class RFlipper implements IFlipper {
 	private String gizmoName;
 	private boolean right;
 	private List<LineSegment> lineSegments = new ArrayList<LineSegment>();
+	private List<Circle> circles = new ArrayList<Circle>();
 
 	public RFlipper(String gizmoName, double x, double y, Color c) {
 		if ((int) x == x) {
-			x += 0.5;
+			x = x + 0.5;
 		}
 		this.x = x * L;
 		this.y = y * L;
@@ -33,24 +34,31 @@ public class RFlipper implements IFlipper {
 	public void setRotated() {
 		if (this.getRotated() == false) {
 			this.rotated = true;
+			this.lineSegments.clear();
+			this.circles.clear();
+			
+			this.lineSegments.add(new LineSegment(x - (1.25 * L), y,	 x + (0.25 * L), y));
+			this.lineSegments.add(new LineSegment(x - (1.25 * L), y + (0.5 * L),	 x + (0.25 * L), y + (0.5 * L)));
+			
+			this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L/4));
+			this.circles.add(new Circle(x - (1.25 * L), y + (0.25 * L), L/4));
+			
 		}
 	}
 
 	public void setLineSegments() {
 		this.lineSegments.clear();
-		this.lineSegments.add(new LineSegment(x, y, x, y + L*2));
-		this.lineSegments.add(new LineSegment(x + L/2, y, x + L/2, y + L*2));
-
-		this.lineSegments.add(new LineSegment(x, y, x + L/2, y));
-		this.lineSegments.add(new LineSegment(x, y + L*2, x + L/2, y + L*2));
+		this.circles.clear();
+		
+		this.lineSegments.add(new LineSegment(x, y + (0.25 * L),	 x, y + (1.75 * L)));
+		this.lineSegments.add(new LineSegment(x + (0.5 * L), y + (0.25 * L), 	x + (0.5 * L), y + (1.75 * L)));
+		
+		this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L/4));
+		this.circles.add(new Circle(x + (0.25 * L), y + (1.75 * L), L/4));
+		
 	}
 
-	// public List<LineSegment> getLineSegments() {
-	// List<LineSegment> lineSegments = new ArrayList<LineSegment>();
-	// lineSegments.add(new LineSegment(x, y, x + (L/2), y));
-	// lineSegments.add(new LineSegment(x, y + (L*2), x+ (L/2), y+(L*2)));
-	// return lineSegments;
-	// }
+	 
 
 	public void undoRotate() {
 		if (this.getRotated() == true) {
@@ -86,8 +94,8 @@ public class RFlipper implements IFlipper {
 
 	@Override
 	public List<Circle> getCircles() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.circles;
 	}
 
 	public boolean getRight() {

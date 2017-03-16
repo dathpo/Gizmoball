@@ -98,7 +98,7 @@ public class Ball implements IBall {
 
 	public void fireBall(){
 		this.stopped = false;
-		this.setVelo(0, -1500);	
+		this.setVelo(0, -3000);	
 		System.out.println("Ball speeds updated");
 	}
 

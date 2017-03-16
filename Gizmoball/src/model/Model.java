@@ -39,7 +39,7 @@ public class Model extends Observable implements IModel {
 		//		absorbers.add(new Absorber(null, 15, 15, 20, 20, null));
 //		lFlippers.add(new LFlipper(null, 0, 10, Color.YELLOW));
 //				balls.add(new Ball("B", 1.0, 11.0, 0, 0, null));
-				balls = new Ball("C", 10, 6, 550, 1000, Color.BLUE);
+				balls = new Ball("C", 17, 0, 550, 1000, Color.BLUE);
 		//		ball = getBall();
 		//		ball = addBall("B", 1.0, 11.0, 0, 0, null);
 		//		System.out.println(bumpers.size() + " " + getBall().getGizmoName());
@@ -166,13 +166,13 @@ public class Model extends Observable implements IModel {
 					newVelo = Geometry.reflectWall(line, balls.getVelo(), 1);
 				}
 			}
-//			for (Circle circle : flipper.getCircles()) {
-//				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
-//				if (time < shortestTime) {
-//					shortestTime = time;
-//					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
-//				}
-//			}
+			for (Circle circle : flipper.getCircles()) {
+				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
+				if (time < shortestTime) {
+					shortestTime = time;
+					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
+				}
+			}
 		}
 		return new Collisions(shortestTime, newVelo);
 	}

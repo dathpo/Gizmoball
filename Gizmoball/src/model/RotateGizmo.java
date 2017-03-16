@@ -20,7 +20,6 @@ public class RotateGizmo implements IModel {
 		return null;
 	}
 
-	@Override
 	public List<IBumper> getBumpers() {
 		return null;
 	}
@@ -42,5 +41,6 @@ public class RotateGizmo implements IModel {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
