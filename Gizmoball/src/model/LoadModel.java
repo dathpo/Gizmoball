@@ -22,7 +22,7 @@ public class LoadModel {
 		this.model = model;
 	}
 
-	public void parse(String fileName) throws FileNotFoundException, IOException {
+	public LoadModel parse(String fileName) throws FileNotFoundException, IOException {
 		File file = new File(fileName);
 
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -78,6 +78,7 @@ public class LoadModel {
 				}
 			}
 		}
+		return null;
 
 	}
 

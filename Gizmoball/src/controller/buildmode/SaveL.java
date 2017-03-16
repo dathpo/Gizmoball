@@ -7,8 +7,10 @@ import model.Model;
 
 public class SaveL implements ActionListener{
 
+	private Model model;
+
 	public SaveL(Model model) {
-		// TODO Auto-generated constructor stub
+		this.model = model;
 	}
 
 	@Override

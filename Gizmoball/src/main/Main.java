@@ -24,7 +24,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new Main().loadModel("test.txt");
+					new Main();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
