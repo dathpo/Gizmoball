@@ -1,6 +1,8 @@
 package model;
 
 import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -405,6 +407,12 @@ public class Model extends Observable implements IModel {
 				iFlipper.undoRotate();
 			}
 		}
+	}
+
+	@Override
+	public LoadModel loadNewModel(String fileName) throws FileNotFoundException, IOException {
+		LoadModel loadModel = new LoadModel(this).parse(fileName);
+		return loadModel;
 	}
 
 //	public void addBall(Ball ballParse) {

@@ -13,9 +13,9 @@ import java.io.IOException;
 
 public class LoadL implements ActionListener {
 
-	private Model model;
+	private IModel model;
 
-	public LoadL(Model model) {
+	public LoadL(IModel model) {
 		this.model = model;
 	}
 
@@ -26,13 +26,13 @@ public class LoadL implements ActionListener {
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File selectedFile = fileChooser.getSelectedFile();
-				try {
-					LoadModel loadModel = new LoadModel(model).parse(selectedFile.toString());
-				} catch (FileNotFoundException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+					try {
+						model.loadNewModel(selectedFile.toString());
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 			}
 		}
 	}

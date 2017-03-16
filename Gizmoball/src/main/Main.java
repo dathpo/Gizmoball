@@ -16,10 +16,6 @@ public class Main {
 	private IGUI gui;
 	private Model model;
 
-	public void loadModel(String filename) throws FileNotFoundException, IOException {
-		new LoadModel(model).parse(filename);
-	}
-
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,7 +28,7 @@ public class Main {
 		});
 	}
 
-	public Main() throws FileNotFoundException, IOException {
+	public Main() {
 		model = new Model();
 		gui = new BuildGUI(this, model);
 	}

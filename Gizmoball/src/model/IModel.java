@@ -1,5 +1,7 @@
 package model;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public interface IModel {
@@ -13,5 +15,7 @@ public interface IModel {
 	public List<IFlipper> getFlippers();
 
 	void setBallContact();
+	
+	LoadModel loadNewModel(String fileName) throws FileNotFoundException, IOException;
    
 }
