@@ -1,4 +1,5 @@
 package model;
+
 import model.Ball;
 
 import java.util.ArrayList;
@@ -7,9 +8,8 @@ import java.awt.Color;
 import physics.Circle;
 import physics.LineSegment;
 
+public class Absorber implements IAbsorber {
 
-public class Absorber implements IAbsorber {   
-	
 	private double x1, y1, x2, y2;
 	private Color colour;
 	private static final double L = 20;
@@ -19,61 +19,57 @@ public class Absorber implements IAbsorber {
 	private List<LineSegment> lineSegments;
 	private List<Circle> circles;
 
-	public Absorber(String gizmoName, double x1, double y1, double x2, double y2, Color c){
+	public Absorber(String gizmoName, double x1, double y1, double x2, double y2, Color c) {
 		this.gizmoName = gizmoName;
-		this.x1 = x1*L;
-		this.y1 = y1*L;
+		this.x1 = x1 * L;
+		this.y1 = y1 * L;
 		this.colour = Color.MAGENTA;
-		this.x2 = x2*L;		
-		this.y2 = y2*L;
+		this.x2 = x2 * L;
+		this.y2 = y2 * L;
 	}
 
 	public List<LineSegment> getLineSegments() {
 		lineSegments = new ArrayList<LineSegment>();
-		lineSegments.add(new LineSegment(x1,				y1,			x2,		y1));
-		lineSegments.add(new LineSegment(x1,				y1,			x1,		y2));
-		lineSegments.add(new LineSegment(x1,				y2,			x2,		y2));
-		lineSegments.add(new LineSegment(x2,				y1,			x2,		y2));
+		lineSegments.add(new LineSegment(x1, y1, x2, y1));
+		lineSegments.add(new LineSegment(x1, y1, x1, y2));
+		lineSegments.add(new LineSegment(x1, y2, x2, y2));
+		lineSegments.add(new LineSegment(x2, y1, x2, y2));
 		return lineSegments;
 	}
 
 	public List<Circle> getCircles() {
 		circles = new ArrayList<Circle>();
-		circles.add(new Circle(x1,	y1,	0));
-		circles.add(new Circle(x2,	y1,	0));
-		circles.add(new Circle(x1,	y2,	0));
-		circles.add(new Circle(x2,	y2,	0));
+		circles.add(new Circle(x1, y1, 0));
+		circles.add(new Circle(x2, y1, 0));
+		circles.add(new Circle(x1, y2, 0));
+		circles.add(new Circle(x2, y2, 0));
 		return circles;
 	}
 
-	public void setX(double x){
-		this.x1 =x;
+	public void setX(double x) {
+		this.x1 = x;
 	}
 
-	public void setY(double y){
-		this.y1=y;
+	public void setY(double y) {
+		this.y1 = y;
 	}
 
-	public void setWidth(double width){
+	public void setWidth(double width) {
 		this.x2 = width;
 
 	}
-
 
 	public double getX1() {
 		return x1;
 	}
 
-
 	public double getY1() {
 		return y1;
 	}
 
-
 	public double getX2() {
 		return x2;
 	}
-
 
 	public double getY2() {
 		return y2;
@@ -89,24 +85,24 @@ public class Absorber implements IAbsorber {
 
 	@Override
 	public void absorb(Ball ball) {
-		
+
 		this.hasBall = true;
 		this.ball = ball;
 
-		this.ball.setX(getX2() - 0.25*L);
-		this.ball.setY(getY2() - 0.25*L);
+		this.ball.setX(getX2() - 0.25 * L);
+		this.ball.setY(getY2() - 0.25 * L);
 
 		this.ball.stopped();
 	}
 
 	public void release() {
-		
+
 		if (this.hasBall) {
-			
+
 			this.ball.setY(getY1());
 			this.ball.fireBall();
 			this.hasBall = false;
-			this.ball=null;
+			this.ball = null;
 		}
 	}
 
@@ -115,7 +111,7 @@ public class Absorber implements IAbsorber {
 		return this.hasBall;
 	}
 
-	public void getBall(){
+	public void getBall() {
 		this.hasBall = true;
 	}
 

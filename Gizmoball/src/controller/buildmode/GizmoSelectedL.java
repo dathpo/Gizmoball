@@ -16,15 +16,17 @@ public class GizmoSelectedL {
 
 	public void drawGizmo(MouseEvent e) {
 		Point coords = e.getPoint();
-		double x, y;
+		double x, y, xv, yv;
 
 		x = (int) coords.getX() / 20;
 		y = (int) coords.getY() / 20;
-		model.userPlacedBumper(x, y);
+		xv = 0.0;
+		yv = 0.0;
+		model.userPlacedGizmo(x, y, xv, yv);
 	}
 
 	public void drawAbsorber() {
-		model.userPlacedAbsorber(x1, y1, x2, y2);
+		model.userDragFilledGizmo(x1, y1, x2, y2);
 	}
 
 	public void pressed(MouseEvent e) {

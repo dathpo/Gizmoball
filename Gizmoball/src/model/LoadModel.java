@@ -69,7 +69,7 @@ public class LoadModel {
 					}
 
 					else if (command.equals("Ball")) {
-						model.addBall(ballParse(command, st));
+						ballParse(command, st);
 					}
 				}
 			}
@@ -121,7 +121,7 @@ public class LoadModel {
 
 	}
 
-	private Ball ballParse(String command, StringTokenizer st) {
+	private void ballParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
@@ -137,7 +137,7 @@ public class LoadModel {
 
 		System.out.println(
 				"Ball name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord + ", xv: " + xv + ", yv: " + yv);
-		return new Ball(gizmoName, xCoord, yCoord, xv, yv, null);
+		model.addBall(gizmoName, xCoord, yCoord, xv, yv, null);
 	}
 
 	private Absorber absorberParse(String command, StringTokenizer st) {

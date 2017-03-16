@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -8,7 +9,7 @@ import view.Board;
 
 public interface IModel {
 
-	public Ball getBalls();
+	public Ball getBall();
 
 	public List<IBumper> getBumpers();
 
@@ -22,11 +23,15 @@ public interface IModel {
 
 	public void clearArrays();
 
-	public void delete();
+	public void moveGizmo(double x, double y);
+	
+	public void rotateGizmo();
+	
+	public void deleteGizmo();
 
-	public void userPlacedBumper(double x, double y);
+	public void userPlacedGizmo(double x, double y, double xv, double yv);
 
-	public void userPlacedAbsorber(double x1, double y1, double x2, double y2);
+	public void userDragFilledGizmo(double x1, double y1, double x2, double y2);
 
 	public void moveBall();
 
@@ -42,10 +47,10 @@ public interface IModel {
 
 	public void lFlipperDeactivate();
 
-	public void addObserver(Board board);
-
 	void setBallContact();
 
-	public void addBall(Ball ballParse);
+	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c);
+
+	public void addObserver(Board board);
    
 }

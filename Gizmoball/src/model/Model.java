@@ -15,61 +15,44 @@ import view.Board;
 
 public class Model extends Observable implements IModel {
 
-	private Ball balls;
+	private Ball ball;
 	private Walls walls;
 	private List<IBumper> bumpers;
 	private List<IAbsorber> absorbers;
 	private List<IFlipper> flippers;
 	private boolean selectedSquare, selectedCircle, selectedTriangle, selectedAbsorber, selectedRFlipper,
-			selectedLFlipper = false;
-	// private LoadModel lm;
+	selectedLFlipper, selectedBall = false;
 
 	public Model() {
 		bumpers = new ArrayList<IBumper>();
 		absorbers = new ArrayList<IAbsorber>();
 		flippers = new ArrayList<IFlipper>();
-		// absorbers.add(new Absorber(null, 0, 19, 2, 20, Color.MAGENTA));
-		// absorbers.add(new Absorber(null, 0, 19, 20, 20, Color.MAGENTA));
-		// absorbers.add(new Absorber(null, 8, 19, 10, 20, Color.MAGENTA));
-		// absorbers.add(new Absorber(null, 12, 19, 14, 20, Color.MAGENTA));
-		// absorbers.add(new Absorber(null, 16, 19, 18, 20, Color.MAGENTA));
-		// flippers.add(new RFlipper(null, 9, 5, Color.MAGENTA));
-		// flippers.add(new LFlipper(null, 5, 5, Color.MAGENTA));
-		// balls = new ArrayList<IBall>();
 		walls = new Walls(0, 0, 20, 20);
-		// absorbers.add(new Absorber(null, 10, 15, 15, 16, Color.MAGENTA));
-		// absorbers.add(new Absorber(null, 15, 15, 20, 20, null));
-		// lFlippers.add(new LFlipper(null, 0, 10, Color.YELLOW));
-		// balls.add(new Ball("B", 1.0, 11.0, 0, 0, null));
-		balls = new Ball("C", 17, 0, 550, 1000, Color.BLUE);
-		// ball = getBall();
-		// ball = addBall("B", 1.0, 11.0, 0, 0, null);
-		// System.out.println(bumpers.size() + " " + getBall().getGizmoName());
 	}
 
 	public void moveBall() {
 
 		double moveTime = 0.01; // 0.05 = 20 times per second as per Gizmoball
 
-		if (balls != null && !balls.isStopped()) {
+		if (ball != null && !ball.isStopped()) {
 
 			Collisions cd = timeUntilCollision();
 			double tuc = cd.getTuc();
 			if (tuc > moveTime) {
 				// No collision ...
-				balls = movelBallForTime(balls, moveTime);
+				ball = movelBallForTime(ball, moveTime);
 			} else {
 				// We've got a collision in tuc
-				balls = movelBallForTime(balls, tuc);
+				ball = movelBallForTime(ball, tuc);
 				// Post collision velocity ...
 
 				if (absorbers.size() > 0) {
 
 					if (absorberHasBall()) {
-						absorberActivate(balls);
+						absorberActivate(ball);
 					}
 				}
-				balls.setVelo(cd.getVelo());
+				ball.setVelo(cd.getVelo());
 			}
 
 			// Notify observers ... redraw updated view
@@ -105,8 +88,8 @@ public class Model extends Observable implements IModel {
 		// Find Time Until Collision and also, if there is a collision, the new
 		// speed vector.
 		// Create a physics.Circle from Ball
-		Circle ballCircle = balls.getCircle();
-		Vect ballVelocity = balls.getVelo();
+		Circle ballCircle = ball.getCircle();
+		Vect ballVelocity = ball.getVelo();
 		Vect newVelo = new Vect(0, 0);
 
 		// Now find shortest time to hit a vertical line or a wall line
@@ -118,7 +101,7 @@ public class Model extends Observable implements IModel {
 			time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 			if (time < shortestTime) {
 				shortestTime = time;
-				newVelo = Geometry.reflectWall(line, balls.getVelo(), 1);
+				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 			}
 		}
 		for (IBumper bumper : bumpers) {
@@ -126,7 +109,7 @@ public class Model extends Observable implements IModel {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 				if (time < shortestTime) {
 					shortestTime = time;
-					newVelo = Geometry.reflectWall(line, balls.getVelo(), 1);
+					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 				}
 			}
 			for (Circle circle : bumper.getCircles()) {
@@ -161,7 +144,7 @@ public class Model extends Observable implements IModel {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 				if (time < shortestTime) {
 					shortestTime = time;
-					newVelo = Geometry.reflectWall(line, balls.getVelo(), 1);
+					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 				}
 			}
 			for (Circle circle : flipper.getCircles()) {
@@ -175,16 +158,12 @@ public class Model extends Observable implements IModel {
 		return new Collisions(shortestTime, newVelo);
 	}
 
-	// public List<IBall> getBalls() {
-	// return null;
-	// }
-
-	public Ball getBalls() {
-		return balls;
+	public Ball getBall() {
+		return ball;
 	}
 
 	public void setBallSpeed(int x, int y) {
-		balls.setVelo(new Vect(x, y));
+		ball.setVelo(new Vect(x, y));
 	}
 
 	public List<IBumper> getBumpers() {
@@ -232,22 +211,21 @@ public class Model extends Observable implements IModel {
 
 	}
 
-	public Ball addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
-		return new Ball(gizmoName, x, y, xv, yv, null);
-	}
-
-	public void addBall(Ball ballParse) {
-		// ballParse.
-
+	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
+		ball = new Ball(gizmoName, x, y, xv, yv, Color.BLUE);
 	}
 
 	public void resetBall() {
-		balls = new Ball("C", 10, 6, 550, 1000, Color.BLUE);
+		if (ball != null) {
+			ball.setVelo(ball.getInitialVelo());
+			ball.setX(ball.getInitialX());
+			ball.setY(ball.getInitialY());
+		}
 	}
 
-	public void userPlacedBumper(double x, double y) {
+	public void userPlacedGizmo(double x, double y, double xv, double yv) {
 		if (selectedSquare || selectedCircle || selectedTriangle || selectedAbsorber || selectedLFlipper
-				|| selectedRFlipper) {
+				|| selectedRFlipper || selectedBall) {
 			if (selectedCircle) {
 				bumpers.add(new CircleBumper(null, x, y, Color.green));
 			} else if (selectedSquare) {
@@ -255,17 +233,24 @@ public class Model extends Observable implements IModel {
 			} else if (selectedTriangle) {
 				bumpers.add(new TriangleBumper(null, x, y, Color.blue));
 			} else if (selectedAbsorber) {
-				absorbers.add(new Absorber(null, x, y, y, y, Color.MAGENTA));
+				absorbers.add(new Absorber(null, x, y, x, y, Color.MAGENTA));
 			} else if (selectedLFlipper) {
 				flippers.add(new LFlipper(null, x, y, Color.ORANGE));
 			} else if (selectedRFlipper) {
 				flippers.add(new RFlipper(null, x, y, Color.YELLOW));
+			} else if (selectedBall) {
+				ball = new Ball(null, x, y, xv, yv, Color.BLUE);
 			}
 		}
 	}
 
 	public void moveGizmo(double x, double y) {
+	}
+	
+	public void rotateGizmo() {
+	}
 
+	public void deleteGizmo() {
 	}
 
 	public void setGizmoFocus(int x) {
@@ -277,6 +262,7 @@ public class Model extends Observable implements IModel {
 			selectedAbsorber = false;
 			selectedLFlipper = false;
 			selectedRFlipper = false;
+			selectedBall = false;
 			break;
 		case 1:
 			selectedCircle = false;
@@ -285,6 +271,7 @@ public class Model extends Observable implements IModel {
 			selectedAbsorber = false;
 			selectedLFlipper = false;
 			selectedRFlipper = false;
+			selectedBall = false;
 			break;
 		case 2:
 			selectedTriangle = false;
@@ -293,6 +280,7 @@ public class Model extends Observable implements IModel {
 			selectedAbsorber = false;
 			selectedLFlipper = false;
 			selectedRFlipper = false;
+			selectedBall = false;
 			break;
 		case 3:
 			selectedTriangle = false;
@@ -301,6 +289,7 @@ public class Model extends Observable implements IModel {
 			selectedAbsorber = false;
 			selectedLFlipper = true;
 			selectedRFlipper = false;
+			selectedBall = false;
 			break;
 		case 4:
 			selectedTriangle = false;
@@ -309,6 +298,7 @@ public class Model extends Observable implements IModel {
 			selectedAbsorber = false;
 			selectedLFlipper = false;
 			selectedRFlipper = true;
+			selectedBall = false;
 			break;
 		case 5:
 			selectedTriangle = false;
@@ -317,6 +307,7 @@ public class Model extends Observable implements IModel {
 			selectedAbsorber = true;
 			selectedLFlipper = false;
 			selectedRFlipper = false;
+			selectedBall = false;
 			break;
 		case 6:
 			selectedTriangle = false;
@@ -325,15 +316,25 @@ public class Model extends Observable implements IModel {
 			selectedAbsorber = false;
 			selectedLFlipper = false;
 			selectedRFlipper = false;
+			selectedBall = true;
+			break;
+		case 7:
+			selectedTriangle = false;
+			selectedSquare = false;
+			selectedCircle = false;
+			selectedAbsorber = false;
+			selectedLFlipper = false;
+			selectedRFlipper = false;
+			selectedBall = false;
 			break;
 		}
 	}
 
-	public void userPlacedAbsorber(double x1, double y1, double x2, double y2) {
+	public void userDragFilledGizmo(double x1, double y1, double x2, double y2) {
 		if (selectedAbsorber) {
 			for (int x = (int) x1; x <= x2; x++) {
 				for (int y = (int) y1; y <= y2; y++) {
-					absorbers.add(new Absorber(null, x, y, y2, y2, Color.MAGENTA));
+					absorbers.add(new Absorber(null, x, y, x2, y2, Color.MAGENTA));
 
 				}
 			}
@@ -368,12 +369,7 @@ public class Model extends Observable implements IModel {
 		bumpers.clear();
 		absorbers.clear();
 		flippers.clear();
-		balls = null;
-	}
-
-	public void delete() {
-		// TODO Auto-generated method stub
-
+		ball = null;
 	}
 
 	public void rFlipperActivate() {
@@ -416,12 +412,6 @@ public class Model extends Observable implements IModel {
 
 	@Override
 	public void addObserver(Board board) {
-		// TODO Auto-generated method stub
-
 	}
 
-	// public void addBall(Ball ballParse) {
-	// // TODO Auto-generated method stub
-	//
-	// }
 }

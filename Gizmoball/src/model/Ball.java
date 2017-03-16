@@ -9,6 +9,8 @@ public class Ball implements IBall {
 
 	private Vect velocity;
 	private double x, y;
+	private double ix, iy;
+	private Vect iv;
 	private Color colour;
 	private static final double L = 20;
 	private static final double RADIUS = 5;
@@ -19,6 +21,10 @@ public class Ball implements IBall {
 	public Ball(String gizmoName, double x, double y, double xv, double yv, Color c) {
 		this.x = (L*x)+RADIUS; // Centre coordinates
 		this.y = (L*y)+RADIUS;
+		ix = x;
+		iy = y;
+		iv = new Vect(xv,yv);
+		System.out.println(x+" "+y+" "+ix+" "+iy);
 		this.colour = Color.BLUE;
 		this.velocity = new Vect(xv, yv);
 		stopped = false;
@@ -28,7 +34,6 @@ public class Ball implements IBall {
 	public void setVelo(Vect v) {
 		this.velocity = v;
 	}
-	
 
 	public void setVelo(double xv, double yv) {
 		this.velocity = new Vect (xv, yv);
@@ -65,6 +70,18 @@ public class Ball implements IBall {
 
 	public double getY() {
 		return y;
+	}
+	
+	public double getInitialX() {
+		return ix*L+RADIUS;
+	}
+	
+	public double getInitialY() {
+		return iy*L+RADIUS;
+	}
+	
+	public Vect getInitialVelo() {
+		return iv;
 	}
 
 	public void start() {

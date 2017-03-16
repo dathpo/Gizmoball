@@ -6,10 +6,14 @@ import model.IModel;
 
 public class AddBallL implements ActionListener {
 
-	public AddBallL(IModel model) {
+	private IModel model;
+	
+	public AddBallL(IModel m) {
+		model = m;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		model.setGizmoFocus(6);
 	}
 }

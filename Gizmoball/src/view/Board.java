@@ -62,8 +62,8 @@ public class Board extends JPanel implements Observer {
 	}
 
 	public void paintBall(Graphics g) {
-		if (model.getBalls() != null) {
-			IBall ball = model.getBalls();
+		if (model.getBall() != null) {
+			IBall ball = model.getBall();
 			g.setColor(ball.getColour());
 			int radius = (int) (ball.getRadius());
 			int diameter = (int) (2 * radius);

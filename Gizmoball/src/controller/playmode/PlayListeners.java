@@ -45,8 +45,10 @@ public class PlayListeners implements ActionListener {
 			case "Reset":
 				timer.stop();
 				model.resetBall();
+				break;
 			case "Exit":
 				System.exit(0);
+				break;
 			}
 	}
 
