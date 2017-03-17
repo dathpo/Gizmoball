@@ -52,5 +52,7 @@ public interface IModel {
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c);
 
 	public void addObserver(Board board);
+
+	public double getGravity();
    
 }

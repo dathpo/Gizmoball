@@ -3,6 +3,7 @@ package controller.buildmode;
 import model.IModel;
 
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -18,14 +19,17 @@ public class LoadL implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		
 		if (e.getActionCommand().equals("Load")) {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				model.clearArrays();
 				File selectedFile = fileChooser.getSelectedFile();
 				try {
 					model.loadNewModel(selectedFile.toString());
+					model.resetBall();
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (IOException e1) {

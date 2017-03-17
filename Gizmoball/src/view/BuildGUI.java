@@ -105,7 +105,7 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
     public void BuildFrame() {
 
         buildFrame = new JFrame();
-        buildFrame.setTitle("Gizmoball");
+        buildFrame.setTitle("Gizmoball - Build Mode");
         buildFrame.setSize(618, 500);
         buildFrame.setLocationRelativeTo(null);
         buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -159,60 +159,54 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
 
     public void Gizmos() {
 
-    	JPanel gizmos = new JPanel();
-		gizmos.setLayout(new GridLayout(10, 2));
+    	JPanel leftPanel = new JPanel();
+    	leftPanel.setLayout(new GridLayout(10, 2));
 
-		JButton circle = new JButton("Add Circle");
-		gizmos.add(circle);
+		JButton circle = new JButton("Circle");
+		leftPanel.add(circle);
 		circle.addActionListener(addCircleBL);
 
-		JButton triangle = new JButton("Add Triangle");
-		gizmos.add(triangle);
+		JButton triangle = new JButton("Triangle");
+		leftPanel.add(triangle);
 		triangle.addActionListener(addTriangleBL);
 
-		JButton square = new JButton("Add Square");
-		gizmos.add(square);
+		JButton square = new JButton("Square");
+		leftPanel.add(square);
 		square.addActionListener(addSquareBL);
 
-		JButton lFlipper = new JButton("Add Left Flipper");
-		gizmos.add(lFlipper);
+		JButton lFlipper = new JButton("Left Flipper");
+		leftPanel.add(lFlipper);
 		lFlipper.addActionListener(addLFlipperL);
 
-		JButton rFlipper = new JButton("Add Right Flipper");
-		gizmos.add(rFlipper);
+		JButton rFlipper = new JButton("Right Flipper");
+		leftPanel.add(rFlipper);
 		rFlipper.addActionListener(addRFlipperL);
 
-		JButton absorber = new JButton("Add Absorber");
-		gizmos.add(absorber);
+		JButton absorber = new JButton("Absorber");
+		leftPanel.add(absorber);
 		absorber.addActionListener(addAbsorberL);
 		
-		JButton addBall = new JButton("Add Ball");
-		gizmos.add(addBall);
-		addBall.addActionListener(addBallL);
-		
-		buildFrame.getContentPane().add(gizmos, BorderLayout.WEST);
+		buildFrame.getContentPane().add(leftPanel, BorderLayout.WEST);
     }
 
     public void BallEdit() {
 
-    	JPanel edit = new JPanel();
-		edit.setLayout(new GridLayout(10, 2));
+    	JPanel rightPanel = new JPanel();
+    	rightPanel.setLayout(new GridLayout(10, 2));
 
+		JButton addBall = new JButton("Ball");
+		rightPanel.add(addBall);
+		addBall.addActionListener(addBallL);
+		
 		JButton gravity = new JButton("Gravity");
-		edit.add(gravity);
+		rightPanel.add(gravity);
 		gravity.addActionListener(setGravityL);
-		JTextField gravityT = new JTextField();
-		edit.add(gravityT);
-		gravityT.addActionListener(setGravityL);
 
 		JButton friction = new JButton("Friction");
-		edit.add(friction);
+		rightPanel.add(friction);
 		friction.addActionListener(setFrictionL);
-		JTextField frictionT = new JTextField();
-		edit.add(frictionT);
-		frictionT.addActionListener(setFrictionL);
 
-		buildFrame.getContentPane().add(edit, BorderLayout.EAST);
+		buildFrame.getContentPane().add(rightPanel, BorderLayout.EAST);
     }
 
     public void Operations() {
@@ -220,37 +214,37 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
     	JPanel operations = new JPanel();
 		operations.setLayout(new GridLayout(3, 3));
 
-		JButton move = new JButton("Move Gizmo");
+		JButton move = new JButton("Move");
 		operations.add(move);
 		move.addActionListener(moveGizmoL);
 
-		JButton rotate = new JButton("Rotate Gizmo");
+		JButton rotate = new JButton("Rotate");
 		operations.add(rotate);
 		rotate.addActionListener(rotateGizmoL);
 
-		JButton delete = new JButton("Delete Gizmo");
+		JButton delete = new JButton("Delete");
 		operations.add(delete);
 		delete.addActionListener(deleteGizmoL);
-
-		JButton connect = new JButton("Connect Gizmo");
-		operations.add(connect);
-		connect.addActionListener(connectGizmoL);
-
-		JButton disconnect = new JButton("Disconnect Gizmo");
-		operations.add(disconnect);
-		disconnect.addActionListener(disconnectGizmoL);
 		
 		JButton clear = new JButton("Clear Board");
 		operations.add(clear);
 		clear.addActionListener(clearBoardL);
 
-		JButton kConnect = new JButton("Key Connect Gizmo");
-		operations.add(kConnect);
-		kConnect.addActionListener(keyConnectL);
+		JButton connect = new JButton("Connect");
+		operations.add(connect);
+		connect.addActionListener(connectGizmoL);
 
-		JButton kDisconnect = new JButton("Key Disconnect Gizmo");
-		operations.add(kDisconnect);
-		kDisconnect.addActionListener(keyDisconnectL);
+		JButton disconnect = new JButton("Disconnect");
+		operations.add(disconnect);
+		disconnect.addActionListener(disconnectGizmoL);
+
+//		JButton kConnect = new JButton("Key Connect");
+//		operations.add(kConnect);
+//		kConnect.addActionListener(keyConnectL);
+//
+//		JButton kDisconnect = new JButton("Key Disconnect");
+//		operations.add(kDisconnect);
+//		kDisconnect.addActionListener(keyDisconnectL);
 
 		buildFrame.getContentPane().add(operations, BorderLayout.SOUTH);
     }

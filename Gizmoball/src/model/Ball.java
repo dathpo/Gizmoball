@@ -14,17 +14,17 @@ public class Ball implements IBall {
 	private Color colour;
 	private static final double L = 20;
 	private static final double RADIUS = 5;
+	private static final double DIAMETER = 10;	
 	private boolean stopped;
 	private String gizmoName;
 
 	// x, y coordinates and x,y velocity
 	public Ball(String gizmoName, double x, double y, double xv, double yv, Color c) {
-		this.x = (L*x)+RADIUS; // Centre coordinates
-		this.y = (L*y)+RADIUS;
+		this.x = (L*x)+DIAMETER; // Centre coordinates
+		this.y = (L*y)+DIAMETER;
 		ix = x;
 		iy = y;
 		iv = new Vect(xv,yv);
-		System.out.println(x+" "+y+" "+ix+" "+iy);
 		this.colour = Color.BLUE;
 		this.velocity = new Vect(xv, yv);
 		stopped = false;
@@ -43,10 +43,6 @@ public class Ball implements IBall {
 		return velocity;
 	}
 	
-//	public void setRadius(double r) {
-//		this.radius = r;
-//	}
-
 	public double getRadius() {
 		return RADIUS;
 	}
@@ -73,11 +69,11 @@ public class Ball implements IBall {
 	}
 	
 	public double getInitialX() {
-		return ix*L+RADIUS;
+		return ix*L+DIAMETER;
 	}
 	
 	public double getInitialY() {
-		return iy*L+RADIUS;
+		return iy*L+DIAMETER;
 	}
 	
 	public Vect getInitialVelo() {
@@ -112,11 +108,4 @@ public class Ball implements IBall {
 	public String getGizmoName() {
 		return gizmoName;
 	}
-
-	public void fireBall(){
-		this.stopped = false;
-		this.setVelo(0, -3000);	
-		System.out.println("Ball speeds updated");
-	}
-
 }

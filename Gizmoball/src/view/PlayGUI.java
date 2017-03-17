@@ -24,7 +24,7 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 
 	private PlayListeners playL;
 	private LoadL loadL;
-	private ReloadL reloadL;
+//	private ReloadL reloadL;
 	private ExitL exitL;
 	private AbsorberListener absorberL;
 	private PlayModeKeyL flipperL;
@@ -35,7 +35,7 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 
 		playL = new PlayListeners(model);
 		loadL = new LoadL(model);
-		reloadL = new ReloadL(model);
+//		reloadL = new ReloadL(model);
 		absorberL = new AbsorberListener(model);
 		flipperL = new PlayModeKeyL(model);
 		exitL = new ExitL(model);
@@ -54,7 +54,7 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 		playFrame.addKeyListener(this);
 		playFrame.setFocusable(true);
 		playFrame.setFocusTraversalKeysEnabled(false);
-		playFrame.setTitle("Gizmoball");
+		playFrame.setTitle("Gizmoball - Play Mode");
 		playFrame.setSize(500, 500);
 		playFrame.setLocationRelativeTo(null);
 		playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
