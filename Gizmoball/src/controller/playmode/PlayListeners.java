@@ -31,6 +31,8 @@ public class PlayListeners implements ActionListener {
 				PlayGUI.makeFrameInvisible();
 				timer.stop();
 				model.resetBall();
+				model.lFlipperDeactivate();
+				model.rFlipperDeactivate();
 				break;
 			case "Start":
 				timer.start();

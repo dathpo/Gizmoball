@@ -106,7 +106,7 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
 
         buildFrame = new JFrame();
         buildFrame.setTitle("Gizmoball");
-        buildFrame.setSize(617, 500);
+        buildFrame.setSize(618, 500);
         buildFrame.setLocationRelativeTo(null);
         buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         buildFrame.setResizable(false);

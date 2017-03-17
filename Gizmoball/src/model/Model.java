@@ -21,7 +21,7 @@ public class Model extends Observable implements IModel {
 	private List<IAbsorber> absorbers;
 	private List<IFlipper> flippers;
 	private boolean selectedSquare, selectedCircle, selectedTriangle, selectedAbsorber, selectedRFlipper,
-	selectedLFlipper, selectedBall = false;
+			selectedLFlipper, selectedBall = false;
 
 	public Model() {
 		bumpers = new ArrayList<IBumper>();
@@ -246,7 +246,7 @@ public class Model extends Observable implements IModel {
 
 	public void moveGizmo(double x, double y) {
 	}
-	
+
 	public void rotateGizmo() {
 	}
 
@@ -334,7 +334,7 @@ public class Model extends Observable implements IModel {
 		if (selectedAbsorber) {
 			for (int x = (int) x1; x <= x2; x++) {
 				for (int y = (int) y1; y <= y2; y++) {
-					absorbers.add(new Absorber(null, x, y, x2, y2, Color.MAGENTA));
+					absorbers.add(new Absorber(null, x, y, x2+1, y2+1, Color.MAGENTA));
 
 				}
 			}
