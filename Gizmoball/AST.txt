@@ -1,0 +1,21 @@
+Square S11 2 1
+Square S11  3 1
+Square S31  4 1
+Square S41  5 1
+Square S51  6 1
+Square S61  7 1
+Square S71  8 1
+Square S81  9 1
+Square S01  10 1
+Square S01  11 1
+Square S11  12 1
+Square S11  13 1
+Square S31  14 1
+Square S41  15 1
+Square S51  16 1
+Square S61  17 1
+Square S71  18 1
+Square S81  19 1
+Triangle T1 0 0
+Absorber A1 0 19 1 20
+Ball A 0 18 0 0

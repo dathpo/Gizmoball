@@ -9,5 +9,7 @@ public interface IGUI {
 //	public void makePGFrameVisible();
 //	
 //	public void makePGFrameInvisible();
+	
+	public void repaint();
    
    }

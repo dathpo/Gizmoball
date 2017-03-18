@@ -19,7 +19,7 @@ import model.IModel;
 import physics.Circle;
 import physics.LineSegment;
 
-public class Board extends JPanel implements Observer {
+public class Board extends JPanel implements IGUI, Observer {
 
 	private static final long serialVersionUID = 1L;
 	protected static int width;

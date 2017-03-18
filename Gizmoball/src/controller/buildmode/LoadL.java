@@ -19,7 +19,6 @@ public class LoadL implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
 		if (e.getActionCommand().equals("Load")) {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
@@ -30,6 +29,7 @@ public class LoadL implements ActionListener {
 				try {
 					model.loadNewModel(selectedFile.toString());
 					model.resetBall();
+					model.setLoadedFile(selectedFile);
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (IOException e1) {

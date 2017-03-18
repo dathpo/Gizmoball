@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -47,12 +48,16 @@ public interface IModel {
 
 	public void lFlipperDeactivate();
 
-	void setBallContact();
+//	void setBallContact();
 
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c);
 
 	public void addObserver(Board board);
 
 	public double getGravity();
+	
+	public void setLoadedFile(File f);
+	
+	public File getLoadedFile();
    
 }

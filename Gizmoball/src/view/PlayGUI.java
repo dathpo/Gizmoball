@@ -2,42 +2,29 @@ package view;
 
 import javax.swing.*;
 
-import controller.playmode.AbsorberListener;
-import controller.playmode.PlayListeners;
+import controller.playmode.PlayModeL;
 import controller.playmode.PlayModeKeyL;
-import controller.playmode.ReloadL;
 import controller.buildmode.ExitL;
-import controller.buildmode.LoadL;
 import main.Main;
 import model.IModel;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class PlayGUI extends JPanel implements IGUI, KeyListener {
+public class PlayGUI extends JPanel implements IGUI {
 
 	private static final long serialVersionUID = 1L;
 	static JFrame playFrame;
 	private IModel model;
 	private Board playBoard;
-
-	private PlayListeners playL;
-	private LoadL loadL;
-//	private ReloadL reloadL;
+	private PlayModeL playModeL;
+	private PlayModeKeyL playKeyL;
 	private ExitL exitL;
-	private AbsorberListener absorberL;
-	private PlayModeKeyL flipperL;
 
 	public PlayGUI(Main main, IModel m) {
 
 		model = m;
-
-		playL = new PlayListeners(model);
-		loadL = new LoadL(model);
-//		reloadL = new ReloadL(model);
-		absorberL = new AbsorberListener(model);
-		flipperL = new PlayModeKeyL(model);
+		playModeL = new PlayModeL(model);
+		playKeyL = new PlayModeKeyL(model);
 		exitL = new ExitL(model);
 
 		PlayFrame();
@@ -51,7 +38,6 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 	public void PlayFrame() {
 
 		playFrame = new JFrame();
-		playFrame.addKeyListener(this);
 		playFrame.setFocusable(true);
 		playFrame.setFocusTraversalKeysEnabled(false);
 		playFrame.setTitle("Gizmoball - Play Mode");
@@ -84,7 +70,11 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 
 		JMenuItem load = new JMenuItem("Load");
 		MenuOptions.add(load);
-		load.addActionListener(loadL);
+		load.addActionListener(playModeL);
+		
+		JMenuItem reload = new JMenuItem("Reload");
+		MenuOptions.add(reload);
+		reload.addActionListener(playModeL);
 
 		JMenuItem exit = new JMenuItem("Exit");
 		MenuOptions.add(exit);
@@ -98,7 +88,7 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 
 		JButton buildMode = new JButton("Build Mode");
 		mode.add(buildMode);
-		buildMode.addActionListener(playL);
+		buildMode.addActionListener(playModeL);
 		playFrame.getContentPane().add(mode, BorderLayout.NORTH);
 
 	}
@@ -125,9 +115,9 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 
 	private void addButton(JPanel buttons, String bName) {
 		JButton button = new JButton(bName);
-		button.addActionListener(playL);
+		button.addActionListener(playModeL);
 
-		button.addKeyListener(this);
+		button.addKeyListener(playKeyL);
 		button.setFocusable(true);
 		button.setFocusTraversalKeysEnabled(false);
 
@@ -135,31 +125,7 @@ public class PlayGUI extends JPanel implements IGUI, KeyListener {
 		buttons.add(button);
 	}
 
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		if (arg0.getKeyCode() == 32) {
-			System.out.println("Space pressed");
-		} else
-			flipperL.KeyPressed(arg0.getKeyCode());
-		System.out.println("q pressed");
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		if (arg0.getKeyCode() == 32) {
-			System.out.println("key released");
-			absorberL.release();
-		} else
-			flipperL.KeyReleased(arg0.getKeyCode());
-		System.out.println("q released");
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-	}
-
 	public static void close() {
-
 		playFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 

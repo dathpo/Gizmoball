@@ -26,11 +26,11 @@ public interface IAbsorber {
 	
 	public void release();
 
-	public boolean hasBall();
+	public boolean absorbed();
 	
 	public void absorb(Ball ball);
 	
-	public void getBall();
+//	public void getBall();
 	
 	public String getGizmoName();
 	

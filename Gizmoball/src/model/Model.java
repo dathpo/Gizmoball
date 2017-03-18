@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,15 +25,16 @@ public class Model extends Observable implements IModel {
 			selectedLFlipper, selectedBall = false;
 	private double mu, mu2, gravity;
 	private static final double L = 20;
+	private File loadedFile;
 
 	public Model() {
 		bumpers = new ArrayList<IBumper>();
 		absorbers = new ArrayList<IAbsorber>();
 		flippers = new ArrayList<IFlipper>();
 		walls = new Walls(0, 0, (int) L, (int) L);
-        mu = 0.025;
-        mu2 = 0.025;
-        gravity = 25;
+		mu = 0.025;
+		mu2 = 0.025;
+		gravity = 25;
 	}
 
 	public void moveBall() {
@@ -47,16 +49,21 @@ public class Model extends Observable implements IModel {
 				// No collision ...
 				ball = movelBallForTime(ball, moveTime);
 			} else {
+//				if (ball.getVelo().x() < 0.05 && ball.getVelo().x() > -0.05 && ball.getVelo().y() < 0.05
+//						&& ball.getVelo().y() > -0.05) {
+//					System.out.println(tuc + ", mt:" + moveTime);
 				// We've got a collision in tuc
 				ball = movelBallForTime(ball, tuc);
 				// Post collision velocity ...
-				if (absorbers.size() > 0) {
-
-					if (absorberHasBall()) {
-						absorberActivate(ball);
+				if (absorbers != null) {
+					for (IAbsorber absorber : absorbers) {
+						if (absorber.absorbed()) {
+							absorber.absorb(ball);
+						}
 					}
 				}
 				ball.setVelo(cd.getVelo());
+				System.out.println(ball.getVelo());
 			}
 
 			// Notify observers ... redraw updated view
@@ -67,45 +74,49 @@ public class Model extends Observable implements IModel {
 
 	public Vect applyFriction(Vect Vold, double time) {
 		double length = Vold.length();
-		return Vold.times((1 - (mu * time) - (mu2 * (length/L) * time)));
+		return Vold.times((1 - (mu * time) - (mu2 * (length / L) * time)));
 	}
 
 	public void applyGravity(double gravity) {
 		this.gravity = gravity;
 	}
-	
-	public double getGravity() {
-        return gravity;
-    }
-	
-	public void setFriction(double xFriction, double yFriction) {
-        this.mu = xFriction;
-        this.mu2 = yFriction;
-    }
-	
-	public double getFrictionX() {
-        return mu;
-    }
 
-    public double getFrictionY() {
-        return mu2;
-    }
+	public double getGravity() {
+		return gravity;
+	}
+
+	public void setFriction(double xFriction, double yFriction) {
+		this.mu = xFriction;
+		this.mu2 = yFriction;
+	}
+
+	public double getFrictionX() {
+		return mu;
+	}
+
+	public double getFrictionY() {
+		return mu2;
+	}
 
 	private Ball movelBallForTime(Ball ball, double time) {
-		
-		Vect temp = new Vect(ball.getVelo().x(), ball.getVelo().y() + (gravity*L*(time)));
+//		if (ball.getVelo().x() < 0.001 && ball.getVelo().x() > -0.001 && ball.getVelo().y() < 0.001
+//				&& ball.getVelo().y() > -0.001) {
+		Vect temp = new Vect(ball.getVelo().x(), ball.getVelo().y() + (gravity * L * (time)));
 		Vect Vnew = applyFriction(temp, time);
 		ball.setVelo(Vnew);
-		
+//		}
+
 		double newX = 0.0;
 		double newY = 0.0;
 		double xVel = ball.getVelo().x();
 		double yVel = ball.getVelo().y();
 		newX = ball.getX() + (xVel * time);
 		newY = ball.getY() + (yVel * time);
+//		System.out.println("newX: " + xVel + ", newY: " + yVel);
+		System.out.println(time);
 		ball.setX(newX);
 		ball.setY(newY);
-//		System.out.println("xv: " + ball.getVelo().x() + ", yv: " + ball.getVelo().y() + ", xv*yv: " + ball.getVelo().x()*ball.getVelo().y());
+
 		return ball;
 	}
 
@@ -124,8 +135,10 @@ public class Model extends Observable implements IModel {
 		// Time to collide with 4 walls
 		for (LineSegment line : walls.getLineSegments()) {
 			time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-			if (time == 0.0) {
-				ball.stop();
+			// System.out.println("time: " + time + ", ST: " + shortestTime);
+			if (time == 0.0 && shortestTime < 0.1) {
+				// ball.stop();
+//				this.gravity = 1;
 			} else if (time < shortestTime) {
 				shortestTime = time;
 				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
@@ -134,8 +147,9 @@ public class Model extends Observable implements IModel {
 		for (IBumper bumper : bumpers) {
 			for (LineSegment line : bumper.getLineSegments()) {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-				if (time == 0.0) {
-					ball.stop();
+				if (time == 0.0 && shortestTime < 0.1) {
+					// ball.stop();
+//					this.gravity = 1;
 				} else if (time < shortestTime) {
 					shortestTime = time;
 					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
@@ -143,9 +157,15 @@ public class Model extends Observable implements IModel {
 			}
 			for (Circle circle : bumper.getCircles()) {
 				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
-				if (time == 0.0) {
-					ball.stop();
+				if (time == 0.0 && shortestTime < 0.1) {
+					// System.out.println("time: " + time + ", ST: " +
+					// shortestTime);
+					// ball.stop();
+//					this.gravity = 1;
+					this.setFriction(0, 0);
 				} else if (time < shortestTime) {
+					// System.out.println("time: " + time + ", ST: " +
+					// shortestTime);
 					shortestTime = time;
 					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
 				}
@@ -154,42 +174,36 @@ public class Model extends Observable implements IModel {
 		for (IAbsorber absorber : absorbers) {
 			for (LineSegment line : absorber.getLineSegments()) {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-				if (time == 0.0) {
-					ball.stop();
-				} else if (time < shortestTime) {
-					System.out.println("time: " + time + ", ST: " + shortestTime);
-					shortestTime = time;
-					absorber.getBall();
+				if (time < 0.01) {
+					absorber.absorb(ball);
 				}
 			}
 			for (Circle circle : absorber.getCircles()) {
 				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
-				if (time == 0.0) {
-					ball.stop();
-				} else if (time < shortestTime) {
-					System.out.println("time: " + time + ", ST: " + shortestTime);
-					shortestTime = time;
-					absorber.getBall();
+				if (time < 0.01) {
+					absorber.absorb(ball);
 				}
 			}
-		}
-		for (IFlipper flipper : flippers) {
-			for (LineSegment line : flipper.getLineSegments()) {
-				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-				if (time == 0.0) {
-					ball.stop();
-				} else if (time < shortestTime) {
-					shortestTime = time;
-					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
+			for (IFlipper flipper : flippers) {
+				for (LineSegment line : flipper.getLineSegments()) {
+					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+//					if (time == 0.0) {
+//						ball.stop();
+//					} else
+						if (time < shortestTime) {
+						shortestTime = time;
+						newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
+					}
 				}
-			}
-			for (Circle circle : flipper.getCircles()) {
-				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
-				if (time == 0.0) {
-					ball.stop();
-				} else if (time < shortestTime) {
-					shortestTime = time;
-					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
+				for (Circle circle : flipper.getCircles()) {
+					time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
+//					if (time == 0.0 && shortestTime < 0.1) {
+//						ball.stop();
+//					} else
+						if (time < shortestTime) {
+						shortestTime = time;
+						newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
+					}
 				}
 			}
 		}
@@ -217,36 +231,9 @@ public class Model extends Observable implements IModel {
 	}
 
 	public void absorberRelease() {
-		List<IAbsorber> tester = getAbsorbers();
-
-		IAbsorber testAb = tester.get(0);
-		testAb.release();
-
-	}
-
-	public boolean absorberHasBall() {
-		List<IAbsorber> tester = getAbsorbers();
-
-		IAbsorber testAb = tester.get(0);
-		return testAb.hasBall();
-
-	}
-
-	public void absorberActivate(Ball ball) {
-		List<IAbsorber> tester = getAbsorbers();
-
-		IAbsorber testAb = tester.get(0);
-		testAb.absorb(ball);
-
-	}
-
-	@Override
-	public void setBallContact() {
-		List<IAbsorber> tester = getAbsorbers();
-
-		IAbsorber testAb = tester.get(0);
-		testAb.getBall();
-
+		for (IAbsorber absorber : absorbers) {
+			absorber.release();
+		}
 	}
 
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
@@ -261,6 +248,14 @@ public class Model extends Observable implements IModel {
 			ball.setY(ball.getInitialY());
 			ball.start();
 		}
+	}
+
+	public void setLoadedFile(File f) {
+		loadedFile = f;
+	}
+
+	public File getLoadedFile() {
+		return loadedFile;
 	}
 
 	public void userPlacedGizmo(double x, double y, double xv, double yv) {
@@ -397,13 +392,7 @@ public class Model extends Observable implements IModel {
 				}
 			}
 		}
-		System.out.println("Gizmo Placed through drag placement");
-
 	}
-	//
-	// public void setFocusAbsorber(){
-	// this.cAbsorber = true;
-	// }
 
 	public void clearArrays() {
 		bumpers.clear();

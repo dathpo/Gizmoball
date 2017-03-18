@@ -29,10 +29,8 @@ import main.Main;
 import model.IModel;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class BuildGUI extends JPanel implements IGUI, MouseListener {
+public class BuildGUI extends JPanel implements IGUI {
 
     /**
      *
@@ -253,38 +251,7 @@ public class BuildGUI extends JPanel implements IGUI, MouseListener {
 
     	buildBoard = new Board(400, 400, model);
 		buildFrame.getContentPane().add(buildBoard, BorderLayout.CENTER);
-		buildBoard.addMouseListener(this);
-		addMouseListener(this);
+		buildBoard.addMouseListener(gizmoSelectedL);
+
     }
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		gizmoSelectedL.drawGizmo(e);
-		buildBoard.repaint();
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		gizmoSelectedL.pressed(e);
-		buildBoard.repaint();
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		gizmoSelectedL.released(e);
-		buildBoard.repaint();
-	}
-
 }

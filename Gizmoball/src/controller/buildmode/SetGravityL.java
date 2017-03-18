@@ -17,7 +17,7 @@ public class SetGravityL implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {	
-		String inputG = JOptionPane.showInputDialog("Please enter a new value for Gravity, Current Gravity: "
-                + model.getGravity());
+		String inputG = JOptionPane.showInputDialog("Gravity is currenty set at "
+                + model.getGravity() + "Please enter a new value for Gravity");
 	}  
 }

@@ -2,9 +2,11 @@ package controller.buildmode;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import model.IModel;
 
-public class GizmoSelectedL {
+public class GizmoSelectedL implements MouseListener {
 
 	private IModel model;
 
@@ -29,22 +31,34 @@ public class GizmoSelectedL {
 		model.userDragFilledGizmo(x1, y1, x2, y2);
 	}
 
-	public void pressed(MouseEvent e) {
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		drawGizmo(e);
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
 		Point coords = e.getPoint();
-
+		
 		x1 = (int) coords.getX() / 20;
 		y1 = (int) coords.getY() / 20;
-
-		System.out.println("Pressed");
 	}
 
-	public void released(MouseEvent e) {
+	@Override
+	public void mouseReleased(MouseEvent e) {
 		Point coords = e.getPoint();
 
 		x2 = (int) coords.getX() / 20;
 		y2 = (int) coords.getY() / 20;
-
-		drawAbsorber();
+		
+		drawAbsorber();	
+	}
+	
+	@Override
+	public void mouseEntered(MouseEvent e) {
 	}
 
+	@Override
+	public void mouseExited(MouseEvent e) {		
+	}
 }

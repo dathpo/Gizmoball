@@ -1,54 +1,49 @@
 package controller.playmode;
 
-
-
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import model.IModel;
 
-public class PlayModeKeyL {
-   
+public class PlayModeKeyL implements KeyListener {
+
 	private IModel model;
-	
+
 	public PlayModeKeyL(IModel m) {
 		model = m;
 	}
-	
-	public void KeyPressed(int keyCode){
-		if(keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_E){
-			this.activateFlipper(keyCode);
-		}	
-	}
-	
-	public void KeyReleased(int keyCode){
-		if(keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_E){
-			this.deactivateFlipper(keyCode);
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_Q || e.getKeyCode() == KeyEvent.VK_E) {
+			if (e.getKeyCode() == KeyEvent.VK_Q) {
+				// System.out.println("Right Flippers Activated");
+				model.lFlipperActivate();
+			} else if (e.getKeyCode() == KeyEvent.VK_E) {
+				// System.out.println("Left Flippers Activated");
+				model.rFlipperActivate();
+			}
 		}
 	}
-	
-	
-	public void activateFlipper(int keyCode){
-		
-		if(keyCode == KeyEvent.VK_E){
-			System.out.println("Right Flippers Activated");
-			model.rFlipperActivate();
-			
-		} else{
-			System.out.println("Left Flippers Activated");
-			model.lFlipperActivate();
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_Q || e.getKeyCode() == KeyEvent.VK_E) {
+			if (e.getKeyCode() == KeyEvent.VK_E) {
+				// System.out.println("Right Flippers Deactivated");
+				model.rFlipperDeactivate();
+			} else {
+				// System.out.println("Left Flippers Deactivated");
+				model.lFlipperDeactivate();
+			}
+		}
+		else if (e.getKeyCode() == 32) {
+			model.absorberRelease();
 		}
 	}
-	
-	
-	public void deactivateFlipper(int keyCode){
-		if(keyCode == KeyEvent.VK_E){
-			System.out.println("Right Flippers Deactivated");
-			model.rFlipperDeactivate();
-			
-		} else{
-			System.out.println("Left Flippers Deactivated");
-			model.lFlipperDeactivate();
-		}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
 	}
-	
+
 }

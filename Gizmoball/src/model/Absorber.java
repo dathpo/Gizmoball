@@ -15,7 +15,7 @@ public class Absorber implements IAbsorber {
 	private static final double L = 20;
 	private Ball ball;
 	private String gizmoName;
-	boolean hasBall;
+	boolean absorbed;
 	private List<LineSegment> lineSegments;
 	private List<Circle> circles;
 
@@ -86,7 +86,7 @@ public class Absorber implements IAbsorber {
 	@Override
 	public void absorb(Ball ball) {
 
-		this.hasBall = true;
+		this.absorbed = true;
 		this.ball = ball;
 
 		this.ball.setX(getX2() - 0.25 * L);
@@ -96,24 +96,19 @@ public class Absorber implements IAbsorber {
 	}
 
 	public void release() {
-
-		if (this.hasBall) {
+		if (this.absorbed) {
 
 			this.ball.setY(getY1());
 			this.ball.start();
-			this.ball.setVelo(0, -(50*L));
-			this.hasBall = false;
+			this.ball.setVelo(0, -(50.2*L));
+			this.absorbed = false;
 			this.ball = null;
 		}
 	}
 
 	@Override
-	public boolean hasBall() {
-		return this.hasBall;
-	}
-
-	public void getBall() {
-		this.hasBall = true;
+	public boolean absorbed() {
+		return this.absorbed;
 	}
 
 	@Override
