@@ -48,8 +48,6 @@ public interface IModel {
 
 	public void lFlipperDeactivate();
 
-//	void setBallContact();
-
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c);
 
 	public void addObserver(Board board);

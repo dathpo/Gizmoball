@@ -22,7 +22,7 @@ public class PlayModeL implements ActionListener {
 
 	public PlayModeL(IModel m) {
 		model = m;
-		timer = new Timer(10, this);
+		timer = new Timer(5, this);
 	}
 
 	public void actionPerformed(ActionEvent e) {

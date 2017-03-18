@@ -49,9 +49,6 @@ public class Model extends Observable implements IModel {
 				// No collision ...
 				ball = movelBallForTime(ball, moveTime);
 			} else {
-//				if (ball.getVelo().x() < 0.05 && ball.getVelo().x() > -0.05 && ball.getVelo().y() < 0.05
-//						&& ball.getVelo().y() > -0.05) {
-//					System.out.println(tuc + ", mt:" + moveTime);
 				// We've got a collision in tuc
 				ball = movelBallForTime(ball, tuc);
 				// Post collision velocity ...
@@ -99,12 +96,9 @@ public class Model extends Observable implements IModel {
 	}
 
 	private Ball movelBallForTime(Ball ball, double time) {
-//		if (ball.getVelo().x() < 0.001 && ball.getVelo().x() > -0.001 && ball.getVelo().y() < 0.001
-//				&& ball.getVelo().y() > -0.001) {
 		Vect temp = new Vect(ball.getVelo().x(), ball.getVelo().y() + (gravity * L * (time)));
 		Vect Vnew = applyFriction(temp, time);
 		ball.setVelo(Vnew);
-//		}
 
 		double newX = 0.0;
 		double newY = 0.0;
@@ -112,8 +106,7 @@ public class Model extends Observable implements IModel {
 		double yVel = ball.getVelo().y();
 		newX = ball.getX() + (xVel * time);
 		newY = ball.getY() + (yVel * time);
-//		System.out.println("newX: " + xVel + ", newY: " + yVel);
-		System.out.println(time);
+
 		ball.setX(newX);
 		ball.setY(newY);
 
@@ -135,10 +128,8 @@ public class Model extends Observable implements IModel {
 		// Time to collide with 4 walls
 		for (LineSegment line : walls.getLineSegments()) {
 			time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-			// System.out.println("time: " + time + ", ST: " + shortestTime);
-			if (time == 0.0 && shortestTime < 0.1) {
-				// ball.stop();
-//				this.gravity = 1;
+			if (time == 0.0 && shortestTime < 10) {
+				ball.stop();
 			} else if (time < shortestTime) {
 				shortestTime = time;
 				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
@@ -148,8 +139,7 @@ public class Model extends Observable implements IModel {
 			for (LineSegment line : bumper.getLineSegments()) {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 				if (time == 0.0 && shortestTime < 0.1) {
-					// ball.stop();
-//					this.gravity = 1;
+					ball.stop();
 				} else if (time < shortestTime) {
 					shortestTime = time;
 					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
@@ -158,14 +148,8 @@ public class Model extends Observable implements IModel {
 			for (Circle circle : bumper.getCircles()) {
 				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
 				if (time == 0.0 && shortestTime < 0.1) {
-					// System.out.println("time: " + time + ", ST: " +
-					// shortestTime);
-					// ball.stop();
-//					this.gravity = 1;
-					this.setFriction(0, 0);
+					ball.stop();
 				} else if (time < shortestTime) {
-					// System.out.println("time: " + time + ", ST: " +
-					// shortestTime);
 					shortestTime = time;
 					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
 				}
@@ -187,20 +171,14 @@ public class Model extends Observable implements IModel {
 			for (IFlipper flipper : flippers) {
 				for (LineSegment line : flipper.getLineSegments()) {
 					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-//					if (time == 0.0) {
-//						ball.stop();
-//					} else
-						if (time < shortestTime) {
+					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 					}
 				}
 				for (Circle circle : flipper.getCircles()) {
 					time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
-//					if (time == 0.0 && shortestTime < 0.1) {
-//						ball.stop();
-//					} else
-						if (time < shortestTime) {
+					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
 					}

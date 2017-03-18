@@ -232,5 +232,10 @@ public class LoadModel {
 
 		return new RFlipper(gizmoName, xCoord, yCoord, null);
 	}
+	
+//	private void frictionParse(String command, StringTokenizer st) {
+//		
+//		String 
+//	}
 
 }
