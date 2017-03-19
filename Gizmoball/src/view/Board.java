@@ -161,11 +161,11 @@ public class Board extends JPanel implements IGUI, Observer {
 	// }
 
 	public void paintFlippers(Graphics g) {
-		paintFlipperL(g);
-		paintFlipperR(g);
+		paintLFlipper(g);
+		paintRFlipper(g);
 	}
 	
-	public void paintFlipperL(Graphics g) {
+	public void paintLFlipper(Graphics g) {
 		if (model.getFlippers() != null) {
 			for (IFlipper flipper : model.getFlippers()) {
 				if (flipper.getRight() == false) {
@@ -186,7 +186,7 @@ public class Board extends JPanel implements IGUI, Observer {
 		}
 	}
 
-	public void paintFlipperR(Graphics g) {
+	public void paintRFlipper(Graphics g) {
 		if (model.getFlippers() != null) {
 			for (IFlipper flipper : model.getFlippers()) {
 				if (flipper.getRight() == true) {

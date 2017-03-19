@@ -13,6 +13,9 @@ public class SquareBumper implements IBumper {
 	private Color colour;
 	private String gizmoName;
 	private static final double L = 20;
+	private boolean deleted = false;
+	List<LineSegment> lineSegments;
+	List<Circle> circles;
 
 	public SquareBumper(String gizmoName, double x, double y, Color c){
 		this.x = x*L;
@@ -22,27 +25,31 @@ public class SquareBumper implements IBumper {
 	}
 
 	public List<LineSegment> getLineSegments() {
-		List<LineSegment> lineSegments = new ArrayList<LineSegment>();
-		lineSegments.add(new LineSegment(x,		y,		x+L,	y));
-		lineSegments.add(new LineSegment(x+L,	y,		x+L,	y+L));
-		lineSegments.add(new LineSegment(x,		y+L,	x+L,	y+L));
-		lineSegments.add(new LineSegment(x,		y,		x,		y+L));
+		lineSegments = new ArrayList<LineSegment>();
+		if (!deleted) {
+			lineSegments.add(new LineSegment(x,		y,		x+L,	y));
+			lineSegments.add(new LineSegment(x+L,	y,		x+L,	y+L));
+			lineSegments.add(new LineSegment(x,		y+L,	x+L,	y+L));
+			lineSegments.add(new LineSegment(x,		y,		x,		y+L));
+		}
 		return lineSegments;
 	}
 
 	public List<Circle> getCircles() {
-		List<Circle> circles = new ArrayList<Circle>();
-		circles.add(new Circle(x,	y,		0));
-		circles.add(new Circle(x,	y+L,	0));
-		circles.add(new Circle(x+L,	y,		0));
-		circles.add(new Circle(x+L,	y+L,	0));
+		circles = new ArrayList<Circle>();
+		if (!deleted) {
+			circles.add(new Circle(x,	y,		0));
+			circles.add(new Circle(x,	y+L,	0));
+			circles.add(new Circle(x+L,	y,		0));
+			circles.add(new Circle(x+L,	y+L,	0));
+		}
 		return circles;
 	}
-	
+
 	public double getX() {
 		return x;
 	}
-	
+
 	public double getY() {
 		return y;
 	}
@@ -61,10 +68,13 @@ public class SquareBumper implements IBumper {
 	}
 
 	@Override
-	public void rotate() {
-		// TODO Auto-generated method stub
-		
+	public void rotate() {		
 	}
-	
-	
+
+	@Override
+	public void delete() {
+		this.deleted = true;
+	}
+
+
 }

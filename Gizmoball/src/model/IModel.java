@@ -24,11 +24,11 @@ public interface IModel {
 
 	public void clearArrays();
 
-	public void moveGizmo(double x, double y);
+	public void moveGizmo(String gizmoName, double x, double y);
 
-	public void rotateGizmo();
+	public void rotateGizmo(String gizmoName);
 
-	public void deleteGizmo();
+	public void deleteGizmo(String gizmoName);
 
 	public void userPlacedGizmo(double x, double y);
 

@@ -1,3 +1,5 @@
 Triangle T1 0 0
+Triangle T2 0 10
+Delete T2
 Absorber A1 0 19 1 20
 Ball A 0 18 0 0

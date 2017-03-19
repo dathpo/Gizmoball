@@ -21,8 +21,8 @@ public class Model extends Observable implements IModel {
 	private List<IBumper> bumpers;
 	private List<IAbsorber> absorbers;
 	private List<IFlipper> flippers;
-	private boolean squareAdder, circleAdder, triangleAdder, absorberAdder, rFlipperAdder,
-			lFlipperAdder, ballAdder = false;
+	private boolean squareAdder, circleAdder, triangleAdder, absorberAdder, rFlipperAdder, lFlipperAdder,
+			ballAdder = false;
 	private boolean filledSpaces[][];
 	private double mu, mu2, gravity, ballXVel = 0, ballYVel = 0;
 	private static final double L = 20;
@@ -86,11 +86,11 @@ public class Model extends Observable implements IModel {
 		this.mu = xFriction;
 		this.mu2 = yFriction;
 	}
-	
+
 	public void setFrictionX(double xFriction) {
 		this.mu = xFriction;
 	}
-	
+
 	public void setFrictionY(double yFriction) {
 		this.mu2 = yFriction;
 	}
@@ -114,7 +114,7 @@ public class Model extends Observable implements IModel {
 
 		ball.setX(newX);
 		ball.setY(newY);
-		
+
 		Vect temp = new Vect(ball.getVelo().x(), ball.getVelo().y() + (gravity * L * (time)));
 		Vect Vnew = applyFriction(temp, time);
 		ball.setVelo(Vnew);
@@ -137,10 +137,7 @@ public class Model extends Observable implements IModel {
 		// Time to collide with 4 walls
 		for (LineSegment line : walls.getLineSegments()) {
 			time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-//			if (time == 0.0) {
-//				ball.stop();
-//			} else
-				if (time < shortestTime) {
+			if (time < shortestTime) {
 				shortestTime = time;
 				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 			}
@@ -148,20 +145,14 @@ public class Model extends Observable implements IModel {
 		for (IBumper bumper : bumpers) {
 			for (LineSegment line : bumper.getLineSegments()) {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-//				if (time == 0.0 && shortestTime < 0.1) {
-//					ball.stop();
-//				} else
-					if (time < shortestTime) {
+				if (time < shortestTime) {
 					shortestTime = time;
 					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 				}
 			}
 			for (Circle circle : bumper.getCircles()) {
 				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
-//				if (time == 0.0 && shortestTime < 0.1) {
-//					ball.stop();
-//				} else
-					if (time < shortestTime) {
+				if (time < shortestTime) {
 					shortestTime = time;
 					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
 				}
@@ -243,30 +234,30 @@ public class Model extends Observable implements IModel {
 	public File getLoadedFile() {
 		return loadedFile;
 	}
-	
+
 	public void setBallXVelo(double xv) {
 		ballXVel = xv;
 	}
-	
-	public void setBallYVelo(double yv){
+
+	public void setBallYVelo(double yv) {
 		ballYVel = yv;
 	}
 
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
 		ball = new Ball(gizmoName, x, y, ballXVel, ballYVel, Color.BLUE);
 	}
-	
+
 	public void addCircleB(String gizmoName, double x, double y, Color c) {
 		bumpers.add(new CircleBumper(gizmoName, x, y, Color.GREEN));
-		}
-	
+	}
+
 	public void addSquareB(String gizmoName, double x, double y, Color c) {
 		bumpers.add(new SquareBumper(gizmoName, x, y, Color.RED));
-		}
+	}
 
 	public void addTriangleB(String gizmoName, double x, double y, Color c) {
 		bumpers.add(new TriangleBumper(gizmoName, x, y, Color.BLUE));
-		}
+	}
 
 	public void addAbsorber(String gizmoName, double x1, double y1, double x2, double y2, Color c) {
 		absorbers.add(new Absorber(gizmoName, x1, y1, x2, y2, Color.MAGENTA));
@@ -274,42 +265,79 @@ public class Model extends Observable implements IModel {
 
 	public void addLFlipper(String gizmoName, double x, double y, Color c) {
 		flippers.add(new LFlipper(gizmoName, x, y, Color.ORANGE));
-		}
-	
+	}
+
 	public void addRFlipper(String gizmoName, double x, double y, Color c) {
 		flippers.add(new RFlipper(gizmoName, x, y, Color.ORANGE));
-		}
+	}
 
 	public void userPlacedGizmo(double x, double y) {
-		if (squareAdder || circleAdder || triangleAdder || absorberAdder || lFlipperAdder
-				|| rFlipperAdder || ballAdder) {
-			if (circleAdder) {
-				addCircleB(null, x, y, null);
-			} else if (squareAdder) {
-				addSquareB(null, x, y, null);
-			} else if (triangleAdder) {
-				addTriangleB(null, x, y, null);
-			} else if (absorberAdder) {
-				addAbsorber(null, x, y, x, y, null);
-			} else if (lFlipperAdder) {
-				addLFlipper(null, x, y, null);
-			} else if (rFlipperAdder) {
-				addRFlipper(null, x, y, null);
-			} else if (ballAdder) {
-				addBall(null, x, y, ballXVel, ballYVel, null);
-				ball.setX(x*L + L/2);
-				ball.setY(y*L + L/2);
+		if (checkSpace((int) x, (int) y)) {
+			System.out.println("That grid point is already taken");
+		} else {
+			if (squareAdder || circleAdder || triangleAdder || absorberAdder || lFlipperAdder || rFlipperAdder
+					|| ballAdder) {
+				if (circleAdder) {
+					addCircleB(null, x, y, null);
+				} else if (squareAdder) {
+					addSquareB(null, x, y, null);
+				} else if (triangleAdder) {
+					addTriangleB(null, x, y, null);
+				} else if (absorberAdder) {
+					addAbsorber(null, x, y, x, y, null);
+				} else if (lFlipperAdder) {
+					addLFlipper(null, x, y, null);
+				} else if (rFlipperAdder) {
+					addRFlipper(null, x, y, null);
+				} else if (ballAdder) {
+					addBall(null, x, y, ballXVel, ballYVel, null);
+					ball.setX(x * L + L / 2);
+					ball.setY(y * L + L / 2);
+				}
 			}
 		}
 	}
 
-	public void moveGizmo(double x, double y) {
+	public void moveGizmo(String gizmoName, double x, double y) {
 	}
 
-	public void rotateGizmo() {
+	public void rotateGizmo(String gizmoName) {
+		if (bumpers != null) {
+			for (IBumper bumper : bumpers) {
+				if (gizmoName.equals(bumper.getGizmoName())) {
+					bumper.rotate();
+				}
+			}
+		}
 	}
 
-	public void deleteGizmo() {
+	public void deleteGizmo(String gizmoName) {
+		if (bumpers != null) {
+			for (IBumper bumper : bumpers) {
+				if (gizmoName.equals(bumper.getGizmoName())) {
+					bumper.delete();
+				}
+			}
+		}
+		if (absorbers != null) {
+			for (IAbsorber absorber : absorbers) {
+				if (gizmoName.equals(absorber.getGizmoName())) {
+					absorber.delete();
+				}
+			}
+		}
+		if (ball != null) {
+			if (gizmoName.equals(ball.getGizmoName())) {
+				ball = null;
+			}
+		}
+		if (flippers != null) {
+			for (IFlipper flipper : flippers) {
+				if (gizmoName.equals(flipper.getGizmoName())) {
+					flipper.delete();
+				}
+			}
+		}
 	}
 
 	public void setGizmoFocus(int x) {
@@ -389,30 +417,74 @@ public class Model extends Observable implements IModel {
 		}
 	}
 
-	public void userDragFilledGizmo(double x1, double y1, double x2, double y2) {
-		if (absorberAdder) {
-			for (int x = (int) x1; x <= x2; x++) {
-				for (int y = (int) y1; y <= y2; y++) {
-					absorbers.add(new Absorber(null, x, y, x2 + 1, y2 + 1, Color.MAGENTA));
+	public boolean checkSpace(int clickX, int clickY) {
+		for (IBumper iBumper : bumpers) {
+			if ((int) iBumper.getX() / 20 == clickX && (int) iBumper.getY() / 20 == clickY) {
+				return true;
+			}
+		}
+		for (IFlipper iFlipper : flippers) {
+			System.out.println(clickX);
+			System.out.println(clickY);
+			if (iFlipper.getRight()) {
+				if ((int) iFlipper.getX() / 20 == clickX && (int) iFlipper.getY() / 20 == clickY) {
+					return true;
+				}
+				if ((int) iFlipper.getX() / 20 - 1 == clickX && (int) iFlipper.getY() / 20 == clickY) {
+					return true;
+				}
+				if ((int) iFlipper.getX() / 20 == clickX && (int) iFlipper.getY() / 20 + 1 == clickY) {
+					return true;
+				}
+				if ((int) iFlipper.getX() / 20 - 1 == clickX && (int) iFlipper.getY() / 20 + 1 == clickY) {
+					return true;
+				}
+			} else {
+				if ((int) iFlipper.getX() / 20 == clickX && (int) iFlipper.getY() / 20 == clickY) {
+					return true;
+				}
+				if ((int) iFlipper.getX() / 20 + 1 == clickX && (int) iFlipper.getY() / 20 == clickY) {
+					return true;
+				}
 
+				if ((int) iFlipper.getX() / 20 == clickX && (int) iFlipper.getY() / 20 + 1 == clickY) {
+					return true;
+				}
+				if ((int) iFlipper.getX() / 20 + 1 == clickX && (int) iFlipper.getY() / 20 + 1 == clickY) {
+					return true;
 				}
 			}
-		} else if (circleAdder) {
-			for (int x = (int) x1; x <= x2; x++) {
-				for (int y = (int) y1; y <= y2; y++) {
-					bumpers.add(new CircleBumper(null, x, y, Color.GREEN));
+		}
+		return false;
+	}
+
+	public void userDragFilledGizmo(double x1, double y1, double x2, double y2) {
+		if (checkSpace((int) x1, (int) y1)) {
+			System.out.println("That grid point is already taken");
+		} else {
+			if (absorberAdder) {
+				for (int x = (int) x1; x <= x2; x++) {
+					for (int y = (int) y1; y <= y2; y++) {
+						absorbers.add(new Absorber(null, x, y, x2 + 1, y2 + 1, Color.MAGENTA));
+					}
 				}
-			}
-		} else if (squareAdder) {
-			for (int x = (int) x1; x <= x2; x++) {
-				for (int y = (int) y1; y <= y2; y++) {
-					bumpers.add(new SquareBumper(null, x, y, Color.RED));
+			} else if (circleAdder) {
+				for (int x = (int) x1; x <= x2; x++) {
+					for (int y = (int) y1; y <= y2; y++) {
+						bumpers.add(new CircleBumper(null, x, y, Color.GREEN));
+					}
 				}
-			}
-		} else if (triangleAdder) {
-			for (int x = (int) x1; x <= x2; x++) {
-				for (int y = (int) y1; y <= y2; y++) {
-					bumpers.add(new TriangleBumper(null, x, y, Color.BLUE));
+			} else if (squareAdder) {
+				for (int x = (int) x1; x <= x2; x++) {
+					for (int y = (int) y1; y <= y2; y++) {
+						bumpers.add(new SquareBumper(null, x, y, Color.RED));
+					}
+				}
+			} else if (triangleAdder) {
+				for (int x = (int) x1; x <= x2; x++) {
+					for (int y = (int) y1; y <= y2; y++) {
+						bumpers.add(new TriangleBumper(null, x, y, Color.BLUE));
+					}
 				}
 			}
 		}

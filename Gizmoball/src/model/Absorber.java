@@ -15,7 +15,7 @@ public class Absorber implements IAbsorber {
 	private static final double L = 20;
 	private Ball ball;
 	private String gizmoName;
-	boolean absorbed;
+	boolean absorbed, deleted = false;
 	private List<LineSegment> lineSegments;
 	private List<Circle> circles;
 
@@ -30,19 +30,23 @@ public class Absorber implements IAbsorber {
 
 	public List<LineSegment> getLineSegments() {
 		lineSegments = new ArrayList<LineSegment>();
-		lineSegments.add(new LineSegment(x1, y1, x2, y1));
-		lineSegments.add(new LineSegment(x1, y1, x1, y2));
-		lineSegments.add(new LineSegment(x1, y2, x2, y2));
-		lineSegments.add(new LineSegment(x2, y1, x2, y2));
+		if (!deleted) {
+			lineSegments.add(new LineSegment(x1, y1, x2, y1));
+			lineSegments.add(new LineSegment(x1, y1, x1, y2));
+			lineSegments.add(new LineSegment(x1, y2, x2, y2));
+			lineSegments.add(new LineSegment(x2, y1, x2, y2));
+		}
 		return lineSegments;
 	}
 
 	public List<Circle> getCircles() {
 		circles = new ArrayList<Circle>();
-		circles.add(new Circle(x1, y1, 0));
-		circles.add(new Circle(x2, y1, 0));
-		circles.add(new Circle(x1, y2, 0));
-		circles.add(new Circle(x2, y2, 0));
+		if (!deleted) {
+			circles.add(new Circle(x1, y1, 0));
+			circles.add(new Circle(x2, y1, 0));
+			circles.add(new Circle(x1, y2, 0));
+			circles.add(new Circle(x2, y2, 0));
+		}
 		return circles;
 	}
 
@@ -116,4 +120,7 @@ public class Absorber implements IAbsorber {
 		return gizmoName;
 	}
 
+	public void delete() {
+		this.deleted = true;
+	}
 }

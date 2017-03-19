@@ -31,6 +31,8 @@ public interface IFlipper {
 	public List<Circle> getCircles();
 
 	public String getGizmoName();
+	
+	public void delete();
 
 }
 

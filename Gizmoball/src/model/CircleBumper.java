@@ -15,6 +15,8 @@ public class CircleBumper implements IBumper {
 	private String gizmoName;
 	private static final double L = 20;
 	private static final double RADIUS = 10;
+	private boolean deleted = false;
+	List<Circle> circles;
 
 	public CircleBumper(String gizmoName, double x, double y, Color c) {
 		this.x = (L*x)+RADIUS; // Centre coordinates
@@ -30,8 +32,10 @@ public class CircleBumper implements IBumper {
 	@Override
 	public List<Circle> getCircles() {
 		this.circle = new Circle(x, y, RADIUS);
-		List<Circle> circles = new ArrayList<Circle>();
+		circles = new ArrayList<Circle>();
+		if (!deleted) {
 		circles.add(circle);
+		}
 		return circles;
 	}
 
@@ -58,7 +62,10 @@ public class CircleBumper implements IBumper {
 
 	@Override
 	public void rotate() {
-		// TODO Auto-generated method stub
-		
+	}
+
+	@Override
+	public void delete() {
+		this.deleted = true;
 	}
 }

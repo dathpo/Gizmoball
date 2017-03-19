@@ -180,23 +180,22 @@ public class LoadModel {
 	}
 	
 	private void deleteParse(String command, StringTokenizer st) {
+		String gizmoName;
 
+		gizmoName = st.nextToken();
+		
+		model.deleteGizmo(gizmoName);
+		System.out.println("Delete Gizmo named: " + gizmoName);
 	}
 
-	private boolean rotateParse(String command, StringTokenizer st) {
+	private void rotateParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 
 		gizmoName = st.nextToken();
-		if (model.getBumpers() != null) {
-			for (IBumper bumper : model.getBumpers()) {
-				if (gizmoName.equals(bumper.getGizmoName())) {
-					bumper.rotate();
-				}
-			}
-		}
+
+		model.rotateGizmo(gizmoName);
 		System.out.println("Rotate Gizmo named: " + gizmoName);
-		return true;
 	}
 
 	private KeyConnection connectKeyParse(String command, StringTokenizer st) {

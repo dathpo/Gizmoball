@@ -28,7 +28,7 @@ public class Ball implements IBall {
 		this.colour = Color.BLUE;
 		this.velocity = new Vect(xv, yv);
 		stopped = false;
-	    this.gizmoName = gizmoName;
+		this.gizmoName = gizmoName;
 	}
 
 	public void setVelo(Vect v) {
@@ -38,11 +38,11 @@ public class Ball implements IBall {
 	public void setVelo(double xv, double yv) {
 		this.velocity = new Vect (xv, yv);
 	}
-	
+
 	public Vect getVelo() {
 		return velocity;
 	}
-	
+
 	public double getRadius() {
 		return RADIUS;
 	}
@@ -50,7 +50,7 @@ public class Ball implements IBall {
 	public Circle getCircle() {
 		return new Circle(x, y, RADIUS);
 	}
-	
+
 	public void setX(double xPos) {
 		this.x = xPos;
 	}
@@ -67,15 +67,15 @@ public class Ball implements IBall {
 	public double getY() {
 		return y;
 	}
-	
+
 	public double getInitialX() {
 		return ix*L+DIAMETER;
 	}
-	
+
 	public double getInitialY() {
 		return iy*L+DIAMETER;
 	}
-	
+
 	public Vect getInitialVelo() {
 		return iv;
 	}
@@ -83,11 +83,11 @@ public class Ball implements IBall {
 	public void start() {
 		stopped = false;
 	}
-	
+
 	public void stop() {
 		stopped = true;
 	}
-	
+
 	public boolean isStopped() {
 		return stopped; 
 	}
@@ -96,15 +96,15 @@ public class Ball implements IBall {
 		this.setVelo(0, 0);		
 		this.stopped = true;
 	}
-	
+
 	public void setColor(Color color) {
 		this.colour = color;
 	}
-	
+
 	public Color getColour() {
 		return colour;
 	}
-	
+
 	public String getGizmoName() {
 		return gizmoName;
 	}

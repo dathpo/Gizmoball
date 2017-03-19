@@ -14,9 +14,9 @@ public class RFlipper implements IFlipper {
 	private boolean rotated;
 	private static final int L = 20;
 	private String gizmoName;
-	private boolean right;
-	private List<LineSegment> lineSegments = new ArrayList<LineSegment>();
-	private List<Circle> circles = new ArrayList<Circle>();
+	private boolean right, deleted = false;
+	private List<LineSegment> lineSegments;
+	private List<Circle> circles;
 
 	public RFlipper(String gizmoName, double x, double y, Color c) {
 		if ((int) x == x) {
@@ -32,8 +32,11 @@ public class RFlipper implements IFlipper {
 	}
 
 	public void setRotated() {
+		if (!deleted) {
 		if (this.getRotated() == false) {
 			this.rotated = true;
+			
+			
 			this.lineSegments.clear();
 			this.circles.clear();
 			
@@ -42,20 +45,24 @@ public class RFlipper implements IFlipper {
 			
 			this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L/4));
 			this.circles.add(new Circle(x - (1.25 * L), y + (0.25 * L), L/4));
-			
+			}
 		}
 	}
 
 	public void setLineSegments() {
+		lineSegments = new ArrayList<LineSegment>();
+		circles = new ArrayList<Circle>();
+		if (!deleted) {
 		this.lineSegments.clear();
 		this.circles.clear();
+		
 		
 		this.lineSegments.add(new LineSegment(x, y + (0.25 * L),	 x, y + (1.75 * L)));
 		this.lineSegments.add(new LineSegment(x + (0.5 * L), y + (0.25 * L), 	x + (0.5 * L), y + (1.75 * L)));
 		
 		this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L/4));
 		this.circles.add(new Circle(x + (0.25 * L), y + (1.75 * L), L/4));
-		
+		}
 	}
 
 	 
@@ -112,6 +119,10 @@ public class RFlipper implements IFlipper {
 	
 	public List<LineSegment> getLineSegments() {
 		return this.lineSegments;
+	}
+	
+	public void delete() {
+		this.deleted = true;
 	}
 
 }

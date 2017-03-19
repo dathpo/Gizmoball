@@ -14,7 +14,7 @@ public class LFlipper implements IFlipper {
 	private boolean rotated;
 	private static final int L = 20;
 	private String gizmoName;
-	private boolean right;
+	private boolean right, deleted = false;
 	List<LineSegment> lineSegments = new ArrayList<LineSegment>();
 	List<Circle> circles = new ArrayList<Circle>();
 
@@ -29,28 +29,32 @@ public class LFlipper implements IFlipper {
 	}
 
 	public void setRotated() {
-		if (this.getRotated() == false) {
-			this.rotated = true;
-			this.lineSegments.clear();
-			this.circles.clear();
+			if (this.getRotated() == false) {
+				this.rotated = true;
+				this.lineSegments.clear();
+				this.circles.clear();
 
-			this.lineSegments.add(new LineSegment(x + (0.25 * L), y, x + (1.75 * L), y));
-			this.lineSegments.add(new LineSegment(x + (0.25 * L), y + (0.5 * L), x + (1.75 * L), y + (0.5 * L)));
+				if (!deleted) {
+				this.lineSegments.add(new LineSegment(x + (0.25 * L), y, x + (1.75 * L), y));
+				this.lineSegments.add(new LineSegment(x + (0.25 * L), y + (0.5 * L), x + (1.75 * L), y + (0.5 * L)));
 
-			this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
-			this.circles.add(new Circle(x - (1.25 * L), y + (0.25 * L), L / 4));
+				this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
+				this.circles.add(new Circle(x - (1.25 * L), y + (0.25 * L), L / 4));
+			}
 		}
 	}
 
 	public void setLineSegments() {
-		this.lineSegments.clear();
-		this.circles.clear();
+			this.lineSegments.clear();
+			this.circles.clear();
 
-		this.lineSegments.add(new LineSegment(x, y + (0.25 * L), x, y + (1.75 * L)));
-		this.lineSegments.add(new LineSegment(x + (0.5 * L), y + (0.25 * L), x + (0.5 * L), y + (1.75 * L)));
+			if (!deleted) {
+			this.lineSegments.add(new LineSegment(x, y + (0.25 * L), x, y + (1.75 * L)));
+			this.lineSegments.add(new LineSegment(x + (0.5 * L), y + (0.25 * L), x + (0.5 * L), y + (1.75 * L)));
 
-		this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
-		this.circles.add(new Circle(x + (0.25 * L), y + (1.75 * L), L / 4));
+			this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
+			this.circles.add(new Circle(x + (0.25 * L), y + (1.75 * L), L / 4));
+		}
 	}
 
 	public void undoRotate() {
@@ -103,6 +107,10 @@ public class LFlipper implements IFlipper {
 
 	public String getGizmoName() {
 		return gizmoName;
+	}
+
+	public void delete() {
+		this.deleted = true;
 	}
 
 }

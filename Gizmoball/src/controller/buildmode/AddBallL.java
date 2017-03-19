@@ -51,28 +51,3 @@ public class AddBallL implements ActionListener {
 	}
 		
 }
-
-
-//
-//
-//boolean invalidValue = true;
-//while (invalidValue) {
-//	if (str.equals(""))
-//		break;
-//	else {
-//		invalidValue = false;
-//		try {
-//		double velocity = Double.parseDouble(str);
-////		if (g < 0 || g > 50) {
-////            invalidG = true;
-////        } else {
-////            model.setGravity(g);
-////            gui.setMessageColor(Color.GREEN);
-////            gui.setMessage("Gravity has been set!");
-////            invalidG = false;
-//	} catch (NumberFormatException ex) {
-//		invalidValue = true;
-//	}
-//
-//}
-//}
