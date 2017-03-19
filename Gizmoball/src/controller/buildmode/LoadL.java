@@ -27,6 +27,8 @@ public class LoadL implements ActionListener {
 				model.clearArrays();
 				File selectedFile = fileChooser.getSelectedFile();
 				try {
+					model.setFriction(0.025, 0.025);
+					model.applyGravity(25);
 					model.loadNewModel(selectedFile.toString());
 					model.resetBall();
 					model.setLoadedFile(selectedFile);

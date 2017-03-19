@@ -22,7 +22,7 @@ public class PlayModeL implements ActionListener {
 
 	public PlayModeL(IModel m) {
 		model = m;
-		timer = new Timer(5, this);
+		timer = new Timer(10, this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -62,6 +62,8 @@ public class PlayModeL implements ActionListener {
 					File selectedFile = fileChooser.getSelectedFile();
 					try {
 						timer.stop();
+						model.setFriction(0.025, 0.025);
+						model.applyGravity(25);
 						model.loadNewModel(selectedFile.toString());
 						model.resetBall();
 						model.setLoadedFile(selectedFile);

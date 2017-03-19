@@ -100,7 +100,7 @@ public class Absorber implements IAbsorber {
 
 			this.ball.setY(getY1());
 			this.ball.start();
-			this.ball.setVelo(0, -(50.2*L));
+			this.ball.setVelo(0, -(50*L));
 			this.absorbed = false;
 			this.ball = null;
 		}

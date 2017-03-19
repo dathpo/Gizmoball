@@ -71,6 +71,22 @@ public class LoadModel {
 					else if (command.equals("Ball")) {
 						ballParse(command, st);
 					}
+					
+					else if (command.equals("Gravity")) {
+						model.applyGravity(gravityParse(command, st));
+					}
+					
+					else if (command.equals("Friction")) {
+						frictionParse(command, st);
+					}
+					
+					else if (command.equals("Move")) {
+						moveParse(command, st);
+					}
+					
+					else if (command.equals("Delete")) {
+						deleteParse(command, st);
+					}
 				}
 			}
 		}
@@ -157,6 +173,14 @@ public class LoadModel {
 				.println("Absorber name: " + gizmoName + ", x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
 		return new Absorber(gizmoName, x1, y1, x2, y2, null);
 	}
+	
+	private void moveParse(String command, StringTokenizer st) {
+
+	}
+	
+	private void deleteParse(String command, StringTokenizer st) {
+
+	}
 
 	private boolean rotateParse(String command, StringTokenizer st) {
 
@@ -233,9 +257,23 @@ public class LoadModel {
 		return new RFlipper(gizmoName, xCoord, yCoord, null);
 	}
 	
-//	private void frictionParse(String command, StringTokenizer st) {
-//		
-//		String 
-//	}
-
+	private double gravityParse(String command, StringTokenizer st) {
+		double gValue;
+		
+		gValue = Double.valueOf(st.nextToken());
+		System.out.println("Gravity value: " + gValue);
+		
+		return gValue;
+	}
+	
+	private void frictionParse(String command, StringTokenizer st) {
+		double xFriction;
+		double yFriction;
+		
+		xFriction = Double.valueOf(st.nextToken());
+		yFriction = Double.valueOf(st.nextToken());
+		
+		model.setFriction(xFriction, yFriction);
+		System.out.println("Friction mu value: " + xFriction + ", mu2 value: " + yFriction);
+	}
 }

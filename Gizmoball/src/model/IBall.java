@@ -16,6 +16,6 @@ public interface IBall {
 
 	public void stopped();
 	
-//	public void fireBall();
+	public void setVelo(double xv, double yv);
 
    }

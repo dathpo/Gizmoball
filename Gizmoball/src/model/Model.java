@@ -86,6 +86,14 @@ public class Model extends Observable implements IModel {
 		this.mu = xFriction;
 		this.mu2 = yFriction;
 	}
+	
+	public void setFrictionX(double xFriction) {
+		this.mu = xFriction;
+	}
+	
+	public void setFrictionY(double yFriction) {
+		this.mu2 = yFriction;
+	}
 
 	public double getFrictionX() {
 		return mu;
@@ -96,9 +104,6 @@ public class Model extends Observable implements IModel {
 	}
 
 	private Ball movelBallForTime(Ball ball, double time) {
-		Vect temp = new Vect(ball.getVelo().x(), ball.getVelo().y() + (gravity * L * (time)));
-		Vect Vnew = applyFriction(temp, time);
-		ball.setVelo(Vnew);
 
 		double newX = 0.0;
 		double newY = 0.0;
@@ -109,6 +114,10 @@ public class Model extends Observable implements IModel {
 
 		ball.setX(newX);
 		ball.setY(newY);
+		
+		Vect temp = new Vect(ball.getVelo().x(), ball.getVelo().y() + (gravity * L * (time)));
+		Vect Vnew = applyFriction(temp, time);
+		ball.setVelo(Vnew);
 
 		return ball;
 	}
@@ -128,9 +137,10 @@ public class Model extends Observable implements IModel {
 		// Time to collide with 4 walls
 		for (LineSegment line : walls.getLineSegments()) {
 			time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-			if (time == 0.0 && shortestTime < 10) {
-				ball.stop();
-			} else if (time < shortestTime) {
+//			if (time == 0.0) {
+//				ball.stop();
+//			} else
+				if (time < shortestTime) {
 				shortestTime = time;
 				newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 			}
@@ -138,18 +148,20 @@ public class Model extends Observable implements IModel {
 		for (IBumper bumper : bumpers) {
 			for (LineSegment line : bumper.getLineSegments()) {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-				if (time == 0.0 && shortestTime < 0.1) {
-					ball.stop();
-				} else if (time < shortestTime) {
+//				if (time == 0.0 && shortestTime < 0.1) {
+//					ball.stop();
+//				} else
+					if (time < shortestTime) {
 					shortestTime = time;
 					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 				}
 			}
 			for (Circle circle : bumper.getCircles()) {
 				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
-				if (time == 0.0 && shortestTime < 0.1) {
-					ball.stop();
-				} else if (time < shortestTime) {
+//				if (time == 0.0 && shortestTime < 0.1) {
+//					ball.stop();
+//				} else
+					if (time < shortestTime) {
 					shortestTime = time;
 					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
 				}
@@ -252,7 +264,8 @@ public class Model extends Observable implements IModel {
 			} else if (selectedRFlipper) {
 				flippers.add(new RFlipper(null, x, y, Color.YELLOW));
 			} else if (selectedBall) {
-				ball = new Ball(null, x, y, xv, yv, Color.BLUE);
+				ball.setX(x*L + L/2);
+				ball.setY(y*L + L/2);
 			}
 		}
 	}

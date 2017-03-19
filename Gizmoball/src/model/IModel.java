@@ -51,8 +51,20 @@ public interface IModel {
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c);
 
 	public void addObserver(Board board);
+	
+	public void applyGravity(double gravity);
 
 	public double getGravity();
+	
+	public void setFriction(double xFriction, double yFriction);
+	
+	public void setFrictionX(double xFriction);
+	
+	public void setFrictionY(double yFriction);
+	
+	public double getFrictionX();
+	
+	public double getFrictionY();
 	
 	public void setLoadedFile(File f);
 	

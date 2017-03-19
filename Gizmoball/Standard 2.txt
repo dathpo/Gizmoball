@@ -1,0 +1,18 @@
+Triangle T1 0 7
+Triangle T2 3 5
+Rotate T2
+Rotate T2
+Square S1 10 2
+Square S2 15 15
+Move S1 19 17
+Delete S2
+Square S3 13 13
+LeftFlipper LF1 5 18
+Connect S3 LF1
+RightFlipper RF1 9 18
+KeyConnect key 32 down RF1
+KeyConnect key 32 up RF1
+Connect OuterWalls GIZ
+Ball B1 14.2 4.5 -3.4 -2.3
+Gravity 16.0 
+Friction 0.0 0.0

@@ -68,7 +68,7 @@ public class BuildGUI extends JPanel implements IGUI {
     	this.model = model;
 		
 		addAbsorberL = new AddAbsorberL(model);
-		addBallL = new AddBallL(model);
+		addBallL = new AddBallL(model, null);
 		addCircleBL = new AddCircleBL(model);
 		addLFlipperL = new AddLFlipperL(model);
 		addRFlipperL = new AddRFlipperL(model);
