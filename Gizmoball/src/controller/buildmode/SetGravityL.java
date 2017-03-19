@@ -24,7 +24,7 @@ public class SetGravityL implements ActionListener {
 		} else {
 			try {
 				double gravity = Double.parseDouble(input);
-				model.applyGravity(gravity);
+				model.setGravity(gravity);
 				System.out.println("Gravity value: " + gravity);
 			} catch (NumberFormatException err) {
 				JOptionPane.showMessageDialog(null, "Please enter a number.", "Error",

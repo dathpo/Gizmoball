@@ -63,7 +63,9 @@ public class PlayModeL implements ActionListener {
 					try {
 						timer.stop();
 						model.setFriction(0.025, 0.025);
-						model.applyGravity(25);
+						model.setGravity(25);
+						model.setBallXVelo(0);
+						model.setBallYVelo(0);
 						model.loadNewModel(selectedFile.toString());
 						model.resetBall();
 						model.setLoadedFile(selectedFile);

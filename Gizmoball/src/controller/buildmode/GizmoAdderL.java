@@ -6,25 +6,23 @@ import java.awt.event.MouseListener;
 
 import model.IModel;
 
-public class GizmoSelectedL implements MouseListener {
+public class GizmoAdderL implements MouseListener {
 
 	private IModel model;
 
 	private double x1, y1, x2, y2;
 
-	public GizmoSelectedL(IModel m) {
+	public GizmoAdderL(IModel m) {
 		model = m;
 	}
 
 	public void drawGizmo(MouseEvent e) {
 		Point coords = e.getPoint();
-		double x, y, xv, yv;
+		double x, y;
 
 		x = (int) coords.getX() / 20;
 		y = (int) coords.getY() / 20;
-		xv = 0.0;
-		yv = 0.0;
-		model.userPlacedGizmo(x, y, xv, yv);
+		model.userPlacedGizmo(x, y);
 	}
 
 	public void drawAbsorber() {

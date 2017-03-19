@@ -40,7 +40,7 @@ import java.util.Iterator;
  * This class adds three pieces of functionality. First, it delays key events
  * (moving them to the back of the event queue). Second, it maintains state so
  * that when a press-and-release event pair is sitting in the queue, neither
- * event is propogated to the adaptee (decoratee). Finally, it can (optionally)
+ * event is propagated to the adaptee (decoratee). Finally, it can (optionally)
  * add to the semantics so that any release event implies that any still-pressed
  * keys have also been released.
  *

@@ -15,7 +15,7 @@ import controller.buildmode.ConnectGizmoL;
 import controller.buildmode.DeleteGizmoL;
 import controller.buildmode.DisconnectGizmoL;
 import controller.buildmode.ExitL;
-import controller.buildmode.GizmoSelectedL;
+import controller.buildmode.GizmoAdderL;
 import controller.buildmode.KeyConnectL;
 import controller.buildmode.KeyDisconnectL;
 import controller.buildmode.LoadL;
@@ -61,14 +61,14 @@ public class BuildGUI extends JPanel implements IGUI {
 	private SetGravityL setGravityL;
 	private SwitchToPML switchToPML;
 	private ExitL exitL;
-	private GizmoSelectedL gizmoSelectedL;
+	private GizmoAdderL gizmoSelectedL;
 
     public BuildGUI(Main main, IModel model) {
 
     	this.model = model;
 		
 		addAbsorberL = new AddAbsorberL(model);
-		addBallL = new AddBallL(model, null);
+		addBallL = new AddBallL(model);
 		addCircleBL = new AddCircleBL(model);
 		addLFlipperL = new AddLFlipperL(model);
 		addRFlipperL = new AddRFlipperL(model);
@@ -88,7 +88,7 @@ public class BuildGUI extends JPanel implements IGUI {
 		setGravityL = new SetGravityL(model);
 		switchToPML = new SwitchToPML(model);
 		exitL = new ExitL(model);
-		gizmoSelectedL = new GizmoSelectedL(model);
+		gizmoSelectedL = new GizmoAdderL(model);
 		
         BuildFrame();
         MenuBar();
@@ -104,7 +104,7 @@ public class BuildGUI extends JPanel implements IGUI {
 
         buildFrame = new JFrame();
         buildFrame.setTitle("Gizmoball - Build Mode");
-        buildFrame.setSize(618, 500);
+        buildFrame.setSize(568, 500);
         buildFrame.setLocationRelativeTo(null);
         buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         buildFrame.setResizable(false);

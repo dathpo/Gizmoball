@@ -31,32 +31,32 @@ public class LoadModel {
 
 				while (st.hasMoreTokens()) {
 					String command = st.nextToken();
+					
 					if (command.equals("Circle")) {
-						model.getBumpers().add(circleParse(command, st));
+						circleParse(command, st);
 					}
 
 					else if (command.equals("Triangle")) {
-						model.getBumpers().add(triangleParse(command, st));
+						triangleParse(command, st);
 					}
 
 					else if (command.equals("Square")) {
-						model.getBumpers().add(squareParse(command, st));
+						squareParse(command, st);
 					}
 
 					else if (command.equals("RightFlipper")) {
-
-						model.getFlippers().add(rightFlipperParse(command, st));
+						rightFlipperParse(command, st);
 					}
 
 					else if (command.equals("LeftFlipper")) {
-						model.getFlippers().add(leftFlipperParse(command, st));
+						leftFlipperParse(command, st);
 					}
 
 					else if (command.equals("Connect")) {
-
 						connectParse(command, st);
-					} else if (command.equals("KeyConnect")) {
-
+					}
+					
+					else if (command.equals("KeyConnect")) {
 						connectKeyParse(command, st);
 					}
 
@@ -65,7 +65,7 @@ public class LoadModel {
 					}
 
 					else if (command.equals("Absorber")) {
-						model.getAbsorbers().add(absorberParse(command, st));
+						absorberParse(command, st);
 					}
 
 					else if (command.equals("Ball")) {
@@ -73,7 +73,7 @@ public class LoadModel {
 					}
 					
 					else if (command.equals("Gravity")) {
-						model.applyGravity(gravityParse(command, st));
+						gravityParse(command, st);
 					}
 					
 					else if (command.equals("Friction")) {
@@ -94,7 +94,7 @@ public class LoadModel {
 
 	}
 
-	private SquareBumper squareParse(String command, StringTokenizer st) {
+	private void squareParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
@@ -104,11 +104,11 @@ public class LoadModel {
 		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
 		System.out.println("Square Bumper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
-		return new SquareBumper(gizmoName, xCoord, yCoord, null);
+		model.addSquareB(gizmoName, xCoord, yCoord, null);
 
 	}
 
-	private TriangleBumper triangleParse(String command, StringTokenizer st) {
+	private void triangleParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
@@ -119,10 +119,10 @@ public class LoadModel {
 		yCoord = Integer.valueOf(st.nextToken());
 
 		System.out.println("Triangle Bumper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
-		return new TriangleBumper(gizmoName, xCoord, yCoord, null);
+		model.addTriangleB(gizmoName, xCoord, yCoord, null);
 	}
 
-	private CircleBumper circleParse(String command, StringTokenizer st) {
+	private void circleParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		double xCoord;
@@ -133,8 +133,7 @@ public class LoadModel {
 		yCoord = Integer.valueOf(st.nextToken());
 
 		System.out.println("Circle Bumper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
-		return new CircleBumper(gizmoName, xCoord, yCoord, null);
-
+		model.addCircleB(gizmoName, xCoord, yCoord, null);
 	}
 
 	private void ballParse(String command, StringTokenizer st) {
@@ -153,10 +152,12 @@ public class LoadModel {
 
 		System.out.println(
 				"Ball name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord + ", xv: " + xv + ", yv: " + yv);
+		model.setBallXVelo(xv);
+		model.setBallYVelo(yv);
 		model.addBall(gizmoName, xCoord, yCoord, xv, yv, null);
 	}
 
-	private Absorber absorberParse(String command, StringTokenizer st) {
+	private void absorberParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		int x1;
@@ -171,7 +172,7 @@ public class LoadModel {
 
 		System.out
 				.println("Absorber name: " + gizmoName + ", x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
-		return new Absorber(gizmoName, x1, y1, x2, y2, null);
+		model.addAbsorber(gizmoName, x1, y1, x2, y2, null);
 	}
 	
 	private void moveParse(String command, StringTokenizer st) {
@@ -228,7 +229,7 @@ public class LoadModel {
 		return new GizmoConnection(producer, consumer);
 	}
 
-	private LFlipper leftFlipperParse(String command, StringTokenizer st) {
+	private void leftFlipperParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		int xCoord;
@@ -239,10 +240,10 @@ public class LoadModel {
 		yCoord = Integer.valueOf(st.nextToken());
 		System.out.println("Left Flipper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
 
-		return new LFlipper(gizmoName, xCoord, yCoord, null);
+		model.addLFlipper(gizmoName, xCoord, yCoord, null);
 	}
 
-	private RFlipper rightFlipperParse(String command, StringTokenizer st) {
+	private void rightFlipperParse(String command, StringTokenizer st) {
 
 		String gizmoName;
 		int xCoord;
@@ -254,16 +255,16 @@ public class LoadModel {
 
 		System.out.println("Right Flipper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
 
-		return new RFlipper(gizmoName, xCoord, yCoord, null);
+		model.addRFlipper(gizmoName, xCoord, yCoord, null);
 	}
 	
-	private double gravityParse(String command, StringTokenizer st) {
+	private void gravityParse(String command, StringTokenizer st) {
 		double gValue;
 		
 		gValue = Double.valueOf(st.nextToken());
 		System.out.println("Gravity value: " + gValue);
 		
-		return gValue;
+		model.setGravity(gValue);
 	}
 	
 	private void frictionParse(String command, StringTokenizer st) {

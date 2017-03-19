@@ -21,9 +21,10 @@ public class Model extends Observable implements IModel {
 	private List<IBumper> bumpers;
 	private List<IAbsorber> absorbers;
 	private List<IFlipper> flippers;
-	private boolean selectedSquare, selectedCircle, selectedTriangle, selectedAbsorber, selectedRFlipper,
-			selectedLFlipper, selectedBall = false;
-	private double mu, mu2, gravity;
+	private boolean squareAdder, circleAdder, triangleAdder, absorberAdder, rFlipperAdder,
+			lFlipperAdder, ballAdder = false;
+	private boolean filledSpaces[][];
+	private double mu, mu2, gravity, ballXVel = 0, ballYVel = 0;
 	private static final double L = 20;
 	private File loadedFile;
 
@@ -60,7 +61,6 @@ public class Model extends Observable implements IModel {
 					}
 				}
 				ball.setVelo(cd.getVelo());
-				System.out.println(ball.getVelo());
 			}
 
 			// Notify observers ... redraw updated view
@@ -74,7 +74,7 @@ public class Model extends Observable implements IModel {
 		return Vold.times((1 - (mu * time) - (mu2 * (length / L) * time)));
 	}
 
-	public void applyGravity(double gravity) {
+	public void setGravity(double gravity) {
 		this.gravity = gravity;
 	}
 
@@ -226,10 +226,6 @@ public class Model extends Observable implements IModel {
 		}
 	}
 
-	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
-		ball = new Ball(gizmoName, x, y, xv, yv, Color.BLUE);
-	}
-
 	public void resetBall() {
 		if (ball != null) {
 			ball.stop();
@@ -247,23 +243,60 @@ public class Model extends Observable implements IModel {
 	public File getLoadedFile() {
 		return loadedFile;
 	}
+	
+	public void setBallXVelo(double xv) {
+		ballXVel = xv;
+	}
+	
+	public void setBallYVelo(double yv){
+		ballYVel = yv;
+	}
 
-	public void userPlacedGizmo(double x, double y, double xv, double yv) {
-		if (selectedSquare || selectedCircle || selectedTriangle || selectedAbsorber || selectedLFlipper
-				|| selectedRFlipper || selectedBall) {
-			if (selectedCircle) {
-				bumpers.add(new CircleBumper(null, x, y, Color.green));
-			} else if (selectedSquare) {
-				bumpers.add(new SquareBumper(null, x, y, Color.red));
-			} else if (selectedTriangle) {
-				bumpers.add(new TriangleBumper(null, x, y, Color.blue));
-			} else if (selectedAbsorber) {
-				absorbers.add(new Absorber(null, x, y, x, y, Color.MAGENTA));
-			} else if (selectedLFlipper) {
-				flippers.add(new LFlipper(null, x, y, Color.ORANGE));
-			} else if (selectedRFlipper) {
-				flippers.add(new RFlipper(null, x, y, Color.YELLOW));
-			} else if (selectedBall) {
+	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
+		ball = new Ball(gizmoName, x, y, ballXVel, ballYVel, Color.BLUE);
+	}
+	
+	public void addCircleB(String gizmoName, double x, double y, Color c) {
+		bumpers.add(new CircleBumper(gizmoName, x, y, Color.GREEN));
+		}
+	
+	public void addSquareB(String gizmoName, double x, double y, Color c) {
+		bumpers.add(new SquareBumper(gizmoName, x, y, Color.RED));
+		}
+
+	public void addTriangleB(String gizmoName, double x, double y, Color c) {
+		bumpers.add(new TriangleBumper(gizmoName, x, y, Color.BLUE));
+		}
+
+	public void addAbsorber(String gizmoName, double x1, double y1, double x2, double y2, Color c) {
+		absorbers.add(new Absorber(gizmoName, x1, y1, x2, y2, Color.MAGENTA));
+	}
+
+	public void addLFlipper(String gizmoName, double x, double y, Color c) {
+		flippers.add(new LFlipper(gizmoName, x, y, Color.ORANGE));
+		}
+	
+	public void addRFlipper(String gizmoName, double x, double y, Color c) {
+		flippers.add(new RFlipper(gizmoName, x, y, Color.ORANGE));
+		}
+
+	public void userPlacedGizmo(double x, double y) {
+		if (squareAdder || circleAdder || triangleAdder || absorberAdder || lFlipperAdder
+				|| rFlipperAdder || ballAdder) {
+			if (circleAdder) {
+				addCircleB(null, x, y, null);
+			} else if (squareAdder) {
+				addSquareB(null, x, y, null);
+			} else if (triangleAdder) {
+				addTriangleB(null, x, y, null);
+			} else if (absorberAdder) {
+				addAbsorber(null, x, y, x, y, null);
+			} else if (lFlipperAdder) {
+				addLFlipper(null, x, y, null);
+			} else if (rFlipperAdder) {
+				addRFlipper(null, x, y, null);
+			} else if (ballAdder) {
+				addBall(null, x, y, ballXVel, ballYVel, null);
 				ball.setX(x*L + L/2);
 				ball.setY(y*L + L/2);
 			}
@@ -282,101 +315,101 @@ public class Model extends Observable implements IModel {
 	public void setGizmoFocus(int x) {
 		switch (x) {
 		case 0:
-			selectedSquare = false;
-			selectedCircle = true;
-			selectedTriangle = false;
-			selectedAbsorber = false;
-			selectedLFlipper = false;
-			selectedRFlipper = false;
-			selectedBall = false;
+			squareAdder = false;
+			circleAdder = true;
+			triangleAdder = false;
+			absorberAdder = false;
+			lFlipperAdder = false;
+			rFlipperAdder = false;
+			ballAdder = false;
 			break;
 		case 1:
-			selectedCircle = false;
-			selectedSquare = false;
-			selectedTriangle = true;
-			selectedAbsorber = false;
-			selectedLFlipper = false;
-			selectedRFlipper = false;
-			selectedBall = false;
+			circleAdder = false;
+			squareAdder = false;
+			triangleAdder = true;
+			absorberAdder = false;
+			lFlipperAdder = false;
+			rFlipperAdder = false;
+			ballAdder = false;
 			break;
 		case 2:
-			selectedTriangle = false;
-			selectedSquare = true;
-			selectedCircle = false;
-			selectedAbsorber = false;
-			selectedLFlipper = false;
-			selectedRFlipper = false;
-			selectedBall = false;
+			triangleAdder = false;
+			squareAdder = true;
+			circleAdder = false;
+			absorberAdder = false;
+			lFlipperAdder = false;
+			rFlipperAdder = false;
+			ballAdder = false;
 			break;
 		case 3:
-			selectedTriangle = false;
-			selectedSquare = false;
-			selectedCircle = false;
-			selectedAbsorber = false;
-			selectedLFlipper = true;
-			selectedRFlipper = false;
-			selectedBall = false;
+			triangleAdder = false;
+			squareAdder = false;
+			circleAdder = false;
+			absorberAdder = false;
+			lFlipperAdder = true;
+			rFlipperAdder = false;
+			ballAdder = false;
 			break;
 		case 4:
-			selectedTriangle = false;
-			selectedSquare = false;
-			selectedCircle = false;
-			selectedAbsorber = false;
-			selectedLFlipper = false;
-			selectedRFlipper = true;
-			selectedBall = false;
+			triangleAdder = false;
+			squareAdder = false;
+			circleAdder = false;
+			absorberAdder = false;
+			lFlipperAdder = false;
+			rFlipperAdder = true;
+			ballAdder = false;
 			break;
 		case 5:
-			selectedTriangle = false;
-			selectedSquare = false;
-			selectedCircle = false;
-			selectedAbsorber = true;
-			selectedLFlipper = false;
-			selectedRFlipper = false;
-			selectedBall = false;
+			triangleAdder = false;
+			squareAdder = false;
+			circleAdder = false;
+			absorberAdder = true;
+			lFlipperAdder = false;
+			rFlipperAdder = false;
+			ballAdder = false;
 			break;
 		case 6:
-			selectedTriangle = false;
-			selectedSquare = false;
-			selectedCircle = false;
-			selectedAbsorber = false;
-			selectedLFlipper = false;
-			selectedRFlipper = false;
-			selectedBall = true;
+			triangleAdder = false;
+			squareAdder = false;
+			circleAdder = false;
+			absorberAdder = false;
+			lFlipperAdder = false;
+			rFlipperAdder = false;
+			ballAdder = true;
 			break;
 		case 7:
-			selectedTriangle = false;
-			selectedSquare = false;
-			selectedCircle = false;
-			selectedAbsorber = false;
-			selectedLFlipper = false;
-			selectedRFlipper = false;
-			selectedBall = false;
+			triangleAdder = false;
+			squareAdder = false;
+			circleAdder = false;
+			absorberAdder = false;
+			lFlipperAdder = false;
+			rFlipperAdder = false;
+			ballAdder = false;
 			break;
 		}
 	}
 
 	public void userDragFilledGizmo(double x1, double y1, double x2, double y2) {
-		if (selectedAbsorber) {
+		if (absorberAdder) {
 			for (int x = (int) x1; x <= x2; x++) {
 				for (int y = (int) y1; y <= y2; y++) {
 					absorbers.add(new Absorber(null, x, y, x2 + 1, y2 + 1, Color.MAGENTA));
 
 				}
 			}
-		} else if (selectedCircle) {
+		} else if (circleAdder) {
 			for (int x = (int) x1; x <= x2; x++) {
 				for (int y = (int) y1; y <= y2; y++) {
 					bumpers.add(new CircleBumper(null, x, y, Color.GREEN));
 				}
 			}
-		} else if (selectedSquare) {
+		} else if (squareAdder) {
 			for (int x = (int) x1; x <= x2; x++) {
 				for (int y = (int) y1; y <= y2; y++) {
 					bumpers.add(new SquareBumper(null, x, y, Color.RED));
 				}
 			}
-		} else if (selectedTriangle) {
+		} else if (triangleAdder) {
 			for (int x = (int) x1; x <= x2; x++) {
 				for (int y = (int) y1; y <= y2; y++) {
 					bumpers.add(new TriangleBumper(null, x, y, Color.BLUE));
