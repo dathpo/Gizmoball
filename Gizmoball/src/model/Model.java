@@ -22,7 +22,7 @@ public class Model extends Observable implements IModel {
 	private List<IAbsorber> absorbers;
 	private List<IFlipper> flippers;
 	private boolean squareAdder, circleAdder, triangleAdder, absorberAdder, rFlipperAdder, lFlipperAdder,
-			ballAdder = false;
+	ballAdder = false;
 	private boolean filledSpaces[][];
 	private double mu, mu2, gravity, ballXVel = 0, ballYVel = 0;
 	private static final double L = 20;
@@ -171,20 +171,20 @@ public class Model extends Observable implements IModel {
 					absorber.absorb(ball);
 				}
 			}
-			for (IFlipper flipper : flippers) {
-				for (LineSegment line : flipper.getLineSegments()) {
-					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-					if (time < shortestTime) {
-						shortestTime = time;
-						newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
-					}
+		}
+		for (IFlipper flipper : flippers) {
+			for (LineSegment line : flipper.getLineSegments()) {
+				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+				if (time < shortestTime) {
+					shortestTime = time;
+					newVelo = Geometry.reflectWall(line, ball.getVelo(), 1);
 				}
-				for (Circle circle : flipper.getCircles()) {
-					time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
-					if (time < shortestTime) {
-						shortestTime = time;
-						newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
-					}
+			}
+			for (Circle circle : flipper.getCircles()) {
+				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
+				if (time < shortestTime) {
+					shortestTime = time;
+					newVelo = Geometry.reflectCircle(circle.getCenter(), ballCircle.getCenter(), ballVelocity, 1);
 				}
 			}
 		}
@@ -306,6 +306,13 @@ public class Model extends Observable implements IModel {
 			for (IBumper bumper : bumpers) {
 				if (gizmoName.equals(bumper.getGizmoName())) {
 					bumper.rotate();
+				}
+			}
+		}
+		if (flippers != null) {
+			for (IFlipper flipper : flippers) {
+				if (gizmoName.equals(flipper.getGizmoName())) {
+					flipper.permRotate();
 				}
 			}
 		}
@@ -498,34 +505,26 @@ public class Model extends Observable implements IModel {
 	}
 
 	public void rFlipperActivate() {
-		for (IFlipper iFlipper : flippers) {
-			if (iFlipper.getRight() == true) {
-				iFlipper.setRotated();
-			}
+		for (IFlipper flipper : flippers) {
+			flipper.tempRotate();
 		}
 	}
 
 	public void lFlipperActivate() {
-		for (IFlipper iFlipper : flippers) {
-			if (iFlipper.getRight() == false) {
-				iFlipper.setRotated();
-			}
+		for (IFlipper flipper : flippers) {
+			flipper.tempRotate();
 		}
 	}
 
 	public void rFlipperDeactivate() {
-		for (IFlipper iFlipper : flippers) {
-			if (iFlipper.getRight() == true) {
-				iFlipper.undoRotate();
-			}
+		for (IFlipper flipper : flippers) {
+			flipper.undoTempRotate();
 		}
 	}
 
 	public void lFlipperDeactivate() {
-		for (IFlipper iFlipper : flippers) {
-			if (iFlipper.getRight() == false) {
-				iFlipper.undoRotate();
-			}
+		for (IFlipper flipper : flippers) {
+			flipper.undoTempRotate();
 		}
 	}
 

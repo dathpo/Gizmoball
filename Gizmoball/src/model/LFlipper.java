@@ -11,57 +11,156 @@ public class LFlipper implements IFlipper {
 
 	private double x, y;
 	private Color colour;
-	private boolean rotated;
+	private Circle pivot, outerCircle;
+	private boolean tempRotated = false;
+	private int permRotated = 0;
 	private static final int L = 20;
 	private String gizmoName;
 	private boolean right, deleted = false;
-	List<LineSegment> lineSegments = new ArrayList<LineSegment>();
-	List<Circle> circles = new ArrayList<Circle>();
+	List<LineSegment> lineSegments;
+	List<Circle> circles;
 
 	public LFlipper(String gizmoName, double x, double y, Color c) {
 		this.x = x * L;
 		this.y = y * L;
 		this.colour = Color.ORANGE;
 		this.gizmoName = gizmoName;
-		this.rotated = false;
-		this.right = false;
-		this.setLineSegments();
 	}
 
-	public void setRotated() {
-			if (this.getRotated() == false) {
-				this.rotated = true;
-				this.lineSegments.clear();
-				this.circles.clear();
+	public void tempRotate() {
+		this.tempRotated = true;
+	}
 
-				if (!deleted) {
-				this.lineSegments.add(new LineSegment(x + (0.25 * L), y, x + (1.75 * L), y));
-				this.lineSegments.add(new LineSegment(x + (0.25 * L), y + (0.5 * L), x + (1.75 * L), y + (0.5 * L)));
-
-				this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
-				this.circles.add(new Circle(x - (1.25 * L), y + (0.25 * L), L / 4));
+	public List<LineSegment> getLineSegments() {
+		lineSegments = new ArrayList<LineSegment>();
+		if (!deleted) {
+			if (permRotated == 0) {
+				if (tempRotated) {
+					lineSegments.clear();
+					lineSegments.add(new LineSegment(x + (0.25 * L), y, x + (1.75 * L), y));
+					lineSegments.add(new LineSegment(x + (0.25 * L), y + (0.5 * L), x + (1.75 * L), y + (0.5 * L)));
+				} else if (!tempRotated) {
+					lineSegments.clear();
+					lineSegments.add(new LineSegment(x, y + (0.25 * L), x, y + (1.75 * L)));
+					lineSegments.add(new LineSegment(x + (0.5 * L), y + (0.25 * L), x + (0.5 * L), y + (1.75 * L)));
+				}
+			} else if (permRotated == 1) {
+				if (tempRotated) {
+					lineSegments.clear();
+					lineSegments.add(new LineSegment(x + (1.5 * L), y + (0.25 * L), x + (1.5 * L), y + (1.75 * L)));
+					lineSegments.add(new LineSegment(x + (2 * L), y + (0.25 * L), x + (2 * L), y + (1.75 * L)));
+				} else if (!tempRotated) {
+					lineSegments.clear();
+					lineSegments.add(new LineSegment(x + (0.25 * L), y, x + (1.75 * L), y));
+					lineSegments.add(new LineSegment(x + (0.25 * L), y + (0.5 * L), x + (1.75 * L), y + (0.5 * L)));
+				}
+			} else if (permRotated == 2) {
+				if (tempRotated) {
+					lineSegments.clear();
+					lineSegments.add(new LineSegment(x + (0.25 * L), y + (1.5 * L), x + (1.75 * L), y + (1.5 * L)));
+					lineSegments.add(new LineSegment(x + (0.25 * L), y + (2 * L), x + (1.75 * L), y + (2 * L)));
+				} else if (!tempRotated) {
+					lineSegments.clear();
+					lineSegments.add(new LineSegment(x + (1.5 * L), y + (0.25 * L), x + (1.5 * L), y + (1.75 * L)));
+					lineSegments.add(new LineSegment(x + (2 * L), y + (0.25 * L), x + (2 * L), y + (1.75 * L)));
+				}
+			} else if (permRotated == 3) {
+				if (tempRotated) {
+					lineSegments.clear();
+					lineSegments.add(new LineSegment(x, y + (0.25 * L), x, y + (1.75 * L)));
+					lineSegments.add(new LineSegment(x + (0.5 * L), y + (0.25 * L), x + (0.5 * L), y + (1.75 * L)));
+				} else if (!tempRotated) {
+					lineSegments.clear();
+					lineSegments.add(new LineSegment(x + (0.25 * L), y + (1.5 * L), x + (1.75 * L), y + (1.5 * L)));
+					lineSegments.add(new LineSegment(x + (0.25 * L), y + (2 * L), x + (1.75 * L), y + (2 * L)));
+				}
 			}
 		}
+		return lineSegments;
 	}
 
-	public void setLineSegments() {
-			this.lineSegments.clear();
-			this.circles.clear();
-
-			if (!deleted) {
-			this.lineSegments.add(new LineSegment(x, y + (0.25 * L), x, y + (1.75 * L)));
-			this.lineSegments.add(new LineSegment(x + (0.5 * L), y + (0.25 * L), x + (0.5 * L), y + (1.75 * L)));
-
-			this.circles.add(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
-			this.circles.add(new Circle(x + (0.25 * L), y + (1.75 * L), L / 4));
+	public List<Circle> getCircles() {
+		circles = new ArrayList<Circle>();
+		if (!deleted) {
+			if(permRotated == 0) {
+				if (tempRotated) {
+					circles.clear();
+					setPivot(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
+					setOuterCircle(new Circle(x + (1.75 * L), y + (0.25 * L), L / 4));
+					circles.add(pivot);
+					circles.add(outerCircle);
+				} else if (!tempRotated) {
+					circles.clear();
+					setPivot(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
+					setOuterCircle(new Circle(x + (0.25 * L), y + (1.75 * L), L / 4));
+					circles.add(pivot);
+					circles.add(outerCircle);
+				}
+			} else if (permRotated == 1) {
+				if (tempRotated) {
+					circles.clear();
+					setPivot(new Circle(x + (1.75 * L), y + (0.25 * L), L / 4));
+					setOuterCircle(new Circle(x + (1.75 * L), y + (1.75 * L), L / 4));
+					circles.add(pivot);
+					circles.add(outerCircle);
+				} else if (!tempRotated) {
+					circles.clear();
+					setOuterCircle(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
+					setPivot(new Circle(x + (1.75 * L), y + (0.25 * L), L / 4));
+					circles.add(pivot);
+					circles.add(outerCircle);
+				}
+			} else if (permRotated == 2) {
+				if (tempRotated) {
+					circles.clear();
+					setOuterCircle(new Circle(x + (0.25 * L), y + (1.75 * L), L / 4));
+					setPivot(new Circle(x + (1.75 * L), y + (1.75 * L), L / 4));
+					circles.add(pivot);
+					circles.add(outerCircle);
+				} else if (!tempRotated) {
+					circles.clear();
+					setOuterCircle(new Circle(x + (1.75 * L), y + (0.25 * L), L / 4));
+					setPivot(new Circle(x + (1.75 * L), y + (1.75 * L), L / 4));
+					circles.add(pivot);
+					circles.add(outerCircle);
+				}
+			} else if (permRotated == 3) {
+				if (tempRotated)  {
+					circles.clear();
+					setOuterCircle(new Circle(x + (0.25 * L), y + (0.25 * L), L / 4));
+					setPivot(new Circle(x + (0.25 * L), y + (1.75 * L), L / 4));
+					circles.add(pivot);
+					circles.add(outerCircle);
+				} else if (!tempRotated)  {
+					circles.clear();
+					setPivot(new Circle(x + (0.25 * L), y + (1.75 * L), L / 4));
+					setOuterCircle(new Circle(x + (1.75 * L), y + (1.75 * L), L / 4));
+					circles.add(pivot);
+					circles.add(outerCircle);
+				}
+			}
 		}
+		return circles;
 	}
 
-	public void undoRotate() {
-		if (this.getRotated() == true) {
-			this.rotated = false;
-			this.setLineSegments();
-		}
+	public void undoTempRotate() {
+		this.tempRotated = false;
+	}
+
+	public boolean getTempRotated() {
+		return this.tempRotated;
+	}
+
+	public void permRotate() {
+		permRotated++;
+	}
+
+	public void setPivot(Circle p) {
+		this.pivot = p;
+	}
+
+	public void setOuterCircle(Circle oC) {
+		this.outerCircle = oC;
 	}
 
 	@Override
@@ -92,25 +191,16 @@ public class LFlipper implements IFlipper {
 		return LFlipper.L * 2;
 	}
 
-	public boolean getRotated() {
-		return this.rotated;
-	}
-
-	public List<LineSegment> getLineSegments() {
-		return this.lineSegments;
-	}
-
-	@Override
-	public List<Circle> getCircles() {
-		return this.circles;
-	}
-
 	public String getGizmoName() {
 		return gizmoName;
 	}
 
 	public void delete() {
 		this.deleted = true;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
 	}
 
 }

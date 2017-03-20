@@ -22,17 +22,20 @@ public interface IFlipper {
 
 	public int getLength();
 	
-	public boolean getRotated();
+	public boolean getTempRotated();
 	
-	public void setRotated();
+	public void tempRotate();
 	
-	public void undoRotate();
+	public void undoTempRotate();
 
 	public List<Circle> getCircles();
 
 	public String getGizmoName();
 	
+	public void permRotate();
+	
 	public void delete();
-
+	
+	public boolean isDeleted();
 }
 

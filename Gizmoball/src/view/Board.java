@@ -87,12 +87,12 @@ public class Board extends JPanel implements IGUI, Observer {
 				} else if ((lineSegments.size() & circles.size()) == 3) {
 					int[] xT = new int[3];
 					int[] yT = new int[3];
-					int lengthS = circles.size();
+					int lengthT = circles.size();
 					for (int i = 0; i < 3; i++) {
 						xT[i] = (int) circles.get(i).getCenter().x();
 						yT[i] = (int) circles.get(i).getCenter().y();
 					}
-					g.fillPolygon(xT, yT, lengthS);
+					g.fillPolygon(xT, yT, lengthT);
 				} else if ((lineSegments.size() & circles.size()) == 4) {
 					int xS = 0;
 					int yS = 0;
@@ -115,92 +115,45 @@ public class Board extends JPanel implements IGUI, Observer {
 				g.setColor(absorber.getColour());
 				if ((lineSegments.size() & circles.size()) == 4) {
 					int xA1 = (int) (circles.get(0).getCenter().x());
-					// System.out.println("xA1: " + ((int)
-					// (circles.get(0).getCenter().x())/20));
 					int yA1 = (int) (circles.get(0).getCenter().y());
-					// System.out.println("yA1: " + ((int)
-					// (circles.get(0).getCenter().y())/20));
 					int width = (int) (circles.get(3).getCenter().x() - (circles.get(0).getCenter().x()));
-					// System.out.println("width: " + ((int)
-					// (circles.get(3).getCenter().x() -
-					// (circles.get(0).getCenter().x()))/20));
 					int height = (int) (circles.get(3).getCenter().y() - (circles.get(0).getCenter().y()));
-					// System.out.println("height: " + ((int)
-					// (circles.get(3).getCenter().y() -
-					// (circles.get(0).getCenter().y()))/20));
 					g.fillRect(xA1, yA1, width, height);
 				}
 			}
 		}
 	}
 
-	// public void paintLFlippers(Graphics g) {
-	// if (model.getLFlippers() != null) {
-	// for (LFlipper flipper : model.getLFlippers()) {
-	// g.setColor(flipper.getColour());
-	// int xF = (int) flipper.getX();
-	// int yF = (int) flipper.getY();
-	// int length = flipper.getLength();
-	// g.fillRoundRect(xF, yF, (length / 2), length * 2, (length / 4), (length /
-	// 2));
-	// }
-	// }
-	// }
-
-	// public void paintRFlippers(Graphics g) {
-	// if (model.getRFlippers() != null) {
-	// for (RFlipper flipper : model.getRFlippers()) {
-	// g.setColor(flipper.getColour());
-	// int length = flipper.getLength();
-	// int xF = (int) flipper.getX() + (2*length)-(length/2);
-	// int yF = (int) flipper.getY();
-	// g.fillRoundRect(xF, yF, (length / 2), length * 2, (length / 4), (length /
-	// 2));
-	// }
-	// }
-	// }
-
 	public void paintFlippers(Graphics g) {
-		paintLFlipper(g);
-		paintRFlipper(g);
-	}
-	
-	public void paintLFlipper(Graphics g) {
 		if (model.getFlippers() != null) {
 			for (IFlipper flipper : model.getFlippers()) {
-				if (flipper.getRight() == false) {
-					int xF = (int) flipper.getX();
-					int yF = (int) flipper.getY();
-					int length = flipper.getLength();
+				flipper.getCircles();
+				flipper.getLineSegments();
+				g.setColor(flipper.getColour());
+				if (!flipper.isDeleted()) {
+					int circleRadius = flipper.getLength() / 8;
+					int circleDiameter = flipper.getLength() / 4;
+					int pivotX = (int) flipper.getCircles().get(0).getCenter().x() - circleRadius;
+					int pivotY = (int) flipper.getCircles().get(0).getCenter().y() - circleRadius;
+					g.fillOval(pivotX, pivotY, circleDiameter, circleDiameter);
 
-					if (flipper.getRotated() == false) {
-						g.setColor(flipper.getColour());
-						g.fillRoundRect(xF, yF, (length / 4), length, (length / 8), (length / 4));
-					} else if (flipper.getRotated() == true) {
-						g.setColor(flipper.getColour());
-						g.fillRoundRect(xF, yF, length, length / 4, (length / 8), (length / 4));
+					int outerCX = (int) flipper.getCircles().get(1).getCenter().x() - circleRadius;
+					int outerCY = (int) flipper.getCircles().get(1).getCenter().y() - circleRadius;
+					g.fillOval(outerCX, outerCY, circleDiameter, circleDiameter);
 
-					}
-				}
-			}
-		}
-	}
+					int[] xF = new int[4];
+					int[] xY = new int[4];
 
-	public void paintRFlipper(Graphics g) {
-		if (model.getFlippers() != null) {
-			for (IFlipper flipper : model.getFlippers()) {
-				if (flipper.getRight() == true) {
-					int xF = (int) flipper.getX();
-					int yF = (int) flipper.getY();
-					int length = flipper.getLength();
+					xF[0] = (int) (flipper.getLineSegments().get(0).p1().x());
+					xF[1] = (int) (flipper.getLineSegments().get(0).p2().x());
+					xF[2] = (int) (flipper.getLineSegments().get(1).p2().x());
+					xF[3] = (int) (flipper.getLineSegments().get(1).p1().x());
 
-					if (flipper.getRotated() == false) {
-						g.setColor(flipper.getColour());
-						g.fillRoundRect(xF, yF, (length / 4), length, (length / 8), (length / 4));
-					} else if (flipper.getRotated() == true) {
-						g.setColor(flipper.getColour());
-						g.fillRoundRect(xF - (length * 3 / 4), yF, length, length / 4, (length / 8), (length / 4));
-					}
+					xY[0] = (int) (flipper.getLineSegments().get(0).p1().y());
+					xY[1] = (int) (flipper.getLineSegments().get(0).p2().y());
+					xY[2] = (int) (flipper.getLineSegments().get(1).p2().y());
+					xY[3] = (int) (flipper.getLineSegments().get(1).p1().y());
+					g.fillPolygon(xF, xY, 4);
 				}
 			}
 		}

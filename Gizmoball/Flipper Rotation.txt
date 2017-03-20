@@ -1,0 +1,20 @@
+LeftFlipper LF92 9 2
+LeftFlipper LF112 9 6
+Rotate LF112
+LeftFlipper LF87 9 10
+Rotate LF87
+Rotate LF87
+LeftFlipper LF137 9 14
+Rotate LF137
+Rotate LF137
+Rotate LF137
+RightFlipper RF92 15 2
+RightFlipper RF112 15 6
+Rotate RF112
+RightFlipper RF87 15 10
+Rotate RF87
+Rotate RF87
+RightFlipper RF137 15 14
+Rotate RF137
+Rotate RF137
+Rotate RF137
