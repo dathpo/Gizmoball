@@ -34,4 +34,6 @@ public interface IAbsorber {
 	
 	public String getGizmoName();
 	
+	public void move(double x, double y);
+	
 }

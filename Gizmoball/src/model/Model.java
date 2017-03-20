@@ -242,6 +242,14 @@ public class Model extends Observable implements IModel {
 	public void setBallYVelo(double yv) {
 		ballYVel = yv;
 	}
+	
+	public String squareName() {
+		for (IBumper bumper : bumpers) {
+			
+		}
+		String squareName = null;
+		return squareName;
+	}
 
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
 		ball = new Ball(gizmoName, x, y, ballXVel, ballYVel, Color.BLUE);
@@ -273,7 +281,7 @@ public class Model extends Observable implements IModel {
 
 	public void userPlacedGizmo(double x, double y) {
 		if (checkSpace((int) x, (int) y)) {
-			System.out.println("That grid point is already taken");
+//			System.out.println("That grid point is already taken");
 		} else {
 			if (squareAdder || circleAdder || triangleAdder || absorberAdder || lFlipperAdder || rFlipperAdder
 					|| ballAdder) {
@@ -298,7 +306,33 @@ public class Model extends Observable implements IModel {
 		}
 	}
 
-	public void moveGizmo(String gizmoName, double x, double y) {
+	public void moveGizmo(String gizmoName, double newX, double newY) {
+		if (bumpers != null) {
+			for (IBumper bumper : bumpers) {
+				if (gizmoName.equals(bumper.getGizmoName())) {
+					bumper.move(newX, newY);
+				}
+			}
+		}
+		if (absorbers != null) {
+			for (IAbsorber absorber : absorbers) {
+				if (gizmoName.equals(absorber.getGizmoName())) {
+					absorber.move(newX, newY);
+				}
+			}
+		}
+		if (ball != null) {
+			if (gizmoName.equals(ball.getGizmoName())) {
+				ball.move(newX, newY);
+			}
+		}
+		if (flippers != null) {
+			for (IFlipper flipper : flippers) {
+				if (gizmoName.equals(flipper.getGizmoName())) {
+					flipper.move(newX, newY);
+				}
+			}
+		}
 	}
 
 	public void rotateGizmo(String gizmoName) {
@@ -431,9 +465,9 @@ public class Model extends Observable implements IModel {
 			}
 		}
 		for (IFlipper iFlipper : flippers) {
-			System.out.println(clickX);
-			System.out.println(clickY);
-			if (iFlipper.getRight()) {
+//			System.out.println(clickX);
+//			System.out.println(clickY);
+			if (iFlipper.isRightFlipper()) {
 				if ((int) iFlipper.getX() / 20 == clickX && (int) iFlipper.getY() / 20 == clickY) {
 					return true;
 				}
@@ -467,7 +501,7 @@ public class Model extends Observable implements IModel {
 
 	public void userDragFilledGizmo(double x1, double y1, double x2, double y2) {
 		if (checkSpace((int) x1, (int) y1)) {
-			System.out.println("That grid point is already taken");
+
 		} else {
 			if (absorberAdder) {
 				for (int x = (int) x1; x <= x2; x++) {
@@ -506,25 +540,31 @@ public class Model extends Observable implements IModel {
 
 	public void rFlipperActivate() {
 		for (IFlipper flipper : flippers) {
+			if (flipper.isRightFlipper())
 			flipper.tempRotate();
 		}
 	}
 
 	public void lFlipperActivate() {
 		for (IFlipper flipper : flippers) {
-			flipper.tempRotate();
+			if (!flipper.isRightFlipper()) {
+				flipper.tempRotate();
+			}
 		}
 	}
 
 	public void rFlipperDeactivate() {
 		for (IFlipper flipper : flippers) {
+			if (flipper.isRightFlipper())
 			flipper.undoTempRotate();
 		}
 	}
 
 	public void lFlipperDeactivate() {
 		for (IFlipper flipper : flippers) {
-			flipper.undoTempRotate();
+			if (!flipper.isRightFlipper()) {
+				flipper.undoTempRotate();
+			}
 		}
 	}
 

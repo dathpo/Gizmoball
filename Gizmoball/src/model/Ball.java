@@ -67,6 +67,14 @@ public class Ball implements IBall {
 	public double getY() {
 		return y;
 	}
+	
+	public void setInitialX(double xPos) {
+		this.ix = xPos;
+	}
+
+	public void setInitialY(double yPos) {
+		this.iy = yPos;
+	}
 
 	public double getInitialX() {
 		return ix*L+DIAMETER;
@@ -107,5 +115,10 @@ public class Ball implements IBall {
 
 	public String getGizmoName() {
 		return gizmoName;
+	}
+
+	public void move(double x, double y) {
+		setInitialX((x));
+		setInitialY((y));
 	}
 }

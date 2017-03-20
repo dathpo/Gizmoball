@@ -50,11 +50,11 @@ public class Absorber implements IAbsorber {
 		return circles;
 	}
 
-	public void setX(double x) {
+	public void setX1(double x) {
 		this.x1 = x;
 	}
 
-	public void setY(double y) {
+	public void setY1(double y) {
 		this.y1 = y;
 	}
 
@@ -70,6 +70,14 @@ public class Absorber implements IAbsorber {
 	public double getY1() {
 		return y1;
 	}
+	
+	public void setX2(double x) {
+		this.x2 = x;
+	}
+
+	public void setY2(double y) {
+		this.y2 = y;
+	}
 
 	public double getX2() {
 		return x2;
@@ -78,7 +86,7 @@ public class Absorber implements IAbsorber {
 	public double getY2() {
 		return y2;
 	}
-
+	
 	public Color getColour() {
 		return colour;
 	}
@@ -122,5 +130,15 @@ public class Absorber implements IAbsorber {
 
 	public void delete() {
 		this.deleted = true;
+	}
+
+	@Override
+	public void move(double newX, double newY) {
+		double width = getX2() - getX1();
+		double height = getY2() - getY1();
+		setX1(newX*L);
+		setY1(newY*L);
+		setX2((newX*L) + width);
+		setY2((newY*L) + height);
 	}
 }

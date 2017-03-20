@@ -18,4 +18,6 @@ public interface IBall {
 	
 	public void setVelo(double xv, double yv);
 
+	public void move(double x, double y);
+
    }

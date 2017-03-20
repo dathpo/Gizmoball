@@ -88,6 +88,14 @@ public class TriangleBumper implements IBumper {
 		return colour;
 	}
 
+	public void setX(double xPos) {
+		this.x = xPos;
+	}
+
+	public void setY(double yPos) {
+		this.y = yPos;
+	}
+	
 	@Override
 	public double getX() {
 		return x;
@@ -106,6 +114,12 @@ public class TriangleBumper implements IBumper {
 	@Override
 	public void delete() {
 		this.deleted = true;
+	}
+
+	@Override
+	public void move(double x, double y) {
+		setX(x*L);
+		setY(y*L);
 	}
 
 }

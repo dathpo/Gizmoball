@@ -18,7 +18,7 @@ public interface IFlipper {
 
 	public double getY();
 
-	public boolean getRight();
+	public boolean isRightFlipper();
 
 	public int getLength();
 	
@@ -37,5 +37,8 @@ public interface IFlipper {
 	public void delete();
 	
 	public boolean isDeleted();
+
+	public void move(double x, double y);
+	
 }
 

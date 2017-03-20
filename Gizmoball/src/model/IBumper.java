@@ -25,5 +25,7 @@ public interface IBumper {
 	public void rotate();
 
 	public void delete();
+
+	public void move(double x, double y);
 	
    }

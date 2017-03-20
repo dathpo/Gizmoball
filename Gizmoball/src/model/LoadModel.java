@@ -174,7 +174,16 @@ public class LoadModel {
 	}
 	
 	private void moveParse(String command, StringTokenizer st) {
+		String gizmoName;
+		double xCoord;
+		double yCoord;
 
+		gizmoName = st.nextToken();
+		xCoord = Double.valueOf(st.nextToken());
+		yCoord = Double.valueOf(st.nextToken());
+		
+		model.moveGizmo(gizmoName, xCoord, yCoord);
+		System.out.println("Move Gizmo named: " + gizmoName + " to x: " + xCoord + ", y: " + yCoord);
 	}
 	
 	private void deleteParse(String command, StringTokenizer st) {

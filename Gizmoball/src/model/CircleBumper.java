@@ -34,15 +34,23 @@ public class CircleBumper implements IBumper {
 		this.circle = new Circle(x, y, RADIUS);
 		circles = new ArrayList<Circle>();
 		if (!deleted) {
-		circles.add(circle);
+			circles.add(circle);
 		}
 		return circles;
+	}
+
+	public void setX(double xPos) {
+		this.x = xPos;
+	}
+
+	public void setY(double yPos) {
+		this.y = yPos;
 	}
 
 	public double getX() {
 		return x;
 	}
-	
+
 	public double getY() {
 		return y;
 	}
@@ -67,5 +75,11 @@ public class CircleBumper implements IBumper {
 	@Override
 	public void delete() {
 		this.deleted = true;
+	}
+
+	@Override
+	public void move(double x, double y) {
+		setX((x*L)+RADIUS);
+		setY((y*L)+RADIUS);
 	}
 }

@@ -21,9 +21,6 @@ public class RFlipper implements IFlipper {
 	private List<Circle> circles;
 
 	public RFlipper(String gizmoName, double x, double y, Color c) {
-//		if ((int) x == x) {
-//			x = x + 1.5;
-////		}
 		this.x = x * L;
 		this.y = y * L;
 		this.colour = Color.ORANGE;
@@ -178,6 +175,14 @@ public class RFlipper implements IFlipper {
 		return colour;
 	}
 
+	public void setX(double xPos) {
+		this.x = xPos;
+	}
+
+	public void setY(double yPos) {
+		this.y = yPos;
+	}
+	
 	@Override
 	public double getX() {
 		return x;
@@ -193,22 +198,13 @@ public class RFlipper implements IFlipper {
 		return RFlipper.L*2;
 	}
 
-//	@Override
-//	public List<Circle> getCircles() {
-//		return this.circles;
-//	}
-
-	public boolean getRight() {
+	public boolean isRightFlipper() {
 		return this.right;
 	}
 
 	public String getGizmoName() {
 		return gizmoName;
 	}
-	
-//	public List<LineSegment> getLineSegments() {
-//		return this.lineSegments;
-//	}
 
 	public void delete() {
 		this.deleted = true;
@@ -217,6 +213,12 @@ public class RFlipper implements IFlipper {
 	@Override
 	public boolean isDeleted() {
 		return deleted;
+	}
+
+	@Override
+	public void move(double x, double y) {
+		setX(x*L);
+		setY(y*L);
 	}
 
 }

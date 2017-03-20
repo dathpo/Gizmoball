@@ -173,6 +173,14 @@ public class LFlipper implements IFlipper {
 		return colour;
 	}
 
+	public void setX(double xPos) {
+		this.x = xPos;
+	}
+
+	public void setY(double yPos) {
+		this.y = yPos;
+	}
+	
 	@Override
 	public double getX() {
 		return x;
@@ -183,7 +191,7 @@ public class LFlipper implements IFlipper {
 		return y;
 	}
 
-	public boolean getRight() {
+	public boolean isRightFlipper() {
 		return this.right;
 	}
 
@@ -201,6 +209,12 @@ public class LFlipper implements IFlipper {
 
 	public boolean isDeleted() {
 		return deleted;
+	}
+
+	@Override
+	public void move(double x, double y) {
+		setX(x*L);
+		setY(y*L);
 	}
 
 }
