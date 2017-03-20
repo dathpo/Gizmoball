@@ -9,13 +9,10 @@ import java.util.List;
 
 public class Save {
 	private File file;
-	private FileWriter fileWriter;
-	private BufferedWriter bufferedWriter;
-	private int scale = 20;
-	
 	private String xCoord;
 	private String yCoord;
 	private String name;
+	private int gridSize = 20;
 
 	public Save() {
 
@@ -23,8 +20,8 @@ public class Save {
 
 	public void writeFile(IModel model, String fileName) {
 
-		file = new File(fileName + ".txt");
-		List<String> order;
+		file = new File(fileName + 1);
+		List<String> save;
 
 		try {
 
@@ -34,10 +31,11 @@ public class Save {
 
 			FileWriter fileWriter = new FileWriter(file.getAbsoluteFile());
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-			for (IBumper circle : model.getBumpers()) {
-				order = generateBumperSyntax(circle);
-				bufferedWriter
-						.write(order.get(0) + " " + order.get(1) + " " + order.get(2) + " " + order.get(3) + "\n");
+
+			for (IBumper bumper : model.getBumpers()) {
+
+				save = saveLine(bumper);
+				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + "\n");
 			}
 			bufferedWriter.close();
 		} catch (IOException e) {
@@ -45,29 +43,108 @@ public class Save {
 		}
 	}
 
-	private List<String> generateBumperSyntax(IBumper bumper) {
-		
-		if(bumper instanceof CircleBumper) {
-            CircleBumper cBumper = (CircleBumper) bumper;
-            return generateCircleOrder(cBumper);
-	}
+	private List<String> saveLine(IBumper bumper) {
+
+		if (bumper instanceof CircleBumper) {
+			CircleBumper circleB = (CircleBumper) bumper;
+			return saveCircle(circleB);
+
+		} else if (bumper instanceof TriangleBumper) {
+			TriangleBumper triangleB = (TriangleBumper) bumper;
+			return saveTriangle(triangleB);
+
+		} else if (bumper instanceof SquareBumper) {
+			SquareBumper triangleB = (SquareBumper) bumper;
+			return saveSquare(triangleB);
+
+		} else if (bumper instanceof LFlipper) {
+			LFlipper lFlipper = (LFlipper) bumper;
+			return saveLFlipper(lFlipper);
+
+		} else if (bumper instanceof RFlipper) {
+			RFlipper rFlipper = (RFlipper) bumper;
+			return saveRFlipper(rFlipper);
+		}
 		return null;
-}
+	}
 
+	private List<String> saveRFlipper(RFlipper bumper) {
 
-public List<String> generateCircleOrder(CircleBumper bumper) {
-	
-        String gizmoOp = "Circle";
-        xCoord = String.valueOf((int) bumper.getX() / scale);
-        yCoord = String.valueOf((int) bumper.getY() / scale);
-        name = "C" + xCoord + yCoord;
-        
-        List<String> order = new ArrayList<String>(); 
-        
-        order.add(gizmoOp);
-        order.add(name);
-        order.add(xCoord);
-        order.add(yCoord);
-        return order;
-}
+		String gizmoOp = "RFlipper";
+		xCoord = String.valueOf((int) bumper.getX() / gridSize);
+		yCoord = String.valueOf((int) bumper.getY() / gridSize);
+		name = "RF" + xCoord + yCoord;
+
+		List<String> order = new ArrayList<String>();
+
+		order.add(gizmoOp);
+		order.add(name);
+		order.add(xCoord);
+		order.add(yCoord);
+		return order;
+	}
+
+	private List<String> saveLFlipper(LFlipper bumper) {
+
+		String gizmoOp = "LFlipper";
+		xCoord = String.valueOf((int) bumper.getX() / gridSize);
+		yCoord = String.valueOf((int) bumper.getY() / gridSize);
+		name = "LF" + xCoord + yCoord;
+
+		List<String> order = new ArrayList<String>();
+
+		order.add(gizmoOp);
+		order.add(name);
+		order.add(xCoord);
+		order.add(yCoord);
+		return order;
+	}
+
+	private List<String> saveSquare(SquareBumper bumper) {
+
+		String gizmoOp = "Square";
+		xCoord = String.valueOf((int) bumper.getX() / gridSize);
+		yCoord = String.valueOf((int) bumper.getY() / gridSize);
+		name = "S" + xCoord + yCoord;
+
+		List<String> order = new ArrayList<String>();
+
+		order.add(gizmoOp);
+		order.add(name);
+		order.add(xCoord);
+		order.add(yCoord);
+		return order;
+	}
+
+	private List<String> saveTriangle(TriangleBumper bumper) {
+
+		String gizmoOp = "Triangle";
+		xCoord = String.valueOf((int) bumper.getX() / gridSize);
+		yCoord = String.valueOf((int) bumper.getY() / gridSize);
+		name = "T" + xCoord + yCoord;
+
+		List<String> order = new ArrayList<String>();
+
+		order.add(gizmoOp);
+		order.add(name);
+		order.add(xCoord);
+		order.add(yCoord);
+		return order;
+	}
+
+	public List<String> saveCircle(CircleBumper bumper) {
+
+		String gizmoOp = "Circle";
+		xCoord = String.valueOf((int) bumper.getX() / gridSize);
+		yCoord = String.valueOf((int) bumper.getY() / gridSize);
+		name = "C" + xCoord + yCoord;
+
+		List<String> order = new ArrayList<String>();
+
+		order.add(gizmoOp);
+		order.add(name);
+		order.add(xCoord);
+		order.add(yCoord);
+		return order;
+	}
 }
