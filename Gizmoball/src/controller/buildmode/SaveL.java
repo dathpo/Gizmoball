@@ -8,9 +8,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Writer;
 
 public class SaveL implements ActionListener {
 
@@ -21,13 +18,10 @@ public class SaveL implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
 		if (e.getActionCommand().equals("Save")) {
-
 			JFileChooser save = new JFileChooser();
 			save.setCurrentDirectory(new File(System.getProperty("user.dir")));
-			int returnValue = save.showOpenDialog(null);
-
+			int returnValue = save.showSaveDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File saveFile = save.getSelectedFile();
 				Save saveBuild = new Save();
