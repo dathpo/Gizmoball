@@ -92,7 +92,7 @@ public class Save {
 
 	private List<String> saveRFlipper(RFlipper bumper) {
 
-		String gizmoOp = "RFlipper";
+		String gizmoOp = "RightFlipper";
 		xCoord = String.valueOf((int) bumper.getX() / gridSize);
 		yCoord = String.valueOf((int) bumper.getY() / gridSize);
 		name = "RF" + xCoord + yCoord;
@@ -108,7 +108,7 @@ public class Save {
 
 	private List<String> saveLFlipper(LFlipper bumper) {
 
-		String gizmoOp = "LFlipper";
+		String gizmoOp = "LeftFlipper";
 		xCoord = String.valueOf((int) bumper.getX() / gridSize);
 		yCoord = String.valueOf((int) bumper.getY() / gridSize);
 		name = "LF" + xCoord + yCoord;
