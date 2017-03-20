@@ -25,6 +25,7 @@ public class LoadL implements ActionListener {
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				model.clearArrays();
+				model.emptySpaces();
 				File selectedFile = fileChooser.getSelectedFile();
 				try {
 					model.setFriction(0.025, 0.025);

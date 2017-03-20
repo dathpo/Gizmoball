@@ -59,6 +59,7 @@ public class PlayModeL implements ActionListener {
 				int returnValue = fileChooser.showOpenDialog(null);
 				if (returnValue == JFileChooser.APPROVE_OPTION) {
 					model.clearArrays();
+					model.emptySpaces();
 					File selectedFile = fileChooser.getSelectedFile();
 					try {
 						timer.stop();
@@ -82,6 +83,7 @@ public class PlayModeL implements ActionListener {
 					try {
 						timer.stop();
 						model.clearArrays();
+						model.emptySpaces();
 						model.loadNewModel(loadedFile.toString());
 						model.resetBall();
 						model.setLoadedFile(loadedFile);

@@ -23,6 +23,8 @@ public interface IModel {
 	public void setGizmoFocus(int i);
 
 	public void clearArrays();
+	
+	public void emptySpaces();
 
 	public void moveGizmo(String gizmoName, double x, double y);
 
