@@ -34,7 +34,17 @@ public class Save {
 
 			for (IBumper bumper : model.getBumpers()) {
 
-				save = saveLine(bumper);
+				save = saveBumper(bumper);
+				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + "\n");
+			}
+			for (IFlipper flipper : model.getFlippers()) {
+
+				save = saveFlipper(flipper);
+				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + "\n");
+			}
+			for (IAbsorber absorber : model.getAbsorbers()) {
+
+				save = saveAbsorber(absorber);
 				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + "\n");
 			}
 			bufferedWriter.close();
@@ -43,7 +53,12 @@ public class Save {
 		}
 	}
 
-	private List<String> saveLine(IBumper bumper) {
+	private List<String> saveAbsorber(IAbsorber absorber) {
+		
+		return null;
+	}
+
+	private List<String> saveBumper(IBumper bumper) {
 
 		if (bumper instanceof CircleBumper) {
 			CircleBumper circleB = (CircleBumper) bumper;
@@ -56,16 +71,23 @@ public class Save {
 		} else if (bumper instanceof SquareBumper) {
 			SquareBumper triangleB = (SquareBumper) bumper;
 			return saveSquare(triangleB);
+		}
+		return null;
+	}
 
-		} else if (bumper instanceof LFlipper) {
-			LFlipper lFlipper = (LFlipper) bumper;
+	private List<String> saveFlipper(IFlipper flipper) {
+
+
+		if (flipper instanceof LFlipper) {
+			LFlipper lFlipper = (LFlipper) flipper;
 			return saveLFlipper(lFlipper);
 
-		} else if (bumper instanceof RFlipper) {
-			RFlipper rFlipper = (RFlipper) bumper;
+		} else if (flipper instanceof RFlipper) {
+			RFlipper rFlipper = (RFlipper) flipper;
 			return saveRFlipper(rFlipper);
 		}
 		return null;
+
 	}
 
 	private List<String> saveRFlipper(RFlipper bumper) {
