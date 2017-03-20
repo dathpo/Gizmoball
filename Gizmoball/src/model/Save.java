@@ -34,18 +34,20 @@ public class Save {
 			}
 			for (IAbsorber absorber : model.getAbsorbers()) {
 				save = saveAbsorber(absorber);
-				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + " " + save.get(4) + " " + save.get(5) + "\n");
+				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + " "
+						+ save.get(4) + " " + save.get(5) + "\n");
 			}
 			if (model.getBall() != null) {
 				save = saveBall(model.getBall());
-				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + " " + save.get(4) + " " + save.get(5) + "\n");
+				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + " "
+						+ save.get(4) + " " + save.get(5) + "\n");
 			}
 			save = saveFriction(model.getFrictionX(), model.getFrictionY());
 			bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + "\n");
-			
+
 			save = saveGravity(model.getGravity());
 			bufferedWriter.write(save.get(0) + " " + save.get(1) + "\n");
-			
+
 			bufferedWriter.close();
 
 		} catch (IOException e) {
@@ -77,29 +79,29 @@ public class Save {
 		}
 		return null;
 	}
-	
+
 	private List<String> saveGravity(double gravity) {
 		String gizmoOp = "Gravity";
 		String value = String.valueOf(gravity);
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(value);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(value);
+		return saveBuild;
 	}
-	
+
 	private List<String> saveFriction(double mu, double mu2) {
 		String gizmoOp = "Friction";
 		String muValue = String.valueOf(mu);
 		String mu2Value = String.valueOf(mu2);
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(muValue);
-		order.add(mu2Value);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(muValue);
+		saveBuild.add(mu2Value);
+		return saveBuild;
 	}
 
 	private List<String> saveAbsorber(IAbsorber absorber) {
@@ -110,15 +112,15 @@ public class Save {
 		String y2Coord = String.valueOf((int) (absorber.getY2() / L));
 		String gizmoName = "A" + x1Coord + y1Coord;
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(gizmoName);
-		order.add(x1Coord);
-		order.add(y1Coord);
-		order.add(x2Coord);
-		order.add(y2Coord);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		saveBuild.add(x1Coord);
+		saveBuild.add(y1Coord);
+		saveBuild.add(x2Coord);
+		saveBuild.add(y2Coord);
+		return saveBuild;
 	}
 
 	private List<String> saveRFlipper(RFlipper bumper) {
@@ -128,13 +130,13 @@ public class Save {
 		String yCoord = String.valueOf((int) (bumper.getY() / L));
 		String gizmoName = "RF" + xCoord + yCoord;
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(gizmoName);
-		order.add(xCoord);
-		order.add(yCoord);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		saveBuild.add(xCoord);
+		saveBuild.add(yCoord);
+		return saveBuild;
 	}
 
 	private List<String> saveLFlipper(LFlipper bumper) {
@@ -144,13 +146,13 @@ public class Save {
 		String yCoord = String.valueOf((int) (bumper.getY() / L));
 		String gizmoName = "LF" + xCoord + yCoord;
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(gizmoName);
-		order.add(xCoord);
-		order.add(yCoord);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		saveBuild.add(xCoord);
+		saveBuild.add(yCoord);
+		return saveBuild;
 	}
 
 	private List<String> saveSquare(SquareBumper bumper) {
@@ -160,13 +162,13 @@ public class Save {
 		String yCoord = String.valueOf((int) (bumper.getY() / L));
 		String gizmoName = "S" + xCoord + yCoord;
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(gizmoName);
-		order.add(xCoord);
-		order.add(yCoord);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		saveBuild.add(xCoord);
+		saveBuild.add(yCoord);
+		return saveBuild;
 	}
 
 	private List<String> saveTriangle(TriangleBumper bumper) {
@@ -176,13 +178,13 @@ public class Save {
 		String yCoord = String.valueOf((int) (bumper.getY() / L));
 		String gizmoName = "T" + xCoord + yCoord;
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(gizmoName);
-		order.add(xCoord);
-		order.add(yCoord);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		saveBuild.add(xCoord);
+		saveBuild.add(yCoord);
+		return saveBuild;
 	}
 
 	public List<String> saveCircle(CircleBumper bumper) {
@@ -192,31 +194,31 @@ public class Save {
 		String yCoord = String.valueOf((int) (bumper.getY() / L));
 		String gizmoName = "C" + xCoord + yCoord;
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(gizmoName);
-		order.add(xCoord);
-		order.add(yCoord);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		saveBuild.add(xCoord);
+		saveBuild.add(yCoord);
+		return saveBuild;
 	}
 
 	public List<String> saveBall(Ball ball) {
 		String gizmoOp = "Ball";
-		String xCoord = String.valueOf((ball.getX()-(L/2)) / L);
-		String yCoord = String.valueOf((ball.getY()-(L/2)) / L);
+		String xCoord = String.valueOf((ball.getX() - (L / 2)) / L);
+		String yCoord = String.valueOf((ball.getY() - (L / 2)) / L);
 		String xV = String.valueOf(ball.getVelo().x());
 		String yV = String.valueOf(ball.getVelo().y());
 		String gizmoName = "B";
 
-		List<String> order = new ArrayList<String>();
+		List<String> saveBuild = new ArrayList<String>();
 
-		order.add(gizmoOp);
-		order.add(gizmoName);
-		order.add(xCoord);
-		order.add(yCoord);
-		order.add(xV);
-		order.add(yV);
-		return order;
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		saveBuild.add(xCoord);
+		saveBuild.add(yCoord);
+		saveBuild.add(xV);
+		saveBuild.add(yV);
+		return saveBuild;
 	}
 }
