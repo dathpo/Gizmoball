@@ -307,15 +307,14 @@ public class Model extends Observable implements IModel {
 		} else {
 			if (squareAdder || circleAdder || triangleAdder || absorberAdder || lFlipperAdder || rFlipperAdder
 					|| ballAdder) {
-				if (circleAdder) {
-					addCircleB(null, x, y, null);
-				} else if (squareAdder) {
-					addSquareB(null, x, y, null);
-				} else if (triangleAdder) {
-					addTriangleB(null, x, y, null);
-				} else if (absorberAdder) {
-					addAbsorber(null, x, y, x, y, null);
-				} else if (lFlipperAdder) {
+//				if (circleAdder) {
+//					addCircleB(null, x, y, null);
+//				} else if (squareAdder) {
+//					addSquareB(null, x, y, null);
+//				} else if (triangleAdder) {
+//					addTriangleB(null, x, y, null);
+//				} else 
+					if (lFlipperAdder) {
 					addLFlipper(null, x, y, null);
 				} else if (rFlipperAdder) {
 					addRFlipper(null, x, y, null);
@@ -533,11 +532,7 @@ public class Model extends Observable implements IModel {
 
 		} else {
 			if (absorberAdder) {
-				for (int x = (int) x1; x <= x2; x++) {
-					for (int y = (int) y1; y <= y2; y++) {
-						addAbsorber(null, x, y, x2 + 1, y2 + 1, Color.MAGENTA);
-					}
-				}
+				addAbsorber(null, x1, y1, x2 + 1, y2 + 1, Color.MAGENTA);
 			} else if (circleAdder) {
 				for (int x = (int) x1; x <= x2; x++) {
 					for (int y = (int) y1; y <= y2; y++) {
