@@ -186,7 +186,7 @@ public class BuildGUI extends JPanel implements IGUI {
 	public void Operations() {
 
 		JPanel operations = new JPanel();
-		operations.setLayout(new GridLayout(3, 3));
+		operations.setLayout(new GridLayout(4, 2));
 
 		JButton move = new JButton("Move");
 		operations.add(move);
@@ -212,13 +212,13 @@ public class BuildGUI extends JPanel implements IGUI {
 		operations.add(disconnect);
 		disconnect.addActionListener(disconnectGizmoL);
 
-		// JButton kConnect = new JButton("Key Connect");
-		// operations.add(kConnect);
-		// kConnect.addActionListener(keyConnectL);
-		//
-		// JButton kDisconnect = new JButton("Key Disconnect");
-		// operations.add(kDisconnect);
-		// kDisconnect.addActionListener(keyDisconnectL);
+		JButton kConnect = new JButton("Key Connect");
+		operations.add(kConnect);
+		kConnect.addActionListener(keyConnectL);
+
+		JButton kDisconnect = new JButton("Key Disconnect");
+		operations.add(kDisconnect);
+		kDisconnect.addActionListener(keyDisconnectL);
 
 		buildFrame.getContentPane().add(operations, BorderLayout.SOUTH);
 	}
@@ -228,6 +228,8 @@ public class BuildGUI extends JPanel implements IGUI {
 		buildBoard = new Board(400, 400, model);
 		buildFrame.getContentPane().add(buildBoard, BorderLayout.CENTER);
 		buildBoard.addMouseListener(mouseInteractionL);
+		buildFrame.pack();
+		
 
 	}
 }

@@ -38,7 +38,7 @@ public class PlayGUI extends JPanel implements IGUI {
 		playFrame.setFocusable(true);
 		playFrame.setFocusTraversalKeysEnabled(false);
 		playFrame.setTitle("Gizmoball - Play Mode");
-		playFrame.setSize(500, 500);
+		playFrame.setSize(568, 500);
 		playFrame.setLocationRelativeTo(null);
 		playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		playFrame.setResizable(false);
@@ -106,6 +106,8 @@ public class PlayGUI extends JPanel implements IGUI {
 		playBoard = new Board(400, 400, model);
 		playBoard.setBackground(Color.black);
 		playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
+		playBoard.repaint();
+		playFrame.pack();
 	}
 
 	private void addButton(JPanel buttons, String bName) {
