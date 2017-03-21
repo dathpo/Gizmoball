@@ -10,6 +10,7 @@ import controller.buildmode.AddLFlipperL;
 import controller.buildmode.AddRFlipperL;
 import controller.buildmode.AddSquareBL;
 import controller.buildmode.AddTriangleBL;
+import controller.buildmode.BuildModeKeyL;
 import controller.buildmode.ClearBoardL;
 import controller.buildmode.ConnectGizmoL;
 import controller.buildmode.DeleteGizmoL;
@@ -62,6 +63,7 @@ public class BuildGUI extends JPanel {
 	private SwitchToPML switchToPML;
 	private ExitL exitL;
 	private MouseInteractionL mouseInteractionL;
+	private BuildModeKeyL bmKeyL;
 
     public BuildGUI(Main main, IModel model) {
 
@@ -89,6 +91,7 @@ public class BuildGUI extends JPanel {
 		switchToPML = new SwitchToPML(model);
 		exitL = new ExitL(model);
 		mouseInteractionL = new MouseInteractionL(model);
+		bmKeyL = new BuildModeKeyL(model);
 		
         BuildFrame();
         MenuBar();
@@ -231,6 +234,10 @@ public class BuildGUI extends JPanel {
 		JButton connect = new JButton("Connect");
 		operations.add(connect);
 		connect.addActionListener(connectGizmoL);
+		
+		connect.addKeyListener(bmKeyL);
+		connect.setFocusable(true);
+		connect.setFocusTraversalKeysEnabled(false);
 
 		JButton disconnect = new JButton("Disconnect");
 		operations.add(disconnect);

@@ -117,4 +117,30 @@ public interface IModel {
 	public boolean getRotateMode();
 
 	public void userRotate();
+
+	public void setConnectMode(boolean b);
+	
+	public boolean getConnectMode();
+
+	public void connectKey();
+	
+	public void setRFlipperKey(int key);
+	
+	public void setLFlipperKey(int key);
+	
+	public void setAbsorberKey(int key);
+	
+	public int getRFlipperKey();
+	
+	public int getLFlipperKey();
+	
+	public int getAbsorberKey();
+	
+	public void setLastKeyPress(int key);
+	
+	public boolean getDisconnectMode();
+	
+	public void setDisconnectMode(boolean b);
+
+	public void disconnectGizmo();
 }

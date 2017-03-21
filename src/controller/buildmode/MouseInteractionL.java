@@ -51,6 +51,10 @@ public class MouseInteractionL implements MouseListener {
 		
 		if(model.getRotateMode()){
 			model.userRotate();
+		}else if(model.getConnectMode()){
+			model.connectKey();
+		}else if(model.getDisconnectMode()){
+			model.disconnectGizmo();
 		}
 		
 	}

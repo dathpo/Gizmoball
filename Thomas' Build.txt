@@ -1,0 +1,79 @@
+Circle C66 6 6
+Circle C75 7 5
+Circle C84 8 4
+Circle C93 9 3
+Circle C103 10 3
+Circle C113 11 3
+Circle C124 12 4
+Circle C135 13 5
+Circle C146 14 6
+Circle C147 14 7
+Circle C148 14 8
+Circle C139 13 9
+Circle C1210 12 10
+Circle C1111 11 11
+Circle C1011 10 11
+Circle C911 9 11
+Circle C810 8 10
+Circle C79 7 9
+Circle C68 6 8
+Circle C67 6 7
+Triangle T02 0 2
+Triangle T11 1 1
+Triangle T20 2 0
+Triangle T160 16 0
+Triangle T171 17 1
+Triangle T182 18 2
+Triangle T193 19 3
+Triangle T130 13 0
+Triangle T140 14 0
+Triangle T134 13 4
+Triangle T144 14 4
+Triangle T1714 17 14
+Triangle T1613 16 13
+Square S1713 17 13
+Triangle T015 0 15
+Triangle T014 0 14
+Triangle T115 1 15
+Triangle T710 7 10
+Triangle T811 8 11
+Triangle T170 17 0
+Triangle T181 18 1
+Triangle T192 19 2
+Circle C37 3 7
+Circle C36 3 6
+Circle C35 3 5
+Circle C34 3 4
+Triangle T33 3 3
+Square S85 8 5
+Square S95 9 5
+Square S105 10 5
+Square S115 11 5
+Square S125 12 5
+Square S106 10 6
+Square S107 10 7
+Square S108 10 8
+Square S109 10 9
+Square S1010 10 10
+Triangle T212 2 12
+Triangle T313 3 13
+Triangle T414 4 14
+Triangle T815 8 15
+Triangle T916 9 16
+Circle C715 7 15
+Square S37 3 7
+RightFlipper RF48 4 8
+LeftFlipper LF141 14 1
+RightFlipper RF21 2 1
+LeftFlipper LF41 4 1
+LeftFlipper LF29 2 9
+Absorber A017 0 17 20 18
+Absorber A08 0 8 3 9
+Absorber A415 4 15 5 16
+Absorber A315 3 15 7 16
+Absorber A1415 14 15 15 16
+Absorber A1515 15 15 16 16
+Absorber A1315 13 15 17 16
+Ball B 3.0 8.0 100.0 100.0
+Friction 0.025 0.025
+Gravity 25.0

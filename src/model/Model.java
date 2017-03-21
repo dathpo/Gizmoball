@@ -22,7 +22,13 @@ public class Model extends Observable implements IModel {
 	private List<IAbsorber> absorbers;
 	private List<IFlipper> flippers;
 	private boolean squareAdder, circleAdder, triangleAdder, absorberAdder, rFlipperAdder, lFlipperAdder, ballAdder,
-	deleteMode, placementMode, selectMode, moveMode, rotateMode = false;
+	deleteMode, placementMode, selectMode, moveMode, rotateMode, connectMode, disconnectMode = false;
+	private int rFlipperKey = 81;
+	private int lFlipperKey = 69;
+	private int absorberKey = 32;
+	
+	private int lastKey;
+	
 
 	private IAbsorber selectedAbsorber = null;
 	private IBumper selectedBumper = null;
@@ -169,12 +175,20 @@ public class Model extends Observable implements IModel {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 				if (time < 0.01) {
 					absorber.absorb(ball);
+					if(absorberKey == 0){
+						absorber.release();
+					}
+					
 				}
 			}
 			for (Circle circle : absorber.getCircles()) {
 				time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
 				if (time < 0.01) {
 					absorber.absorb(ball);
+					if(absorberKey == 0){
+						absorber.release();
+					}
+					
 				}
 			}
 		}
@@ -421,6 +435,7 @@ public class Model extends Observable implements IModel {
 					// iAbsorber.move(x/20 + 2, y/20 + 2);
 					// setEmptySpace(x/20, y/20);
 					selectedAbsorber = iAbsorber;
+					System.out.println("Absorber selected");
 				}
 			}
 		}
@@ -442,8 +457,11 @@ public class Model extends Observable implements IModel {
 				}
 			}
 		}
-		if (!getRotateMode()) {
+		
+	
+		if (!getRotateMode() && !getConnectMode() && !getDisconnectMode()) {
 			setMoveMode(true);
+		
 		}
 	}
 
@@ -639,6 +657,8 @@ public class Model extends Observable implements IModel {
 		this.placementMode = !b;
 		this.moveMode = !b;
 		this.rotateMode = !b;
+		this.connectMode = !b;
+		this.disconnectMode = !b;
 	}
 
 	@Override
@@ -653,6 +673,8 @@ public class Model extends Observable implements IModel {
 		this.moveMode = !b;
 		this.selectMode = !b;
 		this.rotateMode = !b;
+		this.connectMode = !b;
+		this.disconnectMode = !b;
 	}
 
 	@Override
@@ -667,6 +689,8 @@ public class Model extends Observable implements IModel {
 		this.placementMode = !b;
 		this.moveMode = b;
 		this.rotateMode = !b;
+		this.connectMode = !b;
+		this.disconnectMode = !b;
 	}
 
 	@Override
@@ -681,6 +705,8 @@ public class Model extends Observable implements IModel {
 		this.moveMode = !b;
 		this.selectMode = !b;
 		this.rotateMode = !b;
+		this.connectMode = !b;
+		this.disconnectMode = !b;
 	}
 
 	@Override
@@ -695,6 +721,8 @@ public class Model extends Observable implements IModel {
 		this.deleteMode = !b;
 		this.placementMode = !b;
 		this.moveMode = b;
+		this.connectMode = !b;
+		this.disconnectMode = !b;
 	}
 
 	@Override
@@ -826,5 +854,124 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void addObserver(Board board) {
 	}
+
+	@Override
+	public void setConnectMode(boolean b) {
+		this.rotateMode = !b;
+		this.selectMode = b;
+		this.deleteMode = !b;
+		this.placementMode = !b;
+		this.moveMode = !b;
+		this.connectMode = b;
+		this.disconnectMode = !b;
+		
+	}
+
+	@Override
+	public boolean getConnectMode() {
+		return this.connectMode;
+	}
+	
+	public void connectKey(){
+		
+		System.out.println("ConnectKey called");
+		if (this.selectedBumper != null) {
+			//this.selectedBumper.rotate();
+		} else if (this.selectedFlipper != null) {
+			if(this.selectedFlipper.isRightFlipper()){
+				this.setRFlipperKey(lastKey);
+			}else if(this.selectedFlipper.isRightFlipper() == false){
+				this.setLFlipperKey(lastKey);
+			}
+		} else if(this.selectedAbsorber != null){
+			this.setAbsorberKey(this.lastKey);
+			System.out.println("Absorber key connected to #key: " + this.lastKey);
+		}
+		this.selectedBumper = null;
+		this.selectedFlipper = null;
+		this.selectedAbsorber = null;
+		setPlacementMode(true);
+	}
+
+	@Override
+	public void setRFlipperKey(int key) {
+		this.rFlipperKey = key;
+		
+	}
+
+	@Override
+	public void setLFlipperKey(int key) {
+		this.lFlipperKey = key;
+		
+	}
+
+	@Override
+	public void setAbsorberKey(int key) {
+		this.absorberKey = key;
+		
+	}
+
+	@Override
+	public int getRFlipperKey() {
+		// TODO Auto-generated method stub
+		return this.rFlipperKey;
+	}
+
+	@Override
+	public int getLFlipperKey() {
+		// TODO Auto-generated method stub
+		return this.lFlipperKey;
+	}
+
+	@Override
+	public int getAbsorberKey() {
+		// TODO Auto-generated method stub
+		return this.absorberKey;
+	}
+	
+	public void setLastKeyPress(int key){
+		this.lastKey = key;
+	}
+
+	@Override
+	public boolean getDisconnectMode() {
+		// TODO Auto-generated method stub
+		return this.disconnectMode;
+	}
+
+	@Override
+	public void setDisconnectMode(boolean b) {
+		this.selectMode = b;
+		this.deleteMode = !b;
+		this.placementMode = !b;
+		this.moveMode = !b;
+		this.rotateMode = !b;
+		this.connectMode = !b;
+		this.disconnectMode = b;
+		
+	}
+	
+	public void disconnectGizmo(){
+		
+		
+		if (this.selectedBumper != null) {
+			//this.selectedBumper.rotate();
+		} else if (this.selectedFlipper != null) {
+			if(this.selectedFlipper.isRightFlipper()){
+				this.setRFlipperKey(0);
+			}else if(this.selectedFlipper.isRightFlipper() == false){
+				this.setLFlipperKey(0);
+			}
+		} else if(this.selectedAbsorber != null){
+			this.setAbsorberKey(0);
+			System.out.println("Absorber key connected to #key: " + this.lastKey);
+		}
+		this.selectedBumper = null;
+		this.selectedFlipper = null;
+		this.selectedAbsorber = null;
+		setPlacementMode(true);
+	}
+	
+	
 
 }
