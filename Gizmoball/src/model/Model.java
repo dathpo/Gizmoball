@@ -23,9 +23,8 @@ public class Model extends Observable implements IModel {
 	private List<IFlipper> flippers;
 	private boolean squareAdder, circleAdder, triangleAdder, absorberAdder, rFlipperAdder, lFlipperAdder,
 	ballAdder = false;
-
 	private boolean filledSpaces[][];
-	private double mu, mu2, gravity, ballXVel = 0, ballYVel = 0;
+	private double mu, mu2, gravity, ballXVel = 0, ballYVel = 0, oldX, oldY;
 	private static final double L = 20;
 	private File loadedFile;
 
@@ -260,28 +259,32 @@ public class Model extends Observable implements IModel {
 			return false;
 		}
 	}
-	
+
 	public boolean canPlaceAbsorber(double x1, double y1, double x2, double y2) {
 		if (x1 >= 0 && x1 < 20 && y1 >= 0 && y1 < 20 && x2 > 0 && x2 <= 20 && y2 > 0 && y2 <= 20) {
 			for(int i = (int) x1; i < x2; i++) {
 				for(int j = (int) y1; j < y2; j++) {
-					
 					if (!isSpaceFilled(i, j)) {
-//						System.out.println("Space not filled: " + i + ", " + j);
-						return true;}
-				}}
-				
+						System.out.println("Space not filled: " + i + ", " + j);
+						return true;
+					}
+				}
+			}
+
 		} 
-			return false;
+		return false;
 	}
 
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
 		if (canPlaceGizmo(x, y)) {
-			System.out.println("Ball placed at x: " + x + ", y: " + y);
+			emptySpace(oldX, oldY);
+			oldX=x;
+			oldY=y;
+			System.out.println("Ball placed at x: " + (int) x + ", y: " + (int) y);
 			ball = new Ball(gizmoName, x, y, ballXVel, ballYVel, Color.BLUE);
 			ball.setX(x * L + L / 2);
 			ball.setY(y * L + L / 2);
-			setFilledSpaces(x, y);
+			fillSpace(oldX, oldY);
 		} else {
 			System.out.println("The Ball cannot be placed here.");
 		}
@@ -289,9 +292,9 @@ public class Model extends Observable implements IModel {
 
 	public void addCircleB(String gizmoName, double x, double y, Color c) {
 		if (canPlaceGizmo(x, y)) {
-			System.out.println("New Circle at x: " + x + ", y: " + y);
+			System.out.println("New Circle at x: " + (int) x + ", y: " + (int) y);
 			bumpers.add(new CircleBumper(gizmoName, x, y, Color.GREEN));
-			setFilledSpaces(x, y);
+			fillSpace(x, y);
 		} else {
 			System.out.println("The Circle cannot be placed here.");
 		}
@@ -299,9 +302,9 @@ public class Model extends Observable implements IModel {
 
 	public void addSquareB(String gizmoName, double x, double y, Color c) {
 		if (canPlaceGizmo(x, y)) {
-			System.out.println("New Square at x: " + x + ", y: " + y);
+			System.out.println("New Square at x: " + (int) x + ", y: " + (int) y);
 			bumpers.add(new SquareBumper(gizmoName, x, y, Color.RED));
-			setFilledSpaces(x, y);
+			fillSpace(x, y);
 		} else {
 			System.out.println("The Square cannot be placed here.");
 		}
@@ -309,9 +312,9 @@ public class Model extends Observable implements IModel {
 
 	public void addTriangleB(String gizmoName, double x, double y, Color c) {
 		if (canPlaceGizmo(x, y)) {
-			System.out.println("New Triangle at x: " + x + ", y: " + y);
+			System.out.println("New Triangle at x: " + (int) x + ", y: " + (int) y);
 			bumpers.add(new TriangleBumper(gizmoName, x, y, Color.BLUE));
-			setFilledSpaces(x, y);
+			fillSpace(x, y);
 		} else {
 			System.out.println("The Triangle cannot be placed here.");
 		}
@@ -319,25 +322,25 @@ public class Model extends Observable implements IModel {
 
 	public void addAbsorber(String gizmoName, double x1, double y1, double x2, double y2, Color c) {
 		if (canPlaceAbsorber(x1, y1, x2, y2)) {
-			System.out.println("New Absorber from x1: " + x1 + ", y1: " + y1 + " to x2: " + x2 + ", y2: " + y2);
+			System.out.println("New Absorber from x1: " + (int) x1 + ", y1: " + (int) y1 + " to x2: " + (int) x2 + ", y2: " + (int) y2);
 			absorbers.add(new Absorber(gizmoName, x1, y1, x2, y2, Color.MAGENTA));
 			for(int i = (int) x1; i < x2; i++) {
 				for(int j = (int) y1; j < y2; j++) {
-//					System.out.println(i + ", " + j);
-					setFilledSpaces(i, j);
-		}}} else {
-			System.out.println("The Absorber cannot be placed here.");
-		}
+					//					System.out.println(i + ", " + j);
+					fillSpace(i, j);
+				}}} else {
+					System.out.println("The Absorber cannot be placed here.");
+				}
 	}
 
 	public void addLFlipper(String gizmoName, double x, double y, Color c) {
 		if (canPlaceFlipper(x, y) && !isSpaceFilled(x+1, y) && !isSpaceFilled(x, y+1) && !isSpaceFilled(x+1, y+1)) {
-			System.out.println("New Left Flipper at x: " + x + ", y: " + y);
+			System.out.println("New Left Flipper at x: " + (int) x + ", y: " + (int) y);
 			flippers.add(new LFlipper(gizmoName, x, y, Color.ORANGE));
-			setFilledSpaces(x, y);
-			setFilledSpaces(x+1, y);
-			setFilledSpaces(x, y+1);
-			setFilledSpaces(x+1, y+1);
+			fillSpace(x, y);
+			fillSpace(x+1, y);
+			fillSpace(x, y+1);
+			fillSpace(x+1, y+1);
 		} else {
 			System.out.println("The Left Flipper cannot be placed here.");
 		}
@@ -345,28 +348,32 @@ public class Model extends Observable implements IModel {
 
 	public void addRFlipper(String gizmoName, double x, double y, Color c) {
 		if (canPlaceFlipper(x, y) && !isSpaceFilled(x+1, y) && !isSpaceFilled(x, y+1) && !isSpaceFilled(x+1, y+1)) {
-			System.out.println("New Right Flipper at x: " + x + ", y: " + y);
-			setFilledSpaces(x, y);
-			setFilledSpaces(x+1, y);
-			setFilledSpaces(x, y+1);
-			setFilledSpaces(x+1, y+1);
+			System.out.println("New Right Flipper at x: " + (int) x + ", y: " + (int) y);
+			fillSpace(x, y);
+			fillSpace(x+1, y);
+			fillSpace(x, y+1);
+			fillSpace(x+1, y+1);
 			flippers.add(new RFlipper(gizmoName, x, y, Color.ORANGE));
 		} else {
 			System.out.println("The Right Flipper cannot be placed here.");
 		}
 	}
 
-	private void setFilledSpaces(double x, double y) {
+	private void fillSpace(double x, double y) {
 		filledSpaces[(int) x][(int) y] = true;
+	}
+	
+	private void emptySpace(double x, double y) {
+		filledSpaces[(int) x][(int) y] = false;
 	}
 
 	private boolean isSpaceFilled(double x, double y) {
 		return filledSpaces[(int) x][(int) y];
 	}
 
-	private boolean[][] getFilledSpaces(double x, double y) {
-		return filledSpaces;
-	}
+//	private boolean[][] getFilledSpaces(double x, double y) {
+//		return filledSpaces;
+//	}
 
 	public void emptySpaces() {
 		for(int i = 0; i < filledSpaces.length; i++)
@@ -392,13 +399,14 @@ public class Model extends Observable implements IModel {
 			}
 		}
 	}
-	//	}
 
 	public void moveGizmo(String gizmoName, double newX, double newY) {
 		if (bumpers != null) {
 			for (IBumper bumper : bumpers) {
 				if (gizmoName.equals(bumper.getGizmoName())) {
 					bumper.move(newX, newY);
+					emptySpace(bumper.getX(), bumper.getY());
+					fillSpace(newX, newX);
 				}
 			}
 		}
@@ -406,6 +414,8 @@ public class Model extends Observable implements IModel {
 			for (IAbsorber absorber : absorbers) {
 				if (gizmoName.equals(absorber.getGizmoName())) {
 					absorber.move(newX, newY);
+					emptySpace(absorber.getX1(), absorber.getY1());
+					fillSpace(newX, newX);
 				}
 			}
 		}
@@ -445,6 +455,7 @@ public class Model extends Observable implements IModel {
 			for (IBumper bumper : bumpers) {
 				if (gizmoName.equals(bumper.getGizmoName())) {
 					bumper.delete();
+					emptySpace(bumper.getX(), bumper.getY());
 				}
 			}
 		}
@@ -452,6 +463,7 @@ public class Model extends Observable implements IModel {
 			for (IAbsorber absorber : absorbers) {
 				if (gizmoName.equals(absorber.getGizmoName())) {
 					absorber.delete();
+					emptySpace(absorber.getX1(), absorber.getY1());
 				}
 			}
 		}
@@ -548,10 +560,10 @@ public class Model extends Observable implements IModel {
 
 
 	public void userDragFilledGizmo(double x1, double y1, double x2, double y2) {
-			if (absorberAdder) {
-				addAbsorber(null, x1, y1, x2+1, y2+1, Color.MAGENTA);
-			}
+		if (absorberAdder) {
+			addAbsorber(null, x1, y1, x2+1, y2+1, Color.MAGENTA);
 		}
+	}
 
 	public void clearArrays() {
 		bumpers.clear();
