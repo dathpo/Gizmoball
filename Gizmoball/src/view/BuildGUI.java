@@ -15,7 +15,7 @@ import controller.buildmode.ConnectGizmoL;
 import controller.buildmode.DeleteGizmoL;
 import controller.buildmode.DisconnectGizmoL;
 import controller.buildmode.ExitL;
-import controller.buildmode.GizmoAdderL;
+import controller.buildmode.MouseInteractionL;
 import controller.buildmode.KeyConnectL;
 import controller.buildmode.KeyDisconnectL;
 import controller.buildmode.LoadL;
@@ -61,7 +61,7 @@ public class BuildGUI extends JPanel implements IGUI {
 	private SetGravityL setGravityL;
 	private SwitchToPML switchToPML;
 	private ExitL exitL;
-	private GizmoAdderL gizmoSelectedL;
+	private MouseInteractionL mouseInteractionL;
 
     public BuildGUI(Main main, IModel model) {
 
@@ -88,7 +88,7 @@ public class BuildGUI extends JPanel implements IGUI {
 		setGravityL = new SetGravityL(model);
 		switchToPML = new SwitchToPML(model);
 		exitL = new ExitL(model);
-		gizmoSelectedL = new GizmoAdderL(model);
+		mouseInteractionL = new MouseInteractionL(model);
 		
         BuildFrame();
         MenuBar();
@@ -251,7 +251,7 @@ public class BuildGUI extends JPanel implements IGUI {
 
     	buildBoard = new Board(400, 400, model);
 		buildFrame.getContentPane().add(buildBoard, BorderLayout.CENTER);
-		buildBoard.addMouseListener(gizmoSelectedL);
+		buildBoard.addMouseListener(mouseInteractionL);
 
     }
 }

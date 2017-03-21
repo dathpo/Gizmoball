@@ -15,5 +15,6 @@ public class AddTriangleBL implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.setGizmoFocus(1);
+		model.setPlacementMode(true);
 	}
 }

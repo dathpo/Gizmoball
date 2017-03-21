@@ -15,5 +15,6 @@ public class AddAbsorberL implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.setGizmoFocus(5);
+		model.setPlacementMode(true);
 	}
 }

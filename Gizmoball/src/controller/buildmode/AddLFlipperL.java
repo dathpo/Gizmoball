@@ -15,6 +15,7 @@ public class AddLFlipperL implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.setGizmoFocus(3);
+		model.setPlacementMode(true);
 	}
 
 }

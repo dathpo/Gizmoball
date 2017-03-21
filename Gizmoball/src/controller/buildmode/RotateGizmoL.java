@@ -7,11 +7,17 @@ import model.IModel;
 
 public class RotateGizmoL implements ActionListener {
 
+	IModel model;
+	
 	public RotateGizmoL(IModel model) {
+	
+		this.model = model;
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {		
+		model.setRotateMode(true);
 	}
    
 }

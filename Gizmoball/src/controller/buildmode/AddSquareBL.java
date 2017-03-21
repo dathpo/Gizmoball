@@ -15,5 +15,6 @@ public class AddSquareBL implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.setGizmoFocus(2);
+		model.setPlacementMode(true);
 	}
 }

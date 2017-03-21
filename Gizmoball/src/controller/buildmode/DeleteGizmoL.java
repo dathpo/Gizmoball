@@ -14,7 +14,6 @@ public class DeleteGizmoL implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String gizmoName = null;
-		model.deleteGizmo(gizmoName);
+		model.setDeleteMode(true);
 	}
 }

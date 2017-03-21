@@ -25,6 +25,8 @@ public interface IModel {
 	public void clearArrays();
 	
 	public void emptySpaces();
+	
+	public void emptySpace(double x, double y);
 
 	public void moveGizmo(String gizmoName, double x, double y);
 
@@ -88,4 +90,31 @@ public interface IModel {
 
 	public File getLoadedFile();
 
+	public void setDeleteMode(boolean b);
+	
+	public boolean getDeleteMode();
+	
+	public void setPlacementMode(boolean b);
+	
+	public boolean getPlacementMode();
+
+	public void findAndDelete(double x, double y);
+	
+	public boolean getSelectMode();
+	
+	public void setSelectMode(boolean b);
+	
+	public boolean getMoveMode();
+	
+	public void setMoveMode(boolean b);
+	
+	public void selectedGizmo(double x, double y);
+
+	public void moveUserSelectedGizmo(double x, double y);
+	
+	public void setRotateMode(boolean b);
+	
+	public boolean getRotateMode();
+
+	public void userRotate();
 }

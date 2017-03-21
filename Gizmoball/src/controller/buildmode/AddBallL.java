@@ -37,6 +37,7 @@ public class AddBallL implements ActionListener {
 						model.setBallXVelo(xVel);
 						model.setBallYVelo(yVel);
 						model.setGizmoFocus(6);
+						model.setPlacementMode(true);
 						System.out.println("Ball Y velocity value: " + yVel);
 					} catch (NumberFormatException err) {
 						JOptionPane.showMessageDialog(null, "Please enter a number.", "Error",

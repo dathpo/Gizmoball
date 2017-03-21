@@ -15,6 +15,7 @@ public class AddCircleBL implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		model.setGizmoFocus(0);
+		model.setPlacementMode(true);
 	}
 
 }
