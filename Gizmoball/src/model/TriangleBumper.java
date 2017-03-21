@@ -44,6 +44,8 @@ public class TriangleBumper implements IBumper {
 				lineSegments.add(new LineSegment(x, y, x, y + L));
 				lineSegments.add(new LineSegment(x, y, x + L, y + L));
 				lineSegments.add(new LineSegment(x, y + L, x + L, y + L));
+			} else if (rotated == 4) {
+				this.rotated=0;
 			}
 		}
 		return lineSegments;
@@ -69,6 +71,8 @@ public class TriangleBumper implements IBumper {
 				circles.add(new Circle(x, y, 0));
 				circles.add(new Circle(x, y + L, 0));
 				circles.add(new Circle(x + L, y + L, 0));
+			} else if (rotated == 4) {
+				this.rotated=0;
 			}
 		}
 		return circles;

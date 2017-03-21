@@ -10,7 +10,7 @@ import model.IModel;
 
 import java.awt.*;
 
-public class PlayGUI extends JPanel implements IGUI {
+public class PlayGUI extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	static JFrame playFrame;

@@ -75,6 +75,8 @@ public class RFlipper implements IFlipper {
 					lineSegments.add(new LineSegment(x + (0.25 * L), y + (1.5 * L), x + (1.75 * L), y + (1.5 * L)));
 					lineSegments.add(new LineSegment(x + (0.25 * L), y + (2 * L), x + (1.75 * L), y + (2 * L)));
 				}
+			} else if (permRotated == 4) {
+				this.permRotated = 0;
 			}
 		}
 		return lineSegments;
@@ -139,6 +141,8 @@ public class RFlipper implements IFlipper {
 					circles.add(pivot);
 					circles.add(outerCircle);
 				}
+			} else if (permRotated == 4) {
+				this.permRotated = 0;
 			}
 		}
 		return circles;

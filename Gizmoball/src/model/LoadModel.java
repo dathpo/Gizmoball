@@ -101,7 +101,8 @@ public class LoadModel {
 		gizmoName = st.nextToken();
 		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
-		System.out.println("Square Bumper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
+		
+		System.out.println("Square Bumper name: " + gizmoName + ", x: " + (int) xCoord + ", y: " + (int) yCoord);
 		model.addSquareB(gizmoName, xCoord, yCoord, null);
 
 	}
@@ -116,7 +117,7 @@ public class LoadModel {
 		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
 
-		System.out.println("Triangle Bumper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
+		System.out.println("Triangle Bumper name: " + gizmoName + ", x: " + (int) xCoord + ", y: " + (int) yCoord);
 		model.addTriangleB(gizmoName, xCoord, yCoord, null);
 	}
 
@@ -130,7 +131,7 @@ public class LoadModel {
 		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
 
-		System.out.println("Circle Bumper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
+		System.out.println("Circle Bumper name: " + gizmoName + ", x: " + (int) xCoord + ", y: " + (int) yCoord);
 		model.addCircleB(gizmoName, xCoord, yCoord, null);
 	}
 
@@ -169,7 +170,7 @@ public class LoadModel {
 		y2 = Integer.valueOf(st.nextToken());
 
 		System.out
-				.println("Absorber name: " + gizmoName + ", x1: " + x1 + ", y1: " + y1 + ", x2: " + x2 + ", y2: " + y2);
+				.println("Absorber name: " + gizmoName + ", x1: " + (int) x1 + ", y1: " + (int) y1 + ", x2: " + (int) x2 + ", y2: " + (int) y2);
 		model.addAbsorber(gizmoName, x1, y1, x2, y2, null);
 	}
 	
@@ -182,8 +183,8 @@ public class LoadModel {
 		xCoord = Double.valueOf(st.nextToken());
 		yCoord = Double.valueOf(st.nextToken());
 		
+		System.out.println("Move Gizmo named: " + gizmoName + " to x: " + (int) xCoord + ", y: " + (int) yCoord);
 		model.moveGizmo(gizmoName, xCoord, yCoord);
-		System.out.println("Move Gizmo named: " + gizmoName + " to x: " + xCoord + ", y: " + yCoord);
 	}
 	
 	private void deleteParse(String command, StringTokenizer st) {
@@ -191,8 +192,8 @@ public class LoadModel {
 
 		gizmoName = st.nextToken();
 		
-		model.deleteGizmo(gizmoName);
 		System.out.println("Delete Gizmo named: " + gizmoName);
+		model.deleteGizmo(gizmoName);
 	}
 
 	private void rotateParse(String command, StringTokenizer st) {
@@ -201,8 +202,8 @@ public class LoadModel {
 
 		gizmoName = st.nextToken();
 
-		model.rotateGizmo(gizmoName);
 		System.out.println("Rotate Gizmo named: " + gizmoName);
+		model.rotateGizmo(gizmoName);
 	}
 
 	private KeyConnection connectKeyParse(String command, StringTokenizer st) {
@@ -231,7 +232,6 @@ public class LoadModel {
 		consumer = st.nextToken();
 
 		System.out.println("Connect producer name: " + producer + ", consumer name: " + consumer);
-
 		return new GizmoConnection(producer, consumer);
 	}
 
@@ -244,8 +244,8 @@ public class LoadModel {
 		gizmoName = st.nextToken();
 		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
-		System.out.println("Left Flipper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
-
+		
+		System.out.println("Left Flipper name: " + gizmoName + ", x: " + (int) xCoord + ", y: " + (int) yCoord);
 		model.addLFlipper(gizmoName, xCoord, yCoord, null);
 	}
 
@@ -259,8 +259,7 @@ public class LoadModel {
 		xCoord = Integer.valueOf(st.nextToken());
 		yCoord = Integer.valueOf(st.nextToken());
 
-		System.out.println("Right Flipper name: " + gizmoName + ", x: " + xCoord + ", y: " + yCoord);
-
+		System.out.println("Right Flipper name: " + gizmoName + ", x: " + (int) xCoord + ", y: " + (int) yCoord);
 		model.addRFlipper(gizmoName, xCoord, yCoord, null);
 	}
 	
@@ -268,9 +267,9 @@ public class LoadModel {
 		double gValue;
 		
 		gValue = Double.valueOf(st.nextToken());
-		System.out.println("Gravity value: " + gValue);
 		
 		model.setGravity(gValue);
+		System.out.println("Gravity value: " + gValue);
 	}
 	
 	private void frictionParse(String command, StringTokenizer st) {

@@ -10,7 +10,7 @@ import physics.LineSegment;
 
 public class Absorber implements IAbsorber {
 
-	private double x1, y1, x2, y2;
+	private double x1, y1, x2, y2, width, height;
 	private Color colour;
 	private static final double L = 20;
 	private Ball ball;
@@ -70,7 +70,7 @@ public class Absorber implements IAbsorber {
 	public double getY1() {
 		return y1;
 	}
-	
+
 	public void setX2(double x) {
 		this.x2 = x;
 	}
@@ -86,7 +86,7 @@ public class Absorber implements IAbsorber {
 	public double getY2() {
 		return y2;
 	}
-	
+
 	public Color getColour() {
 		return colour;
 	}
@@ -134,11 +134,20 @@ public class Absorber implements IAbsorber {
 
 	@Override
 	public void move(double newX, double newY) {
-		double width = getX2() - getX1();
-		double height = getY2() - getY1();
+		width = getX2() - getX1();
+		height = getY2() - getY1();
 		setX1(newX*L);
 		setY1(newY*L);
 		setX2((newX*L) + width);
 		setY2((newY*L) + height);
 	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
 }

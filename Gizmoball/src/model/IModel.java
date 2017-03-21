@@ -110,7 +110,7 @@ public interface IModel {
 	
 	public void selectedGizmo(double x, double y);
 
-	public void moveUserSelectedGizmo(double x, double y);
+	public void userMove(double x, double y);
 	
 	public void setRotateMode(boolean b);
 	

@@ -30,7 +30,7 @@ import model.IModel;
 
 import java.awt.*;
 
-public class BuildGUI extends JPanel implements IGUI {
+public class BuildGUI extends JPanel {
 
     /**
      *

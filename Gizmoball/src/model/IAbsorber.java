@@ -36,4 +36,8 @@ public interface IAbsorber {
 	
 	public void move(double x, double y);
 	
+	public double getWidth();
+	
+	public double getHeight();
+	
 }

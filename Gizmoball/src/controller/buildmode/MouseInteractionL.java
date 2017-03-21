@@ -36,8 +36,7 @@ public class MouseInteractionL implements MouseListener {
 		x = (int) coords.getX() / 20;
 		y = (int) coords.getY() / 20;
 		
-		
-		model.moveUserSelectedGizmo(x, y);
+		model.userMove(x, y);
 		
 	}
 
