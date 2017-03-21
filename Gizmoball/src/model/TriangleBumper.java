@@ -125,5 +125,9 @@ public class TriangleBumper implements IBumper {
 		setX(x*L);
 		setY(y*L);
 	}
+	
+	public int getRotations() {
+		return rotated;
+	}
 
 }

@@ -42,6 +42,24 @@ public class Save {
 				bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + " " + save.get(3) + " "
 						+ save.get(4) + " " + save.get(5) + "\n");
 			}
+
+			for (IBumper bumper : model.getBumpers()) {
+				if (bumper.getRotations() > 0) {
+					for (int i = 0; i < bumper.getRotations(); i++) {
+						save = saveTRotations(bumper);
+						bufferedWriter.write(save.get(0) + " " + save.get(1) + "\n");
+					}
+				}
+			}
+			for (IFlipper flipper : model.getFlippers()) {
+				if (flipper.getRotations() > 0) {
+					for (int i = 0; i < flipper.getRotations(); i++) {
+						save = saveFRotations(flipper);
+						bufferedWriter.write(save.get(0) + " " + save.get(1) + "\n");
+					}
+				}
+			}
+
 			save = saveFriction(model.getFrictionX(), model.getFrictionY());
 			bufferedWriter.write(save.get(0) + " " + save.get(1) + " " + save.get(2) + "\n");
 
@@ -53,6 +71,32 @@ public class Save {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private List<String> saveFRotations(IFlipper flipper) {
+		String flipperType = "LF";
+		if (flipper.isRightFlipper()) {
+			flipperType = "RF";
+		}
+		String gizmoOp = "Rotate";
+		String gizmoName = flipperType + ((int) (flipper.getX()/L)) + ((int) (flipper.getY()/L));
+
+		List<String> saveBuild = new ArrayList<String>();
+
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		return saveBuild;
+	}
+
+	private List<String> saveTRotations(IBumper bumper) {
+		String gizmoOp = "Rotate";
+		String gizmoName = "T" + ((int) (bumper.getX()/L)) + ((int) (bumper.getY()/L));
+
+		List<String> saveBuild = new ArrayList<String>();
+
+		saveBuild.add(gizmoOp);
+		saveBuild.add(gizmoName);
+		return saveBuild;
 	}
 
 	private List<String> saveBumper(IBumper bumper) {

@@ -90,4 +90,9 @@ public class SquareBumper implements IBumper {
 		setY(y*L);
 	}
 
+	@Override
+	public int getRotations() {
+		return 0;
+	}
+
 }

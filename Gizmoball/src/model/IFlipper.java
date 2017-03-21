@@ -39,6 +39,8 @@ public interface IFlipper {
 	public boolean isDeleted();
 
 	public void move(double x, double y);
+	
+	public int getRotations();
 		
 }
 

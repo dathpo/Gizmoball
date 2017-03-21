@@ -82,4 +82,9 @@ public class CircleBumper implements IBumper {
 		setX((x*L)+RADIUS);
 		setY((y*L)+RADIUS);
 	}
+
+	@Override
+	public int getRotations() {
+		return 0;
+	}
 }

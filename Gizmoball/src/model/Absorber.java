@@ -26,6 +26,8 @@ public class Absorber implements IAbsorber {
 		this.colour = Color.MAGENTA;
 		this.x2 = x2 * L;
 		this.y2 = y2 * L;
+		width = (getX2() - getX1())/L;
+		height = (getY2() - getY1())/L;
 	}
 
 	public List<LineSegment> getLineSegments() {

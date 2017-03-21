@@ -28,4 +28,6 @@ public interface IBumper {
 
 	public void move(double x, double y);
 	
+	public int getRotations();
+	
    }

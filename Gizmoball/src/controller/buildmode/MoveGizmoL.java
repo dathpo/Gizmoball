@@ -14,7 +14,8 @@ public class MoveGizmoL implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {	
+	public void actionPerformed(ActionEvent e) {
+		model.setPlacementMode(false);
 		model.setSelectMode(true);
 	}
    

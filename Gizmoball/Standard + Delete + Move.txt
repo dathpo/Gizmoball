@@ -1,6 +1,6 @@
 Triangle T 19 0
 Rotate T
-Move T 17 0
+Move T 17 2
 
 Triangle T2 1 1
 Delete T2
@@ -53,4 +53,4 @@ RightFlipper RF137 13 7
 Move RF137 8 17
 
 Ball B 1.0 11.0 0.0 0.0
-Move B 2 15
+Move B 0 11

@@ -224,5 +224,9 @@ public class RFlipper implements IFlipper {
 		setX(x*L);
 		setY(y*L);
 	}
+	
+	public int getRotations() {
+		return permRotated;
+	}
 
 }

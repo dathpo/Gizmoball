@@ -220,5 +220,9 @@ public class LFlipper implements IFlipper {
 		setX(x*L);
 		setY(y*L);
 	}
+	
+	public int getRotations() {
+		return permRotated;
+	}
 
 }

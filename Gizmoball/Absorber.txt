@@ -1,0 +1,70 @@
+Triangle T017 0 17
+Triangle T215 2 15
+Triangle T413 4 13
+Triangle T611 6 11
+Triangle T89 8 9
+Triangle T107 10 7
+Triangle T190 19 0
+Triangle T1819 18 19
+Triangle T120 12 0
+Triangle T014 0 14
+Triangle T013 0 13
+Triangle T211 2 11
+Triangle T09 0 9
+Triangle T29 2 9
+Triangle T39 3 9
+Triangle T49 4 9
+Triangle T69 6 9
+Triangle T70 7 0
+Triangle T110 11 0
+Triangle T1219 12 19
+Triangle T1919 19 19
+Triangle T1319 13 19
+Triangle T1211 12 11
+Triangle T1719 17 19
+Circle C1818 18 18
+Triangle T33 3 3
+Triangle T39 3 9
+Square S65 6 5
+Triangle T63 6 3
+Triangle T102 10 2
+Triangle T41 4 1
+Absorber A019 0 19 1 20
+Absorber A217 2 17 3 18
+Absorber A415 4 15 5 16
+Absorber A613 6 13 7 14
+Absorber A811 8 11 9 12
+Absorber A109 10 9 11 10
+Absorber A1617 16 17 17 18
+Absorber A213 2 13 3 14
+Absorber A011 0 11 1 12
+Absorber A1312 13 12 14 13
+Absorber A816 8 16 9 17
+Absorber A015 0 15 1 16
+Absorber A311 3 11 4 12
+Absorber A610 6 10 8 11
+Absorber A127 12 7 13 8
+Ball B 0.0 18.0 1.0 1.0
+Rotate T215
+Rotate T190
+Rotate T014
+Rotate T014
+Rotate T014
+Rotate T211
+Rotate T29
+Rotate T29
+Rotate T39
+Rotate T69
+Rotate T110
+Rotate T1219
+Rotate T1219
+Rotate T1919
+Rotate T1919
+Rotate T1319
+Rotate T1319
+Rotate T1319
+Rotate T1719
+Rotate T1719
+Rotate T39
+Friction 0.025 0.025
+Gravity 25.0

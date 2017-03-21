@@ -1,0 +1,179 @@
+Triangle T01 0 1
+Triangle T12 1 2
+Triangle T23 2 3
+Triangle T34 3 4
+Triangle T45 4 5
+Triangle T56 5 6
+Triangle T67 6 7
+Triangle T78 7 8
+Triangle T89 8 9
+Triangle T910 9 10
+Triangle T1011 10 11
+Triangle T1112 11 12
+Triangle T1213 12 13
+Triangle T1314 13 14
+Triangle T1415 14 15
+Triangle T1516 15 16
+Triangle T1617 16 17
+Triangle T1718 17 18
+Triangle T1819 18 19
+Triangle T190 19 0
+Circle C171 17 1
+Square S161 16 1
+Square S171 17 1
+Square S151 15 1
+Square S141 14 1
+Square S131 13 1
+Square S121 12 1
+Square S111 11 1
+Square S101 10 1
+Square S81 8 1
+Square S91 9 1
+Square S71 7 1
+Square S61 6 1
+Square S51 5 1
+Square S41 4 1
+Square S31 3 1
+Triangle T21 2 1
+Triangle T32 3 2
+Triangle T43 4 3
+Triangle T54 5 4
+Triangle T65 6 5
+Triangle T76 7 6
+Triangle T87 8 7
+Triangle T98 9 8
+Triangle T109 10 9
+Triangle T1110 11 10
+Triangle T1311 13 11
+Triangle T1312 13 12
+Triangle T1211 12 11
+Triangle T1413 14 13
+Triangle T1514 15 14
+Triangle T1615 16 15
+Triangle T1716 17 16
+Triangle T1817 18 17
+Triangle T21 2 1
+Square S182 18 2
+Triangle T182 18 2
+Triangle T171 17 1
+Square S161 16 1
+Square S151 15 1
+Square S141 14 1
+Square S131 13 1
+Square S121 12 1
+Square S111 11 1
+Square S101 10 1
+Square S91 9 1
+Square S81 8 1
+Square S71 7 1
+Square S61 6 1
+Square S51 5 1
+Square S41 4 1
+Square S31 3 1
+Circle C171 17 1
+Square S172 17 2
+Square S162 16 2
+Square S152 15 2
+Square S142 14 2
+Square S132 13 2
+Square S122 12 2
+Square S112 11 2
+Square S102 10 2
+Square S92 9 2
+Square S82 8 2
+Square S72 7 2
+Square S62 6 2
+Square S52 5 2
+Square S42 4 2
+Triangle T32 3 2
+Absorber A1919 19 19 20 20
+Ball B 18.0 18.0 1.0 1.0
+Rotate T01
+Rotate T01
+Rotate T01
+Rotate T12
+Rotate T12
+Rotate T12
+Rotate T23
+Rotate T23
+Rotate T23
+Rotate T34
+Rotate T34
+Rotate T34
+Rotate T45
+Rotate T45
+Rotate T45
+Rotate T56
+Rotate T56
+Rotate T56
+Rotate T67
+Rotate T67
+Rotate T67
+Rotate T78
+Rotate T78
+Rotate T78
+Rotate T89
+Rotate T89
+Rotate T89
+Rotate T910
+Rotate T910
+Rotate T910
+Rotate T1011
+Rotate T1011
+Rotate T1011
+Rotate T1112
+Rotate T1112
+Rotate T1112
+Rotate T1213
+Rotate T1213
+Rotate T1213
+Rotate T1314
+Rotate T1314
+Rotate T1314
+Rotate T1415
+Rotate T1415
+Rotate T1415
+Rotate T1516
+Rotate T1516
+Rotate T1516
+Rotate T1617
+Rotate T1617
+Rotate T1617
+Rotate T1718
+Rotate T1718
+Rotate T1718
+Rotate T1819
+Rotate T1819
+Rotate T1819
+Rotate T190
+Rotate T21
+Rotate T21
+Rotate T32
+Rotate T32
+Rotate T43
+Rotate T54
+Rotate T65
+Rotate T76
+Rotate T87
+Rotate T98
+Rotate T109
+Rotate T1110
+Rotate T1312
+Rotate T1211
+Rotate T1413
+Rotate T1514
+Rotate T1615
+Rotate T1716
+Rotate T1817
+Rotate T21
+Rotate T21
+Rotate T182
+Rotate T182
+Rotate T182
+Rotate T171
+Rotate T171
+Rotate T171
+Rotate T32
+Rotate T32
+Friction 0.025 0.025
+Gravity 25.0

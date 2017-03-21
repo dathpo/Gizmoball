@@ -183,7 +183,7 @@ public class LoadModel {
 		xCoord = Double.valueOf(st.nextToken());
 		yCoord = Double.valueOf(st.nextToken());
 		
-		System.out.println("Move Gizmo named: " + gizmoName + " to x: " + (int) xCoord + ", y: " + (int) yCoord);
+		System.out.println("Move Gizmo named " + gizmoName + " to x: " + (int) xCoord + ", y: " + (int) yCoord);
 		model.moveGizmo(gizmoName, xCoord, yCoord);
 	}
 	
@@ -192,7 +192,7 @@ public class LoadModel {
 
 		gizmoName = st.nextToken();
 		
-		System.out.println("Delete Gizmo named: " + gizmoName);
+		System.out.println("Delete Gizmo named " + gizmoName);
 		model.deleteGizmo(gizmoName);
 	}
 
@@ -202,7 +202,7 @@ public class LoadModel {
 
 		gizmoName = st.nextToken();
 
-		System.out.println("Rotate Gizmo named: " + gizmoName);
+		System.out.println("Rotate Gizmo named " + gizmoName);
 		model.rotateGizmo(gizmoName);
 	}
 
