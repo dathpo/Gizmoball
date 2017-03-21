@@ -17,11 +17,13 @@ public class SetFrictionL implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		String inputmu = JOptionPane.showInputDialog("Friction is currently set as mu = " + model.getFrictionX()
-		+ ", mu2 = " + model.getFrictionY() + ". Please enter a value for mu:");
+				+ ", mu2 = " + model.getFrictionY() + ". Please enter a value for mu:");
 		if (inputmu == null || inputmu.equals("")) {
 			return;
 		} else {
+
 			try {
 				double mu = Double.parseDouble(inputmu);
 				model.setFrictionX(mu);
@@ -41,10 +43,8 @@ public class SetFrictionL implements ActionListener {
 					}
 				}
 			} catch (NumberFormatException err) {
-				JOptionPane.showMessageDialog(null, "Please enter a number.", "Error",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Please enter a number.", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
 }
-

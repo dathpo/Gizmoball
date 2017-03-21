@@ -29,6 +29,7 @@ public class SwitchToPML implements ActionListener {
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
+
 			case "Play Mode":
 				BuildGUI.makeFrameInvisible();
 				new PlayGUI(main, model);

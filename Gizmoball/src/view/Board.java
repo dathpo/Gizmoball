@@ -28,20 +28,22 @@ public class Board extends JPanel implements IGUI, Observer {
 	protected static final int L = 20;
 
 	public Board(int w, int h, IModel m) {
+
 		m.addObserver(this);
 		this.model = m;
 		width = w;
 		height = h;
 		model = m;
+
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 
-	// Fix onscreen size
 	public Dimension getPreferredSize() {
 		return new Dimension(width, height);
 	}
 
 	public void paintComponent(Graphics g) {
+
 		super.paintComponent(g);
 		paintGrid(g);
 		paintBall(g);
@@ -52,6 +54,7 @@ public class Board extends JPanel implements IGUI, Observer {
 	}
 
 	public void paintGrid(Graphics g) {
+
 		for (int k = 0; k <= L; k++) {
 			g.drawLine(0, k * height / L, width, k * height / L);
 		}
@@ -61,6 +64,7 @@ public class Board extends JPanel implements IGUI, Observer {
 	}
 
 	public void paintBall(Graphics g) {
+
 		if (model.getBall() != null) {
 			IBall ball = model.getBall();
 			g.setColor(ball.getColour());
@@ -73,6 +77,7 @@ public class Board extends JPanel implements IGUI, Observer {
 	}
 
 	public void paintBumpers(Graphics g) {
+
 		if (model.getBumpers() != null) {
 			for (IBumper bumper : model.getBumpers()) {
 				List<Circle> circles = bumper.getCircles();
@@ -108,6 +113,7 @@ public class Board extends JPanel implements IGUI, Observer {
 	}
 
 	public void paintAbsorbers(Graphics g) {
+
 		if (model.getAbsorbers() != null) {
 			for (IAbsorber absorber : model.getAbsorbers()) {
 				List<Circle> circles = absorber.getCircles();
@@ -125,6 +131,7 @@ public class Board extends JPanel implements IGUI, Observer {
 	}
 
 	public void paintFlippers(Graphics g) {
+
 		if (model.getFlippers() != null) {
 			for (IFlipper flipper : model.getFlippers()) {
 				flipper.getCircles();

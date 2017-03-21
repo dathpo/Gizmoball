@@ -31,6 +31,7 @@ public class PlayModeL implements ActionListener {
 			model.moveBall();
 		} else
 			switch (e.getActionCommand()) {
+
 			case "Build Mode":
 				BuildGUI.makeFrameVisible();
 				PlayGUI.makeFrameInvisible();
@@ -39,20 +40,25 @@ public class PlayModeL implements ActionListener {
 				model.lFlipperDeactivate();
 				model.rFlipperDeactivate();
 				break;
+
 			case "Start":
 				timer.start();
 				break;
+
 			case "Pause":
 				timer.stop();
 				break;
+
 			case "Tick":
 				timer.stop();
 				model.moveBall();
 				break;
+
 			case "Reset":
 				timer.stop();
 				model.resetBall();
 				break;
+
 			case "Load":
 				JFileChooser fileChooser = new JFileChooser();
 				fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
@@ -77,6 +83,7 @@ public class PlayModeL implements ActionListener {
 					}
 				}
 				break;
+
 			case "Reload":
 				File loadedFile = model.getLoadedFile();
 				if (loadedFile != null) {
@@ -97,6 +104,7 @@ public class PlayModeL implements ActionListener {
 							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
+
 			case "Exit":
 				System.exit(0);
 				break;

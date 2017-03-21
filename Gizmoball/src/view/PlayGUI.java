@@ -1,13 +1,10 @@
 package view;
 
 import javax.swing.*;
-
-import controller.playmode.PlayModeL;
-import controller.playmode.PlayModeKeyL;
+import controller.playmode.*;
 import controller.buildmode.ExitL;
 import main.Main;
 import model.IModel;
-
 import java.awt.*;
 
 public class PlayGUI extends JPanel implements IGUI {
@@ -57,7 +54,6 @@ public class PlayGUI extends JPanel implements IGUI {
 
 		playFrame.dispose();
 		playFrame.pack();
-
 	}
 
 	public void MenuBar() {
@@ -71,7 +67,7 @@ public class PlayGUI extends JPanel implements IGUI {
 		JMenuItem load = new JMenuItem("Load");
 		MenuOptions.add(load);
 		load.addActionListener(playModeL);
-		
+
 		JMenuItem reload = new JMenuItem("Reload");
 		MenuOptions.add(reload);
 		reload.addActionListener(playModeL);
@@ -79,7 +75,6 @@ public class PlayGUI extends JPanel implements IGUI {
 		JMenuItem exit = new JMenuItem("Exit");
 		MenuOptions.add(exit);
 		exit.addActionListener(exitL);
-
 	}
 
 	public void Mode() {
@@ -89,8 +84,8 @@ public class PlayGUI extends JPanel implements IGUI {
 		JButton buildMode = new JButton("Build Mode");
 		mode.add(buildMode);
 		buildMode.addActionListener(playModeL);
-		playFrame.getContentPane().add(mode, BorderLayout.NORTH);
 
+		playFrame.getContentPane().add(mode, BorderLayout.NORTH);
 	}
 
 	public void Options() {
@@ -114,6 +109,7 @@ public class PlayGUI extends JPanel implements IGUI {
 	}
 
 	private void addButton(JPanel buttons, String bName) {
+
 		JButton button = new JButton(bName);
 		button.addActionListener(playModeL);
 
@@ -124,9 +120,4 @@ public class PlayGUI extends JPanel implements IGUI {
 		button.setMaximumSize(new Dimension(100, 100));
 		buttons.add(button);
 	}
-
-	public static void close() {
-		playFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-	}
-
 }

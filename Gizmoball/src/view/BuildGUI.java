@@ -1,45 +1,21 @@
 package view;
 
-
 import javax.swing.*;
-
-import controller.buildmode.AddAbsorberL;
-import controller.buildmode.AddBallL;
-import controller.buildmode.AddCircleBL;
-import controller.buildmode.AddLFlipperL;
-import controller.buildmode.AddRFlipperL;
-import controller.buildmode.AddSquareBL;
-import controller.buildmode.AddTriangleBL;
-import controller.buildmode.ClearBoardL;
-import controller.buildmode.ConnectGizmoL;
-import controller.buildmode.DeleteGizmoL;
-import controller.buildmode.DisconnectGizmoL;
-import controller.buildmode.ExitL;
-import controller.buildmode.MouseInteractionL;
-import controller.buildmode.KeyConnectL;
-import controller.buildmode.KeyDisconnectL;
-import controller.buildmode.LoadL;
-import controller.buildmode.MoveGizmoL;
-import controller.buildmode.RotateGizmoL;
-import controller.buildmode.SaveL;
-import controller.buildmode.SetFrictionL;
-import controller.buildmode.SetGravityL;
-import controller.buildmode.SwitchToPML;
+import controller.buildmode.*;
 import main.Main;
 import model.IModel;
-
 import java.awt.*;
 
 public class BuildGUI extends JPanel implements IGUI {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-    private static JFrame buildFrame;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	private static JFrame buildFrame;
 	private IModel model;
 	private Board buildBoard;
-	
+
 	private AddAbsorberL addAbsorberL;
 	private AddBallL addBallL;
 	private AddCircleBL addCircleBL;
@@ -63,10 +39,10 @@ public class BuildGUI extends JPanel implements IGUI {
 	private ExitL exitL;
 	private MouseInteractionL mouseInteractionL;
 
-    public BuildGUI(Main main, IModel model) {
+	public BuildGUI(Main main, IModel model) {
 
-    	this.model = model;
-		
+		this.model = model;
+
 		addAbsorberL = new AddAbsorberL(model);
 		addBallL = new AddBallL(model);
 		addCircleBL = new AddCircleBL(model);
@@ -89,76 +65,76 @@ public class BuildGUI extends JPanel implements IGUI {
 		switchToPML = new SwitchToPML(model);
 		exitL = new ExitL(model);
 		mouseInteractionL = new MouseInteractionL(model);
-		
-        BuildFrame();
-        MenuBar();
-        Mode();
-        Operations();
-        Gizmos();
-        BallEdit();
-        Board();
-        makeFrameVisible();
-    }
 
-    public void BuildFrame() {
+		BuildFrame();
+		MenuBar();
+		Mode();
+		Operations();
+		Gizmos();
+		BallEdit();
+		Board();
+		makeFrameVisible();
+	}
 
-        buildFrame = new JFrame();
-        buildFrame.setTitle("Gizmoball - Build Mode");
-        buildFrame.setSize(568, 500);
-        buildFrame.setLocationRelativeTo(null);
-        buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        buildFrame.setResizable(false);
-    }
+	public void BuildFrame() {
 
-    public static void makeFrameVisible() {
+		buildFrame = new JFrame();
+		buildFrame.setTitle("Gizmoball - Build Mode");
+		buildFrame.setSize(568, 500);
+		buildFrame.setLocationRelativeTo(null);
+		buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		buildFrame.setResizable(false);
+	}
 
-        buildFrame.setVisible(true);
-        buildFrame.pack();
-    }
-    
-    public static void makeFrameInvisible() {
+	public static void makeFrameVisible() {
+
+		buildFrame.setVisible(true);
+		buildFrame.pack();
+	}
+
+	public static void makeFrameInvisible() {
 
 		buildFrame.dispose();
 		buildFrame.pack();
 	}
 
-    public void MenuBar() {
+	public void MenuBar() {
 
-        JMenuBar MenuBar = new JMenuBar();
-        buildFrame.setJMenuBar(MenuBar);
+		JMenuBar MenuBar = new JMenuBar();
+		buildFrame.setJMenuBar(MenuBar);
 
-        JMenu MenuOptions = new JMenu("Options");
-        MenuBar.add(MenuOptions);
+		JMenu MenuOptions = new JMenu("Options");
+		MenuBar.add(MenuOptions);
 
-        JMenuItem save = new JMenuItem("Save");
-        MenuOptions.add(save);
-        save.addActionListener(saveL);
-        
-        JMenuItem load = new JMenuItem("Load");
-        MenuOptions.add(load);
-    	load.addActionListener(loadL);
+		JMenuItem save = new JMenuItem("Save");
+		MenuOptions.add(save);
+		save.addActionListener(saveL);
 
-        JMenuItem exit = new JMenuItem("Exit");
-        MenuOptions.add(exit);
+		JMenuItem load = new JMenuItem("Load");
+		MenuOptions.add(load);
+		load.addActionListener(loadL);
+
+		JMenuItem exit = new JMenuItem("Exit");
+		MenuOptions.add(exit);
 		exit.addActionListener(exitL);
 
-    }
+	}
 
-    public void Mode() {
+	public void Mode() {
 
-        JPanel mode = new JPanel();
+		JPanel mode = new JPanel();
 
-        JButton playMode = new JButton("Play Mode");
+		JButton playMode = new JButton("Play Mode");
 		mode.add(playMode);
 		playMode.addActionListener(switchToPML);
 
 		buildFrame.getContentPane().add(mode, BorderLayout.NORTH);
-    }
+	}
 
-    public void Gizmos() {
+	public void Gizmos() {
 
-    	JPanel leftPanel = new JPanel();
-    	leftPanel.setLayout(new GridLayout(10, 2));
+		JPanel leftPanel = new JPanel();
+		leftPanel.setLayout(new GridLayout(10, 2));
 
 		JButton circle = new JButton("Circle");
 		leftPanel.add(circle);
@@ -183,19 +159,19 @@ public class BuildGUI extends JPanel implements IGUI {
 		JButton absorber = new JButton("Absorber");
 		leftPanel.add(absorber);
 		absorber.addActionListener(addAbsorberL);
-		
+
 		buildFrame.getContentPane().add(leftPanel, BorderLayout.WEST);
-    }
+	}
 
-    public void BallEdit() {
+	public void BallEdit() {
 
-    	JPanel rightPanel = new JPanel();
-    	rightPanel.setLayout(new GridLayout(10, 2));
+		JPanel rightPanel = new JPanel();
+		rightPanel.setLayout(new GridLayout(10, 2));
 
 		JButton addBall = new JButton("Ball");
 		rightPanel.add(addBall);
 		addBall.addActionListener(addBallL);
-		
+
 		JButton gravity = new JButton("Gravity");
 		rightPanel.add(gravity);
 		gravity.addActionListener(setGravityL);
@@ -205,11 +181,11 @@ public class BuildGUI extends JPanel implements IGUI {
 		friction.addActionListener(setFrictionL);
 
 		buildFrame.getContentPane().add(rightPanel, BorderLayout.EAST);
-    }
+	}
 
-    public void Operations() {
+	public void Operations() {
 
-    	JPanel operations = new JPanel();
+		JPanel operations = new JPanel();
 		operations.setLayout(new GridLayout(3, 3));
 
 		JButton move = new JButton("Move");
@@ -223,7 +199,7 @@ public class BuildGUI extends JPanel implements IGUI {
 		JButton delete = new JButton("Delete");
 		operations.add(delete);
 		delete.addActionListener(deleteGizmoL);
-		
+
 		JButton clear = new JButton("Clear Board");
 		operations.add(clear);
 		clear.addActionListener(clearBoardL);
@@ -236,22 +212,22 @@ public class BuildGUI extends JPanel implements IGUI {
 		operations.add(disconnect);
 		disconnect.addActionListener(disconnectGizmoL);
 
-//		JButton kConnect = new JButton("Key Connect");
-//		operations.add(kConnect);
-//		kConnect.addActionListener(keyConnectL);
-//
-//		JButton kDisconnect = new JButton("Key Disconnect");
-//		operations.add(kDisconnect);
-//		kDisconnect.addActionListener(keyDisconnectL);
+		// JButton kConnect = new JButton("Key Connect");
+		// operations.add(kConnect);
+		// kConnect.addActionListener(keyConnectL);
+		//
+		// JButton kDisconnect = new JButton("Key Disconnect");
+		// operations.add(kDisconnect);
+		// kDisconnect.addActionListener(keyDisconnectL);
 
 		buildFrame.getContentPane().add(operations, BorderLayout.SOUTH);
-    }
+	}
 
-    public void Board() {
+	public void Board() {
 
-    	buildBoard = new Board(400, 400, model);
+		buildBoard = new Board(400, 400, model);
 		buildFrame.getContentPane().add(buildBoard, BorderLayout.CENTER);
 		buildBoard.addMouseListener(mouseInteractionL);
 
-    }
+	}
 }

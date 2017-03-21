@@ -21,8 +21,8 @@ public class Model extends Observable implements IModel {
 	private List<IBumper> bumpers;
 	private List<IAbsorber> absorbers;
 	private List<IFlipper> flippers;
-	private boolean squareAdder, circleAdder, triangleAdder, absorberAdder, rFlipperAdder, lFlipperAdder,
-	ballAdder, deleteMode, placementMode, selectMode, moveMode, rotateMode = false;
+	private boolean squareAdder, circleAdder, triangleAdder, absorberAdder, rFlipperAdder, lFlipperAdder, ballAdder,
+			deleteMode, placementMode, selectMode, moveMode, rotateMode = false;
 
 	private IAbsorber selectedAbsorber = null;
 	private IBumper selectedBumper = null;
@@ -34,6 +34,7 @@ public class Model extends Observable implements IModel {
 	private File loadedFile;
 
 	public Model() {
+
 		bumpers = new ArrayList<IBumper>();
 		absorbers = new ArrayList<IAbsorber>();
 		flippers = new ArrayList<IFlipper>();
@@ -267,23 +268,24 @@ public class Model extends Observable implements IModel {
 
 	public boolean canPlaceAbsorber(double x1, double y1, double x2, double y2) {
 		if (x1 >= 0 && x1 < 20 && y1 >= 0 && y1 < 20 && x2 > 0 && x2 <= 20 && y2 > 0 && y2 <= 20) {
-			for(int i = (int) x1; i < x2; i++) {
-				for(int j = (int) y1; j < y2; j++) {
+			for (int i = (int) x1; i < x2; i++) {
+				for (int j = (int) y1; j < y2; j++) {
 
 					if (!isSpaceFilled(i, j)) {
 						System.out.println("Space not filled: " + i + ", " + j);
-						return true;}
+						return true;
+					}
 				}
 			}
-		} 
+		}
 		return false;
 	}
 
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
 		if (canPlaceGizmo(x, y)) {
 			emptySpace(oldX, oldY);
-			oldX=x;
-			oldY=y;
+			oldX = x;
+			oldY = y;
 			System.out.println("Ball placed at x: " + (int) x + ", y: " + (int) y);
 			ball = new Ball(gizmoName, x, y, ballXVel, ballYVel, Color.WHITE);
 			ball.setX(x * L + L / 2);
@@ -326,39 +328,42 @@ public class Model extends Observable implements IModel {
 
 	public void addAbsorber(String gizmoName, double x1, double y1, double x2, double y2, Color c) {
 		if (canPlaceAbsorber(x1, y1, x2, y2)) {
-			System.out.println("New Absorber from x1: " + (int) x1 + ", y1: " + (int) y1 + " to x2: " + (int) x2 + ", y2: " + (int) y2);
+			System.out.println("New Absorber from x1: " + (int) x1 + ", y1: " + (int) y1 + " to x2: " + (int) x2
+					+ ", y2: " + (int) y2);
 			absorbers.add(new Absorber(gizmoName, x1, y1, x2, y2, Color.MAGENTA));
-			for(int i = (int) x1; i < x2; i++) {
-				for(int j = (int) y1; j < y2; j++) {
+			for (int i = (int) x1; i < x2; i++) {
+				for (int j = (int) y1; j < y2; j++) {
 					System.out.println(i + ", " + j);
 					fillSpace(i, j);
 				}
-				}
-			} else {
-					System.out.println("The Absorber cannot be placed here.");
-				}
+			}
+		} else {
+			System.out.println("The Absorber cannot be placed here.");
+		}
 	}
 
 	public void addLFlipper(String gizmoName, double x, double y, Color c) {
-		if (canPlaceFlipper(x, y) && !isSpaceFilled(x+1, y) && !isSpaceFilled(x, y+1) && !isSpaceFilled(x+1, y+1)) {
+		if (canPlaceFlipper(x, y) && !isSpaceFilled(x + 1, y) && !isSpaceFilled(x, y + 1)
+				&& !isSpaceFilled(x + 1, y + 1)) {
 			System.out.println("New Left Flipper at x: " + (int) x + ", y: " + (int) y);
 			flippers.add(new LFlipper(gizmoName, x, y, Color.ORANGE));
 			fillSpace(x, y);
-			fillSpace(x+1, y);
-			fillSpace(x, y+1);
-			fillSpace(x+1, y+1);
+			fillSpace(x + 1, y);
+			fillSpace(x, y + 1);
+			fillSpace(x + 1, y + 1);
 		} else {
 			System.out.println("The Left Flipper cannot be placed here.");
 		}
 	}
 
 	public void addRFlipper(String gizmoName, double x, double y, Color c) {
-		if (canPlaceFlipper(x, y) && !isSpaceFilled(x+1, y) && !isSpaceFilled(x, y+1) && !isSpaceFilled(x+1, y+1)) {
+		if (canPlaceFlipper(x, y) && !isSpaceFilled(x + 1, y) && !isSpaceFilled(x, y + 1)
+				&& !isSpaceFilled(x + 1, y + 1)) {
 			System.out.println("New Right Flipper at x: " + (int) x + ", y: " + (int) y);
 			fillSpace(x, y);
-			fillSpace(x+1, y);
-			fillSpace(x, y+1);
-			fillSpace(x+1, y+1);
+			fillSpace(x + 1, y);
+			fillSpace(x, y + 1);
+			fillSpace(x + 1, y + 1);
 			flippers.add(new RFlipper(gizmoName, x, y, Color.ORANGE));
 		} else {
 			System.out.println("The Right Flipper cannot be placed here.");
@@ -369,7 +374,7 @@ public class Model extends Observable implements IModel {
 		filledSpaces[(int) x][(int) y] = true;
 	}
 
-	public void emptySpace(double x, double y){
+	public void emptySpace(double x, double y) {
 		filledSpaces[(int) x][(int) y] = false;
 	}
 
@@ -377,13 +382,13 @@ public class Model extends Observable implements IModel {
 		return filledSpaces[(int) x][(int) y];
 	}
 
-//	private boolean[][] getFilledSpaces(double x, double y) {
-//		return filledSpaces;
-//	}
+	// private boolean[][] getFilledSpaces(double x, double y) {
+	// return filledSpaces;
+	// }
 
 	public void emptySpaces() {
-		for(int i = 0; i < filledSpaces.length; i++)
-			for(int j = 0; j < filledSpaces.length; j++)
+		for (int i = 0; i < filledSpaces.length; i++)
+			for (int j = 0; j < filledSpaces.length; j++)
 				filledSpaces[i][j] = false;
 	}
 
@@ -396,7 +401,7 @@ public class Model extends Observable implements IModel {
 				addSquareB(null, x, y, null);
 			} else if (triangleAdder) {
 				addTriangleB(null, x, y, null);
-			} else 	if (lFlipperAdder) {
+			} else if (lFlipperAdder) {
 				addLFlipper(null, x, y, null);
 			} else if (rFlipperAdder) {
 				addRFlipper(null, x, y, null);
@@ -564,10 +569,9 @@ public class Model extends Observable implements IModel {
 		}
 	}
 
-
 	public void userDragFilledGizmo(double x1, double y1, double x2, double y2) {
 		if (absorberAdder) {
-			addAbsorber(null, x1, y1, x2+1, y2+1, Color.MAGENTA);
+			addAbsorber(null, x1, y1, x2 + 1, y2 + 1, Color.MAGENTA);
 		}
 	}
 
@@ -650,49 +654,48 @@ public class Model extends Observable implements IModel {
 		x = x * 20;
 		y = y * 20;
 
-		if(absorbers.size() > 0){
+		if (absorbers.size() > 0) {
 			for (IAbsorber iAbsorber : absorbers) {
-				if(iAbsorber.getX1() == x && iAbsorber.getY1() == y){
+				if (iAbsorber.getX1() == x && iAbsorber.getY1() == y) {
 					iAbsorber.delete();
-					emptySpace(x/20, y/20);
+					emptySpace(x / 20, y / 20);
 				}
-			}	
+			}
 		}
 
-		if(bumpers.size() > 0){
+		if (bumpers.size() > 0) {
 			for (IBumper iBumper : bumpers) {
-				if(iBumper.getLineSegments().size() == 0){
-					if(iBumper.getX() == x + 10 && iBumper.getY() == y + 10){
+				if (iBumper.getLineSegments().size() == 0) {
+					if (iBumper.getX() == x + 10 && iBumper.getY() == y + 10) {
 						iBumper.delete();
-						emptySpace(x/20, y/20);
+						emptySpace(x / 20, y / 20);
 						System.out.println("Circle bumper deleted from x: " + x + " y: " + y);
 					}
-				}else if(iBumper.getX() == x && iBumper.getY() == y){
+				} else if (iBumper.getX() == x && iBumper.getY() == y) {
 					iBumper.delete();
-					emptySpace(x/20, y/20);
+					emptySpace(x / 20, y / 20);
 					System.out.println("Bumper deleted from x: " + x + " y: " + y);
 				}
 			}
 		}
 
-		if(flippers.size() > 0){
-			for(IFlipper iFlipper : flippers){
-				if(iFlipper.getX() == x && iFlipper.getY() == y){
+		if (flippers.size() > 0) {
+			for (IFlipper iFlipper : flippers) {
+				if (iFlipper.getX() == x && iFlipper.getY() == y) {
 					iFlipper.delete();
-					emptySpace(x/20, y/20);
-					emptySpace(x/20 + 1, y);
-					emptySpace(x/20, y/20 + 1);
-					emptySpace(x/20 + 1, y/20 + 1);
-
+					emptySpace(x / 20, y / 20);
+					emptySpace(x / 20 + 1, y);
+					emptySpace(x / 20, y / 20 + 1);
+					emptySpace(x / 20 + 1, y / 20 + 1);
 
 				}
 			}
 		}
 
-		//		if(ball.getX() == x && ball.getY() == y){
-		//			ball.delete();
-		//		}
-		//		
+		// if(ball.getX() == x && ball.getY() == y){
+		// ball.delete();
+		// }
+		//
 
 	}
 
@@ -726,59 +729,60 @@ public class Model extends Observable implements IModel {
 		this.rotateMode = !b;
 	}
 
-	public void selectedGizmo(double x, double y){
+	public void selectedGizmo(double x, double y) {
 		x = x * 20;
 		y = y * 20;
 
-		if(absorbers.size() > 0){
+		if (absorbers.size() > 0) {
 			for (IAbsorber iAbsorber : absorbers) {
-				if(iAbsorber.getX1() == x && iAbsorber.getY1() == y){
-					//					System.out.println("Move called");
-					//					iAbsorber.move(x/20 + 2, y/20 + 2);
-					//					setEmptySpace(x/20, y/20);
+				if (iAbsorber.getX1() == x && iAbsorber.getY1() == y) {
+					// System.out.println("Move called");
+					// iAbsorber.move(x/20 + 2, y/20 + 2);
+					// setEmptySpace(x/20, y/20);
 
 					selectedAbsorber = iAbsorber;
 				}
-			}	
+			}
 		}
 
-		if(bumpers.size() > 0){
+		if (bumpers.size() > 0) {
 			for (IBumper iBumper : bumpers) {
-				if(iBumper.getLineSegments().size() == 0){
-					if(iBumper.getX() == x + 10 && iBumper.getY() == y + 10){
+				if (iBumper.getLineSegments().size() == 0) {
+					if (iBumper.getX() == x + 10 && iBumper.getY() == y + 10) {
 						selectedBumper = iBumper;
 					}
-				}else if(iBumper.getX() == x && iBumper.getY() == y){
+				} else if (iBumper.getX() == x && iBumper.getY() == y) {
 					selectedBumper = iBumper;
 				}
 			}
 		}
-		if(flippers.size() > 0){
-			for(IFlipper iFlipper : flippers){
-				if(iFlipper.getX() == x && iFlipper.getY() == y){
+		if (flippers.size() > 0) {
+			for (IFlipper iFlipper : flippers) {
+				if (iFlipper.getX() == x && iFlipper.getY() == y) {
 					this.selectedFlipper = iFlipper;
 				}
 			}
 		}
-		if(!getRotateMode()){
+		if (!getRotateMode()) {
 			setMoveMode(true);
 		}
 	}
 
 	@Override
 	public void moveUserSelectedGizmo(double x, double y) {
-		if(this.selectedAbsorber != null){
-			this.selectedAbsorber.move(x, y);;
-		}else if(this.selectedBumper != null){
-			this.selectedBumper.move(x,y);
-		}else if(this.selectedFlipper != null){
+		if (this.selectedAbsorber != null) {
+			this.selectedAbsorber.move(x, y);
+			;
+		} else if (this.selectedBumper != null) {
+			this.selectedBumper.move(x, y);
+		} else if (this.selectedFlipper != null) {
 			this.selectedFlipper.move(x, y);
 		}
 		this.selectedAbsorber = null;
 		this.selectedBumper = null;
 		this.selectedFlipper = null;
 
-		setPlacementMode(true);		
+		setPlacementMode(true);
 	}
 
 	@Override
@@ -795,10 +799,10 @@ public class Model extends Observable implements IModel {
 		return this.rotateMode;
 	}
 
-	public void userRotate(){
-		if(this.selectedBumper != null){
+	public void userRotate() {
+		if (this.selectedBumper != null) {
 			this.selectedBumper.rotate();
-		}else if(this.selectedFlipper != null){
+		} else if (this.selectedFlipper != null) {
 			this.selectedFlipper.permRotate();
 		}
 
@@ -810,6 +814,5 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void addObserver(Board board) {
 	}
-
 
 }
