@@ -41,10 +41,11 @@ public class PlayGUI extends JPanel {
 		playFrame.setFocusable(true);
 		playFrame.setFocusTraversalKeysEnabled(false);
 		playFrame.setTitle("Gizmoball - Play Mode");
-		playFrame.setSize(500, 500);
+		playFrame.setSize(432, 500);
 		playFrame.setLocationRelativeTo(null);
 		playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		playFrame.setResizable(false);
+		playFrame.pack();
 	}
 
 	public static void makeFrameVisible() {

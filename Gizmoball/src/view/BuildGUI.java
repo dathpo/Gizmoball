@@ -104,7 +104,7 @@ public class BuildGUI extends JPanel {
 
         buildFrame = new JFrame();
         buildFrame.setTitle("Gizmoball - Build Mode");
-        buildFrame.setSize(568, 500);
+        buildFrame.setSize(500, 500);
         buildFrame.setLocationRelativeTo(null);
         buildFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         buildFrame.setResizable(false);
@@ -210,7 +210,7 @@ public class BuildGUI extends JPanel {
     public void Operations() {
 
     	JPanel operations = new JPanel();
-		operations.setLayout(new GridLayout(3, 3));
+    	operations.setLayout(new GridLayout(3, 3));
 
 		JButton move = new JButton("Move");
 		operations.add(move);
@@ -245,6 +245,7 @@ public class BuildGUI extends JPanel {
 //		kDisconnect.addActionListener(keyDisconnectL);
 
 		buildFrame.getContentPane().add(operations, BorderLayout.SOUTH);
+		buildFrame.pack();
     }
 
     public void Board() {
