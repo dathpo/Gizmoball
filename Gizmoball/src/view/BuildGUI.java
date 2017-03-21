@@ -253,6 +253,7 @@ public class BuildGUI extends JPanel {
     	buildBoard = new Board(400, 400, model);
 		buildFrame.getContentPane().add(buildBoard, BorderLayout.CENTER);
 		buildBoard.addMouseListener(mouseInteractionL);
+		buildFrame.pack();
 
     }
 }

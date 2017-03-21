@@ -45,7 +45,6 @@ public class PlayGUI extends JPanel {
 		playFrame.setLocationRelativeTo(null);
 		playFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		playFrame.setResizable(false);
-		playFrame.pack();
 	}
 
 	public static void makeFrameVisible() {
@@ -112,6 +111,7 @@ public class PlayGUI extends JPanel {
 		playBoard = new Board(400, 400, model);
 		playBoard.setBackground(Color.black);
 		playFrame.getContentPane().add(playBoard, BorderLayout.CENTER);
+		playFrame.pack();
 	}
 
 	private void addButton(JPanel buttons, String bName) {
