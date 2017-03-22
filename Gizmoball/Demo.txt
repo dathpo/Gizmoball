@@ -1,0 +1,302 @@
+Triangle T017 0 17
+Triangle T215 2 15
+Triangle T710 7 10
+Triangle T190 19 0
+Triangle T1819 18 19
+Triangle T013 0 13
+Triangle T211 2 11
+Triangle T09 0 9
+Triangle T60 6 0
+Triangle T110 11 0
+Triangle T1919 19 19
+Triangle T1719 17 19
+Triangle T27 2 7
+Triangle T05 0 5
+Triangle T23 2 3
+Triangle T00 0 0
+Triangle T40 4 0
+Square S51 5 1
+Square S52 5 2
+Square S54 5 4
+Square S55 5 5
+Square S56 5 6
+Square S57 5 7
+Square S58 5 8
+Square S32 3 2
+Square S33 3 3
+Square S34 3 4
+Square S36 3 6
+Square S35 3 5
+Square S37 3 7
+Square S38 3 8
+Square S39 3 9
+Square S310 3 10
+Square S311 3 11
+Square S312 3 12
+Square S313 3 13
+Square S314 3 14
+Square S315 3 15
+Square S316 3 16
+Square S317 3 17
+Square S318 3 18
+Square S319 3 19
+Triangle T419 4 19
+Square S53 5 3
+Square S50 5 0
+Triangle T70 7 0
+Triangle T410 4 10
+Circle C514 5 14
+Circle C515 5 15
+Circle C516 5 16
+Circle C517 5 17
+Circle C518 5 18
+Square S513 5 13
+Square S512 5 12
+Square S611 6 11
+Triangle T612 6 12
+Triangle T711 7 11
+Triangle T80 8 0
+Triangle T112 11 2
+Triangle T92 9 2
+Triangle T95 9 5
+Triangle T115 11 5
+Triangle T116 11 6
+Triangle T117 11 7
+Triangle T118 11 8
+Triangle T119 11 9
+Triangle T1110 11 10
+Triangle T1111 11 11
+Triangle T96 9 6
+Triangle T97 9 7
+Triangle T98 9 8
+Triangle T99 9 9
+Triangle T910 9 10
+Triangle T911 9 11
+Triangle T120 12 0
+Triangle T121 12 1
+Triangle T122 12 2
+Triangle T123 12 3
+Triangle T124 12 4
+Triangle T125 12 5
+Triangle T126 12 6
+Triangle T127 12 7
+Triangle T128 12 8
+Triangle T129 12 9
+Triangle T1210 12 10
+Triangle T1211 12 11
+Triangle T113 11 3
+Triangle T114 11 4
+Triangle T1112 11 12
+Triangle T1013 10 13
+Triangle T914 9 14
+Triangle T714 7 14
+Triangle T812 8 12
+Triangle T713 7 13
+Triangle T912 9 12
+Triangle T813 8 13
+Triangle T715 7 15
+Square S716 7 16
+Square S717 7 17
+Square S718 7 18
+Square S719 7 19
+Square S915 9 15
+Square S916 9 16
+Square S917 9 17
+Square S918 9 18
+Triangle T819 8 19
+Triangle T1014 10 14
+Triangle T1113 11 13
+Circle C1115 11 15
+Circle C1315 13 15
+Square S143 14 3
+Square S142 14 2
+Square S141 14 1
+Triangle T151 15 1
+Triangle T171 17 1
+Square S181 18 1
+Square S182 18 2
+Square S183 18 3
+Square S162 16 2
+Triangle T155 15 5
+Triangle T166 16 6
+Triangle T156 15 6
+Triangle T145 14 5
+Triangle T176 17 6
+Triangle T185 18 5
+Triangle T195 19 5
+Triangle T186 18 6
+Triangle T165 16 5
+Triangle T175 17 5
+Triangle T159 15 9
+Triangle T1410 14 10
+Triangle T149 14 9
+Triangle T158 15 8
+Circle C168 16 8
+Circle C1216 12 16
+Circle C1515 15 15
+Circle C1416 14 16
+Circle C1317 13 17
+Circle C1418 14 18
+Circle C1319 13 19
+Circle C1519 15 19
+Circle C1618 16 18
+Triangle T1818 18 18
+Triangle T1918 19 18
+Square S1316 13 16
+Square S1215 12 15
+Square S1217 12 17
+Square S1116 11 16
+Square S1417 14 17
+Square S1516 15 16
+Square S1415 14 15
+Square S1318 13 18
+Square S1419 14 19
+Triangle T1917 19 17
+Square S1518 15 18
+Circle C1517 15 17
+Circle C1616 16 16
+Circle C1717 17 17
+Circle C1816 18 16
+Circle C1915 19 15
+Circle C1715 17 15
+Square S1615 16 15
+Square S1815 18 15
+Square S1716 17 16
+Square S1617 16 17
+Circle C1117 11 17
+Circle C1218 12 18
+Circle C1119 11 19
+Square S1118 11 18
+LeftFlipper LF93 9 3
+LeftFlipper LF169 16 9
+LeftFlipper LF1611 16 11
+LeftFlipper LF1411 14 11
+LeftFlipper LF1413 14 13
+LeftFlipper LF1613 16 13
+Absorber A019 0 19 1 20
+Absorber A217 2 17 3 18
+Absorber A213 2 13 3 14
+Absorber A011 0 11 1 12
+Absorber A015 0 15 1 16
+Absorber A07 0 7 1 8
+Absorber A25 2 5 3 6
+Absorber A03 0 3 1 4
+Absorber A29 2 9 3 10
+Absorber A49 4 9 7 10
+Absorber A619 6 19 7 20
+Absorber A712 7 12 8 13
+Absorber A811 8 11 9 12
+Absorber A89 8 9 9 10
+Absorber A87 8 7 9 8
+Absorber A85 8 5 9 6
+Absorber A83 8 3 9 4
+Absorber A617 6 17 7 18
+Absorber A615 6 15 7 16
+Absorber A613 6 13 7 14
+Absorber A1019 10 19 11 20
+Rotate T215
+Rotate T710
+Rotate T710
+Rotate T190
+Rotate T211
+Rotate T110
+Rotate T1919
+Rotate T1919
+Rotate T1719
+Rotate T1719
+Rotate T27
+Rotate T23
+Rotate T40
+Rotate T419
+Rotate T419
+Rotate T419
+Rotate T70
+Rotate T112
+Rotate T112
+Rotate T95
+Rotate T95
+Rotate T95
+Rotate T115
+Rotate T116
+Rotate T116
+Rotate T117
+Rotate T118
+Rotate T118
+Rotate T119
+Rotate T1110
+Rotate T1110
+Rotate T1111
+Rotate T97
+Rotate T97
+Rotate T97
+Rotate T99
+Rotate T99
+Rotate T99
+Rotate T911
+Rotate T911
+Rotate T911
+Rotate T120
+Rotate T120
+Rotate T120
+Rotate T122
+Rotate T122
+Rotate T122
+Rotate T124
+Rotate T124
+Rotate T124
+Rotate T126
+Rotate T126
+Rotate T126
+Rotate T128
+Rotate T128
+Rotate T128
+Rotate T1210
+Rotate T1210
+Rotate T1210
+Rotate T113
+Rotate T114
+Rotate T114
+Rotate T1112
+Rotate T1112
+Rotate T1013
+Rotate T1013
+Rotate T914
+Rotate T914
+Rotate T715
+Rotate T715
+Rotate T715
+Rotate T819
+Rotate T819
+Rotate T819
+Rotate T151
+Rotate T151
+Rotate T151
+Rotate T171
+Rotate T171
+Rotate T155
+Rotate T155
+Rotate T155
+Rotate T156
+Rotate T145
+Rotate T176
+Rotate T185
+Rotate T185
+Rotate T165
+Rotate T165
+Rotate T175
+Rotate T175
+Rotate T175
+Rotate T149
+Rotate T149
+Rotate T158
+Rotate T158
+Rotate T1818
+Rotate T1818
+Rotate T1917
+Rotate T1917
+Rotate LF1411
+Rotate LF1411
+Rotate LF1413
+Rotate LF1613
+Friction 0.025 0.025
+Gravity 25.0
