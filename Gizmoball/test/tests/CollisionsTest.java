@@ -7,10 +7,6 @@ import model.Model;
 import view.PlayGUI;
 import model.Collisions;
 
-
-
-
-
 public class CollisionsTest {
 	
 	Model model = new Model();

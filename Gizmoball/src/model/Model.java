@@ -174,7 +174,7 @@ public class Model extends Observable implements IModel {
 				time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 				if (time < 0.01) {
 					absorber.absorb(ball);
-					if(absorberKey == 32 || absorberKey == 0){
+					if(absorberKey == 0){
 						absorber.release();
 					}			
 				}
@@ -295,7 +295,7 @@ public class Model extends Observable implements IModel {
 			oldX = x;
 			oldY = y;
 			System.out.println("Ball placed at x: " + x + ", y: " + y);
-			ball = new Ball(gizmoName, x, y, ballXVel, ballYVel, Color.BLUE);
+			ball = new Ball(gizmoName, x, y, ballXVel, ballYVel, Color.RED);
 			ball.setX(x * L + L / 2);
 			ball.setY(y * L + L / 2);
 			fillSpace(oldX, oldY);
@@ -418,7 +418,7 @@ public class Model extends Observable implements IModel {
 
 	public void userDragFilledGizmo(double x1, double y1, double x2, double y2) {
 		if (absorberAdder && x1 != x2) {
-			addAbsorber(null, x1, y1, x2 + 1, y2 + 1, Color.MAGENTA);
+			addAbsorber(null, x1, y1, x2 + 1, y2 + 1, null);
 		}
 	}
 

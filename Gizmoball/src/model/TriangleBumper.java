@@ -20,7 +20,7 @@ public class TriangleBumper implements IBumper {
 	public TriangleBumper(String gizmoName, double x, double y, Color c) {
 		this.x = x * L;
 		this.y = y * L;
-		this.colour = Color.BLUE;
+		this.colour = c;
 		this.gizmoName = gizmoName;
 	}
 

@@ -23,7 +23,7 @@ public class LFlipper implements IFlipper {
 	public LFlipper(String gizmoName, double x, double y, Color c) {
 		this.x = x * L;
 		this.y = y * L;
-		this.colour = Color.ORANGE;
+		this.colour = c;
 		this.gizmoName = gizmoName;
 	}
 

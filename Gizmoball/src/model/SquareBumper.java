@@ -20,7 +20,7 @@ public class SquareBumper implements IBumper {
 	public SquareBumper(String gizmoName, double x, double y, Color c){
 		this.x = x*L;
 		this.y = y*L;
-		this.colour = Color.RED;
+		this.colour = c;
 		this.gizmoName = gizmoName;
 	}
 

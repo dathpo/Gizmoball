@@ -23,7 +23,7 @@ public class Absorber implements IAbsorber {
 		this.gizmoName = gizmoName;
 		this.x1 = x1 * L;
 		this.y1 = y1 * L;
-		this.colour = Color.MAGENTA;
+		this.colour = c;
 		this.x2 = x2 * L;
 		this.y2 = y2 * L;
 		width = (getX2() - getX1())/L;

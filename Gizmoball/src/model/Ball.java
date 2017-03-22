@@ -25,7 +25,7 @@ public class Ball implements IBall {
 		ix = x;
 		iy = y;
 		iv = new Vect(xv,yv);
-		this.colour = Color.BLUE;
+		this.colour = c;
 		this.velocity = new Vect(xv, yv);
 		stopped = false;
 		this.gizmoName = gizmoName;

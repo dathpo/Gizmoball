@@ -23,7 +23,7 @@ public class RFlipper implements IFlipper {
 	public RFlipper(String gizmoName, double x, double y, Color c) {
 		this.x = x * L;
 		this.y = y * L;
-		this.colour = Color.ORANGE;
+		this.colour = c;
 		this.gizmoName = gizmoName;
 		this.right = true;
 	}
