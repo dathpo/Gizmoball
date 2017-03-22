@@ -252,7 +252,6 @@ public class BuildGUI extends JPanel {
 //		kDisconnect.addActionListener(keyDisconnectL);
 
 		buildFrame.getContentPane().add(operations, BorderLayout.SOUTH);
-		buildFrame.pack();
     }
 
     public void Board() {
@@ -260,6 +259,7 @@ public class BuildGUI extends JPanel {
     	buildBoard = new Board(400, 400, model);
 		buildFrame.getContentPane().add(buildBoard, BorderLayout.CENTER);
 		buildBoard.addMouseListener(mouseInteractionL);
+		buildFrame.pack();
 
     }
 }
