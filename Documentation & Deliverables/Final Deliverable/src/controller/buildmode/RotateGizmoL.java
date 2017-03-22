@@ -5,16 +5,20 @@ import java.awt.event.ActionListener;
 
 import model.IModel;
 
-public class DisconnectGizmoL implements ActionListener {
+public class RotateGizmoL implements ActionListener {
 
 	IModel model;
-	public DisconnectGizmoL(IModel model) {
+	
+	public RotateGizmoL(IModel model) {
+	
 		this.model = model;
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {		
-		model.setDisconnectMode(true);
-	
-	}  
+		model.setRotateMode(true);
+		System.out.println("Rotate Mode entered");
+	}
+   
 }

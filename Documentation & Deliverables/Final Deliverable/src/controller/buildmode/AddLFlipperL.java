@@ -4,17 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.IModel;
 
-public class ConnectGizmoL implements ActionListener  {
+public class AddLFlipperL implements ActionListener {
 
-	IModel model;
-	
-	public ConnectGizmoL(IModel m) {
-		this.model = m;
+	private IModel model;
+
+	public AddLFlipperL(IModel m) {
+		model = m;
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		model.setConnectMode(true);
+		model.setGizmoFocus(3);
+		model.setPlacementMode(true);
 	}
+
 }

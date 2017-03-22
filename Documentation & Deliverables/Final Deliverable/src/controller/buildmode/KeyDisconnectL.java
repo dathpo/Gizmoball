@@ -5,16 +5,13 @@ import java.awt.event.ActionListener;
 
 import model.IModel;
 
-public class DisconnectGizmoL implements ActionListener {
+public class KeyDisconnectL implements ActionListener {
 
-	IModel model;
-	public DisconnectGizmoL(IModel model) {
-		this.model = model;
+	public KeyDisconnectL(IModel model) {
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {		
-		model.setDisconnectMode(true);
-	
-	}  
+	}
+   
 }

@@ -33,6 +33,12 @@ public interface IModel {
 	public void rotateGizmo(String gizmoName);
 
 	public void deleteGizmo(String gizmoName);
+	
+	public void deleteBumper(IBumper bumper);
+	
+	public void deleteFlipper(IFlipper flipper);
+	
+	public void deleteAbsorber(IAbsorber absorber);
 
 	public void userPlacedGizmo(double x, double y);
 
@@ -118,29 +124,29 @@ public interface IModel {
 
 	public void userDelete();
 
-	public void setConnectMode(boolean b);
-
-	public boolean getConnectMode();
-
-	public void connectKey();
-
-	public void setRFlipperKey(int key);
-
-	public void setLFlipperKey(int key);
-
-	public void setAbsorberKey(int key);
-
-	public int getRFlipperKey();
-
-	public int getLFlipperKey();
-
-	public int getAbsorberKey();
-
-	public void setLastKeyPress(int key);
-
-	public boolean getDisconnectMode();
-
-	public void setDisconnectMode(boolean b);
-
-	public void disconnectGizmo();
+//	public void setConnectMode(boolean b);
+//
+//	public boolean getConnectMode();
+//
+//	public void connectKey();
+//
+//	public void setRFlipperKey(int key);
+//
+//	public void setLFlipperKey(int key);
+//
+//	public void setAbsorberKey(int key);
+//
+//	public int getRFlipperKey();
+//
+//	public int getLFlipperKey();
+//
+//	public int getAbsorberKey();
+//
+//	public void setLastKeyPress(int key);
+//
+//	public boolean getDisconnectMode();
+//
+//	public void setDisconnectMode(boolean b);
+//
+//	public void disconnectGizmo();
 }

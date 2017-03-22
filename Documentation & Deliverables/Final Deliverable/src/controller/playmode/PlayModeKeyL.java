@@ -15,11 +15,11 @@ public class PlayModeKeyL implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == model.getLFlipperKey() || e.getKeyCode() == model.getRFlipperKey()) {
-			if (e.getKeyCode() == model.getLFlipperKey()) {
+		if (e.getKeyCode() == KeyEvent.VK_Q || e.getKeyCode() == KeyEvent.VK_E) {
+			if (e.getKeyCode() == KeyEvent.VK_Q) {
 				// System.out.println("Right Flippers Activated");
 				model.lFlipperActivate();
-			} else if (e.getKeyCode() == model.getRFlipperKey()) {
+			} else if (e.getKeyCode() == KeyEvent.VK_E) {
 				// System.out.println("Left Flippers Activated");
 				model.rFlipperActivate();
 			}
@@ -28,16 +28,16 @@ public class PlayModeKeyL implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == model.getLFlipperKey()|| e.getKeyCode() == model.getRFlipperKey()) {
-			if (e.getKeyCode() == model.getRFlipperKey()) {
+		if (e.getKeyCode() == KeyEvent.VK_Q || e.getKeyCode() == KeyEvent.VK_E) {
+			if (e.getKeyCode() == KeyEvent.VK_E) {
 				// System.out.println("Right Flippers Deactivated");
 				model.rFlipperDeactivate();
-			} else if(e.getKeyCode() == model.getLFlipperKey()){
+			} else {
 				// System.out.println("Left Flippers Deactivated");
 				model.lFlipperDeactivate();
 			}
 		}
-		else if (e.getKeyCode() == model.getAbsorberKey()) {
+		else if (e.getKeyCode() == 32) {
 			model.absorberRelease();
 		}
 	}

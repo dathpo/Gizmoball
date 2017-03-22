@@ -1,0 +1,25 @@
+Circle C00 0 0
+Triangle T10 1 0
+Square S20 2 0
+LeftFlipper LF30 3 0
+RightFlipper RF50 5 0
+Absorber A70 7 0 8 1
+Ball B 8.0 0.0 1.0 1.0
+Friction 0.025 0.025
+Gravity 25.0
+
+Move C00 0 1
+Move T10 1 1
+Move S20 2 1
+Move LF30 3 2
+Move RF50 5 2
+Move B 8 1
+Move A70 7 1
+
+Delete C00
+Delete T10
+Delete S20
+Delete LF30
+Delete RF50
+Delete B
+Delete A70
