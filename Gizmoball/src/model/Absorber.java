@@ -145,11 +145,11 @@ public class Absorber implements IAbsorber {
 	}
 
 	public double getWidth() {
-		return width;
+		return width/L;
 	}
 
 	public double getHeight() {
-		return height;
+		return height/L;
 	}
 
 }

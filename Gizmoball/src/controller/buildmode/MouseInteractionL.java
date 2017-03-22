@@ -18,9 +18,7 @@ public class MouseInteractionL implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(model.getDeleteMode()){
-			deleteGizmo(e);
-		}else if (model.getPlacementMode()){
+		if (model.getPlacementMode()){
 			drawGizmo(e);
 		}else if(model.getSelectMode()){
 			selectGizmo(e);
@@ -28,16 +26,15 @@ public class MouseInteractionL implements MouseListener {
 			moveGizmo(e);
 		}
 	}
-	
+
 	private void moveGizmo(MouseEvent e) {
 		Point coords = e.getPoint();
 		double x, y;
 
 		x = (int) coords.getX() / 20;
 		y = (int) coords.getY() / 20;
-		
+
 		model.userMove(x, y);
-		
 	}
 
 	private void selectGizmo(MouseEvent e) {
@@ -46,19 +43,21 @@ public class MouseInteractionL implements MouseListener {
 
 		x = (int) coords.getX() / 20;
 		y = (int) coords.getY() / 20;
-		
+
 		model.selectedGizmo(x, y);
-		
+
+		if(model.getDeleteMode()){
+			model.userDelete();
+		}
 		if(model.getRotateMode()){
 			model.userRotate();
 		}
-		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		Point coords = e.getPoint();
-		
+
 		x1 = (int) coords.getX() / 20;
 		y1 = (int) coords.getY() / 20;
 	}
@@ -69,10 +68,10 @@ public class MouseInteractionL implements MouseListener {
 
 		x2 = (int) coords.getX() / 20;
 		y2 = (int) coords.getY() / 20;
-		
+
 		drawAbsorber();	
 	}
-	
+
 	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
@@ -80,8 +79,8 @@ public class MouseInteractionL implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {		
 	}
-	
-	
+
+
 	public void drawGizmo(MouseEvent e) {
 		Point coords = e.getPoint();
 		double x, y;
@@ -93,18 +92,5 @@ public class MouseInteractionL implements MouseListener {
 
 	public void drawAbsorber() {
 		model.userDragFilledGizmo(x1, y1, x2, y2);
-	}
-	
-	private void deleteGizmo(MouseEvent e) {
-		Point coords = e.getPoint();
-		double x, y;
-
-		x = (int) coords.getX() / 20;
-		y = (int) coords.getY() / 20;
-		
-		model.findAndDelete(x, y);
-		
-	}
-
-	
+	}	
 }

@@ -18,6 +18,7 @@ public class RotateGizmoL implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {		
 		model.setRotateMode(true);
+		System.out.println("Rotate Mode entered");
 	}
    
 }

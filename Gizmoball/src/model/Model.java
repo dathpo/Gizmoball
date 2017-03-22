@@ -268,17 +268,16 @@ public class Model extends Observable implements IModel {
 
 	public boolean canPlaceAbsorber(double x1, double y1, double x2, double y2) {
 		boolean b = true;
-		if (x1 >= 0 && x1 < 20 && y1 >= 0 && y1 < 20 && x2 > 0 && x2 < 21 && y2 > 0 && y2 < 21) {
 			for (int i = (int) x1; i < x2; i++) {
 				for (int j = (int) y1; j < y2; j++) {
-					if (isSpaceFilled(i, j)) {						
+					if (isSpaceFilled(i, j) || !(x1 >= 0 && x1 < 20 && y1 >= 0 && y1 < 20 && x2 > 0 && x2 < 21 && y2 > 0 && y2 < 21)) {						
 						b = false;
 					}
 				}
 			}
-		}
+		
 		return b;
-	}
+}
 
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c) {
 		if (canPlaceGizmo(x, y)) {
@@ -419,11 +418,7 @@ public class Model extends Observable implements IModel {
 
 		if (absorbers.size() > 0) {
 			for (IAbsorber absorber : absorbers) {
-//				for (int i = 0; i <)
-				if (absorber.getX1() == x && absorber.getY1() == y) {
-					// System.out.println("Move called");
-					// iAbsorber.move(x/20 + 2, y/20 + 2);
-					// setEmptySpace(x/20, y/20);
+				if ((((x/L) >= (absorber.getX1()/L)) && ((x/L) < (absorber.getX2()/L))) && (((y/L) >= (absorber.getY1()/L)) && ((y/L) < (absorber.getY2()/L)))) {
 					selectedAbsorber = absorber;
 				}
 			}
@@ -431,7 +426,7 @@ public class Model extends Observable implements IModel {
 		if (bumpers.size() > 0) {
 			for (IBumper bumper : bumpers) {
 				if (bumper.getLineSegments().size() == 0) {
-					if (bumper.getX() == x + 10 && bumper.getY() == y + 10) {
+					if (bumper.getX() == (x + (L/2)) && bumper.getY() == (y + (L/2))) {
 						selectedBumper = bumper;
 					}
 				} else if (bumper.getX() == x && bumper.getY() == y) {
@@ -441,7 +436,7 @@ public class Model extends Observable implements IModel {
 		}
 		if (flippers.size() > 0) {
 			for (IFlipper flipper : flippers) {
-				if (flipper.getX() == x && flipper.getY() == y) {
+				if ((((x/L) == (flipper.getX()/L)) || ((x/L) == ((flipper.getX()/L) + 1))) && (((y/L) == (flipper.getY()/L)) || ((y/L) == ((flipper.getY()/L) + 1)))) {
 					this.selectedFlipper = flipper;
 				}
 			}
@@ -451,9 +446,9 @@ public class Model extends Observable implements IModel {
 				this.selectedBall = ball;
 			}
 		}
-		if (!getRotateMode()) {
+		if (!getRotateMode() && !getDeleteMode()) {
 			setMoveMode(true);
-		}
+		}		
 	}
 
 	public void moveGizmo(String gizmoName, double newX, double newY) {
@@ -461,62 +456,25 @@ public class Model extends Observable implements IModel {
 			for (IBumper bumper : bumpers) {
 				if (gizmoName.equals(bumper.getGizmoName())) {
 					moveBumper(bumper, newX, newY);
-					//					emptySpace((int) (bumper.getX()/L), (int) (bumper.getY()/L));
-					//					System.out.println("Bumper moved from x: " + (int) (bumper.getX() / L) + ", y: "
-					//							+ (int) (bumper.getY() / L) + " to x: " + (int) newX + ", y: " + (int) newY);
-					//					bumper.move(newX, newY);
-					//					fillSpace(newX, newY);
 				}
 			}
 		}
-		//		} else {
-		//			System.out.println("The Bumper cannot be moved here.");
-		//		}
 		if (absorbers != null) {
 			for (IAbsorber absorber : absorbers) {
 				if (gizmoName.equals(absorber.getGizmoName())) {
 					moveAbsorber(absorber, newX, newY);
-					//					for (int i = (int) (absorber.getX1()/L); i < (absorber.getX2()/L); i++) {
-					//						for (int j = (int) (absorber.getY1()/L); j < (absorber.getY2()/L); j++) {
-					//							emptySpace(i, j);
-					//						}
-					//					}
-					//					System.out.println("Absorber moved from x: " + (int) (absorber.getX1() / L) + ", y: "
-					//							+ (int) (absorber.getY1() / L) + " to x: " + (int) newX + ", y: " + (int) newY);
-					//					absorber.move(newX, newY);
-					//					for (int i = (int) (absorber.getX1()/L); i < (absorber.getX2()/L); i++) {
-					//						for (int j = (int) (absorber.getY1()/L); j < (absorber.getY2()/L); j++) {
-					//							fillSpace(i, j);
-					//						}
-					//					}
 				}
 			}
 		}
 		if (ball != null) {
 			if (gizmoName.equals(ball.getGizmoName())) {
 				moveBallGizmo(ball, newX, newY);
-				//				emptySpace(ball.getX() / L, ball.getY() / L);
-				//				System.out.println("Ball moved from x: " + (ball.getX() / L) + ", y: "
-				//						+ (ball.getY() / L) + " to x: " + newX + ", y: " + newY);
-				//				ball.move(newX, newY);
-				//				fillSpace(newX, newY);
 			}
 		}
 		if (flippers != null) {
 			for (IFlipper flipper : flippers) {
 				if (gizmoName.equals(flipper.getGizmoName())) {
 					moveFlipper(flipper, newX, newY);
-					//					emptySpace(flipper.getX()/L, flipper.getY()/L);
-					//					emptySpace((flipper.getX()/L) + 1, flipper.getY()/L);
-					//					emptySpace(flipper.getX()/L, (flipper.getY()/L) + 1);
-					//					emptySpace((flipper.getX()/L) + 1, (flipper.getY()/L) + 1);
-					//					System.out.println("Flipper moved from x: " + (int) (flipper.getX() / L) + ", y: "
-					//							+ (int) (flipper.getY() / L) + " to x: " + (int) newX + ", y: " + (int) newY);
-					//					flipper.move(newX, newY);
-					//					fillSpace(newX, newY);
-					//					fillSpace(newX + 1, newY);
-					//					fillSpace(newX, newY + 1);
-					//					fillSpace(newX + 1, newY + 1);
 				}
 			}
 		}
@@ -535,15 +493,14 @@ public class Model extends Observable implements IModel {
 	}
 
 	public void moveAbsorber(IAbsorber absorber, double newX, double newY) {
-		System.out.println((newX + absorber.getWidth()) + ", " + (newY + absorber.getHeight()));
-		if (absorbers != null && canPlaceAbsorber(newX, newY, (newX + absorber.getWidth()), (newY + absorber.getHeight()))) {
+		if (absorbers != null && canPlaceAbsorber(newX, newY, (newX + ((int) absorber.getWidth())), (newY + ((int) absorber.getHeight())))) {
 			for (int i = (int) (absorber.getX1()/L); i < (absorber.getX2()/L); i++) {
 				for (int j = (int) (absorber.getY1()/L); j < (absorber.getY2()/L); j++) {
 					emptySpace(i, j);
 				}
 			}
-			System.out.println("Absorber moved from x: " + (int) (absorber.getX1() / L) + ", y: "
-					+ (int) (absorber.getY1() / L) + " to x: " + (int) newX + ", y: " + (int) newY);
+			System.out.println("Absorber moved from x1: " + (int) (absorber.getX1() / L) + ", y1: "
+					+ (int) (absorber.getY1() / L) + " to x1: " + (int) newX + ", y1: " + (int) newY);
 			absorber.move(newX, newY);
 			for (int i = (int) (absorber.getX1()/L); i < (absorber.getX2()/L); i++) {
 				for (int j = (int) (absorber.getY1()/L); j < (absorber.getY2()/L); j++) {
@@ -636,104 +593,77 @@ public class Model extends Observable implements IModel {
 		if (bumpers != null) {
 			for (IBumper bumper : bumpers) {
 				if (gizmoName.equals(bumper.getGizmoName())) {
-					bumper.delete();
-					emptySpace(bumper.getX()/L, bumper.getY()/L);
-					System.out.println("Bumper deleted");
+					deleteBumper(bumper);
 				}
 			}
 		}
 		if (absorbers != null) {
 			for (IAbsorber absorber : absorbers) {
 				if (gizmoName.equals(absorber.getGizmoName())) {
-					absorber.delete();
-					/*need fix*/		emptySpace(absorber.getX1()/L, absorber.getY1()/L);
-					System.out.println("Absorber deleted");
+					deleteAbsorber(absorber);
 				}
 			}
 		}
 		if (ball != null) {
 			if (gizmoName.equals(ball.getGizmoName())) {
-				ball = null;
 				emptySpace(ball.getX()/L, ball.getY()/L);
+				ball = null;
 				System.out.println("Ball deleted");
 			}
 		}
 		if (flippers != null) {
 			for (IFlipper flipper : flippers) {
 				if (gizmoName.equals(flipper.getGizmoName())) {
-					flipper.delete();
-					emptySpace(flipper.getX()/L, flipper.getY()/L);
-					emptySpace((flipper.getX()/L) + 1, flipper.getY()/L);
-					emptySpace(flipper.getX()/L, (flipper.getY()/L) + 1);
-					emptySpace((flipper.getX()/L) + 1, (flipper.getY()/L) + 1);
-					System.out.println("Flipper deleted");
+					deleteFlipper(flipper);
 				}
 			}
 		}
 	}
-	
-	public void userDelete(double x, double y) {
+
+	public void deleteBumper(IBumper bumper) {
+		emptySpace(bumper.getX()/L, bumper.getY()/L);
+		bumper.delete();
+		bumpers.remove(bumper);
+		System.out.println("Bumper deleted");
+	}
+
+	public void deleteFlipper(IFlipper flipper) {
+		emptySpace(flipper.getX()/L, flipper.getY()/L);
+		emptySpace((flipper.getX()/L) + 1, flipper.getY()/L);
+		emptySpace(flipper.getX()/L, (flipper.getY()/L) + 1);
+		emptySpace((flipper.getX()/L) + 1, (flipper.getY()/L) + 1);
+		flipper.delete();
+		flippers.remove(flipper);
+		System.out.println("Flipper deleted");
+	}
+
+	public void deleteAbsorber(IAbsorber absorber) {
+		for (int i = (int) (absorber.getX1()/L); i < (absorber.getX2()/L); i++) {
+			for (int j = (int) (absorber.getY1()/L); j < (absorber.getY2()/L); j++) {
+				emptySpace(i, j);
+			}
+		}	
+		absorber.delete();
+		absorbers.remove(absorber);
+		System.out.println("Absorber deleted");
+	}
+
+	public void userDelete() {
 		if (this.selectedAbsorber != null) {
-			moveAbsorber(selectedAbsorber, x, y);
+			deleteAbsorber(selectedAbsorber);
 		} else if (this.selectedBumper != null) {
-			moveBumper(selectedBumper, x, y);
+			deleteBumper(selectedBumper);
 		} else if (this.selectedFlipper != null) {
-			moveFlipper(selectedFlipper, x, y);
+			deleteFlipper(selectedFlipper);
 		} else if (this.selectedBall != null) {
-			moveBallGizmo(selectedBall, x, y);
+			emptySpace(ball.getX()/L, ball.getY()/L);
+			ball = null;
+			System.out.println("Ball deleted");
 		}
 		this.selectedAbsorber = null;
 		this.selectedBumper = null;
 		this.selectedFlipper = null;
 		this.selectedBall = null;
-		setSelectMode(true);
-	}
-
-	@Override
-	public void findAndDelete(double x, double y) {
-		x = x * L;
-		y = y * L;
-
-		if (absorbers.size() > 0) {
-			for (IAbsorber absorber : absorbers) {
-				if (absorber.getX1() == x && absorber.getY1() == y) {
-					absorber.delete();
-					emptySpace(x / 20, y / 20);
-				}
-			}
-		}
-		if (bumpers.size() > 0) {
-			for (IBumper bumper : bumpers) {
-				if (bumper.getLineSegments().size() == 0) {
-					if (bumper.getX() == x + 10 && bumper.getY() == y + 10) {
-						bumper.delete();
-						emptySpace(x / 20, y / 20);
-						System.out.println("Circle bumper deleted from x: " + x + " y: " + y);
-					}
-				} else if (bumper.getX() == x && bumper.getY() == y) {
-					bumper.delete();
-					emptySpace(x / 20, y / 20);
-					System.out.println("Bumper deleted from x: " + x + " y: " + y);
-				}
-			}
-		}
-		if (flippers.size() > 0) {
-			for (IFlipper flipper : flippers) {
-				if (flipper.getX() == x && flipper.getY() == y) {
-					flipper.delete();
-					emptySpace(x / 20, y / 20);
-					emptySpace(x / 20 + 1, y);
-					emptySpace(x / 20, y / 20 + 1);
-					emptySpace(x / 20 + 1, y / 20 + 1);
-				}
-			}
-		}
-
-		// if(ball.getX() == x && ball.getY() == y){
-		// ball.delete();
-		// }
-		//
-
 	}
 
 	@Override
@@ -783,7 +713,7 @@ public class Model extends Observable implements IModel {
 		this.deleteMode = b;
 		this.placementMode = (!b);
 		this.moveMode = !b;
-		this.selectMode = !b;
+		this.selectMode = b;
 		this.rotateMode = !b;
 	}
 
@@ -798,7 +728,7 @@ public class Model extends Observable implements IModel {
 		this.selectMode = b;
 		this.deleteMode = !b;
 		this.placementMode = !b;
-		this.moveMode = b;
+		this.moveMode = !b;
 	}
 
 	@Override

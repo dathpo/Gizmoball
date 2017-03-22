@@ -13,7 +13,6 @@ import model.Model;
 
 
 import org.junit.Before;
-
  
 public class ModelTest {
 	

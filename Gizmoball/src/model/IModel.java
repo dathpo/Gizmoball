@@ -23,9 +23,9 @@ public interface IModel {
 	public void setGizmoFocus(int i);
 
 	public void clearArrays();
-	
+
 	public void emptySpaces();
-	
+
 	public void emptySpace(double x, double y);
 
 	public void moveGizmo(String gizmoName, double x, double y);
@@ -51,9 +51,9 @@ public interface IModel {
 	public void rFlipperDeactivate();
 
 	public void lFlipperDeactivate();
-	
+
 	public void setBallXVelo(double xv);
-	
+
 	public void setBallYVelo(double yv);
 
 	public void addBall(String gizmoName, double x, double y, double xv, double yv, Color c);
@@ -91,30 +91,56 @@ public interface IModel {
 	public File getLoadedFile();
 
 	public void setDeleteMode(boolean b);
-	
+
 	public boolean getDeleteMode();
-	
+
 	public void setPlacementMode(boolean b);
-	
+
 	public boolean getPlacementMode();
 
-	public void findAndDelete(double x, double y);
-	
 	public boolean getSelectMode();
-	
+
 	public void setSelectMode(boolean b);
-	
+
 	public boolean getMoveMode();
-	
+
 	public void setMoveMode(boolean b);
-	
+
 	public void selectedGizmo(double x, double y);
 
 	public void userMove(double x, double y);
-	
+
 	public void setRotateMode(boolean b);
-	
+
 	public boolean getRotateMode();
 
 	public void userRotate();
+
+	public void userDelete();
+
+//	public void setConnectMode(boolean b);
+//
+//	public boolean getConnectMode();
+//
+//	public void connectKey();
+//
+//	public void setRFlipperKey(int key);
+//
+//	public void setLFlipperKey(int key);
+//
+//	public void setAbsorberKey(int key);
+//
+//	public int getRFlipperKey();
+//
+//	public int getLFlipperKey();
+//
+//	public int getAbsorberKey();
+//
+//	public void setLastKeyPress(int key);
+//
+//	public boolean getDisconnectMode();
+//
+//	public void setDisconnectMode(boolean b);
+//
+//	public void disconnectGizmo();
 }
