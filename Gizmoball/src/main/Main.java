@@ -6,7 +6,7 @@ import model.Model;
 import java.awt.EventQueue;
 
 import view.BuildGUI;
-//Comment added
+
 public class Main {
 
 	private IModel model;
