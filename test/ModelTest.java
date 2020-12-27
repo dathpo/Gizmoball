@@ -1,5 +1,3 @@
-package tests;
-
 import model.Model;
 import org.junit.jupiter.api.Test;
 import view.PlayGUI;
@@ -103,7 +101,7 @@ public class ModelTest {
     @Test
     public void LoadFile() throws IOException {
         System.out.println("\n");
-        model.loadNewModel("Tunnel.txt");
+        model.loadNewModel("examples/Tunnel.txt");
         assertNotNull(model.getBall());
     }
 

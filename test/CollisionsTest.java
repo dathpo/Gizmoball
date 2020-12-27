@@ -1,5 +1,3 @@
-package tests;
-
 import model.Model;
 import org.junit.jupiter.api.Test;
 import view.PlayGUI;
