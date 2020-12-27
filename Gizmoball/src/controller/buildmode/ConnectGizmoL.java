@@ -1,20 +1,20 @@
 package controller.buildmode;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import model.IModel;
 
-public class ConnectGizmoL implements ActionListener  {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-	IModel model;
-	
-	public ConnectGizmoL(IModel m) {
-		this.model = m;
-	}
-	
+public class ConnectGizmoL implements ActionListener {
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		model.setConnectMode(true);
-	}
+    IModel model;
+
+    public ConnectGizmoL(IModel m) {
+        this.model = m;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        model.setConnectMode(true);
+    }
 }

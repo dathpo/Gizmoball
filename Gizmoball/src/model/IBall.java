@@ -1,23 +1,22 @@
 package model;
 
-import java.awt.Color;
+import java.awt.*;
 
 public interface IBall {
 
-	public Color getColour();
+    public Color getColour();
 
-	public double getX();
+    public double getX();
 
-	public double getY();
+    public double getY();
 
-	public double getRadius();
-	
-	public String getGizmoName();
+    public double getRadius();
 
-	public void stopped();
-	
-	public void setVelo(double xv, double yv);
+    public String getGizmoName();
 
-	public void move(double x, double y);
+    public void stopped();
 
-   }
+    public void setVelo(double xv, double yv);
+
+    public void move(double x, double y);
+}

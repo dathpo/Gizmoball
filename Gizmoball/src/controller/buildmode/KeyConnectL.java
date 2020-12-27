@@ -1,16 +1,16 @@
 package controller.buildmode;
 
+import model.IModel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.IModel;
-
 public class KeyConnectL implements ActionListener {
 
-	public KeyConnectL(IModel model) {
-	}
+    public KeyConnectL(IModel model) {
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {		
-	}   
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
 }
